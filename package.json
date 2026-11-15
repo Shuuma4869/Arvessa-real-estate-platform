@@ -1,0 +1,17 @@
+{
+  "name": "arvessa",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix apps/web run dev",
+    "build": "npm --prefix apps/web run build",
+    "start": "npm --prefix apps/web run start",
+    "typecheck": "npm --prefix apps/web run typecheck",
+    "lint": "npm --prefix apps/web run lint",
+    "test": "npm --prefix apps/web run test",
+    "test:e2e": "npm --prefix apps/web run test:e2e",
+    "test:browser": "npm --prefix apps/web run test:browser"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

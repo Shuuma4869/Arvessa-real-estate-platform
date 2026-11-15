@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">ARVESSA — Architectural A mark concept</title>
+  <desc id="description">Concept v0.1: two sloping structural piers joined by a horizontal beam, leaving an open counter. Primary brand mark.</desc>
+  <rect x="0" y="0" width="128" height="128" rx="24" fill="#F5F2EA"/><g transform="translate(20 20) scale(.6875)" fill="#172523">
+    <path d="M64 12 116 116H101L64 40 27 116H12Z"/>
+    <path d="M39 80H89V90H39Z"/>
+  </g>
+</svg>
