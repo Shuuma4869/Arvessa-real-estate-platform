@@ -1,0 +1,54 @@
+# Local research, AI drafts and temporary checks
+/.agent-work/*
+!/.agent-work/.gitkeep
+
+# Secrets and machine-specific configuration
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+
+# Dependencies and caches
+node_modules/
+.pnpm-store/
+.yarn/cache/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.turbo/
+
+# Generated application output
+dist/
+build/
+out/
+.next/
+.nuxt/
+.output/
+coverage/
+test-results/
+playwright-report/
+*.tsbuildinfo
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Editor and operating-system files
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.example.json
+.DS_Store
+Thumbs.db
+Desktop.ini

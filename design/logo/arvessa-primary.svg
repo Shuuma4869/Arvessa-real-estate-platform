@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="128" viewBox="0 0 640 128" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">ARVESSA — Primary logo concept</title>
+  <desc id="description">Concept v0.1: an architectural A mark beside a geometric ARVESSA wordmark. Architecture · Vision · Experience.</desc>
+  <g fill="#172523">
+    <path d="M64 12 116 116H101L64 40 27 116H12Z"/>
+    <path d="M39 80H89V90H39Z"/>
+  </g>
+  <g transform="translate(164 39)" stroke="#172523" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M0 52 24 0 48 52M9 34H39"/>
+    <path transform="translate(66)" d="M0 52V0H22C35 0 42 4 42 13S35 26 22 26H0M23 26 46 52"/>
+    <path transform="translate(133)" d="M0 0 24 52 48 0"/>
+    <path transform="translate(200)" d="M40 0H0V52H40M0 25H32"/>
+    <path transform="translate(266)" d="M42 5C33-1 7-5 2 9C-6 30 44 21 44 39C44 57 13 57 0 47"/>
+    <path transform="translate(332)" d="M42 5C33-1 7-5 2 9C-6 30 44 21 44 39C44 57 13 57 0 47"/>
+    <path transform="translate(398)" d="M0 52 24 0 48 52M9 34H39"/>
+  </g>
+</svg>
