@@ -1,4 +1,5 @@
 "use client";
+import { ArtImage } from "@/components/art-image";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -143,8 +144,9 @@ export default function ReservationWizard({
           {step === 1 && (
             <>
               <h2>Xem lại lựa chọn</h2>
-              <img
+              <ArtImage
                 src={p.image}
+                projectId={p.projectId}
                 alt={`Minh họa ${project.name}`}
                 width="800"
                 height="500"
@@ -655,7 +657,7 @@ export function PaymentList() {
       {selected && (
         <Modal title="Biên nhận mô phỏng" onClose={() => setReceipt("")}>
           <div className="document-preview">
-            <img
+            <ArtImage
               src="/brand/arvessa-primary.svg"
               alt="ARVESSA"
               width="200"

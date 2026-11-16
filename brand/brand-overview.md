@@ -42,6 +42,10 @@ Sự cao cấp đến từ chất lượng và tính nhất quán. Ưu tiên b�
 
 Tránh lời hứa đầu tư thiếu cơ sở, hình ảnh phô trương, biểu tượng mái nhà đại trà và ngôn ngữ công nghệ khó hiểu. Không tự nhận dẫn đầu, độc quyền hoặc có năng lực AI khi chưa có căn cứ.
 
+## Định hướng thị giác hiện tại
+
+**Cinematic Luxury Architecture × Luminous Glassmorphism × Immersive 3D × Premium Digital Experience.** Hướng Blue Hour dùng Deep Ocean, Teal, Azure, Pearl và điểm nhấn Champagne. Public có ảnh kiến trúc điện ảnh và lớp kính nhẹ; CRM giữ bề mặt sáng, đặc và dễ đọc. Logo, tên và triết lý thương hiệu không đổi. Xem [visual direction](../design/visual-direction.md) và [thư viện ảnh](../docs/visual-asset-library.md).
+
 ## Đoạn giới thiệu ngắn
 
 ARVESSA kết nối giá trị kiến trúc với trải nghiệm số trong bất động sản cao cấp. Với định hướng tích hợp CRM doanh nghiệp, nền tảng hướng đến một hành trình liền mạch từ khám phá không gian đến quản lý và chăm sóc khách hàng.

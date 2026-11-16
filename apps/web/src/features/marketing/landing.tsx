@@ -1,4 +1,5 @@
 "use client";
+import { ArtImage } from "@/components/art-image";
 import Link from "next/link";
 import {
   ArrowDown,
@@ -19,14 +20,21 @@ export default function Landing() {
   return (
     <main id="main">
       <section className="hero">
-        <img
-          className="hero-art"
-          src="/images/residence-exterior.svg"
-          alt="Minh họa hai tháp The Stillwater bên hồ cảnh quan"
-          width="1600"
-          height="1000"
-          fetchPriority="high"
-        />
+        <picture>
+          <source
+            media="(max-width: 700px)"
+            srcSet="/images/library/stillwater-blue-hour-mobile.webp"
+          />
+          <ArtImage
+            className="hero-art"
+            sizes="100vw"
+            src="/images/residence-exterior.svg"
+            alt="Phối cảnh AI The Stillwater bên mặt nước lúc hoàng hôn"
+            width="1600"
+            height="1000"
+            fetchPriority="high"
+          />
+        </picture>
         <div className="hero-shade" />
         <div className="hero-copy">
           <p className="eyebrow">THE ART OF CONSIDERED LIVING</p>
@@ -47,7 +55,17 @@ export default function Landing() {
           </a>
           <span>THE STILLWATER · CONCEPT 01</span>
         </div>
-        <div className="hero-index">
+        <Link className="hero-explore-card" href="/explorer">
+          <span className="orbit-symbol" aria-hidden="true">
+            ↗
+          </span>
+          <span>
+            <small>SPATIAL EXPERIENCE</small>
+            <strong>Bước vào không gian 3D</strong>
+          </span>
+          <ArrowUpRight size={18} />
+        </Link>
+        <div className="hero-index" aria-hidden="true">
           01 <span>/ 03</span>
         </div>
       </section>
@@ -132,7 +150,7 @@ export default function Landing() {
       </section>
       <section className="signature-section">
         <div className="signature-image">
-          <img
+          <ArtImage
             src="/images/residence-courtyard.svg"
             alt="Sân trong và mặt nước The Stillwater — minh họa"
             width="1600"
@@ -259,7 +277,7 @@ export default function Landing() {
         </div>
       </section>
       <section className="container editorial-split">
-        <img
+        <ArtImage
           src="/images/residence-interior.svg"
           alt="Không gian phòng khách mở ra sân vườn — minh họa"
           width="1600"

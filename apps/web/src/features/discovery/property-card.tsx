@@ -1,4 +1,5 @@
 "use client";
+import { ArtImage } from "@/components/art-image";
 import Link from "next/link";
 import {
   Heart,
@@ -23,8 +24,10 @@ export function PropertyCard({
     <article className="property-card">
       <div className="property-image">
         <Link href={`/properties/${p.id}`}>
-          <img
+          <ArtImage
             src={p.image}
+            projectId={p.projectId}
+            sizes="(max-width:700px) 90vw, 30vw"
             alt={`Minh họa kiến trúc ${data.projects.find((x) => x.id === p.projectId)?.name}`}
             width="640"
             height="400"

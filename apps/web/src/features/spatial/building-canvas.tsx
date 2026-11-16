@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import { Property, Project } from "@/domain/types";
 export default function BuildingCanvas({
   project,
@@ -11,6 +12,8 @@ export default function BuildingCanvas({
   tower,
   availableOnly,
   night,
+  cameraView,
+  reducedMotion,
   onPick,
   onFallback,
   onProgress,
@@ -22,6 +25,8 @@ export default function BuildingCanvas({
   tower: string;
   availableOnly: boolean;
   night: boolean;
+  cameraView: string;
+  reducedMotion: boolean;
   onPick: (id: string) => void;
   onFallback: () => void;
   onProgress: (n: number) => void;
@@ -32,6 +37,10 @@ export default function BuildingCanvas({
     towerRef = useRef(tower),
     filter = useRef(availableOnly),
     picker = useRef(onPick);
+  const viewRef = useRef(cameraView),
+    motionRef = useRef(reducedMotion);
+  viewRef.current = cameraView;
+  motionRef.current = reducedMotion;
   selection.current = selected;
   floorRef.current = floor;
   towerRef.current = tower;
@@ -55,6 +64,10 @@ export default function BuildingCanvas({
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = night ? 1.1 : 1;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     container.appendChild(renderer.domElement);
     const scene = new THREE.Scene(),
       camera = new THREE.PerspectiveCamera(
@@ -63,24 +76,41 @@ export default function BuildingCanvas({
         0.1,
         250,
       );
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    const room = new RoomEnvironment();
+    const environment = pmrem.fromScene(room, 0.04);
+    scene.environment = environment.texture;
+    scene.environmentIntensity = night ? 0.25 : 0.65;
+    room.dispose();
+    pmrem.dispose();
     camera.position.set(28, 23, 35);
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.target.set(0, project.floors * 1.4, 0);
-    controls.enableDamping = !window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+    const reducedQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    controls.enableDamping = !reducedQuery.matches && !motionRef.current;
     controls.minDistance = 12;
     controls.maxDistance = 75;
     controls.maxPolarAngle = Math.PI * 0.47;
     controls.update();
     scene.add(
-      new THREE.AmbientLight(night ? 0xa6c6da : 0xffffff, night ? 0.7 : 1.8),
+      new THREE.AmbientLight(night ? 0xa6c6da : 0xd9eaf2, night ? 0.45 : 0.65),
     );
     const sun = new THREE.DirectionalLight(
       night ? 0xadc7df : 0xffedce,
-      night ? 1 : 3,
+      night ? 1 : 2.3,
     );
     sun.position.set(15, 35, 20);
+    sun.castShadow = true;
+    sun.shadow.mapSize.set(1024, 1024);
+    Object.assign(sun.shadow.camera, {
+      left: -35,
+      right: 35,
+      top: 35,
+      bottom: -35,
+      near: 1,
+      far: 100,
+    });
+    sun.shadow.normalBias = 0.08;
     scene.add(sun);
     const materials: THREE.Material[] = [],
       geometries: THREE.BufferGeometry[] = [];
@@ -94,10 +124,12 @@ export default function BuildingCanvas({
       z: number,
     ) => {
       const g = new THREE.BoxGeometry(w, h, d),
-        m = new THREE.MeshStandardMaterial({ color, roughness: 0.7 });
+        m = new THREE.MeshStandardMaterial({ color, roughness: 0.52 });
       geometries.push(g);
       materials.push(m);
       const mesh = new THREE.Mesh(g, m);
+      mesh.castShadow = true;
+      mesh.receiveShadow = true;
       mesh.position.set(x, y, z);
       scene.add(mesh);
       return mesh;
@@ -111,7 +143,10 @@ export default function BuildingCanvas({
       -0.5,
       0,
     );
-    box(7, 0.15, 18, night ? 0x1f4249 : 0x8aafa4, 0, -0.23, 1);
+    const water = box(7, 0.15, 18, night ? 0x124c63 : 0x3d9aaa, 0, -0.23, 1);
+    water.material.roughness = 0.12;
+    water.material.metalness = 0.5;
+    water.castShadow = false;
     const unitMeshes: THREE.Mesh<
       THREE.BoxGeometry,
       THREE.MeshStandardMaterial
@@ -138,6 +173,10 @@ export default function BuildingCanvas({
             n <= 2 ? -2.1 : 2.1,
           );
           mesh.userData.propertyId = p.id;
+          mesh.castShadow = false;
+          mesh.material.roughness = 0.18;
+          mesh.material.metalness = 0.48;
+          mesh.material.envMapIntensity = 1.3;
           mesh.userData.floor = f;
           mesh.userData.tower = tower;
           mesh.userData.availability = p.availability;
@@ -157,6 +196,18 @@ export default function BuildingCanvas({
         box(0.25, 2.6, 9.5, 0xd8ccb1, offset + 5, y - 0.1, 0);
       }
       box(10.8, 0.4, 9.8, 0xbeb294, offset, project.floors * 2.6 + 1.25, 0);
+      // A planted roof and parapet express the same material language as the imagery.
+      box(8.5, 0.18, 7.5, 0x456e59, offset, project.floors * 2.6 + 1.55, 0);
+      for (const side of [-1, 1])
+        box(
+          10.7,
+          0.65,
+          0.12,
+          0xc0ae8e,
+          offset,
+          project.floors * 2.6 + 1.7,
+          side * 4.7,
+        );
     }
     for (let i = 0; i < 12; i++) {
       const x = (i % 2 ? 1 : -1) * (project.towers.length * 6 + 4),
@@ -170,6 +221,8 @@ export default function BuildingCanvas({
       geometries.push(g);
       materials.push(m);
       const tree = new THREE.Mesh(g, m);
+      tree.castShadow = true;
+      tree.receiveShadow = true;
       tree.position.set(x, 1.7, z);
       tree.scale.set(1, 1.45, 1);
       scene.add(tree);
@@ -229,13 +282,50 @@ export default function BuildingCanvas({
     });
     resize.observe(container);
     const colors: Record<string, number> = {
-      AVAILABLE: night ? 0x678c77 : 0x5c8171,
+      AVAILABLE: night ? 0x42899a : 0x4a90a1,
       HELD: 0xb69a59,
       RESERVED: 0x8b8e81,
       SOLD: 0x5d6662,
     };
+    let lastView = "perspective",
+      transitioning = false;
+    const destination = camera.position.clone();
+    const target = controls.target.clone();
+    const cancelTransition = () => {
+      transitioning = false;
+    };
+    controls.addEventListener("start", cancelTransition);
+    let lastTime = 0;
     const animate = () => {
       if (disposed) return;
+      frame = requestAnimationFrame(animate);
+      // Cap to 30 FPS and suspend drawing in background tabs.
+      const time = performance.now();
+      if (document.hidden || time - lastTime < 32) return;
+      const elapsed = Math.min((time - lastTime) / 1000, 0.1);
+      lastTime = time;
+      const reduce = reducedQuery.matches || motionRef.current;
+      controls.enableDamping = !reduce;
+      if (lastView !== viewRef.current) {
+        lastView = viewRef.current;
+        const h = project.floors * 1.4;
+        destination.set(
+          ...((lastView === "front"
+            ? [0, h + 3, 43]
+            : lastView === "aerial"
+              ? [15, 48, 18]
+              : [28, 23, 35]) as [number, number, number]),
+        );
+        target.set(0, h, 0);
+        transitioning = true;
+      }
+      if (transitioning) {
+        const speed = reduce ? 1 : 1 - Math.exp(-elapsed * 6);
+        camera.position.lerp(destination, speed);
+        controls.target.lerp(target, speed);
+        if (camera.position.distanceTo(destination) < 0.02)
+          transitioning = false;
+      }
       for (const m of unitMeshes) {
         const id = m.userData.propertyId,
           selected = id === selection.current,
@@ -253,11 +343,12 @@ export default function BuildingCanvas({
         );
         m.material.transparent = dim;
         m.material.opacity = dim ? 0.16 : 1;
-        m.material.emissive.setHex(selected ? 0x3c2c08 : 0x000000);
+        m.material.emissive.setHex(
+          selected ? 0x59401b : night ? 0x122b35 : 0x000000,
+        );
       }
       controls.update();
       renderer.render(scene, camera);
-      frame = requestAnimationFrame(animate);
     };
     animate();
     onProgress(100);
@@ -266,6 +357,9 @@ export default function BuildingCanvas({
       cancelAnimationFrame(frame);
       resize.disconnect();
       controls.dispose();
+      controls.removeEventListener("start", cancelTransition);
+      environment.dispose();
+      sun.shadow.map?.dispose();
       renderer.domElement.removeEventListener("pointermove", move);
       renderer.domElement.removeEventListener("pointerdown", press);
       renderer.domElement.removeEventListener("pointerup", release);

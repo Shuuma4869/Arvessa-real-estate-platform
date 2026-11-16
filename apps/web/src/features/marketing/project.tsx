@@ -1,4 +1,7 @@
 "use client";
+import { ArtImage } from "@/components/art-image";
+import { ProjectVisuals } from "./project-visuals";
+import { visualAssets } from "@/lib/visual-assets";
 import { useState } from "react";
 import Link from "next/link";
 import { useDemo } from "@/services/store";
@@ -18,8 +21,11 @@ export default function ProjectPage({ id }: { id: string }) {
   return (
     <main id="main" className="public-page">
       <section className="project-hero">
-        <img
+        <ArtImage
           src={project.image}
+          projectId={project.id}
+          sizes="100vw"
+          fetchPriority="high"
           alt={`Minh họa dự án ${project.name}`}
           width="1600"
           height="1000"
@@ -33,6 +39,7 @@ export default function ProjectPage({ id }: { id: string }) {
       <div className="container project-body">
         <nav className="tabs" aria-label="Nội dung dự án">
           <a href="#overview">Tổng quan</a>
+          <a href="#masterplan">Không gian</a>
           <a href="#residences">Căn hộ</a>
           <a href="#amenities">Tiện ích</a>
           <a href="#progress">Tiến độ</a>
@@ -74,13 +81,15 @@ export default function ProjectPage({ id }: { id: string }) {
               </LinkButton>
             </div>
           </div>
-          <img
-            src="/images/residence-interior.svg"
-            alt="Nghiên cứu nội thất căn hai phòng ngủ"
+          <ArtImage
+            src={id === "stillwater" ? visualAssets.interior : project.image}
+            projectId={project.id}
+            alt={`Nghiên cứu không gian ${project.name}`}
             width="1600"
             height="1000"
           />
         </section>
+        <ProjectVisuals project={project} />
         <section id="residences">
           <SectionTitle
             eyebrow="RESIDENCE COLLECTION"
@@ -103,8 +112,9 @@ export default function ProjectPage({ id }: { id: string }) {
           </div>
         </section>
         <section className="editorial-split" id="amenities">
-          <img
-            src="/images/residence-courtyard.svg"
+          <ArtImage
+            src={id === "stillwater" ? visualAssets.pool : project.image}
+            projectId={project.id}
             alt="Minh họa tiện ích sân trong"
             width="1600"
             height="1000"
@@ -136,7 +146,7 @@ export default function ProjectPage({ id }: { id: string }) {
             eyebrow="FLOOR PLAN STUDY"
             title="Rõ từng khoảng không."
           />
-          <img
+          <ArtImage
             className="plan"
             src="/images/residence-plan.svg"
             alt="Mặt bằng concept căn hai phòng ngủ; không phải bản vẽ thi công"

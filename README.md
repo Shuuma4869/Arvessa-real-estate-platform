@@ -5,7 +5,12 @@
 
 Nền tảng bất động sản cao cấp kết hợp khám phá không gian, hành trình người mua và CRM doanh nghiệp. Architecture tạo nền tảng; Vision định hướng quyết định; Experience nối toàn bộ hành trình sử dụng.
 
-Đây là frontend demo local gồm một ứng dụng Next.js + React + TypeScript tại `apps/web`. Nhận diện và ba SVG concept ban đầu được kế thừa; đã bổ sung logo âm bản, favicon và bộ minh họa kiến trúc nguyên bản. Xem [báo cáo nghiệm thu](docs/qa-report.md) để biết phạm vi đã kiểm chứng và giới hạn.
+Đây là frontend demo local gồm một ứng dụng Next.js + React + TypeScript tại `apps/web`. Workspace chính thức: `D:\ARVESSA`. Logo nền tảng được kế thừa; hướng thị giác hiện tại là **Cinematic Luxury Architecture × Luminous Glass × Immersive 3D**. Bộ ảnh AI nguyên bản, ba concept so sánh và nguồn tài sản được lưu trong dự án.
+
+- [Ba visual directions](design/visual-concepts.html) và [lý do chọn Blue Hour](design/visual-direction.md).
+- [Visual Asset Library](assets/visual-library/catalog.html): 8 ảnh gốc, prompt và 25 bản WebP, gồm crop hero riêng cho mobile.
+- [Nguồn và phạm vi sử dụng ảnh](docs/visual-asset-library.md).
+- [Nghiệm thu nền tảng](docs/qa-report.md) và [nghiệm thu nâng cấp thị giác](docs/visual-qa-report.md).
 
 ## Chạy dự án
 

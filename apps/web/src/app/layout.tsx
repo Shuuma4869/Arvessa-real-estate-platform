@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@fontsource-variable/manrope";
 import "@fontsource-variable/cormorant-garamond";
 import "./globals.css";
+import "../design-system/visual.css";
 import Providers from "@/components/providers";
 import { brand } from "@/lib/brand";
 export const metadata: Metadata = {

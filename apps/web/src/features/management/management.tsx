@@ -1,4 +1,5 @@
 "use client";
+import { ArtImage } from "@/components/art-image";
 import { useState } from "react";
 import { useDemo } from "@/services/store";
 import { Employee, roles, roleNames } from "@/domain/types";
@@ -396,7 +397,7 @@ export function Cms({ settings = false }: { settings?: boolean }) {
             </>
           ) : (
             <>
-              <img
+              <ArtImage
                 src="/brand/arvessa-primary.svg"
                 alt="ARVESSA"
                 width="300"
@@ -422,7 +423,7 @@ export function Cms({ settings = false }: { settings?: boolean }) {
             </>
           ) : (
             <>
-              <img
+              <ArtImage
                 src="/images/residence-courtyard.svg"
                 alt="Minh họa sân trong"
                 width="600"

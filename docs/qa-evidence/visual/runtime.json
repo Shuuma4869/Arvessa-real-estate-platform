@@ -1,0 +1,114 @@
+{
+  "date": "2026-11-16",
+  "errors": [],
+  "results": [
+    {
+      "name": "hero",
+      "path": "/",
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "landing",
+      "path": "/",
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "project",
+      "path": "/projects/stillwater",
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "property",
+      "path": "/properties/A0302",
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "login",
+      "path": "/sign-in",
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "register",
+      "path": "/sign-up",
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "explorer",
+      "path": "/explorer",
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "brand",
+      "path": "/brand",
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "buyer",
+      "path": "/buyer/dashboard",
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "crm",
+      "path": "/crm/dashboard",
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "pipeline",
+      "path": "/crm/pipeline",
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "management",
+      "path": "/management/dashboard",
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "mobile-hero",
+      "path": "/",
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "mobile-project",
+      "path": "/projects/stillwater",
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "mobile-property",
+      "path": "/properties/A0302",
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "mobile-login",
+      "path": "/sign-in",
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "mobile-management",
+      "path": "/management/dashboard",
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "mobile-buyer",
+      "path": "/buyer/dashboard",
+      "overflow": false,
+      "broken": []
+    }
+  ]
+}

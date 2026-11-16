@@ -8,15 +8,18 @@ Cormorant Garamond và Manrope được cài local bằng Fontsource, hỗ trợ
 
 | Token | Giá trị / ứng dụng |
 |---|---|
-| Ivory | `#F5F2EA`, nền public |
-| Paper | `#FFFDF8`, panel/form |
-| Forest | `#172F28`, CTA và workspace |
-| Ink | `#172523`, nội dung và logo |
-| Bronze | `#72542E`, chữ nhấn đã tăng độ đậm so với màu nghiên cứu ban đầu |
-| Muted | `#535E56`, nội dung phụ |
+| Pearl | `#F7F8F7`, nền public |
+| Paper | `#FFFFFF`, panel/form |
+| Deep Ocean | `#102633`, CTA, nền điện ảnh và nội dung |
+| Luxury Teal | `#087C83`, tương tác và dữ liệu |
+| Luminous Azure | `#4DAECB`, điểm nhấn ánh sáng |
+| Champagne | `#D1A46B`, chi tiết trên nền tối; chữ nhấn nền sáng dùng `#79562C` |
+| Muted | `#50626B`, nội dung phụ |
 | Motion | 160 / 260 / 650 ms; cubic-bezier(.22,1,.36,1) |
 
 Sound mặc định tắt; Web Audio tạo âm sine ngắn, không cần tải asset ngoài. Không phát khi hover. Tùy chọn mute dừng oscillator đang chạy. CSS `prefers-reduced-motion` và tùy chọn riêng giảm animation. 3D không tự xoay.
+
+Bản nâng cấp Blue Hour ngày 16/11/2026: [ba concept](../design/visual-concepts.html), [art direction](../design/visual-direction.md), [nguồn ảnh AI](visual-asset-library.md). Vật liệu 3D có environment reflection, ánh sáng ngày/đêm và ba preset camera; render giới hạn 30 FPS, dừng vẽ khi tab ẩn. Không đổi font hay hình học logo gốc.
 
 ## Nguồn đã đọc
 

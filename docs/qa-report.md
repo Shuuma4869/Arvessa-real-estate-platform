@@ -1,5 +1,7 @@
 # Báo cáo nghiệm thu frontend ARVESSA
 
+**Bản nâng cấp thị giác mới nhất:** xem [Visual QA — Blue Hour](visual-qa-report.md). Báo cáo bên dưới ghi lại mốc nền tảng; ảnh chụp ở `qa-evidence/` được cập nhật theo bản mới, số đo và kết quả mới được phân biệt trong báo cáo Visual QA.
+
 **FRONTEND COMPLETE — VERIFIED FOR DEMO**
 
 Ngày nghiệm thu: **16/11/2026**. Nhánh: `feat/arvessa-frontend`. Commit triển khai: `25edbbe`. Kết luận áp dụng bản demo local và các kịch bản bên dưới; không phải xác nhận production-ready, bảo mật server-side hoặc thanh toán thật.

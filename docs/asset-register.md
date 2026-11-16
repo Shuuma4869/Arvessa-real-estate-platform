@@ -1,5 +1,7 @@
 # Nguồn tài nguyên hình ảnh
 
+**Cập nhật 16/11/2026:** thư viện đang dùng trong giao diện đã chuyển sang [ARVESSA Visual Asset Library](visual-asset-library.md), gồm tám ảnh AI nguyên bản và các bản WebP responsive. Danh mục SVG bên dưới ghi lại nguồn đời đầu, vẫn được bảo toàn; riêng mặt bằng SVG tiếp tục hiển thị trong sản phẩm. Ảnh mặc định cũ được ánh xạ ở lớp trình bày, không reset dữ liệu người dùng.
+
 ## Bộ minh họa The Stillwater
 
 Các file dưới đây được dựng mới bằng SVG cho dự án ARVESSA, không dùng ảnh chụp, mô hình, texture, font nhúng hoặc tài nguyên tải từ bên thứ ba. Có thể chỉnh sửa và phân phối cùng mã nguồn demo ARVESSA. Đây là tài sản minh họa của bản demo, không phải bằng chứng về một dự án bất động sản có thật.

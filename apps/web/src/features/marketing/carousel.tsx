@@ -1,4 +1,5 @@
 "use client";
+import { ArtImage } from "@/components/art-image";
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
@@ -49,8 +50,10 @@ export function ImmersivePropertyCarousel() {
               className={`carousel-slide ${offset === 0 ? "active" : offset === 1 ? "next" : "previous"}`}
               aria-hidden={offset !== 0}
             >
-              <img
+              <ArtImage
                 src={p.image}
+                projectId={p.id}
+                sizes="(max-width:700px) 90vw, 65vw"
                 alt={`Minh họa ${p.name}`}
                 width="900"
                 height="560"

@@ -1,4 +1,5 @@
 "use client";
+import { ArtImage } from "@/components/art-image";
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -19,7 +20,7 @@ export const articles = [
     id: "light-and-space",
     title: "Ánh sáng là một vật liệu kiến trúc.",
     category: "Architecture",
-    image: "/images/residence-interior.svg",
+    image: "/images/library/duplex-study-1600.webp",
     paragraphs: [
       "Một không gian có thể thay đổi hoàn toàn theo thời điểm trong ngày. Ánh sáng không chỉ giúp nhìn rõ; nó tạo nhịp, nhấn chiều sâu và gợi cảm giác về thời gian.",
       "Khi xem một căn hộ, hãy quan sát hướng cửa, chiều sâu ban công và khả năng thông gió. Một khoảng hiên phù hợp có thể làm dịu ánh nắng trực tiếp mà vẫn giữ tầm nhìn mở.",
@@ -62,7 +63,7 @@ export function Journal({ id }: { id?: string }) {
     <main id="main" className="public-article">
       <p className="eyebrow">ARVESSA JOURNAL / {a.category}</p>
       <h1>{a.title}</h1>
-      <img
+      <ArtImage
         src={a.image}
         alt="Minh họa kiến trúc nguyên bản"
         width="1600"
@@ -91,7 +92,7 @@ export function Journal({ id }: { id?: string }) {
         {articles.map((a) => (
           <article key={a.id} className="journal-card">
             <Link href={`/journal/${a.id}`}>
-              <img
+              <ArtImage
                 src={a.image}
                 alt={`Minh họa ${a.category}`}
                 width="640"
@@ -210,8 +211,9 @@ export function Compare() {
                 <th>Tiêu chí</th>
                 {properties.map((p) => (
                   <th key={p.id}>
-                    <img
+                    <ArtImage
                       src={p.image}
+                      projectId={p.projectId}
                       alt={`Minh họa ${p.id}`}
                       width="180"
                       height="112"
@@ -386,7 +388,7 @@ export function PublicAppointment() {
         </p>
       </div>
       <div className="editorial-split" style={{ paddingTop: 0 }}>
-        <img
+        <ArtImage
           src="/images/residence-courtyard.svg"
           alt="Sân trong của dự án demo"
           width="1000"
@@ -481,7 +483,7 @@ export function InfoPage({ slug }: { slug: string }) {
     return (
       <main id="main" className="public-article">
         <p className="eyebrow">LUXURY ARCHITECTURAL DIGITAL BRAND</p>
-        <img src={brand.primary} alt="ARVESSA" width="400" height="80" />
+        <ArtImage src={brand.primary} alt="ARVESSA" width="400" height="80" />
         <p className="brand-line" style={{ marginTop: 24 }}>
           {brand.line}
         </p>
@@ -516,22 +518,42 @@ export function InfoPage({ slug }: { slug: string }) {
         </p>
         {slug === "brand" && (
           <>
+            <h2>Ánh sáng. Vật liệu. Chiều sâu.</h2>
+            <p>
+              Ocean và teal tạo chiều sâu; pearl giữ không gian đọc thoáng.
+              Champagne chỉ nhấn vào những chi tiết cần sự chú ý.
+            </p>
+            <div className="brand-palette">
+              {[
+                ["Deep Ocean", "#102633"],
+                ["Luxury Teal", "#087C83"],
+                ["Luminous Azure", "#4DAECB"],
+                ["Champagne", "#D1A46B"],
+                ["Pearl", "#F7F8F7"],
+              ].map(([name, hex]) => (
+                <div key={hex}>
+                  <i style={{ background: hex }} />
+                  <strong>{name}</strong>
+                  <small>{hex}</small>
+                </div>
+              ))}
+            </div>
             <h2>Cấu trúc mở</h2>
             <p>
               Biểu tượng A phát triển từ hai trụ xiên và một thanh ngang.
-              Wordmark hình học giữ khoảng thở, dùng nhất quán trên nền Ivory và
-              Forest.
+              Wordmark hình học giữ khoảng thở, dùng nhất quán trên nền Pearl và
+              Deep Ocean.
             </p>
             <div className="panel">
-              <img
+              <ArtImage
                 src="/brand/arvessa-primary.svg"
                 alt="Logo trên nền sáng"
                 width="500"
                 height="100"
               />
             </div>
-            <div className="panel" style={{ background: "#172523" }}>
-              <img
+            <div className="panel" style={{ background: "#102633" }}>
+              <ArtImage
                 src="/brand/arvessa-primary-inverse.svg"
                 alt="Logo trên nền tối"
                 width="500"
@@ -543,6 +565,31 @@ export function InfoPage({ slug }: { slug: string }) {
               giao diện nghiệp vụ. Logo giữ trạng thái concept dùng cho demo,
               chưa được xác nhận độc quyền.
             </p>
+            <h2>Architecture studies</h2>
+            <p>
+              Ba nghiên cứu mở rộng ngôn ngữ kiến trúc: villa, duplex và tháp
+              cao tầng. Đây là ảnh AI concept độc lập, không thuộc giỏ hàng dự
+              án demo.
+            </p>
+            <div className="brand-studies">
+              {[
+                ["villa-study", "Villa / Garden architecture"],
+                ["duplex-study", "Duplex / Light & volume"],
+                ["tower-study", "Tower / Vertical rhythm"],
+              ].map(([id, label]) => (
+                <figure key={id}>
+                  <ArtImage
+                    src={`/images/library/${id}-1600.webp`}
+                    alt={`Nghiên cứu AI ${label}`}
+                    width={800}
+                    height={500}
+                    loading="lazy"
+                    sizes="(max-width:700px) 90vw, 30vw"
+                  />
+                  <figcaption>{label}</figcaption>
+                </figure>
+              ))}
+            </div>
           </>
         )}
         <div className="info-box">

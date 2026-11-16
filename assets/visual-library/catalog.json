@@ -1,0 +1,190 @@
+{
+  "created": "2026-11-16",
+  "tool": "Built-in image_gen",
+  "status": "Original AI-generated concept imagery; not photography of real projects",
+  "assets": [
+    {
+      "id": "stillwater-blue-hour",
+      "prompt": "Use case: photorealistic-natural. Create a single premium architectural visualization photograph for ARVESSA homepage, wide panoramic 21:9 composition. Original fictional The Stillwater residence: precisely two elegant SIX-storey mid-rise waterfront residential buildings with horizontal ivory travertine balconies, bronze slender vertical fins, blue-green reflective glass, rooftop gardens. Not skyscrapers. Building mass at right two thirds, quiet dark blue water and subtly luminous sky on left for white editorial headline overlay. Generous waterfront infinity pool and landscaped terraces in foreground, fine tropical foliage. Blue hour meeting warm sunset at horizon, luminous teal water, pearl stone, restrained champagne interior illumination, realistic reflections, exquisite glass and stone details, expensive cinematic photography, architectural verticals straight, physically credible structure, no warped windows, no text, no logo, no watermark, no borders. Crisp large architectural presence, not too dark, avoid yellow cast and neon. Output landscape image.",
+      "original": "assets/visual-library/originals/stillwater-blue-hour.png",
+      "width": 1817,
+      "height": 866,
+      "variants": [
+        {
+          "path": "apps/web/public/images/library/stillwater-blue-hour-480.webp",
+          "bytes": 14402
+        },
+        {
+          "path": "apps/web/public/images/library/stillwater-blue-hour-800.webp",
+          "bytes": 40830
+        },
+        {
+          "path": "apps/web/public/images/library/stillwater-blue-hour-1600.webp",
+          "bytes": 131220
+        },
+        {
+          "path": "apps/web/public/images/library/stillwater-blue-hour-mobile.webp",
+          "bytes": 64242,
+          "width": 456,
+          "height": 866,
+          "role": "Mobile crop from original; no regenerated architectural content"
+        }
+      ],
+      "sha256": "f31b6b6678aac223b03f09b5e9f51bd8c7c3e03305730fb8277102e6321ab0b8"
+    },
+    {
+      "id": "cedar-courtyard",
+      "prompt": "Use case: photorealistic-natural. Original fictional Cedar House for ARVESSA architectural library. A single elegant FOUR-storey courtyard residence, horizontal terraces in pale limestone, natural cedar soffits and slender bronze fins, generous lush green courtyard with a narrow reflecting pool and garden paths, sculpted tropical planting. Photorealistic luxury architectural visualization, 16:9 landscape, building fills composition with straight credible verticals, morning pearl daylight and soft champagne warmth, teal reflecting water, natural rich greens. No skyscrapers, no other buildings, no words, no logos, no watermark, no surreal geometry. Calm sophisticated editorial composition, detailed textured stone, transparent realistic glazing.",
+      "original": "assets/visual-library/originals/cedar-courtyard.png",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "path": "apps/web/public/images/library/cedar-courtyard-480.webp",
+          "bytes": 31242
+        },
+        {
+          "path": "apps/web/public/images/library/cedar-courtyard-800.webp",
+          "bytes": 91524
+        },
+        {
+          "path": "apps/web/public/images/library/cedar-courtyard-1600.webp",
+          "bytes": 286752
+        }
+      ],
+      "sha256": "f893ee9de1680f7bd62ee20ee1204fb9798093c38beda0a2d994104bcae591f3"
+    },
+    {
+      "id": "horizon-coast",
+      "prompt": "Use case: photorealistic-natural. Original Horizon Bay architectural concept for ARVESSA, single FIVE-storey luxury coastal apartment building with open long stepped horizontal terraces, luminous pearl limestone, bronze slender fins, reflective blue glass, rooftop garden; sea-facing infinity swimming pool, sculpted subtropical landscape, azure ocean and distant mountains. 16:9 wide architectural photograph, tranquil luminous blue hour with pale peach horizon, subtle warm interiors. Straight verticals, precise construction, realistic materials, architectural mass to right with sea to left. Distinguished from waterfront lake residences by dramatic coastal horizon. No words, no logo, no watermark, no people, no extra towers, no neon.",
+      "original": "assets/visual-library/originals/horizon-coast.png",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "path": "apps/web/public/images/library/horizon-coast-480.webp",
+          "bytes": 19028
+        },
+        {
+          "path": "apps/web/public/images/library/horizon-coast-800.webp",
+          "bytes": 53614
+        },
+        {
+          "path": "apps/web/public/images/library/horizon-coast-1600.webp",
+          "bytes": 160422
+        }
+      ],
+      "sha256": "5d59c283d8d1b68ebfb5623eec52b7c38657c781bb3ae70270f8aa81497c09fd"
+    },
+    {
+      "id": "stillwater-penthouse",
+      "prompt": "Use case: photorealistic-natural. Original ARVESSA The Stillwater penthouse interior architectural photograph. Vertical 2:3 portrait composition for premium property card. Elegant contemporary single-level living room with curved ivory boucle sofa, travertine low table, natural oak wall, bronze slim window frames, floor-to-ceiling glazing onto a deep balcony with planters and a calm lake at blue hour. Restrained warm lamps, luminous azure dusk, champagne and pearl neutral materials. Camera eye level, realistic wide lens without distortion, tactile textiles, considered uncluttered styling, architectural straight lines, quiet lived-in setting without people. No text, logos, watermarks, no extraneous furniture, no yellow cast. This is a fictional design study, not an actual property photo.",
+      "original": "assets/visual-library/originals/stillwater-penthouse.png",
+      "width": 1024,
+      "height": 1536,
+      "variants": [
+        {
+          "path": "apps/web/public/images/library/stillwater-penthouse-480.webp",
+          "bytes": 24908
+        },
+        {
+          "path": "apps/web/public/images/library/stillwater-penthouse-800.webp",
+          "bytes": 84608
+        },
+        {
+          "path": "apps/web/public/images/library/stillwater-penthouse-1600.webp",
+          "bytes": 132910
+        }
+      ],
+      "sha256": "7d394d8096dcbd3f7285703f650534f8585e24bb2216b69e93c124c7f6406cef"
+    },
+    {
+      "id": "stillwater-pool",
+      "prompt": "Use case: photorealistic-natural. Original ARVESSA The Stillwater amenity architectural study: close view of a waterfront infinity swimming pool, sunken travertine conversation terrace with ivory cushions, bronze slim pergola, elegant landscaped garden, frangipani trees and grasses, lake in background. No buildings in frame, no different project architecture. Cinematic luminous blue hour with soft peach sunset horizon, refined warm low level lighting, pale limestone and teal water. 16:9 photograph, extraordinarily realistic materials and reflections, deep foreground framing, quiet unoccupied luxury lifestyle. No text, logos, watermark, people, neon, yellow wash.",
+      "original": "assets/visual-library/originals/stillwater-pool.png",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "path": "apps/web/public/images/library/stillwater-pool-480.webp",
+          "bytes": 21676
+        },
+        {
+          "path": "apps/web/public/images/library/stillwater-pool-800.webp",
+          "bytes": 66640
+        },
+        {
+          "path": "apps/web/public/images/library/stillwater-pool-1600.webp",
+          "bytes": 217846
+        }
+      ],
+      "sha256": "030627e22e70de208ec909d9ea62c21babe0dd939edf09a6fe4a3b57b860a8ac"
+    },
+    {
+      "id": "duplex-study",
+      "prompt": "Use case: photorealistic-natural. Original ARVESSA editorial design study of a luxury contemporary duplex interior, 16:9 landscape. Double-height living room, precise floating oak staircase with glass balustrade on left, mezzanine above, slim bronze floor-to-ceiling windows to lush garden, pearl travertine floor, sculptural ivory sofa and teal accent chair. Subtle architectural detail, sophisticated restrained styling, natural daylight softened by evening sky, realistic glass, elegant straight verticals and coherent stairs. Fictional concept not tied to existing listed units. No text, no logo, no watermark, no people.",
+      "original": "assets/visual-library/originals/duplex-study.png",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "path": "apps/web/public/images/library/duplex-study-480.webp",
+          "bytes": 17830
+        },
+        {
+          "path": "apps/web/public/images/library/duplex-study-800.webp",
+          "bytes": 52800
+        },
+        {
+          "path": "apps/web/public/images/library/duplex-study-1600.webp",
+          "bytes": 177048
+        }
+      ],
+      "sha256": "8e1e92d3487c718b0a2d88a01e15939b79f39653562951ac2848931898cf8166"
+    },
+    {
+      "id": "villa-study",
+      "prompt": "Use case: photorealistic-natural. Original ARVESSA architecture editorial study: modern two-storey private villa in pale travertine, bronze vertical screens, slender glass walls, flat planted roof, teal infinity pool and elegantly landscaped tropical garden. 16:9 landscape architectural photograph, soft sunset side-light with luminous cool sky and natural greens, realistic material textures and reflections, straight geometry, composed sophisticated luxury, no yellow tint, no words, no logos, no watermark, no people. Fictional villa concept, not an existing property listing.",
+      "original": "assets/visual-library/originals/villa-study.png",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "path": "apps/web/public/images/library/villa-study-480.webp",
+          "bytes": 25478
+        },
+        {
+          "path": "apps/web/public/images/library/villa-study-800.webp",
+          "bytes": 71838
+        },
+        {
+          "path": "apps/web/public/images/library/villa-study-1600.webp",
+          "bytes": 224442
+        }
+      ],
+      "sha256": "0800dde49a19d19365616a0d51c830f583a5a289d2164a307800729c60fc4001"
+    },
+    {
+      "id": "tower-study",
+      "prompt": "Use case: photorealistic-natural. Original ARVESSA architectural research study of an elegant luxury high-rise tower, approximately twenty-four storeys, slender rectilinear structure with rhythmic pearl limestone frames, bronze fins, recessed transparent glass balconies, rooftop landscaped sky terrace. Portrait 2:3 composition, camera from landscaped urban plaza upward with controlled vertical perspective, luminous blue hour and subtle warm interiors, azure glass reflections, rich natural trees and foreground travertine. No twisting impossible architecture, no neon, no words, no logos, no watermark. Fictional tower design study only, not one of the low-rise demo projects.",
+      "original": "assets/visual-library/originals/tower-study.png",
+      "width": 1024,
+      "height": 1536,
+      "variants": [
+        {
+          "path": "apps/web/public/images/library/tower-study-480.webp",
+          "bytes": 69180
+        },
+        {
+          "path": "apps/web/public/images/library/tower-study-800.webp",
+          "bytes": 196262
+        },
+        {
+          "path": "apps/web/public/images/library/tower-study-1600.webp",
+          "bytes": 295874
+        }
+      ],
+      "sha256": "74e0331ecbdd096bd9c3df70b580080d72a90c7317912b5e49e45b0f506cbbd7"
+    }
+  ]
+}

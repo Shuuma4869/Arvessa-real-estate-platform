@@ -1,4 +1,5 @@
 "use client";
+import { ArtImage } from "@/components/art-image";
 import { useNow } from "@/lib/use-now";
 import Link from "next/link";
 import { useState } from "react";
@@ -227,6 +228,43 @@ export default function Dashboard({ scope }: { scope: Scope }) {
           <option value="90">90 ngày tới</option>
         </select>
       </div>
+      {buyer && (
+        <Link
+          className="buyer-preview"
+          href={
+            data.favorites[0] ? `/properties/${data.favorites[0]}` : "/discover"
+          }
+        >
+          <ArtImage
+            src={
+              data.properties.find((p) => p.id === data.favorites[0])?.image ||
+              "/images/residence-exterior.svg"
+            }
+            projectId={
+              data.properties.find((p) => p.id === data.favorites[0])
+                ?.projectId || "stillwater"
+            }
+            alt="Phối cảnh không gian đang quan tâm"
+            width={800}
+            height={450}
+            sizes="(max-width:700px) 100vw, 50vw"
+          />
+          <div>
+            <p className="eyebrow">YOUR NEXT CHAPTER</p>
+            <h3>
+              {data.favorites.length
+                ? "Một nơi chốn đang chờ bạn."
+                : "Bắt đầu từ một góc nhìn."}
+            </h3>
+            <span>
+              {data.favorites.length
+                ? "Trở lại căn yêu thích"
+                : "Khám phá bộ sưu tập"}{" "}
+              ↗
+            </span>
+          </div>
+        </Link>
+      )}
       <div className="metric-grid">
         {metrics.map(([label, value, note, Icon, path]) => {
           const I = Icon as typeof Users;

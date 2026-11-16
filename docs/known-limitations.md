@@ -10,7 +10,7 @@ Web Locks và idempotency chỉ phối hợp các tab cùng browser/origin. Chư
 
 - Signup cập nhật hồ sơ Buyer cố định trong demo; chưa tạo nhiều tài khoản độc lập. OTP cố định, mật khẩu không lưu. Các vai trò nhân viên có dữ liệu giả lập.
 - Upload kiểm tra loại/kích thước và lưu tên tệp để thử flow. Không upload blob lên server, không có lưu trữ tài liệu thật. Biên nhận/hợp đồng chỉ là bản xem trước, không có giá trị kế toán/pháp lý.
-- Minh họa kiến trúc SVG và mô hình 3D tự dựng; mặt bằng và vị trí schematic không có độ chính xác xây dựng/địa lý. Không có video/360 vì chưa có asset phù hợp.
+- Phối cảnh AI, mặt bằng SVG và mô hình 3D procedural phục vụ demo; ảnh AI không phải hiện trạng, mặt bằng và vị trí schematic không có độ chính xác xây dựng/địa lý. Three.js phản ánh số tháp/tầng/căn của dữ liệu; hình khối và vật liệu chưa phải mô hình BIM. Dùng motion CSS và chuyển camera thay cho video tự phát; chưa có tour 360.
 - CMS chỉnh tiêu đề, mô tả, thứ tự dự án ưu tiên, ảnh đã đăng ký và chính sách; chưa phải CMS nội dung tổng quát. Chưa có asset upload hoặc trình soạn layout.
 - Cấu hình dự án cho phép thêm tầng trong tháp hiện hữu, giữ các căn đang có; không tái cấu trúc/xóa tháp đang giao dịch.
 - Financial indicators chỉ lấy từ fixtures/giao dịch demo. Reports xuất CSV giỏ hàng; không xuất báo cáo kế toán hoặc hợp đồng PDF.

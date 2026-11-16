@@ -1,4 +1,5 @@
 "use client";
+import { ArtImage } from "@/components/art-image";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -107,8 +108,9 @@ export default function AuthScreen({ mode }: { mode: string }) {
   return (
     <main id="main" className="auth-layout">
       <aside className="auth-art">
-        <img
+        <ArtImage
           src="/images/residence-exterior.svg"
+          sizes="1600px"
           alt="Minh họa không gian kiến trúc The Stillwater"
           width="1600"
           height="1000"
@@ -125,7 +127,7 @@ export default function AuthScreen({ mode }: { mode: string }) {
       </aside>
       <section className="auth-panel">
         <Link href="/">
-          <img
+          <ArtImage
             src={brand.primary}
             className="logo"
             alt="ARVESSA"

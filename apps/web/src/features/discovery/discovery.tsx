@@ -1,4 +1,5 @@
 "use client";
+import { ArtImage } from "@/components/art-image";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -269,8 +270,9 @@ export default function Discovery() {
       )}
       {quick && (
         <Modal title={quick.name} onClose={() => setQuick(null)}>
-          <img
+          <ArtImage
             src={quick.image}
+            projectId={quick.projectId}
             alt={`Minh họa ${quick.id}`}
             width="600"
             height="375"

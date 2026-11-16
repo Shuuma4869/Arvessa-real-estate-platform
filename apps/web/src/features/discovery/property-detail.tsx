@@ -1,4 +1,6 @@
 "use client";
+import { ArtImage } from "@/components/art-image";
+import { projectGallery } from "@/lib/visual-assets";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useDemo } from "@/services/store";
@@ -28,11 +30,7 @@ export default function PropertyDetail({ id }: { id: string }) {
       </main>
     );
   const project = data.projects.find((x) => x.id === p.projectId)!;
-  const images = [
-    p.image,
-    "/images/residence-interior.svg",
-    "/images/residence-courtyard.svg",
-  ];
+  const images = projectGallery(project.id, p.image);
   return (
     <main id="main" className="public-page container">
       <div className="page-heading">
@@ -52,8 +50,9 @@ export default function PropertyDetail({ id }: { id: string }) {
               onClick={() => setLightbox(true)}
               aria-label="Mở bộ ảnh lớn"
             >
-              <img
-                src={images[picture]}
+              <ArtImage
+                key={picture}
+                src={images[Math.min(picture, images.length - 1)]}
                 alt={`Ảnh minh họa ${picture + 1} cho ${project.name}`}
                 width="1600"
                 height="1000"
@@ -67,7 +66,7 @@ export default function PropertyDetail({ id }: { id: string }) {
                   aria-pressed={i === picture}
                   onClick={() => setPicture(i)}
                 >
-                  <img src={src} alt="" width="240" height="150" />
+                  <ArtImage src={src} alt="" width="240" height="150" />
                 </button>
               ))}
             </div>
@@ -94,7 +93,7 @@ export default function PropertyDetail({ id }: { id: string }) {
               Hình ảnh là nghiên cứu không gian của cùng concept dự án; không mô
               tả hoàn thiện bàn giao của căn cụ thể.
             </p>
-            <img
+            <ArtImage
               className="plan"
               src="/images/residence-plan.svg"
               alt="Mặt bằng minh họa loại căn hai phòng ngủ"
@@ -178,9 +177,10 @@ export default function PropertyDetail({ id }: { id: string }) {
           title={`Bộ ảnh ${project.name}`}
           onClose={() => setLightbox(false)}
         >
-          <img
+          <ArtImage
             className="gallery-lightbox"
-            src={images[picture]}
+            key={picture}
+            src={images[Math.min(picture, images.length - 1)]}
             alt={`Minh họa ${project.name}`}
             width="1600"
             height="1000"

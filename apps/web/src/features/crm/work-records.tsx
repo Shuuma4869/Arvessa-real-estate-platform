@@ -1,4 +1,5 @@
 "use client";
+import { ArtImage } from "@/components/art-image";
 import { useNow } from "@/lib/use-now";
 import { useState } from "react";
 import { useDemo } from "@/services/store";
@@ -524,7 +525,7 @@ export function Contracts() {
         <Modal wide title={`Hợp đồng ${c.id}`} onClose={() => setSelected("")}>
           <div className="detail-grid">
             <div className="document-preview">
-              <img
+              <ArtImage
                 src="/brand/arvessa-primary.svg"
                 alt="ARVESSA"
                 width="210"

@@ -1,12 +1,15 @@
 :root {
-  --ivory: #f5f2ea;
-  --paper: #fffdf8;
-  --sand: #e7dfd0;
-  --forest: #172f28;
-  --ink: #172523;
-  --muted: #535e56;
-  --bronze: #72542e;
-  --line: #dce0d4;
+  --ivory: #f7f8f7;
+  --paper: #ffffff;
+  --sand: #e6ecee;
+  --forest: #102633;
+  --ink: #102633;
+  --muted: #50626b;
+  --bronze: #79562c;
+  --line: #d9e2e6;
+  --teal: #087c83;
+  --azure: #4daecb;
+  --champagne: #d1a46b;
   --fast: 160ms;
   --medium: 260ms;
   --slow: 650ms;

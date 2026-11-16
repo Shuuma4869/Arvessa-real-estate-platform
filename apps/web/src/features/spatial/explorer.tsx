@@ -17,9 +17,12 @@ export default function Explorer() {
   const [projectId, setProject] = useState(
       params.get("project") || "stillwater",
     ),
-    [selected, setSelected] = useState(params.get("unit") || "A0302"),
+    [selected, setSelected] = useState(
+      params.get("unit") || (params.get("tower") ? "" : "A0302"),
+    ),
     [floor, setFloor] = useState(0),
-    [tower, setTower] = useState(""),
+    [tower, setTower] = useState(params.get("tower") || ""),
+    [cameraView, setCameraView] = useState("perspective"),
     [mode, setMode] = useState("3d"),
     [night, setNight] = useState(false),
     [available, setAvailable] = useState(false),
@@ -73,6 +76,8 @@ export default function Explorer() {
               tower={tower}
               availableOnly={available}
               night={night}
+              cameraView={cameraView}
+              reducedMotion={data.preferences.reducedMotion}
               onPick={(id) => {
                 setSelected(id);
                 sound("selection");
@@ -122,6 +127,23 @@ export default function Explorer() {
               <span role="status" style={{ padding: 10 }}>
                 Tải mô hình {progress}%
               </span>
+            )}
+            {mode === "3d" && (
+              <div className="camera-presets" aria-label="Góc nhìn mô hình">
+                {[
+                  ["perspective", "Phối cảnh"],
+                  ["front", "Mặt đứng"],
+                  ["aerial", "Từ trên cao"],
+                ].map(([value, label]) => (
+                  <button
+                    key={value}
+                    aria-pressed={cameraView === value}
+                    onClick={() => setCameraView(value)}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
             )}
           </div>
           <div className="canvas-help">

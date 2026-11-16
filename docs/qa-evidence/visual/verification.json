@@ -1,0 +1,441 @@
+{
+  "completed": "2026-11-17",
+  "tested": "2026-11-16",
+  "workspace": "D:/ARVESSA",
+  "branch": "feat/arvessa-frontend",
+  "baseCommit": "ad51a92",
+  "checks": {
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "build": "PASS",
+    "unitComponent": "61/61 PASS"
+  },
+  "e2e": {
+    "uniquePassed": 35,
+    "latestFailures": 0,
+    "runs": [
+      {
+        "name": "visual-first-e2e.json",
+        "startTime": "2026-11-16T15:07:10.041Z",
+        "passed": 31,
+        "failed": 4,
+        "tests": [
+          {
+            "title": "deposit → legal version → manager approval → signed contract → buyer",
+            "status": "passed",
+            "durationMs": 13991
+          },
+          {
+            "title": "refund rejection then approval updates linked buyer payment and stock",
+            "status": "passed",
+            "durationMs": 9062
+          },
+          {
+            "title": "waitlist buyer → sales callback and project inventory extension",
+            "status": "passed",
+            "durationMs": 3540
+          },
+          {
+            "title": "public consultation creates CRM record and CMS updates landing",
+            "status": "passed",
+            "durationMs": 2908
+          },
+          {
+            "title": "signup validates password, verifies OTP, keeps profile but no password",
+            "status": "passed",
+            "durationMs": 2928
+          },
+          {
+            "title": "actual 3D pointer raycast selects a different unit and supports drag",
+            "status": "passed",
+            "durationMs": 18389
+          },
+          {
+            "title": "extended accessibility, responsive workspace and visual evidence",
+            "status": "passed",
+            "durationMs": 23894
+          },
+          {
+            "title": "finance adjustment requires approval and updates buyer amount",
+            "status": "passed",
+            "durationMs": 6272
+          },
+          {
+            "title": "preferences persist, dark contrast, sound opt-in and session expiry",
+            "status": "passed",
+            "durationMs": 5043
+          },
+          {
+            "title": "WebGL unavailable recovers to keyboard-operable 2D",
+            "status": "passed",
+            "durationMs": 858
+          },
+          {
+            "title": "all nine demo roles land in allowed areas",
+            "status": "passed",
+            "durationMs": 4798
+          },
+          {
+            "title": "Customer 360 presents the same deposit as Buyer Payments",
+            "status": "passed",
+            "durationMs": 2999
+          },
+          {
+            "title": "mobile buyer completes deposit and can use appointment dialog",
+            "status": "passed",
+            "durationMs": 2219
+          },
+          {
+            "title": "production lab performance: LCP, CLS and interaction timing",
+            "status": "failed",
+            "durationMs": 31578
+          },
+          {
+            "title": "project masterplan hotspot opens the matching 3D tower and gallery closes with keyboard",
+            "status": "failed",
+            "durationMs": 14630
+          },
+          {
+            "title": "camera presets preserve unit selection with reduced motion and day/night",
+            "status": "passed",
+            "durationMs": 17056
+          },
+          {
+            "title": "legacy project imagery remains distinct without resetting saved buyer data",
+            "status": "passed",
+            "durationMs": 1394
+          },
+          {
+            "title": "new project, brand and mobile navigation remain accessible",
+            "status": "failed",
+            "durationMs": 3551
+          },
+          {
+            "title": "public landing → project → detail and carousel keyboard",
+            "status": "passed",
+            "durationMs": 948
+          },
+          {
+            "title": "discovery filters, empty state, quick view and compare",
+            "status": "passed",
+            "durationMs": 1429
+          },
+          {
+            "title": "3D canvas loads and selection navigates to correct property; 2D fallback usable",
+            "status": "passed",
+            "durationMs": 6933
+          },
+          {
+            "title": "buyer cannot open CRM and sales cannot open financial moduleKey",
+            "status": "passed",
+            "durationMs": 1368
+          },
+          {
+            "title": "buyer favorites persist across reload",
+            "status": "passed",
+            "durationMs": 1570
+          },
+          {
+            "title": "buyer creates appointment and collision is blocked",
+            "status": "passed",
+            "durationMs": 2285
+          },
+          {
+            "title": "hold, success payment, transaction history and reload",
+            "status": "passed",
+            "durationMs": 2662
+          },
+          {
+            "title": "conflict is explicit and has no payment action",
+            "status": "passed",
+            "durationMs": 1513
+          },
+          {
+            "title": "expired hold releases selection",
+            "status": "passed",
+            "durationMs": 7358
+          },
+          {
+            "title": "failed payment can retry, pending can reconcile in finance role",
+            "status": "passed",
+            "durationMs": 4214
+          },
+          {
+            "title": "offline scenario errors and recovery completes",
+            "status": "passed",
+            "durationMs": 1837
+          },
+          {
+            "title": "sales creates lead, converts opportunity, changes stage",
+            "status": "passed",
+            "durationMs": 2636
+          },
+          {
+            "title": "extension flows from buyer to management approval",
+            "status": "passed",
+            "durationMs": 3468
+          },
+          {
+            "title": "buyer profile and support conversation",
+            "status": "passed",
+            "durationMs": 2770
+          },
+          {
+            "title": "all CRM modules and management modules render without runtime errors",
+            "status": "passed",
+            "durationMs": 3091
+          },
+          {
+            "title": "responsive widths, keyboard, sound off and reduced-motion",
+            "status": "passed",
+            "durationMs": 4495
+          },
+          {
+            "title": "accessibility smoke on public, auth and workspace",
+            "status": "failed",
+            "durationMs": 2450
+          }
+        ]
+      },
+      {
+        "name": "visual-fixed-e2e.json",
+        "startTime": "2026-11-16T15:12:42.796Z",
+        "passed": 4,
+        "failed": 0,
+        "tests": [
+          {
+            "title": "production lab performance: LCP, CLS and interaction timing",
+            "status": "passed",
+            "durationMs": 31563
+          },
+          {
+            "title": "project masterplan hotspot opens the matching 3D tower and gallery closes with keyboard",
+            "status": "passed",
+            "durationMs": 1145
+          },
+          {
+            "title": "new project, brand and mobile navigation remain accessible",
+            "status": "passed",
+            "durationMs": 2803
+          },
+          {
+            "title": "accessibility smoke on public, auth and workspace",
+            "status": "passed",
+            "durationMs": 4247
+          }
+        ]
+      },
+      {
+        "name": "visual-spatial-e2e.json",
+        "startTime": "2026-11-16T15:15:40.176Z",
+        "passed": 5,
+        "failed": 0,
+        "tests": [
+          {
+            "title": "actual 3D pointer raycast selects a different unit and supports drag",
+            "status": "passed",
+            "durationMs": 19918
+          },
+          {
+            "title": "extended accessibility, responsive workspace and visual evidence",
+            "status": "passed",
+            "durationMs": 24178
+          },
+          {
+            "title": "WebGL unavailable recovers to keyboard-operable 2D",
+            "status": "passed",
+            "durationMs": 847
+          },
+          {
+            "title": "camera presets preserve unit selection with reduced motion and day/night",
+            "status": "passed",
+            "durationMs": 23386
+          },
+          {
+            "title": "3D canvas loads and selection navigates to correct property; 2D fallback usable",
+            "status": "passed",
+            "durationMs": 11778
+          }
+        ]
+      }
+    ],
+    "tests": [
+      {
+        "title": "deposit → legal version → manager approval → signed contract → buyer",
+        "status": "passed",
+        "durationMs": 13991
+      },
+      {
+        "title": "refund rejection then approval updates linked buyer payment and stock",
+        "status": "passed",
+        "durationMs": 9062
+      },
+      {
+        "title": "waitlist buyer → sales callback and project inventory extension",
+        "status": "passed",
+        "durationMs": 3540
+      },
+      {
+        "title": "public consultation creates CRM record and CMS updates landing",
+        "status": "passed",
+        "durationMs": 2908
+      },
+      {
+        "title": "signup validates password, verifies OTP, keeps profile but no password",
+        "status": "passed",
+        "durationMs": 2928
+      },
+      {
+        "title": "actual 3D pointer raycast selects a different unit and supports drag",
+        "status": "passed",
+        "durationMs": 19918
+      },
+      {
+        "title": "extended accessibility, responsive workspace and visual evidence",
+        "status": "passed",
+        "durationMs": 24178
+      },
+      {
+        "title": "finance adjustment requires approval and updates buyer amount",
+        "status": "passed",
+        "durationMs": 6272
+      },
+      {
+        "title": "preferences persist, dark contrast, sound opt-in and session expiry",
+        "status": "passed",
+        "durationMs": 5043
+      },
+      {
+        "title": "WebGL unavailable recovers to keyboard-operable 2D",
+        "status": "passed",
+        "durationMs": 847
+      },
+      {
+        "title": "all nine demo roles land in allowed areas",
+        "status": "passed",
+        "durationMs": 4798
+      },
+      {
+        "title": "Customer 360 presents the same deposit as Buyer Payments",
+        "status": "passed",
+        "durationMs": 2999
+      },
+      {
+        "title": "mobile buyer completes deposit and can use appointment dialog",
+        "status": "passed",
+        "durationMs": 2219
+      },
+      {
+        "title": "production lab performance: LCP, CLS and interaction timing",
+        "status": "passed",
+        "durationMs": 31563
+      },
+      {
+        "title": "project masterplan hotspot opens the matching 3D tower and gallery closes with keyboard",
+        "status": "passed",
+        "durationMs": 1145
+      },
+      {
+        "title": "camera presets preserve unit selection with reduced motion and day/night",
+        "status": "passed",
+        "durationMs": 23386
+      },
+      {
+        "title": "legacy project imagery remains distinct without resetting saved buyer data",
+        "status": "passed",
+        "durationMs": 1394
+      },
+      {
+        "title": "new project, brand and mobile navigation remain accessible",
+        "status": "passed",
+        "durationMs": 2803
+      },
+      {
+        "title": "public landing → project → detail and carousel keyboard",
+        "status": "passed",
+        "durationMs": 948
+      },
+      {
+        "title": "discovery filters, empty state, quick view and compare",
+        "status": "passed",
+        "durationMs": 1429
+      },
+      {
+        "title": "3D canvas loads and selection navigates to correct property; 2D fallback usable",
+        "status": "passed",
+        "durationMs": 11778
+      },
+      {
+        "title": "buyer cannot open CRM and sales cannot open financial moduleKey",
+        "status": "passed",
+        "durationMs": 1368
+      },
+      {
+        "title": "buyer favorites persist across reload",
+        "status": "passed",
+        "durationMs": 1570
+      },
+      {
+        "title": "buyer creates appointment and collision is blocked",
+        "status": "passed",
+        "durationMs": 2285
+      },
+      {
+        "title": "hold, success payment, transaction history and reload",
+        "status": "passed",
+        "durationMs": 2662
+      },
+      {
+        "title": "conflict is explicit and has no payment action",
+        "status": "passed",
+        "durationMs": 1513
+      },
+      {
+        "title": "expired hold releases selection",
+        "status": "passed",
+        "durationMs": 7358
+      },
+      {
+        "title": "failed payment can retry, pending can reconcile in finance role",
+        "status": "passed",
+        "durationMs": 4214
+      },
+      {
+        "title": "offline scenario errors and recovery completes",
+        "status": "passed",
+        "durationMs": 1837
+      },
+      {
+        "title": "sales creates lead, converts opportunity, changes stage",
+        "status": "passed",
+        "durationMs": 2636
+      },
+      {
+        "title": "extension flows from buyer to management approval",
+        "status": "passed",
+        "durationMs": 3468
+      },
+      {
+        "title": "buyer profile and support conversation",
+        "status": "passed",
+        "durationMs": 2770
+      },
+      {
+        "title": "all CRM modules and management modules render without runtime errors",
+        "status": "passed",
+        "durationMs": 3091
+      },
+      {
+        "title": "responsive widths, keyboard, sound off and reduced-motion",
+        "status": "passed",
+        "durationMs": 4495
+      },
+      {
+        "title": "accessibility smoke on public, auth and workspace",
+        "status": "passed",
+        "durationMs": 4247
+      }
+    ]
+  },
+  "note": "Initial run found 4 failures; all affected cases passed after fixes. Final spatial checks passed after lighting changes. Last layout-only floorplan fix was built and visually inspected."
+}
