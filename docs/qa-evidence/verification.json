@@ -1,0 +1,284 @@
+{
+  "date": "2026-11-16",
+  "sourceCommit": "25edbbe369cf0c90b7bb86d214fa07bbb033e5c3",
+  "branch": "feat/arvessa-frontend",
+  "environment": {
+    "os": "Windows",
+    "node": "25.8.1",
+    "npm": "11.11.0",
+    "browser": "Chromium Headless Shell 159.0.8154.6",
+    "server": "Next production 127.0.0.1:3002"
+  },
+  "checks": {
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "productionBuild": "PASS",
+    "domainTests": 54,
+    "componentTests": 7,
+    "dependencyVulnerabilities": 0
+  },
+  "e2e": {
+    "passed": 31,
+    "failed": 0,
+    "skipped": 0,
+    "runs": [
+      {
+        "name": "main",
+        "startTime": "2026-11-15T21:14:59.168Z",
+        "duration": 146868.557,
+        "expected": 27,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      {
+        "name": "additional",
+        "startTime": "2026-11-15T21:17:56.637Z",
+        "duration": 10890.981,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      {
+        "name": "mobile",
+        "startTime": "2026-11-15T21:20:16.761Z",
+        "duration": 3621.313,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    ],
+    "tests": [
+      {
+        "name": "deposit → legal version → manager approval → signed contract → buyer",
+        "file": "extended.spec.ts",
+        "status": "passed",
+        "durationMs": 11193,
+        "run": "main"
+      },
+      {
+        "name": "refund rejection then approval updates linked buyer payment and stock",
+        "file": "extended.spec.ts",
+        "status": "passed",
+        "durationMs": 9160,
+        "run": "main"
+      },
+      {
+        "name": "waitlist buyer → sales callback and project inventory extension",
+        "file": "extended.spec.ts",
+        "status": "passed",
+        "durationMs": 3764,
+        "run": "main"
+      },
+      {
+        "name": "public consultation creates CRM record and CMS updates landing",
+        "file": "extended.spec.ts",
+        "status": "passed",
+        "durationMs": 2595,
+        "run": "main"
+      },
+      {
+        "name": "signup validates password, verifies OTP, keeps profile but no password",
+        "file": "extended.spec.ts",
+        "status": "passed",
+        "durationMs": 3409,
+        "run": "main"
+      },
+      {
+        "name": "actual 3D pointer raycast selects a different unit and supports drag",
+        "file": "extended.spec.ts",
+        "status": "passed",
+        "durationMs": 6738,
+        "run": "main"
+      },
+      {
+        "name": "extended accessibility, responsive workspace and visual evidence",
+        "file": "extended.spec.ts",
+        "status": "passed",
+        "durationMs": 16080,
+        "run": "main"
+      },
+      {
+        "name": "finance adjustment requires approval and updates buyer amount",
+        "file": "extended.spec.ts",
+        "status": "passed",
+        "durationMs": 6307,
+        "run": "main"
+      },
+      {
+        "name": "preferences persist, dark contrast, sound opt-in and session expiry",
+        "file": "extended.spec.ts",
+        "status": "passed",
+        "durationMs": 2952,
+        "run": "main"
+      },
+      {
+        "name": "production lab performance: LCP, CLS and interaction timing",
+        "file": "performance.spec.ts",
+        "status": "passed",
+        "durationMs": 29060,
+        "run": "main"
+      },
+      {
+        "name": "public landing → project → detail and carousel keyboard",
+        "file": "workflows.spec.ts",
+        "status": "passed",
+        "durationMs": 1071,
+        "run": "main"
+      },
+      {
+        "name": "discovery filters, empty state, quick view and compare",
+        "file": "workflows.spec.ts",
+        "status": "passed",
+        "durationMs": 1567,
+        "run": "main"
+      },
+      {
+        "name": "3D canvas loads and selection navigates to correct property; 2D fallback usable",
+        "file": "workflows.spec.ts",
+        "status": "passed",
+        "durationMs": 2744,
+        "run": "main"
+      },
+      {
+        "name": "buyer cannot open CRM and sales cannot open financial moduleKey",
+        "file": "workflows.spec.ts",
+        "status": "passed",
+        "durationMs": 1595,
+        "run": "main"
+      },
+      {
+        "name": "buyer favorites persist across reload",
+        "file": "workflows.spec.ts",
+        "status": "passed",
+        "durationMs": 1619,
+        "run": "main"
+      },
+      {
+        "name": "buyer creates appointment and collision is blocked",
+        "file": "workflows.spec.ts",
+        "status": "passed",
+        "durationMs": 2494,
+        "run": "main"
+      },
+      {
+        "name": "hold, success payment, transaction history and reload",
+        "file": "workflows.spec.ts",
+        "status": "passed",
+        "durationMs": 3018,
+        "run": "main"
+      },
+      {
+        "name": "conflict is explicit and has no payment action",
+        "file": "workflows.spec.ts",
+        "status": "passed",
+        "durationMs": 1704,
+        "run": "main"
+      },
+      {
+        "name": "expired hold releases selection",
+        "file": "workflows.spec.ts",
+        "status": "passed",
+        "durationMs": 6966,
+        "run": "main"
+      },
+      {
+        "name": "failed payment can retry, pending can reconcile in finance role",
+        "file": "workflows.spec.ts",
+        "status": "passed",
+        "durationMs": 4598,
+        "run": "main"
+      },
+      {
+        "name": "offline scenario errors and recovery completes",
+        "file": "workflows.spec.ts",
+        "status": "passed",
+        "durationMs": 2018,
+        "run": "main"
+      },
+      {
+        "name": "sales creates lead, converts opportunity, changes stage",
+        "file": "workflows.spec.ts",
+        "status": "passed",
+        "durationMs": 2950,
+        "run": "main"
+      },
+      {
+        "name": "extension flows from buyer to management approval",
+        "file": "workflows.spec.ts",
+        "status": "passed",
+        "durationMs": 3581,
+        "run": "main"
+      },
+      {
+        "name": "buyer profile and support conversation",
+        "file": "workflows.spec.ts",
+        "status": "passed",
+        "durationMs": 2847,
+        "run": "main"
+      },
+      {
+        "name": "all CRM modules and management modules render without runtime errors",
+        "file": "workflows.spec.ts",
+        "status": "passed",
+        "durationMs": 3819,
+        "run": "main"
+      },
+      {
+        "name": "responsive widths, keyboard, sound off and reduced-motion",
+        "file": "workflows.spec.ts",
+        "status": "passed",
+        "durationMs": 4322,
+        "run": "main"
+      },
+      {
+        "name": "accessibility smoke on public, auth and workspace",
+        "file": "workflows.spec.ts",
+        "status": "passed",
+        "durationMs": 4799,
+        "run": "main"
+      },
+      {
+        "name": "WebGL unavailable recovers to keyboard-operable 2D",
+        "file": "extended.spec.ts",
+        "status": "passed",
+        "durationMs": 949,
+        "run": "additional"
+      },
+      {
+        "name": "all nine demo roles land in allowed areas",
+        "file": "extended.spec.ts",
+        "status": "passed",
+        "durationMs": 5102,
+        "run": "additional"
+      },
+      {
+        "name": "Customer 360 presents the same deposit as Buyer Payments",
+        "file": "extended.spec.ts",
+        "status": "passed",
+        "durationMs": 3265,
+        "run": "additional"
+      },
+      {
+        "name": "mobile buyer completes deposit and can use appointment dialog",
+        "file": "extended.spec.ts",
+        "status": "passed",
+        "durationMs": 2443,
+        "run": "mobile"
+      }
+    ]
+  },
+  "accessibility": {
+    "tags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21aa",
+      "wcag22aa"
+    ],
+    "violationsObserved": 0,
+    "scope": "See qa-report.md; automated checks do not certify complete WCAG conformance"
+  },
+  "performance": "performance.json; local lab, no field INP data"
+}

@@ -51,3 +51,11 @@ Không kéo giãn, nghiêng, xoay, thêm bóng hoặc đổi khoảng cách gi�
 ## Trước khi phát hành
 
 Duyệt hình học và kerning; thử logo trong cả năm điểm chạm; hoàn thiện phiên bản sáng/tối và xuất tài nguyên đúng nền tảng. Chỉ đưa bản đã duyệt vào `assets/`. Các SVG hiện tại phục vụ khám phá nhận diện và mockup.
+
+## Tích hợp frontend · 16/11/2026
+
+Giữ hình học bản gốc. Bổ sung `arvessa-primary-inverse.svg`, `arvessa-mark-inverse.svg` cho nền tối và `favicon.svg` dạng mark trên nền đặc. Bản phục vụ ứng dụng ở `apps/web/public/brand/`; favicon được khai báo trong metadata App Router và phục vụ ở `/brand/favicon.svg`.
+
+Landing, Authentication, About và Brand Presentation có brand line **Architecture · Vision · Experience**. Workspace chỉ dùng primary hoặc mark trong sidebar, không lặp brand line ở bảng CRM. Ảnh nguồn SVG được đặt width/height để ổn định layout; không đổi tỷ lệ, thêm gradient hoặc hiệu ứng vào wordmark.
+
+Các phiên bản hiện phục vụ demo local. Việc phát hành thương mại vẫn cần duyệt nhận diện cuối cùng và kiểm tra tương đồng logo.
