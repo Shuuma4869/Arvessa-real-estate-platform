@@ -1,11 +1,15 @@
 # ARVESSA
 
+![Logo ARVESSA](design/logo/arvessa-primary.svg)
+
 **Architecture · Vision · Experience**  
 *Luxury Architectural Digital Brand*
 
 Nền tảng bất động sản cao cấp kết hợp khám phá không gian, hành trình người mua và CRM doanh nghiệp. Architecture tạo nền tảng; Vision định hướng quyết định; Experience nối toàn bộ hành trình sử dụng.
 
-Đây là frontend demo local gồm một ứng dụng Next.js + React + TypeScript tại `apps/web`. Workspace chính thức: `D:\ARVESSA`. Logo nền tảng được kế thừa; hướng thị giác hiện tại là **Cinematic Luxury Architecture × Luminous Glass × Immersive 3D**. Bộ ảnh AI nguyên bản, ba concept so sánh và nguồn tài sản được lưu trong dự án.
+Đây là frontend demo gồm một ứng dụng Next.js + React + TypeScript tại `apps/web`. Workspace phát triển hiện tại là `D:\ARVESSA`; người dùng clone có thể chọn thư mục khác, ứng dụng không phụ thuộc đường dẫn này. Logo nền tảng được kế thừa; hướng thị giác hiện tại là **Cinematic Luxury Architecture × Luminous Glass × Immersive 3D**. Bộ ảnh AI nguyên bản, ba concept so sánh và nguồn tài sản được lưu trong dự án.
+
+Repository chính thức: [Shuuma4869/Arvessa-real-estate-platform](https://github.com/Shuuma4869/Arvessa-real-estate-platform), nhánh công bố `main`. Bắt đầu kiểm toán từ [bản bàn giao frontend](docs/frontend-handover.md) và [kiểm tra trước công bố](docs/publish-verification.md).
 
 - [Ba visual directions](design/visual-concepts.html) và [lý do chọn Blue Hour](design/visual-direction.md).
 - [Visual Asset Library](assets/visual-library/catalog.html): 8 ảnh gốc, prompt và 25 bản WebP, gồm crop hero riêng cho mobile.
@@ -16,12 +20,16 @@ Nền tảng bất động sản cao cấp kết hợp khám phá không gian, h
 
 Cần Node.js 22.12+ và npm; môi trường kiểm thử dùng Node/npm ghi trong báo cáo QA. Không cần Docker, tài khoản dịch vụ hay biến môi trường bí mật.
 
-Chạy từ thư mục `ARVESSA`:
+Clone và chạy:
 
 ```powershell
+git clone https://github.com/Shuuma4869/Arvessa-real-estate-platform.git ARVESSA
+cd ARVESSA
 npm --prefix apps/web ci
 npm run dev
 ```
+
+Nếu đã có bản clone, chạy các lệnh npm từ thư mục gốc hiện có. Không cần tạo lại dự án hoặc tự tạo `.env`.
 
 Mở **http://127.0.0.1:3000**. Dừng bằng `Ctrl+C` ở terminal đang chạy server. Nếu cổng đã được dùng, dừng đúng server cũ hoặc chọn cổng khác:
 
@@ -79,6 +87,22 @@ Chín vai trò: Buyer, Sales, Leader, Support, Legal, Finance, Manager, Company 
 
 [Kiến trúc và điểm tích hợp API](docs/architecture.md) · [Giới hạn và công việc tiếp theo](docs/known-limitations.md).
 
+## Công nghệ và kiến trúc
+
+Next.js 16.4.6 App Router, React 19.3.1, TypeScript 6.0.3; Zustand cho dữ liệu trình diễn, Zod cho validation, Three.js 0.187.0 cho WebGL, Lucide cho icon. Fonts Manrope/Cormorant Garamond được đóng gói qua npm và phục vụ local. Motion dùng CSS và chuyển camera trong Three.js. Kiểm thử dùng Vitest, Testing Library, Playwright và axe; phiên bản chính xác nằm trong `apps/web/package-lock.json`.
+
+Năm route groups chia Public Website, Authentication, Buyer Portal, CRM Workspace và Management Console. Các feature modules dùng chung UI, domain, typed commands và mock adapter; không tách thành nhiều frontend.
+
+## Lộ trình backend
+
+1. Auth/session thật, tenant scope và kiểm tra quyền phía server.
+2. Database transaction, giữ căn atomic, idempotency, server clock và cập nhật trạng thái qua SSE/WebSocket.
+3. Payment provider sandbox, webhook xác minh, đối soát và hoàn tiền có audit bền vững.
+4. Lưu trữ tài liệu theo quyền, versioning, ký điện tử và tích hợp CMS.
+5. Kiểm thử đa thiết bị/trình duyệt, accessibility và đo hiệu năng người dùng thật.
+
+Các mục này là công việc tiếp theo, chưa được triển khai trong bản frontend.
+
 ## Cấu trúc
 
 ```text
@@ -110,7 +134,8 @@ ARVESSA/
 ├── docs/
 │   ├── repository-audit.md, architecture.md, routes-and-demo.md
 │   ├── design-and-research.md, asset-register.md
-│   ├── qa-report.md, known-limitations.md
+│   ├── qa-report.md, visual-qa-report.md, known-limitations.md
+│   ├── frontend-handover.md, publish-verification.md
 │   └── qa-evidence/
 ├── assets/
 ├── packages/
@@ -119,13 +144,13 @@ ARVESSA/
 └── .agent-work/                 # bỏ qua trong Git
 ```
 
-`assets`, `packages`, `services`, `tests` ở root được bảo toàn từ nền tảng ban đầu. Chưa thêm package/backend hay bản sao ứng dụng vào các thư mục này. Tests hiện hành ở `apps/web/tests`, asset được phục vụ ở `apps/web/public`.
+`packages`, `services`, `tests` ở root được bảo toàn từ nền tảng ban đầu; chưa thêm package/backend vào các thư mục này. Tests hiện hành ở `apps/web/tests`, asset được phục vụ ở `apps/web/public`; ảnh gốc và catalog nằm trong `assets/visual-library`. `.agent-work/` được tạo local khi chạy công cụ, không có trong source công bố.
 
 ## Nhận diện và quy tắc làm việc
 
 Hướng logo chính là **Cấu trúc mở**: chữ A như nhịp kết cấu có khoảng rỗng, rõ ở giao diện số; monogram A/V là hướng phụ. Xem [brand overview](brand/brand-overview.md), [brand voice](brand/brand-voice.md), [naming](brand/naming.md) và [logo usage](design/logo/logo-usage.md).
 
-Giữ tài liệu thiết kế gốc ở `design/`, ghi nguồn asset trong `docs/asset-register.md`, không commit secrets/dữ liệu thật/file tạm. `.agent-work/` dành cho nghiên cứu và kiểm tra tạm. Nhánh triển khai là `feat/arvessa-frontend`; không push hoặc merge vào `main` trong đợt này.
+Giữ tài liệu thiết kế gốc ở `design/`, ghi nguồn asset trong `docs/asset-register.md`, không commit secrets/dữ liệu thật/file tạm. `.agent-work/` dành cho nghiên cứu và kiểm tra tạm. Nhánh `main` dùng cho lần công bố đầu tiên; lịch sử triển khai từ `feat/arvessa-frontend` được bảo toàn bằng fast-forward.
 
 ### Quy trình E2E trên Windows
 

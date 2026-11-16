@@ -1,6 +1,5 @@
 # Local research, AI drafts and temporary checks
-/.agent-work/*
-!/.agent-work/.gitkeep
+/.agent-work/
 
 # Secrets and machine-specific configuration
 .env

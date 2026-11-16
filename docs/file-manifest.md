@@ -1,9 +1,8 @@
 # Danh mục file bàn giao
 
-Cập nhật 17/11/2026: 211 file nguồn, tài liệu, nhận diện, ảnh gốc và bằng chứng nghiệm thu. Không gồm dependencies, build hoặc file tạm trong .agent-work (trừ .gitkeep kế thừa).
+Cập nhật 17/11/2026: 213 file nguồn, tài liệu, nhận diện, ảnh gốc và bằng chứng nghiệm thu. Không gồm dependencies, build hoặc file tạm; toàn bộ .agent-work/ được bỏ theo dõi trong lần công bố đầu tiên.
 
 ```text
-.agent-work/.gitkeep
 .gitignore
 README.md
 apps/.gitkeep
@@ -172,7 +171,9 @@ docs/architecture.md
 docs/asset-register.md
 docs/design-and-research.md
 docs/file-manifest.md
+docs/frontend-handover.md
 docs/known-limitations.md
+docs/publish-verification.md
 docs/qa-evidence/crm.png
 docs/qa-evidence/explorer.png
 docs/qa-evidence/hero.png
@@ -180,6 +181,7 @@ docs/qa-evidence/landing.png
 docs/qa-evidence/mobile-hero.png
 docs/qa-evidence/mobile.png
 docs/qa-evidence/performance.json
+docs/qa-evidence/publish-verification.json
 docs/qa-evidence/verification.json
 docs/qa-evidence/visual/brand.webp
 docs/qa-evidence/visual/buyer.webp

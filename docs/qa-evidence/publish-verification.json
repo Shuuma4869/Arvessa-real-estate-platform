@@ -1,0 +1,506 @@
+{
+  "date": "2026-11-17",
+  "source_commit": "ae57d39040480871625e3844f286ef891eacff13",
+  "method": "git archive HEAD into an ignored directory; npm ci using tracked lockfile; no original node_modules, build or ignored assets copied. All 135 tracked apps/web files match original Git blob IDs after Git clean/line-ending normalization. Browser binary reused from isolated local cache.",
+  "environment": {
+    "os": "Windows",
+    "node": "v25.8.1",
+    "npm": "11.11.0",
+    "browser": "159.0.8154.6",
+    "production_port": 3027
+  },
+  "checks": {
+    "npm_ci": {
+      "status": "passed",
+      "packages_installed": 460
+    },
+    "typecheck": "passed",
+    "lint": "passed",
+    "build": {
+      "status": "passed",
+      "static_pages": 24
+    },
+    "unit_component": {
+      "status": "passed",
+      "domain": 54,
+      "component": 7
+    },
+    "e2e": {
+      "status": "passed",
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0,
+      "retried": 0,
+      "duration_ms": 180241.603,
+      "tests": [
+        {
+          "title": "deposit → legal version → manager approval → signed contract → buyer",
+          "file": "extended.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "refund rejection then approval updates linked buyer payment and stock",
+          "file": "extended.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "waitlist buyer → sales callback and project inventory extension",
+          "file": "extended.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "public consultation creates CRM record and CMS updates landing",
+          "file": "extended.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "signup validates password, verifies OTP, keeps profile but no password",
+          "file": "extended.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "actual 3D pointer raycast selects a different unit and supports drag",
+          "file": "extended.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "extended accessibility, responsive workspace and visual evidence",
+          "file": "extended.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "finance adjustment requires approval and updates buyer amount",
+          "file": "extended.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "preferences persist, dark contrast, sound opt-in and session expiry",
+          "file": "extended.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "WebGL unavailable recovers to keyboard-operable 2D",
+          "file": "extended.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "all nine demo roles land in allowed areas",
+          "file": "extended.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "Customer 360 presents the same deposit as Buyer Payments",
+          "file": "extended.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "mobile buyer completes deposit and can use appointment dialog",
+          "file": "extended.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "production lab performance: LCP, CLS and interaction timing",
+          "file": "performance.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "project masterplan hotspot opens the matching 3D tower and gallery closes with keyboard",
+          "file": "visual.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "camera presets preserve unit selection with reduced motion and day/night",
+          "file": "visual.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "legacy project imagery remains distinct without resetting saved buyer data",
+          "file": "visual.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "new project, brand and mobile navigation remain accessible",
+          "file": "visual.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "public landing → project → detail and carousel keyboard",
+          "file": "workflows.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "discovery filters, empty state, quick view and compare",
+          "file": "workflows.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "3D canvas loads and selection navigates to correct property; 2D fallback usable",
+          "file": "workflows.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "buyer cannot open CRM and sales cannot open financial moduleKey",
+          "file": "workflows.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "buyer favorites persist across reload",
+          "file": "workflows.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "buyer creates appointment and collision is blocked",
+          "file": "workflows.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "hold, success payment, transaction history and reload",
+          "file": "workflows.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "conflict is explicit and has no payment action",
+          "file": "workflows.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "expired hold releases selection",
+          "file": "workflows.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "failed payment can retry, pending can reconcile in finance role",
+          "file": "workflows.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "offline scenario errors and recovery completes",
+          "file": "workflows.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "sales creates lead, converts opportunity, changes stage",
+          "file": "workflows.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "extension flows from buyer to management approval",
+          "file": "workflows.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "buyer profile and support conversation",
+          "file": "workflows.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "all CRM modules and management modules render without runtime errors",
+          "file": "workflows.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "responsive widths, keyboard, sound off and reduced-motion",
+          "file": "workflows.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "title": "accessibility smoke on public, auth and workspace",
+          "file": "workflows.spec.ts",
+          "status": "passed",
+          "attempts": 1
+        }
+      ]
+    }
+  },
+  "asset_integrity": {
+    "app_files_compared": 135,
+    "public_assets_compared": 35,
+    "differences": 0,
+    "production_http_and_sha256_passed": 35
+  },
+  "history_audit": {
+    "commits": 4,
+    "unique_blobs": 229,
+    "text_blobs_scanned": 165,
+    "rules": [
+      "private-key",
+      "github-token",
+      "aws-access",
+      "google-key",
+      "openai-key",
+      "slack-token",
+      "jwt",
+      "credential-url",
+      "generic-assignment"
+    ],
+    "findings": [],
+    "sensitive_paths": [],
+    "oversized_blobs": [],
+    "commit_metadata_scanned": 4,
+    "staged_pattern_findings": []
+  },
+  "performance": {
+    "kind": "Local lab only; event durations are not field INP",
+    "conditions": "Production loopback; 3 cold browser contexts each. Mobile: 390x844, CPU x4, RTT 100ms, download 200000 B/s. Desktop: 1440x1000, unthrottled. DPR 1. No field samples.",
+    "records": [
+      {
+        "profile": "desktop-local",
+        "run": 1,
+        "lcp": 212,
+        "cls": 0.026151166886694634,
+        "events": [
+          40,
+          40,
+          40,
+          96,
+          96,
+          96
+        ],
+        "longTasks": [
+          118
+        ],
+        "supported": [
+          "element",
+          "event",
+          "first-input",
+          "interaction-contentful-paint",
+          "largest-contentful-paint",
+          "layout-shift",
+          "long-animation-frame",
+          "longtask",
+          "mark",
+          "measure",
+          "navigation",
+          "paint",
+          "resource",
+          "soft-navigation",
+          "visibility-state"
+        ],
+        "transferBytes": 1131878,
+        "resources": 44
+      },
+      {
+        "profile": "desktop-local",
+        "run": 2,
+        "lcp": 212,
+        "cls": 0.02516107352551119,
+        "events": [
+          88,
+          88,
+          88,
+          80,
+          80,
+          80
+        ],
+        "longTasks": [],
+        "supported": [
+          "element",
+          "event",
+          "first-input",
+          "interaction-contentful-paint",
+          "largest-contentful-paint",
+          "layout-shift",
+          "long-animation-frame",
+          "longtask",
+          "mark",
+          "measure",
+          "navigation",
+          "paint",
+          "resource",
+          "soft-navigation",
+          "visibility-state"
+        ],
+        "transferBytes": 1131881,
+        "resources": 44
+      },
+      {
+        "profile": "desktop-local",
+        "run": 3,
+        "lcp": 280,
+        "cls": 0.02502159897038966,
+        "events": [
+          88,
+          88,
+          88,
+          104,
+          104,
+          104
+        ],
+        "longTasks": [
+          151
+        ],
+        "supported": [
+          "element",
+          "event",
+          "first-input",
+          "interaction-contentful-paint",
+          "largest-contentful-paint",
+          "layout-shift",
+          "long-animation-frame",
+          "longtask",
+          "mark",
+          "measure",
+          "navigation",
+          "paint",
+          "resource",
+          "soft-navigation",
+          "visibility-state"
+        ],
+        "transferBytes": 1131879,
+        "resources": 44
+      },
+      {
+        "profile": "mobile-lab-4x-cpu",
+        "run": 1,
+        "lcp": 1892,
+        "cls": 0,
+        "events": [
+          40,
+          40,
+          40,
+          32,
+          32,
+          32
+        ],
+        "longTasks": [
+          175,
+          61
+        ],
+        "supported": [
+          "element",
+          "event",
+          "first-input",
+          "interaction-contentful-paint",
+          "largest-contentful-paint",
+          "layout-shift",
+          "long-animation-frame",
+          "longtask",
+          "mark",
+          "measure",
+          "navigation",
+          "paint",
+          "resource",
+          "soft-navigation",
+          "visibility-state"
+        ],
+        "transferBytes": 536326,
+        "resources": 42
+      },
+      {
+        "profile": "mobile-lab-4x-cpu",
+        "run": 2,
+        "lcp": 2044,
+        "cls": 0,
+        "events": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "longTasks": [
+          182,
+          55,
+          52
+        ],
+        "supported": [
+          "element",
+          "event",
+          "first-input",
+          "interaction-contentful-paint",
+          "largest-contentful-paint",
+          "layout-shift",
+          "long-animation-frame",
+          "longtask",
+          "mark",
+          "measure",
+          "navigation",
+          "paint",
+          "resource",
+          "soft-navigation",
+          "visibility-state"
+        ],
+        "transferBytes": 536328,
+        "resources": 42
+      },
+      {
+        "profile": "mobile-lab-4x-cpu",
+        "run": 3,
+        "lcp": 1896,
+        "cls": 0,
+        "events": [
+          40,
+          40,
+          40,
+          48,
+          48,
+          48
+        ],
+        "longTasks": [
+          191,
+          58
+        ],
+        "supported": [
+          "element",
+          "event",
+          "first-input",
+          "interaction-contentful-paint",
+          "largest-contentful-paint",
+          "layout-shift",
+          "long-animation-frame",
+          "longtask",
+          "mark",
+          "measure",
+          "navigation",
+          "paint",
+          "resource",
+          "soft-navigation",
+          "visibility-state"
+        ],
+        "transferBytes": 536327,
+        "resources": 42
+      }
+    ]
+  },
+  "notes": [
+    "E2E performance spec embeds baseline date 2026-11-16; this run date is taken from startTime with Asia/Saigon timezone (2026-11-17).",
+    "No GitHub Actions workflow exists in this source; local PASS does not imply CI PASS.",
+    "No gitleaks/trufflehog installed; custom pattern scan plus manual fixture/asset review has no entropy/provider validation or OCR.",
+    "npm ci warns ESLint 9.39.5 is deprecated; no dependency upgrade performed in publish scope."
+  ]
+}
