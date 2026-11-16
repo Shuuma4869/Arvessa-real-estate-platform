@@ -1,0 +1,17 @@
+/* Architectural Atelier: shared identity; cinematic styles are scoped to public features. */
+:root { --ivory:#f5f2eb; --forest:#203b34; --ink:#242b29; --muted:#606963; --bronze:#795634; --line:#dedfd6; --sand:#e8e5dc; --champagne:#c8aa7c; --atelier-paper:#fbfaf7; --atelier-moss:#203b34; --atelier-gold:#aa8052; }
+.brand-specimen { margin:64px 0; padding:32px; background:var(--atelier-paper); border:1px solid var(--line); border-radius:24px; }
+.specimen-top { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.logo-concepts { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:32px 0; }
+.logo-concepts article { padding:24px; border:1px solid #d9d9cf; border-radius:16px; }
+.logo-concepts img { display:block; margin:24px 0; }
+.logo-concepts h3 { font-family:'Manrope Variable',sans-serif; font-size:17px; }
+.logo-concepts p { font-size:13px; line-height:1.7; }
+.specimen-lockup { padding:32px 12px; text-align:center; border-block:1px solid var(--line); }
+.specimen-lockup img { width:min(100%,600px); height:auto; }
+.specimen-lockup p { font-size:11px; letter-spacing:.15em; }
+.specimen-sizes { display:flex; gap:28px; align-items:end; justify-content:center; padding:40px 0; flex-wrap:wrap; }
+.specimen-sizes figure { margin:0; text-align:center; }.specimen-sizes figcaption { margin-top:12px; font-size:11px; }
+.specimen-type { padding:32px 0; }.specimen-type h2 { font-size:clamp(40px,5vw,70px); line-height:1.08; }.specimen-type span { font-size:14px; font-variant-numeric:tabular-nums; }
+.brand-specimen.inverse { background:#203b34; color:#f7f4ed; }.brand-specimen.inverse .logo-concepts img { filter:brightness(0) invert(1); }.brand-specimen.inverse p,.brand-specimen.inverse .eyebrow { color:#e4d7c0; }
+@media(max-width:700px) { .brand-specimen { padding:18px; }.logo-concepts { grid-template-columns:1fr; }.specimen-top { align-items:start; flex-direction:column; } }

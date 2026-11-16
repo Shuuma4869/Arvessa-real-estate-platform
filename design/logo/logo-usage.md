@@ -1,6 +1,12 @@
 # Sử dụng logo ARVESSA
 
-**Áp dụng cho concept v0.1.** Các kích thước dưới đây là mốc khởi đầu để thử giao diện, chưa phải tiêu chuẩn nhận diện đã chốt.
+**Hệ thống v2 — Architectural Aperture (17/11/2026).** Biểu tượng cổng không gian và ngưỡng chuyển tiếp thay concept A v0.1. Wordmark Cormorant Garamond 600 đã chuyển toàn bộ thành path, tracking và tỷ lệ riêng; nguồn font SIL OFL kèm `wordmark-font-license.txt`. Mark là hình học gốc, không khẳng định đã đăng ký hoặc kiểm tra độc quyền nhãn hiệu.
+
+SVG primary/horizontal sáng–tối dùng khung 640×128; stacked 360×250; mark 96×96; social 512×512. SVG có title/desc, không ảnh nhúng, external URL, script hoặc phụ thuộc font. Website/Authentication dùng primary; dashboard/CRM dùng primary hoặc mark ở rail; favicon dùng tile riêng; app/social dùng mark trên nền forest. Brand line đặt thành text độc lập để đọc được ở mobile, không ép vào favicon.
+
+Clearspace tối thiểu bằng 1/4 bề rộng mark. Mark tối thiểu 16 px với biến thể favicon; mark độc lập ưu tiên 24 px. Horizontal tối thiểu 160 px, stacked 120 px. Không kéo méo, xoay hoặc đặt logo sáng trên nền sáng. Có bản inverse cho nền tối. Kiểm tra kích thước 16/24/32/48/96 và đổi nền trong `/brand`.
+
+**Các hướng dẫn v0.1 bên dưới là hồ sơ kế thừa, không dùng để chọn asset mới.** Bản cũ có thể xem trong lịch sử Git trước rebuild.
 
 ## Chọn đúng bản
 
