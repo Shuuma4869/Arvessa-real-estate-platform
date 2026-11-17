@@ -47,6 +47,8 @@ export default function ResidenceCanvas({
     renderer.toneMappingExposure = 1.1;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFShadowMap;
+    renderer.shadowMap.autoUpdate = false;
+    renderer.shadowMap.needsUpdate = true;
     el.append(renderer.domElement);
     const scene = new THREE.Scene(),
       camera = new THREE.PerspectiveCamera(
@@ -68,7 +70,8 @@ export default function ResidenceCanvas({
     const sun = new THREE.DirectionalLight(0xffe3b3, 3.5);
     sun.position.set(-8, 16, 9);
     sun.castShadow = true;
-    sun.shadow.mapSize.set(2048, 2048);
+    const shadowSize = el.clientWidth < 600 ? 1024 : 2048;
+    sun.shadow.mapSize.set(shadowSize, shadowSize);
     Object.assign(sun.shadow.camera, {
       left: -18,
       right: 18,
@@ -120,7 +123,9 @@ export default function ResidenceCanvas({
       last = 0,
       previousReset = resetRef.current,
       previousRoom = room.current,
-      transition = false;
+      transition = false,
+      previousState = "",
+      renderCount = 0;
     const target = new THREE.Vector3(),
       destination = home.clone();
     controls.addEventListener("start", () => (transition = false));
@@ -161,8 +166,18 @@ export default function ResidenceCanvas({
         m.color.setHex(0xc4a467);
         m.opacity = mesh.userData.roomId === room.current ? 0.16 : 0;
       }
-      controls.update();
+      const changed = controls.update();
+      const state = [
+        room.current,
+        resetRef.current,
+        el.clientWidth,
+        el.clientHeight,
+      ].join("|");
+      if (renderCount && !changed && !transition && previousState === state)
+        return;
+      previousState = state;
       renderer.render(scene, camera);
+      renderer.domElement.dataset.renderCount = String(++renderCount);
       renderer.domElement.dataset.drawCalls = String(
         renderer.info.render.calls,
       );

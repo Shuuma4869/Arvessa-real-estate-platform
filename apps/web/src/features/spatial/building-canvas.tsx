@@ -79,6 +79,10 @@ export default function BuildingCanvas({
     renderer.toneMappingExposure = night ? 1.1 : 1;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFShadowMap;
+    // Geometry and lights stay fixed within this scene; camera movement does
+    // not require rebuilding the shadow atlas (especially costly on software GL).
+    renderer.shadowMap.autoUpdate = false;
+    renderer.shadowMap.needsUpdate = true;
     container.appendChild(renderer.domElement);
     const scene = new THREE.Scene(),
       camera = new THREE.PerspectiveCamera(
@@ -188,6 +192,7 @@ export default function BuildingCanvas({
       return unitHit.object.userData.propertyId as string;
     };
     const move = (e: PointerEvent) => {
+      if (e.buttons) return; // Orbit dragging does not need a full occlusion raycast.
       hover = hit(e) || "";
       renderer.domElement.style.cursor = hover ? "pointer" : "grab";
       const p = properties.find((p) => p.id === hover);
@@ -239,7 +244,8 @@ export default function BuildingCanvas({
     controls.addEventListener("start", cancelTransition);
     let lastTime = 0,
       previousState = "",
-      firstFrame = true;
+      firstFrame = true,
+      renderCount = 0;
     const animate = () => {
       if (disposed) return;
       frame = requestAnimationFrame(animate);
@@ -303,12 +309,15 @@ export default function BuildingCanvas({
         filter.current,
         hover,
         camera.aspect,
+        container.clientWidth,
+        container.clientHeight,
       ].join("|");
       if (!firstFrame && !changed && !transitioning && previousState === state)
         return;
       firstFrame = false;
       previousState = state;
       renderer.render(scene, camera);
+      renderer.domElement.dataset.renderCount = String(++renderCount);
       labels.render(scene, camera);
       renderer.domElement.dataset.drawCalls = String(
         renderer.info.render.calls,

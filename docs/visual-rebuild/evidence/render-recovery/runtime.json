@@ -1,0 +1,50 @@
+[
+  {
+    "mode": "showroom",
+    "width": 1440,
+    "idleCount": 1,
+    "afterInteraction": 15,
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "mode": "dollhouse",
+    "width": 1440,
+    "idleCount": 1,
+    "afterInteraction": 66,
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "mode": "tour",
+    "width": 1440,
+    "idleCount": 2,
+    "afterInteraction": 3,
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "mode": "showroom",
+    "width": 390,
+    "idleCount": 14,
+    "afterInteraction": 29,
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "mode": "dollhouse",
+    "width": 390,
+    "idleCount": 1,
+    "afterInteraction": 66,
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "mode": "tour",
+    "width": 390,
+    "idleCount": 2,
+    "afterInteraction": 3,
+    "errors": [],
+    "overflow": false
+  }
+]

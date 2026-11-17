@@ -40,4 +40,6 @@ Preview căn theo loại phòng được dùng trong CRM inventory và Reservati
 
 Typecheck, lint, production build và 64 unit/component tests đã PASS. Toàn suite 38 E2E PASS, không skipped/flaky. Sau review cuối đã sửa màu nút tháp đang chọn và bỏ toast cho thao tác tự ghi nhận lượt xem; bổ sung một test masterplan, chạy lại cả bốn test flagship PASS (suite hiện có 39 test). 41 screenshot trên 1440/1920/768/390/360, không lỗi runtime/overflow; ảnh masterplan/floorplan được capture lại sau chỉnh sửa. Chi tiết ở [verification](verification.md).
 
+Ngày 18.11.2026: xử lý hai timeout 3D phát hiện trên Ubuntu bằng cache shadow và render theo thay đổi. Typecheck/lint/build và toàn suite **39/39 E2E local PASS** trong 191 giây, không skipped/flaky; không tăng timeout. Kết quả mới ở `evidence/render-recovery/e2e-summary.json`. Kết quả CI được theo dõi riêng tại link checks bên dưới.
+
 Đã mở [PR #1](https://github.com/Shuuma4869/Arvessa-real-estate-platform/pull/1) vào `main`. [Checks của commit mới nhất](https://github.com/Shuuma4869/Arvessa-real-estate-platform/pull/1/checks) chạy toàn suite 39 E2E trên Ubuntu/Node 24. Trạng thái remote được lấy từ checks thực tế, không suy ra từ kết quả local. Không tự merge vào main.

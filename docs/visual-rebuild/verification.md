@@ -1,6 +1,6 @@
 # ARVESSA — Visual Flagship Rebuild / kiểm chứng
 
-Ngày kiểm chứng local: 17.11.2026. Workspace `D:\ARVESSA`, branch `design/arvessa-flagship-visual-v2`, kế thừa `main` tại `6ff0e721ad261cbaa6c21f68945f2055b86129b1`. Không tạo repository hay frontend thứ hai.
+Ngày kiểm chứng local: 17–18.11.2026 (Asia/Saigon). Workspace `D:\ARVESSA`, branch `design/arvessa-flagship-visual-v2`, kế thừa `main` tại `6ff0e721ad261cbaa6c21f68945f2055b86129b1`. Không tạo repository hay frontend thứ hai.
 
 ## Kết quả local
 
@@ -10,8 +10,8 @@ Ngày kiểm chứng local: 17.11.2026. Workspace `D:\ARVESSA`, branch `design/a
 | ESLint | PASS |
 | Production build | PASS, các route public/auth/buyer/CRM/management |
 | Unit/component | 64/64 PASS |
-| Playwright E2E | 38/38 PASS, 0 skipped, 0 flaky, 0 unexpected; 192,4 giây |
-| Sau review cuối | Thêm test masterplan và chạy lại 4/4 flagship PASS; suite có 39 test để CI kiểm tra |
+| Playwright E2E | 39/39 PASS sau render recovery, 0 skipped, 0 flaky, 0 unexpected; 191,0 giây |
+| Lịch sử review | Lượt 38/38 và 4/4 flagship trước đây được giữ trong evidence; lượt mới nhất chạy toàn suite 39 test |
 | Nghiệp vụ | Buyer, 14 CRM modules, 8 Management modules, 9 vai trò; giữ căn, expiry/conflict, payment success/fail/pending/offline, hoàn tiền, đối soát, hợp đồng, phê duyệt |
 | 3D | Raycast chọn kính có kiểm tra che khuất; tháp/tầng/căn; camera presets; drag; ngày/đêm; 2D fallback |
 | Căn hộ | Ba layout, số PN/phòng tắm, diện tích không chồng lấn; dollhouse orbit; panorama nhìn quanh, chuyển phòng, context-loss fallback |
@@ -42,8 +42,8 @@ Ba browser context mới cho mỗi profile; DPR 1. Desktop 1440×1000, không th
 
 | Profile | LCP các lượt (ms) | CLS |
 |---|---|---|
-| Desktop local | 180 / 196 / 188 | 0,0524 |
-| Mobile lab | 1840 / 1792 / 1776 | 0 |
+| Desktop local | 180 / 176 / 180 | 0,0524 |
+| Mobile lab | 1848 / 1820 / 1784 | < 0,0001 |
 
 Đây là lab local, không phải field p75/INP người dùng thật. WebGL tải theo nhu cầu; scene tòa nhà merge geometry theo vật liệu, giới hạn DPR/shadow cho mobile, ngừng vẽ khi không đổi camera/state hoặc tab ẩn. Đo scene Stillwater: 141 draw calls, 207.316 triangles, 48 inventory pickers. Chưa kiểm chứng FPS trên điện thoại thật.
 
@@ -56,6 +56,14 @@ Logo Aperture có primary/horizontal/stacked, mark, favicon, social, nền sáng
 Không thay seed, mock transaction engine, role matrix hoặc storage contract. `.agent-work`, dependencies, build cache và tài liệu tham chiếu vẫn bị ignore. Không push hay merge vào `main` trong quá trình này.
 
 ## CI và bàn giao
+
+### Khắc phục tải render trên CI — 18.11.2026
+
+Lượt Ubuntu đầu tiên đạt 37/39 E2E. Hai bài 3D hết ngân sách 45 giây; trace ghi nhận riêng `mouseMove` 12 bước mất 40,94 giây ở showroom và 8 bước mất 10,19 giây ở dollhouse. Không có lỗi nghiệp vụ trong lượt này. [Run lỗi và artifact gốc](https://github.com/Shuuma4869/Arvessa-real-estate-platform/actions/runs/44071084770) được giữ để đối chiếu.
+
+Đã cache shadow atlas cho scene có hình học/ánh sáng cố định, bỏ raycast hover khi đang kéo orbit, và chỉ vẽ lại dollhouse/panorama khi camera, phòng, kích thước hoặc texture thay đổi. Scene ngày/đêm vẫn được dựng lại với bóng tương ứng. Không giảm độ phân giải panorama, không thay mô hình bằng ảnh, không tăng timeout hoặc bỏ assertion để qua kiểm thử.
+
+Sau sửa: typecheck, lint, build và **39/39 E2E local PASS** trong 191 giây. Kiểm tra riêng showroom/dollhouse/tour ở 1440 và 390 px xác nhận bộ đếm render đứng yên khi không thao tác, tăng sau đổi camera/phòng hoặc nhấn phím, rồi dừng lại. Sáu screenshot và `runtime.json` ở [render-recovery](evidence/render-recovery) ghi nhận không runtime error/overflow. Số render là bằng chứng ngừng vẽ khi idle, không phải số đo FPS trên điện thoại thật.
 
 Workflow `frontend.yml` chạy npm ci, typecheck, lint, unit, build và toàn suite Playwright trên Ubuntu/Node 24. Browser cache đặt trong work directory bị ignore; report/trace lưu artifact bảy ngày. Cấu hình dựa trên tài liệu chính thức [checkout](https://github.com/actions/checkout) và [setup-node](https://github.com/actions/setup-node).
 

@@ -182,11 +182,23 @@ export default function PanoramaCanvas({
       camera.updateProjectionMatrix();
     });
     resize.observe(el);
-    let last = 0;
+    let last = 0,
+      previousState = "",
+      renderCount = 0;
     const animate = () => {
       frame = requestAnimationFrame(animate);
       if (document.hidden || performance.now() - last < 32) return;
       last = performance.now();
+      const state = [
+        yaw,
+        pitch,
+        camera.fov,
+        el.clientWidth,
+        el.clientHeight,
+        texture?.uuid,
+      ].join("|");
+      if (state === previousState) return;
+      previousState = state;
       camera.lookAt(
         Math.sin(yaw) * Math.cos(pitch),
         Math.sin(pitch),
@@ -194,6 +206,7 @@ export default function PanoramaCanvas({
       );
       camera.updateMatrixWorld();
       renderer.render(scene, camera);
+      canvas.dataset.renderCount = String(++renderCount);
       const forward = new THREE.Vector3();
       camera.getWorldDirection(forward);
       for (const dot of dots) {
