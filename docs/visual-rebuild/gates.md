@@ -12,6 +12,12 @@ Architectural Aperture gồm bốn mặt phẳng quanh một khoảng mở hình
 
 Bằng chứng: [desktop](evidence/gate-1/brand-1440.webp), [mobile](evidence/gate-1/brand-390.webp), [nền tối](evidence/gate-1/brand-dark-1440.webp), [direction board](evidence/gate-1/direction-board.webp). Playwright chạy app thật cổng 3037, toggle hoạt động, SVG tải được, không pageerror/overflow ở 1440/390. Typecheck/lint PASS. Chưa suy ra các gate 2–6 hoàn tất từ kết quả này.
 
-## Gates 2–6 — đang triển khai
+## Gate 2 — Landing / coverflow đã kiểm chứng
+
+Landing gồm hero chuyển ba cảnh, hotspot dẫn tới đúng căn, tìm kiếm, câu chuyện kiến trúc, bộ sưu tập năm thẻ, preview WebGL theo yêu cầu, tiện ích và hành trình khách hàng. Coverflow có perspective, kéo theo con trỏ, quán tính, snap, bàn phím và CTA riêng. Hai nội thất AI gốc cho loại căn một/hai phòng ngủ đã ghi prompt và hash trong catalog; không dùng ảnh tham chiếu làm asset.
+
+Bằng chứng ở `evidence/gate-2`: desktop 1440/1920, mobile 390/360, hero và coverflow, runtime.json. Kiểm tra chuyển ảnh/hotspot/keyboard/drag/CTA và khởi động WebGL; không console error, HTTP lỗi hoặc overflow. Typecheck/lint PASS. Đã sửa lỗi SSR do module export trong phiên HMR cũ bằng kiểm tra lại trên server khởi động sạch, không che lỗi.
+
+## Gates 3–6 — đang triển khai
 
 Landing/coverflow, kiến trúc, không gian sống, enterprise và QA/PR còn phải nghiệm thu bằng tương tác cùng ảnh thực tế. Không đánh dấu frontend complete ở giai đoạn này.
