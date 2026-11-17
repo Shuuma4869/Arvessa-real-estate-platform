@@ -1,5 +1,17 @@
 # Ba hướng concept logo
 
+## Rebuild v2 — quyết định ngày 17/11/2026
+
+| Concept | Hình học | Nhận diện nhỏ | Bản sắc / quyết định |
+|---|---|---|---|
+| Architectural Aperture | Bốn mặt phẳng gấp quanh một khoảng mở hình thoi; khoảng âm trung tâm | Bốn mảng lớn, khoảng cắt còn rõ ở 16/24px | **Chọn**: không dựa vào thanh ngang chữ A, liên hệ kiến trúc và góc nhìn |
+| Spatial Monogram AV | Bốn dải xiên theo cùng góc; AV đan trong một nhịp | Tốt ở 24px, các nét giao nhau dày ở 16px | Giữ làm nghiên cứu; dễ gần monogram chữ thông dụng |
+| Structural Horizon | Ba lớp cao độ, một ô ngắt lệch | Rất rõ ở 16px | Tốt cho enterprise nhưng ít dấu ấn không gian hơn |
+
+Ba SVG concept được triển khai trong `/brand` với nền sáng/tối và bản đen–trắng (đổi fill một màu). Primary/stacked/mark/favicon/social triển khai cùng Aperture. Wordmark serif outline có độ tương phản nét vừa, bổ sung tính editorial cho hình học vững của mark. Không đánh đồng đánh giá khác biệt thị giác với xác minh pháp lý nhãn hiệu.
+
+## Hồ sơ v0.1 (lịch sử)
+
 Tất cả các hướng phục vụ cùng định vị: **ARVESSA — Architecture · Vision · Experience**, một Luxury Architectural Digital Brand cho bất động sản cao cấp và CRM doanh nghiệp.
 
 ## 01 — Cấu trúc mở · Hướng chọn để phát triển

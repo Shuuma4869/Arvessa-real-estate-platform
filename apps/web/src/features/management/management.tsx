@@ -405,8 +405,8 @@ export function Cms({ settings = false }: { settings?: boolean }) {
               />
               <p>Architecture · Vision · Experience</p>
               <p>
-                Logo nguồn giữ nguyên. Bộ màu và typography thống nhất với
-                public website.
+                Nhận diện Architectural Aperture. Bộ màu và typography thống
+                nhất với public website.
               </p>
             </>
           )}

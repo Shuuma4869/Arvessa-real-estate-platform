@@ -1,5 +1,6 @@
 "use client";
 import { ArtImage } from "@/components/art-image";
+import { propertyVisual } from "@/lib/visual-assets";
 import Link from "next/link";
 import {
   Heart,
@@ -25,7 +26,7 @@ export function PropertyCard({
       <div className="property-image">
         <Link href={`/properties/${p.id}`}>
           <ArtImage
-            src={p.image}
+            src={propertyVisual(p)}
             projectId={p.projectId}
             sizes="(max-width:700px) 90vw, 30vw"
             alt={`Minh họa kiến trúc ${data.projects.find((x) => x.id === p.projectId)?.name}`}

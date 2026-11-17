@@ -1,5 +1,6 @@
 "use client";
 import { ArtImage } from "@/components/art-image";
+import { propertyVisual } from "@/lib/visual-assets";
 import { useState } from "react";
 import Link from "next/link";
 import { useDemo } from "@/services/store";
@@ -278,7 +279,7 @@ export function Inventory() {
       {p && (
         <Modal title={`Hồ sơ căn ${p.id}`} onClose={() => setSelected("")}>
           <ArtImage
-            src={p.image}
+            src={propertyVisual(p)}
             projectId={p.projectId}
             alt={`Minh họa căn ${p.id}`}
             width="600"

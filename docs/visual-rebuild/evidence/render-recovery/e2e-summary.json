@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-18",
+  "timezone": "Asia/Saigon",
+  "stats": {
+    "startTime": "2026-11-17T17:54:02.951Z",
+    "duration": 191023.461,
+    "expected": 39,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "browser": "Chromium 159.0.8154.6",
+  "baseURL": "http://127.0.0.1:3037",
+  "phase": "Render recovery, full regression after shadow caching and on-demand drawing"
+}

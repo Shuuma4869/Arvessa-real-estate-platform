@@ -162,7 +162,7 @@ export const useDemo = create<Store>((set, get) => ({
         );
         set({
           data: state,
-          notice: result.message,
+          notice: command.type === "view" ? get().notice : result.message,
           storageWarning: persist(state),
         });
         return result;

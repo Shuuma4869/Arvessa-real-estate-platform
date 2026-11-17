@@ -185,6 +185,62 @@
         }
       ],
       "sha256": "74e0331ecbdd096bd9c3df70b580080d72a90c7317912b5e49e45b0f506cbbd7"
+    },
+    {
+      "id": "stillwater-one-bedroom",
+      "prompt": "Create an original photoreal architectural interior editorial photograph for ARVESSA, a premium architectural real estate demo. Asset: Stillwater one-bedroom apartment living space, landscape 3:2. Coherent concept: ivory lime-plaster walls, light travertine floor, warm smoked oak millwork, slender bronze sliding-window frames, generous loggia overlooking a calm lake with trees. A carefully proportioned compact open-plan living room, sculptural curved off-white sofa, low oval travertine coffee table, a single olive branch in a bronze vase, built-in oak bookcase, discreet cream kitchen in background; no bed visible. Quiet late-afternoon sunlight from right, long soft shadows, realistic material microtexture, natural subtle warm color. Camera at eye level from entrance corner with balanced asymmetrical editorial composition, sophisticated but believable apartment proportions. No humans, text, logos, watermarks, no reference-company branding. This is a new original image, not an edit or a screenshot. Show only the architectural interior, no UI.",
+      "original": "assets/visual-library/originals/stillwater-one-bedroom.png",
+      "width": 1536,
+      "height": 1024,
+      "variants": [
+        {
+          "path": "apps/web/public/images/library/stillwater-one-bedroom-480.webp",
+          "width": 480,
+          "bytes": 25224
+        },
+        {
+          "path": "apps/web/public/images/library/stillwater-one-bedroom-800.webp",
+          "width": 800,
+          "bytes": 66812
+        },
+        {
+          "path": "apps/web/public/images/library/stillwater-one-bedroom-1600.webp",
+          "width": 1600,
+          "bytes": 206600
+        }
+      ],
+      "sha256": "eb5d7ec4f69f1873924898d5d30a0f8a169920806ed5b3dd155ec55fdac15201",
+      "created": "2026-11-17",
+      "tool": "Built-in image_gen",
+      "usage": "Original AI interior concept, no reference image used. Not an as-built record or exact room geometry."
+    },
+    {
+      "id": "stillwater-two-bedroom",
+      "prompt": "Original high-end architectural editorial photo for ARVESSA Stillwater two-bedroom apartment concept. Landscape 3:2 image, no UI or text. A serene generous living and dining room with an L-shaped low ivory linen sofa, dark round oak coffee table, a sculptural warm terracotta armchair, six-seat oval oak dining table in background, cream limestone wall with thin bronze art frame, smoked-oak kitchen millwork. Floor-to-ceiling bronze-framed glazing opens to a planted deep loggia and calm freshwater lake, tropical deciduous gardens, no ocean. Slightly elevated eye-level oblique viewpoint captures window on left and the depth of rooms on right. Bright diffused morning sun, soft shadows, pale travertine with realistic fine texture, warm ivory plaster, tasteful sparse styling, believable refined contemporary architectural photography. Distinct composition and furniture from a compact one-bedroom. Natural editorial tones, not over-saturated teal, not ultra-wide distortion. No humans, logos, brand text, watermarks, or signage.",
+      "original": "assets/visual-library/originals/stillwater-two-bedroom.png",
+      "width": 1536,
+      "height": 1024,
+      "variants": [
+        {
+          "path": "apps/web/public/images/library/stillwater-two-bedroom-480.webp",
+          "width": 480,
+          "bytes": 30488
+        },
+        {
+          "path": "apps/web/public/images/library/stillwater-two-bedroom-800.webp",
+          "width": 800,
+          "bytes": 80018
+        },
+        {
+          "path": "apps/web/public/images/library/stillwater-two-bedroom-1600.webp",
+          "width": 1600,
+          "bytes": 265538
+        }
+      ],
+      "sha256": "7c8dee782dce9971990967ba2956540a25e2c76d75deb41d2ccf88be79871462",
+      "created": "2026-11-17",
+      "tool": "Built-in image_gen",
+      "usage": "Original AI interior concept, no reference image used. Not an as-built record or exact room geometry."
     }
   ]
 }

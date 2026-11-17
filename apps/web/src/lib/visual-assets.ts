@@ -1,3 +1,4 @@
+import type { Property } from "@/domain/types";
 const library = "/images/library/";
 export const visualAssets = {
   stillwater: `${library}stillwater-blue-hour-1600.webp`,
@@ -29,4 +30,16 @@ export function projectGallery(id: string, src: string) {
   return id === "stillwater"
     ? [resolveVisual(src, id), visualAssets.interior, visualAssets.pool]
     : [resolveVisual(src, id)];
+}
+export function propertyVisual(property: Property) {
+  if (
+    property.projectId !== "stillwater" ||
+    !property.image.startsWith("/images/residence-")
+  )
+    return resolveVisual(property.image, property.projectId);
+  return property.beds === 1
+    ? `${library}stillwater-one-bedroom-1600.webp`
+    : property.beds === 2
+      ? `${library}stillwater-two-bedroom-1600.webp`
+      : visualAssets.interior;
 }

@@ -15,6 +15,7 @@ import {
 } from "@/components/ui";
 import { EntityForm } from "@/components/entity-form";
 import { brand } from "@/lib/brand";
+import { BrandSpecimen } from "./brand-specimen";
 export const articles = [
   {
     id: "light-and-space",
@@ -518,18 +519,19 @@ export function InfoPage({ slug }: { slug: string }) {
         </p>
         {slug === "brand" && (
           <>
-            <h2>Ánh sáng. Vật liệu. Chiều sâu.</h2>
+              <BrandSpecimen />
+              <h2>Ánh sáng. Vật liệu. Chiều sâu.</h2>
             <p>
-              Ocean và teal tạo chiều sâu; pearl giữ không gian đọc thoáng.
-              Champagne chỉ nhấn vào những chi tiết cần sự chú ý.
+              Forest tạo chiều sâu; pearl ấm giữ không gian đọc thoáng.
+              Bronze và ánh sáng tự nhiên nhấn vào những chi tiết cần sự chú ý.
             </p>
             <div className="brand-palette">
               {[
-                ["Deep Ocean", "#102633"],
-                ["Luxury Teal", "#087C83"],
-                ["Luminous Azure", "#4DAECB"],
-                ["Champagne", "#D1A46B"],
-                ["Pearl", "#F7F8F7"],
+                ["Forest", "#203B34"],
+                ["Bronze", "#AA8052"],
+                ["Sky", "#B9CFD5"],
+                ["Champagne", "#C8AA7C"],
+                ["Pearl", "#F5F2EB"],
               ].map(([name, hex]) => (
                 <div key={hex}>
                   <i style={{ background: hex }} />
@@ -562,7 +564,7 @@ export function InfoPage({ slug }: { slug: string }) {
             </div>
             <p>
               Typography: Cormorant Garamond cho nội dung biên tập; Manrope cho
-              giao diện nghiệp vụ. Logo giữ trạng thái concept dùng cho demo,
+              giao diện nghiệp vụ. Logo Architectural Aperture là vector gốc của bản rebuild,
               chưa được xác nhận độc quyền.
             </p>
             <h2>Architecture studies</h2>

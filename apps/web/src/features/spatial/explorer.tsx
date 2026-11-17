@@ -20,7 +20,7 @@ export default function Explorer() {
     [selected, setSelected] = useState(
       params.get("unit") || (params.get("tower") ? "" : "A0302"),
     ),
-    [floor, setFloor] = useState(0),
+    [floor, setFloor] = useState(Number(params.get("floor")) || 0),
     [tower, setTower] = useState(params.get("tower") || ""),
     [cameraView, setCameraView] = useState("perspective"),
     [mode, setMode] = useState("3d"),
@@ -35,6 +35,29 @@ export default function Explorer() {
     [data.properties, project.id],
   );
   const p = properties.find((p) => p.id === selected);
+  const updateLocation = (
+    unit: string,
+    nextTower = tower,
+    nextFloor = floor,
+    nextProject = project.id,
+  ) => {
+    const query = new URLSearchParams({ project: nextProject });
+    if (nextTower) query.set("tower", nextTower);
+    if (nextFloor) query.set("floor", String(nextFloor));
+    if (unit) query.set("unit", unit);
+    window.history.replaceState(null, "", `/explorer?${query}`);
+  };
+  const selectUnit = (id: string) => {
+    setSelected(id);
+    updateLocation(id);
+    sound("selection");
+  };
+  const selectTower = (value: string) => {
+    setTower(value);
+    const unit = p && (!value || p.tower === value) ? selected : "";
+    setSelected(unit);
+    updateLocation(unit, value);
+  };
   const fall = useCallback(() => {
     setFallback(true);
     setMode("2d");
@@ -49,14 +72,8 @@ export default function Explorer() {
   return (
     <main id="main" className="explorer-page">
       <div className="container page-heading">
-        <p className="eyebrow">
-          SPATIAL EXPLORER / ORIGINAL PROCEDURAL ARCHITECTURE
-        </p>
-        <h1>
-          Thay đổi góc nhìn.
-          <br />
-          Hiểu rõ không gian.
-        </h1>
+        <p className="eyebrow">ARVESSA / ARCHITECTURAL ATELIER</p>
+        <h1>Kiến trúc, ở mọi góc nhìn.</h1>
         <p>
           Chọn một căn trực tiếp trên mô hình hoặc dùng bảng lựa chọn 2D. Hình
           học khớp số tháp, tầng và căn trong dữ liệu demo.
@@ -78,10 +95,8 @@ export default function Explorer() {
               night={night}
               cameraView={cameraView}
               reducedMotion={data.preferences.reducedMotion}
-              onPick={(id) => {
-                setSelected(id);
-                sound("selection");
-              }}
+              onTowerPick={selectTower}
+              onPick={selectUnit}
               onFallback={fall}
               onProgress={onProgress}
             />
@@ -100,7 +115,7 @@ export default function Explorer() {
                     key={u.id}
                     className={`unit-tile ${selected === u.id ? "selected" : ""}`}
                     data-status={u.availability}
-                    onClick={() => setSelected(u.id)}
+                    onClick={() => selectUnit(u.id)}
                   >
                     {u.id}
                     <span>
@@ -158,12 +173,14 @@ export default function Explorer() {
         <aside className="explorer-panel">
           <Field label="Dự án">
             <select
+              aria-label="Dự án"
               value={project.id}
               onChange={(e) => {
                 setProject(e.target.value);
                 setFloor(0);
                 setTower("");
                 setSelected("");
+                updateLocation("", "", 0, e.target.value);
               }}
             >
               {data.projects.map((p) => (
@@ -174,7 +191,11 @@ export default function Explorer() {
             </select>
           </Field>
           <Field label="Tháp">
-            <select value={tower} onChange={(e) => setTower(e.target.value)}>
+            <select
+              aria-label="Tháp"
+              value={tower}
+              onChange={(e) => selectTower(e.target.value)}
+            >
               <option value="">Tất cả tháp</option>
               {project.towers.map((t) => (
                 <option key={t}>{t}</option>
@@ -183,8 +204,15 @@ export default function Explorer() {
           </Field>
           <Field label="Tầng">
             <select
+              aria-label="Tầng"
               value={floor}
-              onChange={(e) => setFloor(Number(e.target.value))}
+              onChange={(e) => {
+                const value = Number(e.target.value);
+                setFloor(value);
+                const unit = p && (!value || p.floor === value) ? selected : "";
+                setSelected(unit);
+                updateLocation(unit, tower, value);
+              }}
             >
               <option value="0">Tất cả tầng</option>
               {Array.from({ length: project.floors }, (_, i) => (
@@ -204,8 +232,9 @@ export default function Explorer() {
           </label>
           <Field label="Chọn căn bằng bàn phím">
             <select
+              aria-label="Chọn căn bằng bàn phím"
               value={selected}
-              onChange={(e) => setSelected(e.target.value)}
+              onChange={(e) => selectUnit(e.target.value)}
             >
               <option value="">Chọn căn…</option>
               {shown.map((p) => (
@@ -218,7 +247,7 @@ export default function Explorer() {
           {p ? (
             <>
               <hr />
-              <p className="eyebrow">YOUR PERSPECTIVE</p>
+              <p className="eyebrow">KHÔNG GIAN CỦA BẠN</p>
               <h2>{p.id}</h2>
               <Badge>{p.availability}</Badge>
               <p>
