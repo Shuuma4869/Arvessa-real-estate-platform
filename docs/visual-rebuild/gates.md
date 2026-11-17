@@ -36,8 +36,8 @@ Ba layout theo 1/2/3 PN; loại 1 PN có một phòng tắm, 2/3 PN có hai. SVG
 
 Preview căn theo loại phòng được dùng trong CRM inventory và ReservationCard, đồng thời xuất hiện trong Buyer và Customer 360 qua component dùng chung. Link mở đúng hồ sơ 2D/3D/360. Không sửa engine giao dịch, seed, permission matrix hoặc storage contract. Bảng dữ liệu giữ bề mặt rõ nét; brand line không được thêm vào các hàng dữ liệu.
 
-## Gate 6 — Local PASS / chờ CI và PR
+## Gate 6 — Local PASS / CI và PR
 
 Typecheck, lint, production build và 64 unit/component tests đã PASS. Toàn suite 38 E2E PASS, không skipped/flaky. Sau review cuối đã sửa màu nút tháp đang chọn và bỏ toast cho thao tác tự ghi nhận lượt xem; bổ sung một test masterplan, chạy lại cả bốn test flagship PASS (suite hiện có 39 test). 41 screenshot trên 1440/1920/768/390/360, không lỗi runtime/overflow; ảnh masterplan/floorplan được capture lại sau chỉnh sửa. Chi tiết ở [verification](verification.md).
 
-CI Ubuntu/Node 24 và PR đang được xác minh; chưa đánh dấu bước remote hoàn tất. Không tự merge vào main.
+Đã mở [PR #1](https://github.com/Shuuma4869/Arvessa-real-estate-platform/pull/1) vào `main`. [Checks của commit mới nhất](https://github.com/Shuuma4869/Arvessa-real-estate-platform/pull/1/checks) chạy toàn suite 39 E2E trên Ubuntu/Node 24. Trạng thái remote được lấy từ checks thực tế, không suy ra từ kết quả local. Không tự merge vào main.

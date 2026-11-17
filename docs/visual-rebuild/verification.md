@@ -59,4 +59,6 @@ Không thay seed, mock transaction engine, role matrix hoặc storage contract. 
 
 Workflow `frontend.yml` chạy npm ci, typecheck, lint, unit, build và toàn suite Playwright trên Ubuntu/Node 24. Browser cache đặt trong work directory bị ignore; report/trace lưu artifact bảy ngày. Cấu hình dựa trên tài liệu chính thức [checkout](https://github.com/actions/checkout) và [setup-node](https://github.com/actions/setup-node).
 
-Trạng thái GitHub Actions và URL PR sẽ được ghi sau khi xác minh run thực tế. Không tự merge.
+[PR #1](https://github.com/Shuuma4869/Arvessa-real-estate-platform/pull/1) mở vào `main`; xem [CI trên commit mới nhất](https://github.com/Shuuma4869/Arvessa-real-estate-platform/pull/1/checks). CI chạy cả 39 E2E, gồm test masterplan bổ sung. PR được giữ draft trong thời gian xác minh và chỉ chuyển ready sau khi checks đạt. Không tự merge.
+
+Lần push source đã xác minh SHA local/remote trùng nhau; `main` vẫn ở baseline `6ff0e721ad261cbaa6c21f68945f2055b86129b1`. Kiểm tra 215 đường dẫn thay đổi không phát hiện credential, file môi trường, `.agent-work` hoặc ảnh tham chiếu được đưa lên repository.
