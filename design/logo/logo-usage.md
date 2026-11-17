@@ -65,3 +65,5 @@ Giữ hình học bản gốc. Bổ sung `arvessa-primary-inverse.svg`, `arvessa
 Landing, Authentication, About và Brand Presentation có brand line **Architecture · Vision · Experience**. Workspace chỉ dùng primary hoặc mark trong sidebar, không lặp brand line ở bảng CRM. Ảnh nguồn SVG được đặt width/height để ổn định layout; không đổi tỷ lệ, thêm gradient hoặc hiệu ứng vào wordmark.
 
 Các phiên bản hiện phục vụ demo local. Việc phát hành thương mại vẫn cần duyệt nhận diện cuối cùng và kiểm tra tương đồng logo.
+
+Bản đơn sắc riêng: `arvessa-primary-black.svg`, `arvessa-primary-white.svg`, `arvessa-mark-black.svg`, `arvessa-mark-white.svg`. Không dùng bản trắng trên nền sáng.

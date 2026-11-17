@@ -7,12 +7,14 @@
 
 Nền tảng bất động sản cao cấp kết hợp khám phá không gian, hành trình người mua và CRM doanh nghiệp. Architecture tạo nền tảng; Vision định hướng quyết định; Experience nối toàn bộ hành trình sử dụng.
 
-Đây là frontend demo gồm một ứng dụng Next.js + React + TypeScript tại `apps/web`. Workspace phát triển hiện tại là `D:\ARVESSA`; người dùng clone có thể chọn thư mục khác, ứng dụng không phụ thuộc đường dẫn này. Logo nền tảng được kế thừa; hướng thị giác hiện tại là **Cinematic Luxury Architecture × Luminous Glass × Immersive 3D**. Bộ ảnh AI nguyên bản, ba concept so sánh và nguồn tài sản được lưu trong dự án.
+Đây là frontend demo gồm một ứng dụng Next.js + React + TypeScript tại `apps/web`. Workspace phát triển hiện tại là `D:\ARVESSA`; người dùng clone có thể chọn thư mục khác, ứng dụng không phụ thuộc đường dẫn này. Nhận diện **Architectural Aperture** và hướng **Architectural Atelier** kết hợp pearl, forest, bronze; các tài liệu Blue Hour cũ được giữ như lịch sử thiết kế. Bộ ảnh AI nguyên bản, ba concept so sánh và nguồn tài sản được lưu trong dự án.
 
 Repository chính thức: [Shuuma4869/Arvessa-real-estate-platform](https://github.com/Shuuma4869/Arvessa-real-estate-platform), nhánh công bố `main`. Bắt đầu kiểm toán từ [bản bàn giao frontend](docs/frontend-handover.md) và [kiểm tra trước công bố](docs/publish-verification.md).
 
+- [Visual Flagship Rebuild: audit, gates và bằng chứng](docs/visual-rebuild/gates.md).
+- [12 panorama 4K nguyên bản](assets/residence-tours/catalog.json), dựng từ cùng mô hình nội thất của ba loại căn.
 - [Ba visual directions](design/visual-concepts.html) và [lý do chọn Blue Hour](design/visual-direction.md).
-- [Visual Asset Library](assets/visual-library/catalog.html): 8 ảnh gốc, prompt và 25 bản WebP, gồm crop hero riêng cho mobile.
+- [Visual Asset Library](assets/visual-library/catalog.html): 10 ảnh gốc, prompt và 31 bản WebP, gồm crop hero riêng cho mobile.
 - [Nguồn và phạm vi sử dụng ảnh](docs/visual-asset-library.md).
 - [Nghiệm thu nền tảng](docs/qa-report.md) và [nghiệm thu nâng cấp thị giác](docs/visual-qa-report.md).
 

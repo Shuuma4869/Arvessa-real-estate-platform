@@ -1408,6 +1408,13 @@
 .model-started .masterplan-tower span {
   font-size: 16px;
 }
+.model-started .masterplan-tower {
+  color: #203b34;
+}
+.model-started .masterplan-tower.selected {
+  background: #203b34;
+  color: #fff;
+}
 @media (max-width: 900px) {
   .explorer-layout {
     grid-template-columns: 1fr;

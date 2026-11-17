@@ -20,7 +20,7 @@ export default function Explorer() {
     [selected, setSelected] = useState(
       params.get("unit") || (params.get("tower") ? "" : "A0302"),
     ),
-    [floor, setFloor] = useState(0),
+    [floor, setFloor] = useState(Number(params.get("floor")) || 0),
     [tower, setTower] = useState(params.get("tower") || ""),
     [cameraView, setCameraView] = useState("perspective"),
     [mode, setMode] = useState("3d"),
@@ -35,6 +35,29 @@ export default function Explorer() {
     [data.properties, project.id],
   );
   const p = properties.find((p) => p.id === selected);
+  const updateLocation = (
+    unit: string,
+    nextTower = tower,
+    nextFloor = floor,
+    nextProject = project.id,
+  ) => {
+    const query = new URLSearchParams({ project: nextProject });
+    if (nextTower) query.set("tower", nextTower);
+    if (nextFloor) query.set("floor", String(nextFloor));
+    if (unit) query.set("unit", unit);
+    window.history.replaceState(null, "", `/explorer?${query}`);
+  };
+  const selectUnit = (id: string) => {
+    setSelected(id);
+    updateLocation(id);
+    sound("selection");
+  };
+  const selectTower = (value: string) => {
+    setTower(value);
+    const unit = p && (!value || p.tower === value) ? selected : "";
+    setSelected(unit);
+    updateLocation(unit, value);
+  };
   const fall = useCallback(() => {
     setFallback(true);
     setMode("2d");
@@ -72,16 +95,8 @@ export default function Explorer() {
               night={night}
               cameraView={cameraView}
               reducedMotion={data.preferences.reducedMotion}
-              onTowerPick={setTower}
-              onPick={(id) => {
-                setSelected(id);
-                window.history.replaceState(
-                  null,
-                  "",
-                  `/explorer?project=${project.id}&unit=${id}`,
-                );
-                sound("selection");
-              }}
+              onTowerPick={selectTower}
+              onPick={selectUnit}
               onFallback={fall}
               onProgress={onProgress}
             />
@@ -100,7 +115,7 @@ export default function Explorer() {
                     key={u.id}
                     className={`unit-tile ${selected === u.id ? "selected" : ""}`}
                     data-status={u.availability}
-                    onClick={() => setSelected(u.id)}
+                    onClick={() => selectUnit(u.id)}
                   >
                     {u.id}
                     <span>
@@ -165,6 +180,7 @@ export default function Explorer() {
                 setFloor(0);
                 setTower("");
                 setSelected("");
+                updateLocation("", "", 0, e.target.value);
               }}
             >
               {data.projects.map((p) => (
@@ -178,7 +194,7 @@ export default function Explorer() {
             <select
               aria-label="Tháp"
               value={tower}
-              onChange={(e) => setTower(e.target.value)}
+              onChange={(e) => selectTower(e.target.value)}
             >
               <option value="">Tất cả tháp</option>
               {project.towers.map((t) => (
@@ -190,7 +206,13 @@ export default function Explorer() {
             <select
               aria-label="Tầng"
               value={floor}
-              onChange={(e) => setFloor(Number(e.target.value))}
+              onChange={(e) => {
+                const value = Number(e.target.value);
+                setFloor(value);
+                const unit = p && (!value || p.floor === value) ? selected : "";
+                setSelected(unit);
+                updateLocation(unit, tower, value);
+              }}
             >
               <option value="0">Tất cả tầng</option>
               {Array.from({ length: project.floors }, (_, i) => (
@@ -212,7 +234,7 @@ export default function Explorer() {
             <select
               aria-label="Chọn căn bằng bàn phím"
               value={selected}
-              onChange={(e) => setSelected(e.target.value)}
+              onChange={(e) => selectUnit(e.target.value)}
             >
               <option value="">Chọn căn…</option>
               {shown.map((p) => (

@@ -71,7 +71,7 @@ export function ProjectVisuals({ project }: { project: Project }) {
                 className={`masterplan-tower ${active === tower ? "selected" : ""}`}
                 onClick={() => setSpot(tower)}
                 aria-pressed={active === tower}
-                aria-label={`Khám phá tháp ${tower}`}
+                aria-label={`${started ? "Chọn" : "Khám phá"} tháp ${tower}`}
               >
                 <span>{tower}</span>
                 <small>{project.floors} tầng</small>

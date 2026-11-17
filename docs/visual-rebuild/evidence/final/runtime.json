@@ -1,0 +1,248 @@
+[
+  {
+    "name": "landing",
+    "width": 1440,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "coverflow",
+    "width": 1440,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "masterplan",
+    "width": 1440,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "showroom",
+    "width": 1440,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "floorplan",
+    "width": 1440,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "dollhouse",
+    "width": 1440,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "tour",
+    "width": 1440,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "landing",
+    "width": 1920,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "coverflow",
+    "width": 1920,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "masterplan",
+    "width": 1920,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "showroom",
+    "width": 1920,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "floorplan",
+    "width": 1920,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "dollhouse",
+    "width": 1920,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "tour",
+    "width": 1920,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "landing",
+    "width": 390,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "coverflow",
+    "width": 390,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "masterplan",
+    "width": 390,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "showroom",
+    "width": 390,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "floorplan",
+    "width": 390,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "dollhouse",
+    "width": 390,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "tour",
+    "width": 390,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "landing",
+    "width": 360,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "coverflow",
+    "width": 360,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "masterplan",
+    "width": 360,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "showroom",
+    "width": 360,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "floorplan",
+    "width": 360,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "dollhouse",
+    "width": 360,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "tour",
+    "width": 360,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "landing",
+    "width": 768,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "coverflow",
+    "width": 768,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "masterplan",
+    "width": 768,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "showroom",
+    "width": 768,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "floorplan",
+    "width": 768,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "dollhouse",
+    "width": 768,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "tour",
+    "width": 768,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "/buyer/dashboard",
+    "width": 1440,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "/crm/dashboard",
+    "width": 1440,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "/management/inventory",
+    "width": 1440,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "/buyer/dashboard",
+    "width": 390,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "/crm/dashboard",
+    "width": 390,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "/management/inventory",
+    "width": 390,
+    "overflow": false,
+    "errors": []
+  }
+]

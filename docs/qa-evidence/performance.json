@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-16",
+  "date": "2026-11-17",
   "browser": "159.0.8154.6",
   "kind": "Local lab only; event durations are not field INP",
   "conditions": "Production loopback; 3 cold browser contexts each. Mobile: 390x844, CPU x4, RTT 100ms, download 200000 B/s. Desktop: 1440x1000, unthrottled. DPR 1. No field samples.",
@@ -7,19 +7,17 @@
     {
       "profile": "desktop-local",
       "run": 1,
-      "lcp": 288,
-      "cls": 0.02665223088770737,
+      "lcp": 180,
+      "cls": 0.05238935391649788,
       "events": [
-        80,
-        80,
-        80,
-        72,
-        72,
-        72
+        232,
+        232,
+        232,
+        224,
+        224,
+        224
       ],
-      "longTasks": [
-        103
-      ],
+      "longTasks": [],
       "supported": [
         "element",
         "event",
@@ -37,25 +35,23 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 1131895,
-      "resources": 44
+      "transferBytes": 958102,
+      "resources": 52
     },
     {
       "profile": "desktop-local",
       "run": 2,
-      "lcp": 200,
-      "cls": 0.026680095923152968,
+      "lcp": 196,
+      "cls": 0.05238935391649788,
       "events": [
-        96,
-        96,
-        96,
-        136,
-        136,
-        136
+        224,
+        224,
+        224,
+        240,
+        240,
+        240
       ],
-      "longTasks": [
-        93
-      ],
+      "longTasks": [],
       "supported": [
         "element",
         "event",
@@ -73,24 +69,24 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 1131895,
-      "resources": 44
+      "transferBytes": 958096,
+      "resources": 52
     },
     {
       "profile": "desktop-local",
       "run": 3,
-      "lcp": 200,
-      "cls": 0.026680095923152968,
+      "lcp": 188,
+      "cls": 0.05238935391649788,
       "events": [
-        64,
-        64,
-        64,
-        152,
-        152,
-        152
+        248,
+        248,
+        248,
+        256,
+        256,
+        256
       ],
       "longTasks": [
-        92
+        107
       ],
       "supported": [
         "element",
@@ -109,14 +105,14 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 1131896,
-      "resources": 44
+      "transferBytes": 958097,
+      "resources": 52
     },
     {
       "profile": "mobile-lab-4x-cpu",
       "run": 1,
-      "lcp": 1896,
-      "cls": 0,
+      "lcp": 1840,
+      "cls": 0.00004597346995281398,
       "events": [
         72,
         72,
@@ -126,10 +122,9 @@
         80
       ],
       "longTasks": [
-        186,
-        59,
-        102,
-        71
+        169,
+        128,
+        59
       ],
       "supported": [
         "element",
@@ -148,27 +143,27 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 536339,
-      "resources": 42
+      "transferBytes": 549737,
+      "resources": 44
     },
     {
       "profile": "mobile-lab-4x-cpu",
       "run": 2,
-      "lcp": 1884,
-      "cls": 0,
+      "lcp": 1792,
+      "cls": 0.00004597346995281398,
       "events": [
-        64,
-        64,
-        64,
+        80,
+        80,
+        80,
         80,
         80,
         80
       ],
       "longTasks": [
-        187,
-        55,
-        64,
-        72
+        179,
+        115,
+        57,
+        52
       ],
       "supported": [
         "element",
@@ -187,28 +182,27 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 536336,
-      "resources": 42
+      "transferBytes": 607334,
+      "resources": 47
     },
     {
       "profile": "mobile-lab-4x-cpu",
       "run": 3,
-      "lcp": 1920,
-      "cls": 0,
+      "lcp": 1776,
+      "cls": 0.00004597346995281398,
       "events": [
-        64,
-        64,
-        64,
-        88,
-        88,
-        88
+        72,
+        72,
+        72,
+        120,
+        120,
+        120
       ],
       "longTasks": [
-        194,
-        53,
-        66,
-        72,
-        51
+        191,
+        124,
+        59,
+        56
       ],
       "supported": [
         "element",
@@ -227,8 +221,8 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 536337,
-      "resources": 42
+      "transferBytes": 549840,
+      "resources": 44
     }
   ]
 }

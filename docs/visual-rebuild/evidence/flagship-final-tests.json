@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-17",
+  "stats": {
+    "startTime": "2026-11-17T10:59:32.373Z",
+    "duration": 32727.162,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "scope": "four flagship tests after final visual fixes"
+}

@@ -18,6 +18,26 @@ Landing gồm hero chuyển ba cảnh, hotspot dẫn tới đúng căn, tìm ki�
 
 Bằng chứng ở `evidence/gate-2`: desktop 1440/1920, mobile 390/360, hero và coverflow, runtime.json. Kiểm tra chuyển ảnh/hotspot/keyboard/drag/CTA và khởi động WebGL; không console error, HTTP lỗi hoặc overflow. Typecheck/lint PASS. Đã sửa lỗi SSR do module export trong phiên HMR cũ bằng kiểm tra lại trên server khởi động sạch, không che lỗi.
 
-## Gates 3–6 — đang triển khai
+## Gate 3 — Kiến trúc / đã kiểm chứng tương tác
 
-Landing/coverflow, kiến trúc, không gian sống, enterprise và QA/PR còn phải nghiệm thu bằng tương tác cùng ảnh thực tế. Không đánh dấu frontend complete ở giai đoạn này.
+Thay stack hộp bằng scene gốc có slab, loggia, kính, mullion, rèm, đồ ban công, pergola, vườn mái, cây, hồ và đường dạo. Hình học tĩnh merge theo vật liệu; 48 vùng kính của Stillwater gắn đúng ID inventory. Raycast kiểm tra phần che khuất, hover có thông tin căn, nhãn tháp chọn được, filter tháp/tầng/căn đồng bộ URL. Góc phối cảnh/mặt đứng/aerial, ngày/đêm, kéo/zoom/pan và fallback 2D giữ lựa chọn. Masterplan dùng lại scene thật với chế độ aerial, không dùng ảnh thay mô hình.
+
+Đã capture desktop/mobile tại `evidence/gate-3`. Scene đo 141 draw calls và 207.316 triangles trong phiên capture; mobile DPR giới hạn 1 và shadow 1024. Rendering dừng khi camera/state đứng yên và tab ẩn. Chưa dùng các con số draw calls này để tuyên bố FPS trên thiết bị thật.
+
+## Gate 4 — Không gian sống / đã kiểm chứng tương tác
+
+Ba layout theo 1/2/3 PN; loại 1 PN có một phòng tắm, 2/3 PN có hai. SVG có nội thất, nhãn diện tích, chọn phòng, zoom và pan. Một nguồn dữ liệu phòng dùng cho SVG, dollhouse và camera panorama; kiểm thử phát hiện phòng chồng lấn hoặc tổng diện tích sai. Dollhouse có geometry nội thất, orbit/zoom, raycast và camera focus theo phòng.
+
+12 panorama 4K 2:1 gốc đã render bằng CubeCamera từ cùng nội thất, bốn điểm nhìn mỗi loại căn. Viewer sphere WebGL thực có drag/touch/phím, zoom, chuyển phòng, minimap, reset/fullscreen và fallback khi mất context/tải ảnh lỗi. Có PNG nguồn, WebP, hash và script tái tạo ở `assets/residence-tours`. Đây là mô hình kiến trúc minh họa, không phải scan photoreal hoặc walkthrough có vật lý.
+
+`evidence/gate-4` có 2D/dollhouse/tour desktop và mobile; không pageerror/HTTP lỗi/overflow. Đã sửa số phòng tắm, tương phản panel và góc camera sau xem screenshot. Gallery AI được phân biệt rõ với hình học mô hình.
+
+## Gate 5 — Enterprise / đã kiểm chứng
+
+Preview căn theo loại phòng được dùng trong CRM inventory và ReservationCard, đồng thời xuất hiện trong Buyer và Customer 360 qua component dùng chung. Link mở đúng hồ sơ 2D/3D/360. Không sửa engine giao dịch, seed, permission matrix hoặc storage contract. Bảng dữ liệu giữ bề mặt rõ nét; brand line không được thêm vào các hàng dữ liệu.
+
+## Gate 6 — Local PASS / chờ CI và PR
+
+Typecheck, lint, production build và 64 unit/component tests đã PASS. Toàn suite 38 E2E PASS, không skipped/flaky. Sau review cuối đã sửa màu nút tháp đang chọn và bỏ toast cho thao tác tự ghi nhận lượt xem; bổ sung một test masterplan, chạy lại cả bốn test flagship PASS (suite hiện có 39 test). 41 screenshot trên 1440/1920/768/390/360, không lỗi runtime/overflow; ảnh masterplan/floorplan được capture lại sau chỉnh sửa. Chi tiết ở [verification](verification.md).
+
+CI Ubuntu/Node 24 và PR đang được xác minh; chưa đánh dấu bước remote hoàn tất. Không tự merge vào main.

@@ -70,7 +70,9 @@ export default function BuildingCanvas({
       return;
     }
     onProgress(20);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    renderer.setPixelRatio(
+      Math.min(window.devicePixelRatio, container.clientWidth < 600 ? 1 : 1.5),
+    );
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -110,7 +112,8 @@ export default function BuildingCanvas({
     );
     sun.position.set(-25, 42, 25);
     sun.castShadow = true;
-    sun.shadow.mapSize.set(2048, 2048);
+    const shadowSize = container.clientWidth < 600 ? 1024 : 2048;
+    sun.shadow.mapSize.set(shadowSize, shadowSize);
     Object.assign(sun.shadow.camera, {
       left: -55,
       right: 55,
@@ -161,14 +164,28 @@ export default function BuildingCanvas({
         (-(e.clientY - rect.top) / rect.height) * 2 + 1,
       );
       raycaster.setFromCamera(pointer, camera);
-      return raycaster.intersectObjects(
+      const unitHit = raycaster.intersectObjects(
         unitMeshes.filter(
           (m) =>
             (!floorRef.current || m.userData.floor === floorRef.current) &&
             (!towerRef.current || m.userData.tower === towerRef.current) &&
             (!filter.current || m.userData.availability === "AVAILABLE"),
         ),
-      )[0]?.object.userData.propertyId as string | undefined;
+      )[0];
+      if (!unitHit) return undefined;
+      const opaque = raycaster.intersectObject(model.root, true).find((hit) => {
+        const mesh = hit.object as THREE.Mesh<
+          THREE.BufferGeometry,
+          THREE.Material
+        >;
+        return (
+          !mesh.userData.propertyId &&
+          mesh.material &&
+          !mesh.material.transparent
+        );
+      });
+      if (opaque && opaque.distance < unitHit.distance - 0.03) return undefined;
+      return unitHit.object.userData.propertyId as string;
     };
     const move = (e: PointerEvent) => {
       hover = hit(e) || "";
@@ -220,7 +237,9 @@ export default function BuildingCanvas({
       transitioning = false;
     };
     controls.addEventListener("start", cancelTransition);
-    let lastTime = 0;
+    let lastTime = 0,
+      previousState = "",
+      firstFrame = true;
     const animate = () => {
       if (disposed) return;
       frame = requestAnimationFrame(animate);
@@ -276,7 +295,19 @@ export default function BuildingCanvas({
           selected ? 0x59401b : night ? 0x122b35 : 0x000000,
         );
       }
-      controls.update();
+      const changed = controls.update();
+      const state = [
+        selection.current,
+        floorRef.current,
+        towerRef.current,
+        filter.current,
+        hover,
+        camera.aspect,
+      ].join("|");
+      if (!firstFrame && !changed && !transitioning && previousState === state)
+        return;
+      firstFrame = false;
+      previousState = state;
       renderer.render(scene, camera);
       labels.render(scene, camera);
       renderer.domElement.dataset.drawCalls = String(
