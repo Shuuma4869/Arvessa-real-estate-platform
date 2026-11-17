@@ -1,11 +1,25 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo, useCallback } from "react";
+import dynamic from "next/dynamic";
+import { useDemo } from "@/services/store";
 import Link from "next/link";
 import { Project } from "@/domain/types";
 import { ArtImage } from "@/components/art-image";
 import { Modal, SectionTitle } from "@/components/ui";
 import { projectGallery } from "@/lib/visual-assets";
+const BuildingCanvas = dynamic(() => import("../spatial/building-canvas"), {
+  ssr: false,
+});
 export function ProjectVisuals({ project }: { project: Project }) {
+  const data = useDemo((s) => s.data);
+  const properties = useMemo(
+    () => data.properties.filter((p) => p.projectId === project.id),
+    [data.properties, project.id],
+  );
+  const [started, setStarted] = useState(false),
+    [selected, setSelected] = useState("");
+  const fall = useCallback(() => setStarted(false), []);
+  const progress = useCallback(() => {}, []);
   const [spot, setSpot] = useState(project.towers[0]);
   const [photo, setPhoto] = useState<number | null>(null);
   const active =
@@ -21,9 +35,36 @@ export function ProjectVisuals({ project }: { project: Project }) {
       />
       <div className="masterplan-layout">
         <div className="masterplan" aria-label="Sơ đồ tổng mặt bằng concept">
+          {started && (
+            <BuildingCanvas
+              project={project}
+              properties={properties}
+              selected={selected}
+              floor={0}
+              tower={active === "garden" ? "" : active}
+              availableOnly={false}
+              night={false}
+              cameraView="aerial"
+              reducedMotion={data.preferences.reducedMotion}
+              onPick={setSelected}
+              onTowerPick={setSpot}
+              onFallback={fall}
+              onProgress={progress}
+            />
+          )}
+          {!started && (
+            <button
+              className="masterplan-start button"
+              onClick={() => setStarted(true)}
+            >
+              Khám phá tổng thể 3D
+            </button>
+          )}
           <span className="north-marker">N ↑</span>
           <div className="masterplan-water">MẶT NƯỚC / CẢNH QUAN</div>
-          <div className="masterplan-towers">
+          <div
+            className={`masterplan-towers ${started ? "model-started" : ""}`}
+          >
             {project.towers.map((tower) => (
               <button
                 key={tower}
@@ -48,6 +89,11 @@ export function ProjectVisuals({ project }: { project: Project }) {
         </div>
         <div className="masterplan-copy" aria-live="polite">
           <p className="eyebrow">{project.name}</p>
+          {selected && (
+            <Link className="underlined-link" href={`/properties/${selected}`}>
+              Xem căn {selected} ↗
+            </Link>
+          )}
           <h3>
             {active === "garden"
               ? "Khoảng xanh kết nối."

@@ -2,6 +2,11 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { createArchitecturalModel } from "./architectural-model";
+import {
+  CSS2DRenderer,
+  CSS2DObject,
+} from "three/addons/renderers/CSS2DRenderer.js";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import { Property, Project } from "@/domain/types";
 export default function BuildingCanvas({
@@ -15,6 +20,7 @@ export default function BuildingCanvas({
   cameraView,
   reducedMotion,
   onPick,
+  onTowerPick,
   onFallback,
   onProgress,
 }: {
@@ -28,6 +34,7 @@ export default function BuildingCanvas({
   cameraView: string;
   reducedMotion: boolean;
   onPick: (id: string) => void;
+  onTowerPick?: (tower: string) => void;
   onFallback: () => void;
   onProgress: (n: number) => void;
 }) {
@@ -37,6 +44,8 @@ export default function BuildingCanvas({
     towerRef = useRef(tower),
     filter = useRef(availableOnly),
     picker = useRef(onPick);
+  const towerPicker = useRef(onTowerPick);
+  towerPicker.current = onTowerPick;
   const viewRef = useRef(cameraView),
     motionRef = useRef(reducedMotion);
   viewRef.current = cameraView;
@@ -67,7 +76,7 @@ export default function BuildingCanvas({
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = night ? 1.1 : 1;
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.shadowMap.type = THREE.PCFShadowMap;
     container.appendChild(renderer.domElement);
     const scene = new THREE.Scene(),
       camera = new THREE.PerspectiveCamera(
@@ -83,13 +92,13 @@ export default function BuildingCanvas({
     scene.environmentIntensity = night ? 0.25 : 0.65;
     room.dispose();
     pmrem.dispose();
-    camera.position.set(28, 23, 35);
+    camera.position.set(45, 34, 57);
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.target.set(0, project.floors * 1.4, 0);
     const reducedQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     controls.enableDamping = !reducedQuery.matches && !motionRef.current;
-    controls.minDistance = 12;
-    controls.maxDistance = 75;
+    controls.minDistance = 22;
+    controls.maxDistance = 200;
     controls.maxPolarAngle = Math.PI * 0.47;
     controls.update();
     scene.add(
@@ -99,134 +108,45 @@ export default function BuildingCanvas({
       night ? 0xadc7df : 0xffedce,
       night ? 1 : 2.3,
     );
-    sun.position.set(15, 35, 20);
+    sun.position.set(-25, 42, 25);
     sun.castShadow = true;
-    sun.shadow.mapSize.set(1024, 1024);
+    sun.shadow.mapSize.set(2048, 2048);
     Object.assign(sun.shadow.camera, {
-      left: -35,
-      right: 35,
-      top: 35,
-      bottom: -35,
+      left: -55,
+      right: 55,
+      top: 55,
+      bottom: -55,
       near: 1,
-      far: 100,
+      far: 160,
     });
     sun.shadow.normalBias = 0.08;
     scene.add(sun);
-    const materials: THREE.Material[] = [],
-      geometries: THREE.BufferGeometry[] = [];
-    const box = (
-      w: number,
-      h: number,
-      d: number,
-      color: number,
-      x: number,
-      y: number,
-      z: number,
-    ) => {
-      const g = new THREE.BoxGeometry(w, h, d),
-        m = new THREE.MeshStandardMaterial({ color, roughness: 0.52 });
-      geometries.push(g);
-      materials.push(m);
-      const mesh = new THREE.Mesh(g, m);
-      mesh.castShadow = true;
-      mesh.receiveShadow = true;
-      mesh.position.set(x, y, z);
-      scene.add(mesh);
-      return mesh;
-    };
-    box(
-      project.towers.length * 13 + 8,
-      0.4,
-      23,
-      night ? 0x35473a : 0xd7d0bb,
-      0,
-      -0.5,
-      0,
-    );
-    const water = box(7, 0.15, 18, night ? 0x124c63 : 0x3d9aaa, 0, -0.23, 1);
-    water.material.roughness = 0.12;
-    water.material.metalness = 0.5;
-    water.castShadow = false;
-    const unitMeshes: THREE.Mesh<
-      THREE.BoxGeometry,
-      THREE.MeshStandardMaterial
-    >[] = [];
-    for (let ti = 0; ti < project.towers.length; ti++) {
-      const tower = project.towers[ti],
-        offset = (ti - (project.towers.length - 1) / 2) * 15;
-      box(10, 0.5, 9, 0xc8bc9f, offset, 0.1, 0);
-      for (let f = 1; f <= project.floors; f++) {
-        const y = f * 2.6;
-        box(10.5, 0.28, 9.5, night ? 0x958c73 : 0xe5dbc3, offset, y - 1.15, 0);
-        for (let n = 1; n <= 4; n++) {
-          const p = properties.find(
-            (p) => p.tower === tower && p.floor === f && p.number === n,
-          );
-          if (!p) continue;
-          const mesh = box(
-            4.45,
-            2.15,
-            3.85,
-            0x658477,
-            offset + (n % 2 ? -2.3 : 2.3),
-            y,
-            n <= 2 ? -2.1 : 2.1,
-          );
-          mesh.userData.propertyId = p.id;
-          mesh.castShadow = false;
-          mesh.material.roughness = 0.18;
-          mesh.material.metalness = 0.48;
-          mesh.material.envMapIntensity = 1.3;
-          mesh.userData.floor = f;
-          mesh.userData.tower = tower;
-          mesh.userData.availability = p.availability;
-          unitMeshes.push(mesh);
-          for (let column = 0; column < 3; column++)
-            box(
-              0.09,
-              2.22,
-              0.1,
-              0xb8a887,
-              mesh.position.x - 1.5 + column * 1.5,
-              y,
-              mesh.position.z + (n <= 2 ? -1.96 : 1.96),
-            );
-        }
-        box(0.25, 2.6, 9.5, 0xd8ccb1, offset - 5, y - 0.1, 0);
-        box(0.25, 2.6, 9.5, 0xd8ccb1, offset + 5, y - 0.1, 0);
-      }
-      box(10.8, 0.4, 9.8, 0xbeb294, offset, project.floors * 2.6 + 1.25, 0);
-      // A planted roof and parapet express the same material language as the imagery.
-      box(8.5, 0.18, 7.5, 0x456e59, offset, project.floors * 2.6 + 1.55, 0);
-      for (const side of [-1, 1])
-        box(
-          10.7,
-          0.65,
-          0.12,
-          0xc0ae8e,
-          offset,
-          project.floors * 2.6 + 1.7,
-          side * 4.7,
-        );
+    const model = createArchitecturalModel(project, properties, night);
+    scene.add(model.root);
+    const unitMeshes = model.units;
+    const labels = new CSS2DRenderer();
+    labels.setSize(container.clientWidth, container.clientHeight);
+    Object.assign(labels.domElement.style, {
+      position: "absolute",
+      inset: "0",
+      pointerEvents: "none",
+    });
+    container.appendChild(labels.domElement);
+    for (const [tower, position] of model.towerPositions) {
+      const button = document.createElement("button");
+      button.className = "tower-scene-label";
+      button.textContent = `Tháp ${tower} · ${properties.filter((p) => p.tower === tower && p.availability === "AVAILABLE").length} căn trống`;
+      button.setAttribute("aria-label", `Khám phá tháp ${tower}`);
+      button.style.pointerEvents = "auto";
+      button.onclick = () => towerPicker.current?.(tower);
+      const label = new CSS2DObject(button);
+      label.position.copy(position);
+      scene.add(label);
     }
-    for (let i = 0; i < 12; i++) {
-      const x = (i % 2 ? 1 : -1) * (project.towers.length * 6 + 4),
-        z = -9 + Math.floor(i / 2) * 3.4;
-      box(0.18, 1.5, 0.18, 0x72654c, x, 0.5, z);
-      const g = new THREE.SphereGeometry(0.9, 10, 8),
-        m = new THREE.MeshStandardMaterial({
-          color: night ? 0x294c3d : 0x637e56,
-          roughness: 1,
-        });
-      geometries.push(g);
-      materials.push(m);
-      const tree = new THREE.Mesh(g, m);
-      tree.castShadow = true;
-      tree.receiveShadow = true;
-      tree.position.set(x, 1.7, z);
-      tree.scale.set(1, 1.45, 1);
-      scene.add(tree);
-    }
+    const tooltip = document.createElement("span");
+    tooltip.className = "unit-scene-tooltip";
+    tooltip.hidden = true;
+    container.appendChild(tooltip);
     onProgress(90);
     const raycaster = new THREE.Raycaster(),
       pointer = new THREE.Vector2();
@@ -253,6 +173,10 @@ export default function BuildingCanvas({
     const move = (e: PointerEvent) => {
       hover = hit(e) || "";
       renderer.domElement.style.cursor = hover ? "pointer" : "grab";
+      const p = properties.find((p) => p.id === hover);
+      tooltip.hidden = !p;
+      if (p)
+        tooltip.textContent = `${p.id} · ${p.beds} PN · ${p.area} m² · ${p.availability}`;
     };
     const press = (e: PointerEvent) => {
       down = { x: e.clientX, y: e.clientY };
@@ -276,18 +200,19 @@ export default function BuildingCanvas({
         h = container.clientHeight;
       if (w && h) {
         renderer.setSize(w, h);
+        labels.setSize(w, h);
         camera.aspect = w / h;
         camera.updateProjectionMatrix();
       }
     });
     resize.observe(container);
     const colors: Record<string, number> = {
-      AVAILABLE: night ? 0x42899a : 0x4a90a1,
+      AVAILABLE: night ? 0x806e49 : 0x6e8d80,
       HELD: 0xb69a59,
       RESERVED: 0x8b8e81,
       SOLD: 0x5d6662,
     };
-    let lastView = "perspective",
+    let lastView = "",
       transitioning = false;
     const destination = camera.position.clone();
     const target = controls.target.clone();
@@ -311,12 +236,16 @@ export default function BuildingCanvas({
         const h = project.floors * 1.4;
         destination.set(
           ...((lastView === "front"
-            ? [0, h + 3, 43]
+            ? [0, h + 9, 80]
             : lastView === "aerial"
-              ? [15, 48, 18]
-              : [28, 23, 35]) as [number, number, number]),
+              ? [25, 72, 44]
+              : [45, 34, 57]) as [number, number, number]),
         );
         target.set(0, h, 0);
+        destination
+          .sub(target)
+          .multiplyScalar(Math.max(1, 1.4 / camera.aspect))
+          .add(target);
         transitioning = true;
       }
       if (transitioning) {
@@ -341,14 +270,22 @@ export default function BuildingCanvas({
               ? 0xb7c995
               : colors[m.userData.availability] || 0x5c8171,
         );
-        m.material.transparent = dim;
-        m.material.opacity = dim ? 0.16 : 1;
+        m.material.transparent = true;
+        m.material.opacity = dim ? 0.13 : selected || highlight ? 0.92 : 0.65;
         m.material.emissive.setHex(
           selected ? 0x59401b : night ? 0x122b35 : 0x000000,
         );
       }
       controls.update();
       renderer.render(scene, camera);
+      labels.render(scene, camera);
+      renderer.domElement.dataset.drawCalls = String(
+        renderer.info.render.calls,
+      );
+      renderer.domElement.dataset.triangles = String(
+        renderer.info.render.triangles,
+      );
+      renderer.domElement.dataset.inventory = String(unitMeshes.length);
     };
     animate();
     onProgress(100);
@@ -364,8 +301,9 @@ export default function BuildingCanvas({
       renderer.domElement.removeEventListener("pointerdown", press);
       renderer.domElement.removeEventListener("pointerup", release);
       renderer.domElement.removeEventListener("webglcontextlost", lost);
-      for (const g of geometries) g.dispose();
-      for (const m of materials) m.dispose();
+      model.dispose();
+      labels.domElement.remove();
+      tooltip.remove();
       renderer.dispose();
       renderer.domElement.remove();
     };
@@ -374,7 +312,7 @@ export default function BuildingCanvas({
     <div
       ref={host}
       style={{ position: "absolute", inset: 0 }}
-      role="img"
+      role="group"
       aria-label={`Mô hình 3D ${project.name}. Dùng chuột hoặc chạm để xoay. Các căn có lựa chọn bàn phím tương đương ở bảng bên cạnh.`}
     />
   );
