@@ -224,7 +224,7 @@
 }
 .hero-footnote small {
   display: block;
-  color: #6b726b;
+  color: #596354;
   letter-spacing: 0;
   margin-top: 4px;
 }
@@ -391,7 +391,7 @@
   font-size: 9px;
   letter-spacing: 0.14em;
   margin-bottom: 10px;
-  color: #6e776c;
+  color: #596354;
 }
 .atelier-search select {
   width: 100%;
@@ -434,7 +434,7 @@
   text-align: center;
   border-left: 1px solid var(--line);
   padding-left: 28px;
-  color: #8a967e;
+  color: #596354;
 }
 .atelier-story .underlined-link {
   font-size: 12px;
@@ -633,7 +633,7 @@
   gap: 30px;
   margin-top: 40px;
   font-size: 10px;
-  color: #677267;
+  color: #596354;
 }
 .spatial-facts b {
   display: block;
@@ -812,7 +812,7 @@
     serif;
 }
 .atelier-journey a small {
-  color: #7e836e;
+  color: #596354;
   font-size: 10px;
 }
 .atelier-invitation {
@@ -1244,8 +1244,589 @@
   transition: none !important;
   scroll-behavior: auto !important;
 }
-.flagship-coverflow .carousel-dots button { width:28px;height:28px;min-width:28px;min-height:28px;background:transparent;display:grid;place-items:center;box-shadow:none;padding:0; }
-.flagship-coverflow .carousel-dots button::before { content:"";width:7px;height:7px;border-radius:50%;background:#ffffff70; }
-.flagship-coverflow .carousel-dots button[aria-current="true"] { background:transparent;box-shadow:none; }
-.flagship-coverflow .carousel-dots button[aria-current="true"]::before { background:#fff;box-shadow:0 0 0 4px #ffffff20; }
-.flagship-coverflow .carousel-dots {gap:3px;}
+.flagship-coverflow .carousel-dots button {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  box-shadow: none;
+  padding: 0;
+}
+.flagship-coverflow .carousel-dots button::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffffff70;
+}
+.flagship-coverflow .carousel-dots button[aria-current="true"] {
+  background: transparent;
+  box-shadow: none;
+}
+.flagship-coverflow .carousel-dots button[aria-current="true"]::before {
+  background: #fff;
+  box-shadow: 0 0 0 4px #ffffff20;
+}
+.flagship-coverflow .carousel-dots {
+  gap: 3px;
+}
+.explorer-page {
+  background: #eeeee7;
+  padding-bottom: 50px;
+}
+.explorer-page .page-heading {
+  padding: 36px 0 28px;
+}
+.explorer-page .page-heading h1 {
+  font-size: clamp(32px, 3vw, 52px);
+  margin: 8px 0;
+}
+.explorer-page .page-heading p:last-child {
+  max-width: 680px;
+  font-size: 13px;
+}
+.explorer-layout {
+  max-width: 1800px;
+  margin: 0 3%;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr) 310px;
+}
+.explorer-layout .canvas-wrap {
+  height: 690px;
+  min-height: 600px;
+  background: radial-gradient(ellipse at 40% 30%, #edf0e5, #c9cdbd);
+  border-radius: 22px;
+  overflow: hidden;
+}
+.explorer-panel {
+  background: #f8f7f1e6;
+  border: 1px solid #fff;
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 20px 60px #223c3410;
+}
+.explorer-panel .field {
+  margin-bottom: 10px;
+}
+.explorer-panel h2 {
+  font-size: 44px;
+  margin: 8px 0;
+}
+.explorer-panel p {
+  font-size: 12px;
+  line-height: 1.8;
+}
+.canvas-toolbar {
+  flex-wrap: wrap;
+  max-width: calc(100% - 30px);
+  gap: 6px;
+}
+.canvas-toolbar .button {
+  background: #f8f7efe8;
+  backdrop-filter: blur(15px);
+  border-color: #fff;
+  font-size: 11px;
+  padding: 10px 13px;
+}
+.camera-presets {
+  background: #f8f7efdc;
+  backdrop-filter: blur(15px);
+  border: 1px solid #fff;
+  border-radius: 30px;
+  padding: 4px;
+}
+.camera-presets button {
+  font-size: 11px;
+}
+.tower-scene-label {
+  border: 1px solid #ffffff80;
+  background: #263f35d9;
+  backdrop-filter: blur(14px);
+  color: #fff;
+  border-radius: 11px;
+  padding: 10px 14px;
+  font-size: 11px;
+  box-shadow: 0 8px 24px #13271e20;
+  white-space: nowrap;
+}
+.unit-scene-tooltip {
+  position: absolute;
+  bottom: 60px;
+  left: 20px;
+  background: #fff9e9f5;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 12px;
+  pointer-events: none;
+  box-shadow: 0 8px 30px #172b2220;
+}
+.masterplan {
+  position: relative;
+  min-height: 560px;
+  overflow: hidden;
+}
+.masterplan:has(canvas) .north-marker,
+.masterplan:has(canvas) .masterplan-water,
+.masterplan:has(canvas) .site-entry,
+.masterplan:has(canvas) .garden-hotspot {
+  display: none;
+}
+.masterplan-start {
+  position: absolute;
+  bottom: 35px;
+  left: 30px;
+  z-index: 5;
+}
+.masterplan-towers.model-started {
+  position: absolute;
+  bottom: 12px;
+  left: 16px;
+  right: 16px;
+  top: auto;
+  display: flex;
+  gap: 8px;
+  transform: none;
+  z-index: 5;
+}
+.model-started .masterplan-tower {
+  width: auto;
+  height: auto;
+  transform: none;
+  min-height: 0;
+  padding: 8px 14px;
+  box-shadow: none;
+  background: #fff9;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.model-started .masterplan-tower span {
+  font-size: 16px;
+}
+@media (max-width: 900px) {
+  .explorer-layout {
+    grid-template-columns: 1fr;
+    margin: 0 4%;
+  }
+  .explorer-layout .canvas-wrap {
+    height: 550px;
+    min-height: 550px;
+  }
+  .explorer-page .page-heading {
+    padding: 24px 0;
+  }
+  .explorer-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .explorer-panel > hr,
+  .explorer-panel > p,
+  .explorer-panel > .button {
+    grid-column: 1/-1;
+  }
+  .masterplan {
+    min-height: 440px;
+  }
+  .tower-scene-label {
+    font-size: 9px;
+    padding: 8px;
+  }
+  .canvas-help {
+    font-size: 9px;
+  }
+  .camera-presets button {
+    padding: 8px;
+  }
+}
+.residence-experience {
+  margin: 75px 0 45px;
+  background: #f7f3e9;
+  scroll-margin-top: 110px;
+}
+.residence-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 30px 0;
+}
+.residence-heading h2 {
+  font-size: clamp(30px, 3vw, 46px);
+  margin: 10px 0 0;
+}
+.residence-tabs {
+  display: flex;
+  background: #e4e6dc;
+  padding: 5px;
+  border-radius: 30px;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.residence-tabs button {
+  padding: 12px 18px;
+  font-size: 12px;
+  border-radius: 22px;
+  color: #294335;
+}
+.residence-tabs button[aria-pressed="true"] {
+  background: #203b34;
+  color: #fff;
+}
+.residence-stage {
+  display: grid;
+  grid-template-columns: 270px minmax(0, 1fr);
+  min-height: 660px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #deded0;
+}
+.residence-info {
+  background: linear-gradient(155deg, #203b34, #122e27);
+  color: #f0e6d1;
+  padding: 34px 28px;
+}
+.residence-info .eyebrow {
+  color: #c0b391;
+}
+.residence-number {
+  font:
+    400 58px "Cormorant Garamond Variable",
+    serif;
+  letter-spacing: -2px;
+}
+.residence-info > p {
+  font-size: 12px;
+  line-height: 1.9;
+  margin: 20px 0;
+}
+.residence-room-info {
+  border-top: 1px solid #ffffff24;
+  margin-top: 24px;
+  padding-top: 22px;
+}
+.residence-room-info small {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: #c0b391;
+}
+.residence-room-info h3 {
+  font:
+    400 27px "Cormorant Garamond Variable",
+    serif;
+  margin: 8px 0;
+}
+.residence-room-info p {
+  font-size: 11px;
+}
+.room-navigation {
+  display: grid;
+  margin-top: 24px;
+  gap: 2px;
+}
+.room-navigation button {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 12px;
+  font-size: 11px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: #e4dfd1;
+  text-align: left;
+}
+.room-navigation button[aria-pressed="true"] {
+  border-color: #b0a07570;
+  background: #ffffff0c;
+}
+.residence-view {
+  position: relative;
+  min-width: 0;
+  min-height: 660px;
+  background: radial-gradient(ellipse at 40% 30%, #faf5e9, #e4ded0);
+  overflow: hidden;
+}
+.residence-plan {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  color: #385244;
+}
+.residence-plan svg {
+  width: 100%;
+  flex: 1;
+  min-height: 420px;
+  max-height: 530px;
+  touch-action: none;
+  cursor: grab;
+  overflow: hidden;
+}
+.residence-plan.mini {
+  padding: 4px;
+}
+.residence-plan.mini svg {
+  min-height: 0;
+  max-height: 130px;
+}
+.plan-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+.plan-tools button {
+  border: 1px solid #36544140;
+  border-radius: 30px;
+  min-height: 34px;
+  min-width: 34px;
+  padding: 5px 10px;
+}
+.plan-tools span {
+  margin-left: auto;
+}
+.room-footprint {
+  fill: #f2ead7;
+  stroke: #778471;
+  stroke-width: 0.035;
+}
+.residence-plan g[role="button"] {
+  cursor: pointer;
+  outline: none;
+}
+.residence-plan g[role="button"]:hover .room-footprint,
+.residence-plan g[role="button"]:focus .room-footprint,
+.residence-plan g.selected .room-footprint {
+  fill: #d8d8bb;
+  stroke: #35533c;
+  stroke-width: 0.07;
+}
+.plan-furniture {
+  fill: none;
+  stroke: #71836a;
+  stroke-width: 0.035;
+  pointer-events: none;
+}
+.plan-outline {
+  fill: none;
+  stroke: #455f4b;
+  stroke-width: 0.12;
+  pointer-events: none;
+}
+.residence-plan text {
+  font-family: "Manrope Variable", sans-serif;
+  font-size: 0.21px;
+  fill: #2f4839;
+  pointer-events: none;
+}
+.residence-canvas,
+.panorama-canvas {
+  position: absolute;
+  inset: 0;
+  touch-action: none;
+}
+.residence-canvas canvas,
+.panorama-canvas canvas {
+  display: block;
+  max-width: 100%;
+  touch-action: none;
+}
+.residence-controls {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  display: flex;
+  gap: 6px;
+  z-index: 3;
+  flex-wrap: wrap;
+  right: 20px;
+  pointer-events: none;
+}
+.residence-controls button {
+  pointer-events: auto;
+  border: 1px solid #fff9;
+  background: #f9f6ebea;
+  color: #263d33;
+  backdrop-filter: blur(12px);
+  padding: 10px 14px;
+  border-radius: 24px;
+  font-size: 10px;
+  min-height: 38px;
+  box-shadow: 0 6px 20px #1b332315;
+}
+.residence-minimap {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 145px;
+  height: 135px;
+  background: #faf5e5e6;
+  border: 1px solid #fffc;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+}
+.tour-hotspot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 30px;
+  background: #fcf4e1e8;
+  color: #233d31;
+  padding: 12px 18px;
+  backdrop-filter: blur(10px);
+  border: 1px solid #fff;
+  white-space: nowrap;
+  font-size: 11px;
+  box-shadow: 0 10px 24px #14291e30;
+}
+.tour-hotspot[hidden] {
+  display: none;
+}
+.tour-loading {
+  position: absolute;
+  inset: 45% 20%;
+  z-index: 3;
+  background: #fff;
+  padding: 20px;
+  height: max-content;
+  text-align: center;
+  border-radius: 10px;
+}
+.residence-experience:fullscreen {
+  padding: 20px;
+  margin: 0;
+  overflow: auto;
+}
+.residence-experience:fullscreen .residence-stage {
+  height: calc(100vh - 170px);
+}
+@media (max-width: 900px) {
+  .residence-heading {
+    display: block;
+  }
+  .residence-tabs {
+    margin-top: 20px;
+    width: max-content;
+    max-width: 100%;
+  }
+  .residence-tabs button {
+    padding: 10px 12px;
+  }
+  .residence-stage {
+    grid-template-columns: 1fr;
+  }
+  .residence-info {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .residence-info .eyebrow {
+    grid-column: 1/-1;
+    margin: 0;
+  }
+  .residence-number {
+    font-size: 44px;
+  }
+  .residence-info > p {
+    margin: 0;
+    font-size: 11px;
+  }
+  .residence-room-info {
+    margin: 0;
+    padding: 10px 0;
+    grid-column: 1/-1;
+  }
+  .room-navigation {
+    margin: 0;
+    grid-column: 1/-1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .room-navigation button {
+    font-size: 10px;
+    padding: 8px;
+  }
+  .room-navigation button span {
+    display: none;
+  }
+  .residence-view {
+    min-height: 520px;
+  }
+  .residence-plan {
+    padding: 12px;
+  }
+  .residence-plan svg {
+    min-height: 380px;
+  }
+  .residence-minimap {
+    width: 100px;
+    height: 95px;
+  }
+  .residence-plan.mini svg {
+    max-height: 90px;
+  }
+  .residence-controls {
+    left: 10px;
+    top: 10px;
+    right: 10px;
+  }
+  .residence-controls button {
+    padding: 9px 10px;
+  }
+  .tour-hotspot {
+    font-size: 10px;
+    padding: 9px 12px;
+  }
+}
+
+.residence-info p {
+  color: #dedbcf;
+}
+.residence-info .residence-room-info p {
+  color: #c5cbbb;
+}
+.property-preview {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  margin: 14px 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink);
+}
+.property-preview img {
+  width: 88px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.property-preview span {
+  display: grid;
+  gap: 3px;
+}
+.property-preview strong {
+  font-size: 14px;
+}
+.property-preview small {
+  font-size: 10px;
+  color: var(--muted);
+}
+.workspace .reservation-card {
+  border-radius: 14px;
+}
+.workspace .timeline {
+  border-left-color: var(--line);
+}
+.workspace .metric-card {
+  border-radius: 12px;
+}
+.workspace .table-wrap {
+  border-radius: 12px;
+}
