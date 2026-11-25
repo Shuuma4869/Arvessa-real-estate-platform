@@ -1,8 +1,8 @@
 [
   {
     "name": "Stillwater",
-    "bytes": 24747940,
-    "sceneTriangles": 1763561,
+    "bytes": 24597272,
+    "sceneTriangles": 1755067,
     "drawPrimitives": 19,
     "textures": [
       {
@@ -567,9 +567,9 @@
   },
   {
     "name": "A0302",
-    "bytes": 11227020,
-    "sceneTriangles": 373014,
-    "drawPrimitives": 27,
+    "bytes": 11802980,
+    "sceneTriangles": 373390,
+    "drawPrimitives": 29,
     "textures": [
       {
         "name": "nor_gl",
@@ -637,6 +637,33 @@
       {
         "name": "Rough",
         "bytes": 493286,
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "nor_gl",
+        "bytes": 1946,
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Diffuse",
+        "bytes": 381280,
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Rough",
+        "bytes": 237772,
         "dimensions": [
           1024,
           1024
@@ -850,8 +877,8 @@
   },
   {
     "name": "Stillwater-balanced",
-    "bytes": 18893204,
-    "sceneTriangles": 1763561,
+    "bytes": 18742536,
+    "sceneTriangles": 1755067,
     "drawPrimitives": 19,
     "textures": [
       {
@@ -1416,9 +1443,9 @@
   },
   {
     "name": "A0302-balanced",
-    "bytes": 6000416,
-    "sceneTriangles": 373014,
-    "drawPrimitives": 27,
+    "bytes": 5997968,
+    "sceneTriangles": 373390,
+    "drawPrimitives": 29,
     "textures": [
       {
         "name": "nor_gl",
@@ -1486,6 +1513,33 @@
       {
         "name": "Rough",
         "bytes": 22694,
+        "dimensions": [
+          512,
+          512
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "nor_gl",
+        "bytes": 550,
+        "dimensions": [
+          512,
+          512
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Diffuse",
+        "bytes": 31272,
+        "dimensions": [
+          512,
+          512
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Rough",
+        "bytes": 10816,
         "dimensions": [
           512,
           512

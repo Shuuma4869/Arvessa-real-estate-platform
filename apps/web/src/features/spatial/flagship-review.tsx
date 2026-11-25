@@ -372,7 +372,10 @@ export default function FlagshipReview() {
         </p>
         <p>
           Models, textures & HDRI:{" "}
-          <a href="https://polyhaven.com/license">Poly Haven · CC0</a>. Sofa:{" "}
+          <a href="https://polyhaven.com/license">Poly Haven · CC0</a>. Đá mặt
+          bàn:{" "}
+          <a href="https://ambientcg.com/view?id=Marble014">ambientCG · CC0</a>.
+          Sofa:{" "}
           <a href="https://github.com/KhronosGroup/glTF-Sample-Assets/tree/f0920f5b32d172a30efe3f9257e965918831e6ea/Models/GlamVelvetSofa">
             Eric Chadwick / Wayfair, LLC, 2021
           </a>{" "}

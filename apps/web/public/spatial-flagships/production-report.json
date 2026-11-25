@@ -4,12 +4,12 @@
   "models": [
     {
       "name": "A0302",
-      "rawBytes": 61960148,
-      "webBytes": 11227020,
+      "rawBytes": 67956640,
+      "webBytes": 11802980,
       "validation": {
         "numErrors": 0,
-        "numWarnings": 12,
-        "numInfos": 34,
+        "numWarnings": 13,
+        "numInfos": 37,
         "numHints": 0,
         "messages": [
           {
@@ -97,10 +97,10 @@
             "pointer": "/meshes/0/primitives/6/attributes/TEXCOORD_1"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/0/primitives/7/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/0/primitives/7/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -121,16 +121,22 @@
             "pointer": "/meshes/0/primitives/8/attributes/TEXCOORD_1"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/0/primitives/9/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/0/primitives/9/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/0/primitives/9/attributes/TEXCOORD_1"
+          },
+          {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/0/primitives/10/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -143,12 +149,6 @@
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/0/primitives/11/attributes/TEXCOORD_1"
-          },
-          {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/0/primitives/12/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -181,10 +181,10 @@
             "pointer": "/meshes/0/primitives/14/attributes/TEXCOORD_1"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/0/primitives/15/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/0/primitives/15/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -205,16 +205,40 @@
             "pointer": "/meshes/0/primitives/16/attributes/TEXCOORD_1"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/0/primitives/17/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/0/primitives/17/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/0/primitives/17/attributes/TEXCOORD_1"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/0/primitives/18/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/0/primitives/18/attributes/TEXCOORD_1"
+          },
+          {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/0/primitives/19/material"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/0/primitives/19/attributes/TEXCOORD_1"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
@@ -292,20 +316,21 @@
         "truncated": false
       },
       "file": "A0302.glb",
-      "bytes": 61960148,
-      "scene_triangles": 373014,
-      "export_seconds": 20.93592389999958,
+      "bytes": 67956640,
+      "scene_triangles": 373390,
+      "export_seconds": 12.414340500006801,
       "texture_max_dimension": 1024,
       "source_scene": "A0302.blend",
       "quality": "balanced derivative; visual approval pending",
       "tree_decimation_ratio": 0.018,
       "plant_soil_decimation_ratio": 0.12,
-      "balancedBytes": 6000416
+      "exterior_pot_and_trunk_ratio": null,
+      "balancedBytes": 5997968
     },
     {
       "name": "Stillwater",
-      "rawBytes": 113798984,
-      "webBytes": 24747940,
+      "rawBytes": 113512488,
+      "webBytes": 24597272,
       "validation": {
         "numErrors": 0,
         "numWarnings": 10,
@@ -706,16 +731,16 @@
         "truncated": false
       },
       "file": "Stillwater.glb",
-      "bytes": 113798984,
+      "bytes": 113512488,
       "scene_triangles": 3086098,
-      "export_seconds": 66.85820999999851,
+      "export_seconds": 60.8748501999944,
       "texture_max_dimension": 1024,
       "source_scene": "Stillwater.blend",
       "quality": "balanced derivative; visual approval pending",
       "tree_decimation_ratio": 0.018,
       "plant_soil_decimation_ratio": 0.005,
       "exterior_pot_and_trunk_ratio": 0.2,
-      "balancedBytes": 18893204
+      "balancedBytes": 18742536
     }
   ],
   "photographs": [
@@ -728,7 +753,7 @@
       "samples": 128,
       "width": 1600,
       "height": 1100,
-      "seconds": 139.36042870000165,
+      "seconds": 154.67844750000222,
       "denoise": true,
       "view_transform": "AgX",
       "look": "AgX - Medium High Contrast",
@@ -749,7 +774,7 @@
       },
       "visual_approval": "PENDING",
       "webFile": "Stillwater-day.webp",
-      "webBytes": 255844
+      "webBytes": 247502
     },
     {
       "file": "Stillwater-golden.png",
@@ -760,7 +785,7 @@
       "samples": 128,
       "width": 1600,
       "height": 1100,
-      "seconds": 160.57803090000016,
+      "seconds": 177.22076910000033,
       "denoise": true,
       "view_transform": "AgX",
       "look": "AgX - Medium High Contrast",
@@ -781,7 +806,7 @@
       },
       "visual_approval": "PENDING",
       "webFile": "Stillwater-golden.webp",
-      "webBytes": 219472
+      "webBytes": 210054
     },
     {
       "file": "Stillwater-aerial.png",
@@ -792,7 +817,7 @@
       "samples": 128,
       "width": 1600,
       "height": 1100,
-      "seconds": 143.37465539999903,
+      "seconds": 149.42990290000307,
       "denoise": true,
       "view_transform": "AgX",
       "look": "AgX - Medium High Contrast",
@@ -813,7 +838,7 @@
       },
       "visual_approval": "PENDING",
       "webFile": "Stillwater-aerial.webp",
-      "webBytes": 365218
+      "webBytes": 354802
     },
     {
       "file": "A0302-living.png",
@@ -824,7 +849,7 @@
       "samples": 128,
       "width": 1440,
       "height": 1000,
-      "seconds": 176.94249339999988,
+      "seconds": 185.18225209999946,
       "denoise": true,
       "view_transform": "AgX",
       "look": "AgX - Medium High Contrast",
@@ -845,7 +870,7 @@
       },
       "visual_approval": "PENDING",
       "webFile": "A0302-living.webp",
-      "webBytes": 59750
+      "webBytes": 59500
     },
     {
       "file": "A0302-kitchen.png",
@@ -856,7 +881,7 @@
       "samples": 128,
       "width": 1440,
       "height": 1000,
-      "seconds": 143.36997840000004,
+      "seconds": 149.13986310000473,
       "denoise": true,
       "view_transform": "AgX",
       "look": "AgX - Medium High Contrast",
@@ -877,7 +902,7 @@
       },
       "visual_approval": "PENDING",
       "webFile": "A0302-kitchen.webp",
-      "webBytes": 77846
+      "webBytes": 110528
     },
     {
       "file": "A0302-dollhouse.png",
@@ -888,7 +913,7 @@
       "samples": 128,
       "width": 1600,
       "height": 1200,
-      "seconds": 56.89236059999894,
+      "seconds": 62.86251560000528,
       "denoise": true,
       "view_transform": "AgX",
       "look": "AgX - Medium High Contrast",
@@ -909,7 +934,7 @@
       },
       "visual_approval": "PENDING",
       "webFile": "A0302-dollhouse.webp",
-      "webBytes": 133552
+      "webBytes": 130598
     },
     {
       "file": "A0302-living-360.png",
@@ -920,7 +945,7 @@
       "samples": 128,
       "width": 4096,
       "height": 2048,
-      "seconds": 951.2701377000012,
+      "seconds": 970.3576733999944,
       "denoise": true,
       "view_transform": "AgX",
       "look": "AgX - Medium High Contrast",
@@ -941,7 +966,7 @@
       },
       "visual_approval": "PENDING",
       "webFile": "A0302-living-360.webp",
-      "webBytes": 341716
+      "webBytes": 414856
     }
   ],
   "environment": {
