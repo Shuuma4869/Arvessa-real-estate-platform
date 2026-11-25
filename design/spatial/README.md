@@ -13,6 +13,7 @@ python design/spatial/setup-blender.py
 python design/spatial/fetch-assets.py
 node design/spatial/export-contract.mjs
 $blender = '.agent-work/photoreal/tools/blender-4.5.9-windows-x64/blender.exe'
+& $blender --background --factory-startup --disable-autoexec --python-exit-code 1 --python design/spatial/verify-geometry.py
 & $blender --background --factory-startup --disable-autoexec --python-exit-code 1 --python design/spatial/build-exterior.py -- day golden aerial
 & $blender --background --factory-startup --disable-autoexec --python-exit-code 1 --python design/spatial/build-interior.py -- living kitchen dollhouse panorama
 & $blender --background --factory-startup --disable-autoexec --python-exit-code 1 --python design/spatial/export-web.py -- Stillwater
@@ -29,6 +30,20 @@ Trang `/spatial-review` mặc định tải vật liệu 512 px (`*-balanced.glb
 Để chỉnh riêng góc dollhouse từ scene đã lưu trên máy HIP, chạy `render-saved-view.py` bằng Blender như các script trên. Script này không sửa source `.blend`; nó bỏ các đối tượng cutaway/context và dùng cùng camera cao 22 m như bản dựng chính. Chạy lại `optimize-web.mjs --images-only` để cập nhật ảnh web.
 
 Không chạy đồng thời các scene nặng trên máy RAM 16 GB. File tải có checksum; một file có sẵn sai checksum sẽ làm script dừng, không bị ghi đè. Không có thông tin đăng nhập hoặc API trả phí.
+
+## Tái kiểm tra trong ứng dụng
+
+Sau khi build và mở production server, có thể chụp lại bằng chứng bằng Playwright đã cài cho `apps/web`:
+
+```powershell
+$env:ARVESSA_TEST_PORT = '3038' # đổi theo cổng server đang chạy
+$env:ARVESSA_BENCHMARK_HARDWARE = '1'
+node design/spatial/capture-review.mjs
+```
+
+Trên Windows, lựa chọn hardware dùng ANGLE/D3D11 và `--ignore-gpu-blocklist`; renderer thực được ghi trong JSON. Bỏ biến này để dùng cấu hình mặc định của trình duyệt. Script ghi đè có chủ đích bộ screenshot/report tại `docs/visual-rebuild/evidence/photoreal`, kiểm tra raycast, hai mức vật liệu và overflow. Không chạy đồng thời với Cycles hoặc benchmark khác. FPS là khoảng cách thời gian giữa các frame trong lượt xoay 5 giây sau 1 giây làm nóng; không phải GPU timer query. Viewport mobile vẫn dùng cùng máy desktop.
+
+`loadMs` kết thúc khi GLB đã giải mã và đưa vào scene. `firstFrameMs` kết thúc khi lần gọi render đầu chứa model trả về; không phải thời gian tải mạng công cộng hoặc phép đo trình bày pixel của màn hình. LCP/CLS là một lượt local, không phải field data. Công cụ không chấm đạt/chưa đạt mỹ thuật.
 
 HDRI web là bản float HDR 512 × 256 từ cùng nguồn 2K, giảm chi phí tạo bản đồ phản xạ PMREM lúc tải lạnh. HDRI dùng trong Cycles giữ nguyên. Đây là tối ưu thời gian thực, không phải cải thiện chất lượng ảnh offline.
 
@@ -52,6 +67,10 @@ Hệ tọa độ: Blender `(x, -z, height)` từ layout; GLB xuất Y-up thành 
 ## Giấy phép
 
 Models/textures/HDRI Poly Haven: [CC0](https://polyhaven.com/license). Tác giả và nguồn chi tiết ở lockfile. Không dùng ảnh preview trên website Poly Haven.
+
+Đá mặt bàn/backsplash/vanity: [Marble 014, ambientCG](https://ambientcg.com/view?id=Marble014), [CC0](https://docs.ambientcg.com/license/). Đây là vật liệu PBR tạo bằng phương pháp procedural, không phải photoscan. Lockfile ghim archive ZIP và từng map Color/Roughness/NormalGL; downloader chỉ lấy các thành viên đã khai báo, không mở file `.blend` đi kèm archive.
+
+`verify-geometry.py` kiểm tra khối hộp có thể tích dương và cạnh manifold ở ba mức bevel. `box()` cũng kiểm tra pháp tuyến hướng ra ngoài cho từng khối được dựng. Kiểm tra này bắt lỗi khúc xạ do winding đảo mà glTF Validator không phát hiện như lỗi định dạng; vẫn cần xem trực tiếp kính trong ảnh render.
 
 **GlamVelvetSofa**, © 2021 Wayfair, LLC; Eric Chadwick. Nguồn [Khronos glTF Sample Assets, commit f0920f5](https://github.com/KhronosGroup/glTF-Sample-Assets/tree/f0920f5b32d172a30efe3f9257e965918831e6ea/Models/GlamVelvetSofa), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Thay đổi: vị trí, tỷ lệ, tối ưu geometry/texture và export; giữ vật liệu velvet xanh. Không hàm ý tác giả hoặc Wayfair tài trợ ARVESSA. Attribution cũng có trên trang `/spatial-review` và đi cùng asset xuất.
 

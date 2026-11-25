@@ -1,5 +1,7 @@
 # Photorealism — kiểm toán và điểm nghiệm thu
 
+Đây là kiểm toán đầu vào ngày 18.11.2026. Tiến độ, sản phẩm và giới hạn sau sản xuất được ghi trong [hồ sơ hai cảnh flagship](photoreal-review.md); không dùng phần khảo sát công cụ bên dưới làm trạng thái hiện hành.
+
 Ngày 18.11.2026, baseline `8eb6d2976cf156a626db73827b0926251e215feb`, branch `design/arvessa-flagship-visual-v2`, PR #1. SHA local và remote trùng nhau. Phạm vi được phép sản xuất: **The Stillwater và căn A0302**. Chưa mở rộng sang căn/dự án khác, Landing hoặc coverflow trước khi chủ dự án nghiệm thu hai cảnh. CI và tương tác không thay thế nghiệm thu mỹ thuật.
 
 ## Đối chiếu trực tiếp

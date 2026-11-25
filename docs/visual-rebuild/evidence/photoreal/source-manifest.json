@@ -1,0 +1,68 @@
+{
+  "reviewDate": "2026-11-25",
+  "sources": [
+    {
+      "file": "D:\\ARVESSA\\.agent-work\\photoreal\\flagships\\Stillwater.blend",
+      "bytes": 76794330,
+      "sha256": "87692f0fcfe2b061335913859991a21c68ab6343310fab13243f64181ecd7ac4",
+      "textures": "../library (external, required)",
+      "in_git": false
+    },
+    {
+      "file": "D:\\ARVESSA\\.agent-work\\photoreal\\flagships\\A0302.blend",
+      "bytes": 77582734,
+      "sha256": "5f98eb51ce868f5c9598469099c8000bf7eca82f40242d2748ba2ed07c9a519b",
+      "textures": "../library (external, required)",
+      "in_git": false
+    }
+  ],
+  "webModels": [
+    {
+      "name": "Stillwater",
+      "bytes": 24597272,
+      "sha256": "8182096c1ea781eabbc5ef799d733ed989b361e41d155921283a0be65b6b0de8",
+      "sceneTriangles": 1755067,
+      "primitives": 19,
+      "embeddedTextureBytes": 6578650,
+      "estimatedRGBAWithMipmapsBytes": 145402539,
+      "decodedErrors": 0,
+      "decodedWarnings": 0
+    },
+    {
+      "name": "A0302",
+      "bytes": 11802980,
+      "sha256": "57a37f33971e88e2b3a56e6b3b0c0cbedafb6c4fa2e0957f9b4fef89ba6de371",
+      "sceneTriangles": 373390,
+      "primitives": 29,
+      "embeddedTextureBytes": 6345184,
+      "estimatedRGBAWithMipmapsBytes": 173364565,
+      "decodedErrors": 0,
+      "decodedWarnings": 0
+    },
+    {
+      "name": "Stillwater-balanced",
+      "bytes": 18742536,
+      "sha256": "01f81cd2227aa99de27aa85665070cb67692daa17cba2e8109be063c420156e8",
+      "sceneTriangles": 1755067,
+      "primitives": 19,
+      "embeddedTextureBytes": 723966,
+      "estimatedRGBAWithMipmapsBytes": 36350635,
+      "decodedErrors": 0,
+      "decodedWarnings": 0
+    },
+    {
+      "name": "A0302-balanced",
+      "bytes": 5997968,
+      "sha256": "b064d654dadf8daf46aad175b1aed009206d3cecd7f1028dc365ab6f74ef9c4d",
+      "sceneTriangles": 373390,
+      "primitives": 29,
+      "embeddedTextureBytes": 540270,
+      "estimatedRGBAWithMipmapsBytes": 43341141,
+      "decodedErrors": 0,
+      "decodedWarnings": 0
+    }
+  ],
+  "textureEstimateExcludes": "environment, render targets, shadows and framebuffer; not measured VRAM",
+  "visualApproval": "PENDING",
+  "reviewUpdated": "2026-11-26"
+}

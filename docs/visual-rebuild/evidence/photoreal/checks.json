@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-25",
+  "local": {
+    "build": "PASS",
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "unitComponentTests": {
+      "passed": 64,
+      "failed": 0
+    },
+    "e2e": {
+      "startTime": "2026-11-25T14:22:16.245Z",
+      "duration": 230088.262,
+      "expected": 42,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "solidGeometry": {
+      "cases": 3,
+      "outward": true,
+      "manifold": true
+    },
+    "webGLB": {
+      "files": 4,
+      "decodedErrors": 0,
+      "decodedWarnings": 0
+    },
+    "afterCameraAdjustment": {
+      "build": "PASS",
+      "changedFileLint": "PASS",
+      "e2e": {
+        "startTime": "2026-11-25T19:46:43.015Z",
+        "duration": 42576.466,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  },
+  "scope": "42 E2E include original 39 workflows plus 3 flagship tests; assertions and 12s expect/45s test deadlines retained",
+  "visualApproval": "PENDING",
+  "ci": "See PR #1 checks for exact published commit",
+  "updated": "2026-11-26",
+  "browserReview": {
+    "date": "2026-11-26",
+    "screenshots": 14,
+    "runtimeErrors": 0,
+    "horizontalOverflow": false,
+    "raycastScenes": 2,
+    "qualitySwitches": 2,
+    "visualApproval": "PENDING"
+  }
+}

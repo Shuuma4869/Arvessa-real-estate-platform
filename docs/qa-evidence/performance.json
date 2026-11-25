@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-17",
+  "date": "2026-11-25",
   "browser": "159.0.8154.6",
   "kind": "Local lab only; event durations are not field INP",
   "conditions": "Production loopback; 3 cold browser contexts each. Mobile: 390x844, CPU x4, RTT 100ms, download 200000 B/s. Desktop: 1440x1000, unthrottled. DPR 1. No field samples.",
@@ -7,18 +7,18 @@
     {
       "profile": "desktop-local",
       "run": 1,
-      "lcp": 180,
+      "lcp": 192,
       "cls": 0.05238935391649788,
       "events": [
         224,
         224,
         224,
-        232,
-        232,
-        232
+        248,
+        248,
+        248
       ],
       "longTasks": [
-        104
+        108
       ],
       "supported": [
         "element",
@@ -37,23 +37,25 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 958104,
+      "transferBytes": 958045,
       "resources": 52
     },
     {
       "profile": "desktop-local",
       "run": 2,
-      "lcp": 176,
+      "lcp": 192,
       "cls": 0.05238935391649788,
       "events": [
         240,
         240,
         240,
-        232,
-        232,
-        232
+        328,
+        328,
+        328
       ],
-      "longTasks": [],
+      "longTasks": [
+        108
+      ],
       "supported": [
         "element",
         "event",
@@ -71,23 +73,25 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 958105,
+      "transferBytes": 958041,
       "resources": 52
     },
     {
       "profile": "desktop-local",
       "run": 3,
-      "lcp": 180,
+      "lcp": 196,
       "cls": 0.05238935391649788,
       "events": [
-        240,
-        240,
-        240,
-        232,
-        232,
-        232
+        328,
+        328,
+        328,
+        320,
+        320,
+        320
       ],
-      "longTasks": [],
+      "longTasks": [
+        108
+      ],
       "supported": [
         "element",
         "event",
@@ -105,25 +109,25 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 958100,
+      "transferBytes": 958044,
       "resources": 52
     },
     {
       "profile": "mobile-lab-4x-cpu",
       "run": 1,
-      "lcp": 1848,
+      "lcp": 1796,
       "cls": 0.00004597346995281398,
       "events": [
         64,
         64,
         64,
-        80,
-        80,
-        80
+        88,
+        88,
+        88
       ],
       "longTasks": [
-        184,
-        131,
+        173,
+        106,
         50
       ],
       "supported": [
@@ -143,27 +147,25 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 498973,
+      "transferBytes": 498905,
       "resources": 42
     },
     {
       "profile": "mobile-lab-4x-cpu",
       "run": 2,
-      "lcp": 1820,
+      "lcp": 1780,
       "cls": 0.00004597346995281398,
       "events": [
         64,
         64,
         64,
-        80,
-        80,
-        80
+        72,
+        72,
+        72
       ],
       "longTasks": [
-        190,
-        143,
-        55,
-        52
+        165,
+        104
       ],
       "supported": [
         "element",
@@ -182,27 +184,25 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 497793,
-      "resources": 41
+      "transferBytes": 518236,
+      "resources": 43
     },
     {
       "profile": "mobile-lab-4x-cpu",
       "run": 3,
-      "lcp": 1784,
+      "lcp": 1804,
       "cls": 0.00004597346995281398,
       "events": [
         64,
         64,
         64,
-        80,
-        80,
-        80
+        88,
+        88,
+        88
       ],
       "longTasks": [
-        171,
-        139,
-        54,
-        51
+        164,
+        105
       ],
       "supported": [
         "element",
@@ -221,8 +221,8 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 498970,
-      "resources": 42
+      "transferBytes": 518235,
+      "resources": 43
     }
   ]
 }

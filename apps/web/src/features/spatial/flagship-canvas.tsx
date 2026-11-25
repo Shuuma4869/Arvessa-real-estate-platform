@@ -90,7 +90,7 @@ export default function FlagshipCanvas({
       : new THREE.Vector3(0, 5, 0);
     camera.position.set(
       ...((interior
-        ? [17, 15, 23]
+        ? [15, 22, 18]
         : view === "aerial"
           ? [64, 83, 75]
           : [66, 35, 88]) as [number, number, number]),
