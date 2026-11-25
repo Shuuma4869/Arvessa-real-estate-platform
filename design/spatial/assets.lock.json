@@ -524,6 +524,41 @@
           "bytes": 3149844
         }
       ]
+    },
+    {
+      "id": "ambientcg_marble014",
+      "name": "Marble 014",
+      "author": "ambientCG",
+      "source": "https://ambientcg.com/view?id=Marble014",
+      "license": "CC0-1.0",
+      "license_url": "https://docs.ambientcg.com/license/",
+      "technique": "procedural",
+      "archive": {
+        "path": "library/ambientcg_marble014/Marble014_1K-PNG.zip",
+        "url": "https://ambientcg.com/get?file=Marble014_1K-PNG.zip",
+        "bytes": 12620216,
+        "sha256": "5264de461d013162232b25edd07642ca8cbf8ebb60393e82e424dd878f755f75"
+      },
+      "files": [
+        {
+          "path": "library/ambientcg_marble014/Diffuse.png",
+          "archive_member": "Marble014_1K-PNG_Color.png",
+          "bytes": 1747871,
+          "sha256": "2dcb289eb151c8c322c3b5851f3f93f6bd209062058904fa4633b366d6403a6b"
+        },
+        {
+          "path": "library/ambientcg_marble014/Rough.png",
+          "archive_member": "Marble014_1K-PNG_Roughness.png",
+          "bytes": 509149,
+          "sha256": "47de121b7dfea26d0971495c4acdbce5e297d96caebd5f6c18ffc21a668677ce"
+        },
+        {
+          "path": "library/ambientcg_marble014/nor_gl.png",
+          "archive_member": "Marble014_1K-PNG_NormalGL.png",
+          "bytes": 3510782,
+          "sha256": "acb6eea0cdd7b62e823fe81dc15e90d03d09b9c4b3acf43e7c05a7f951f57592"
+        }
+      ]
     }
   ]
 }

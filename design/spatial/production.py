@@ -68,8 +68,12 @@ def metric_uv(obj, repeat=1.83):
 
 def box(name, pos, size, mat, bevel=.008):
     mesh=bpy.data.meshes.new(name)
-    mesh.from_pydata([(x*size[0]/2,y*size[1]/2,z*size[2]/2) for x,y,z in [(-1,-1,-1),(-1,-1,1),(-1,1,-1),(-1,1,1),(1,-1,-1),(1,-1,1),(1,1,-1),(1,1,1)]],[],[(0,4,6,2),(1,3,7,5),(0,1,5,4),(2,6,7,3),(0,2,3,1),(4,5,7,6)])
+    vertices=[(x*size[0]/2,y*size[1]/2,z*size[2]/2) for x,y,z in [(-1,-1,-1),(-1,-1,1),(-1,1,-1),(-1,1,1),(1,-1,-1),(1,-1,1),(1,1,-1),(1,1,1)]]
+    faces=[(0,2,6,4),(1,5,7,3),(0,4,5,1),(2,3,7,6),(0,1,3,2),(4,6,7,5)]
+    mesh.from_pydata(vertices,[],faces)
     mesh.update();o=bpy.data.objects.new(name,mesh);scene.collection.objects.link(o);o.location=pos
+    # Closed solids must face outward, especially for entering/exiting glass.
+    assert all(face.normal.dot(face.center)>0 for face in mesh.polygons), name+' has inward normals'
     o.data.materials.append(mat); metric_uv(o)
     if bevel:
         b = o.modifiers.new('Manufactured edge radius','BEVEL'); b.width = bevel; b.segments = 3
