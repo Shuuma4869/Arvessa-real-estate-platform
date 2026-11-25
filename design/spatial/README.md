@@ -17,12 +17,22 @@ $blender = '.agent-work/photoreal/tools/blender-4.5.9-windows-x64/blender.exe'
 & $blender --background --factory-startup --disable-autoexec --python-exit-code 1 --python design/spatial/build-interior.py -- living kitchen dollhouse panorama
 & $blender --background --factory-startup --disable-autoexec --python-exit-code 1 --python design/spatial/export-web.py -- Stillwater
 & $blender --background --factory-startup --disable-autoexec --python-exit-code 1 --python design/spatial/export-web.py -- A0302
+& $blender --background --factory-startup --disable-autoexec --python-exit-code 1 --python design/spatial/prepare-environment.py
 node design/spatial/optimize-web.mjs
+node design/spatial/verify-web.mjs
 ```
 
 Windows x64, Blender 4.5.9 LTS được ghim SHA-256. `production.reset()` chọn HIP nếu có GPU AMD tương thích; máy khác cần chọn backend Cycles được hỗ trợ. Các phép đo chỉ áp dụng cho máy ghi trong báo cáo, không phải cam kết hiệu năng cho mọi máy.
 
+Trang `/spatial-review` mặc định tải vật liệu 512 px (`*-balanced.glb`); người xem có thể chọn 1024 px. Hai mức giữ cùng hình học và vùng chọn. `--models-only` chỉ xuất model, `--images-only` chỉ cập nhật ảnh/HDRI/report. `verify-web.mjs` kiểm tra cả bốn GLB và giải nén Meshopt trước khi kiểm tra tangent. Các thông báo “unsupported extension” của validator không phải chứng nhận GPU instancing; bước chạy viewer thực tế vẫn bắt buộc.
+
+Để chỉnh riêng góc dollhouse từ scene đã lưu trên máy HIP, chạy `render-saved-view.py` bằng Blender như các script trên. Script này không sửa source `.blend`; nó bỏ các đối tượng cutaway/context và dùng cùng camera cao 22 m như bản dựng chính. Chạy lại `optimize-web.mjs --images-only` để cập nhật ảnh web.
+
 Không chạy đồng thời các scene nặng trên máy RAM 16 GB. File tải có checksum; một file có sẵn sai checksum sẽ làm script dừng, không bị ghi đè. Không có thông tin đăng nhập hoặc API trả phí.
+
+HDRI web là bản float HDR 512 × 256 từ cùng nguồn 2K, giảm chi phí tạo bản đồ phản xạ PMREM lúc tải lạnh. HDRI dùng trong Cycles giữ nguyên. Đây là tối ưu thời gian thực, không phải cải thiện chất lượng ảnh offline.
+
+Chế độ cân bằng dùng alpha blending có phản xạ môi trường cho kính/nước; chế độ chi tiết giữ screen-space transmission. Hai chế độ đều là hình học 3D, có thể xoay/chọn, và không tương đương path tracing. LOD Stillwater giảm riêng chậu, đất trong chậu và thân cây ở góc nhìn tổng thể; không áp dụng mức giảm đó vào nội thất A0302 hoặc source Cycles.
 
 ## Nguồn và cấu trúc
 

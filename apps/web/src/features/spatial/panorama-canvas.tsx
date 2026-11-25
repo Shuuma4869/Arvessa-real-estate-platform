@@ -9,12 +9,17 @@ export default function PanoramaCanvas({
   onRoom,
   onFallback,
   reset,
+  panoramaUrl,
+  initialYaw,
 }: {
   layout: ResidenceLayout;
   room: string;
   onRoom: (id: string) => void;
   onFallback: () => void;
   reset: number;
+  /** An isolated review panorama; no links to unrelated room images. */
+  panoramaUrl?: string;
+  initialYaw?: number;
 }) {
   const host = useRef<HTMLDivElement>(null),
     select = useRef(onRoom);
@@ -56,7 +61,7 @@ export default function PanoramaCanvas({
     });
     scene.add(new THREE.Mesh(geo, mat));
     new THREE.TextureLoader().load(
-      `/images/tours/${layout.beds}br-${room}.webp`,
+      panoramaUrl || `/images/tours/${layout.beds}br-${room}.webp`,
       (t) => {
         if (disposed) {
           t.dispose();
@@ -78,7 +83,7 @@ export default function PanoramaCanvas({
       1.55,
       current.z + current.d / 2,
     );
-    const dots = tourRooms
+    const dots = (panoramaUrl ? [] : tourRooms)
       .filter((id) => id !== room)
       .map((id) => {
         const r = layout.rooms.find((r) => r.id === id)!;
@@ -94,7 +99,8 @@ export default function PanoramaCanvas({
         el.append(button);
         return { button, direction };
       });
-    let yaw = room === "living" || room === "kitchen" ? Math.PI : 0,
+    let yaw =
+        initialYaw ?? (room === "living" || room === "kitchen" ? Math.PI : 0),
       pitch = 0,
       down: { x: number; y: number; pointer: number } | null = null;
     const pointers = new Map<number, { x: number; y: number }>();
@@ -231,7 +237,7 @@ export default function PanoramaCanvas({
       canvas.remove();
       dots.forEach((d) => d.button.remove());
     };
-  }, [layout, room, onFallback, reset]);
+  }, [layout, room, onFallback, reset, panoramaUrl, initialYaw]);
   return (
     <div className="panorama-canvas" ref={host}>
       {loading && (

@@ -24,6 +24,12 @@ for objects in groups.values():
     source = obj.get('source_asset')
     count = len(obj.data.polygons)
     ratio = .018 if source == 'jacaranda_tree' and count > 100000 else .12 if source == 'potted_plant_02' and count > 20000 else 1
+    # At exterior viewing distance, pots/soil and trunks cost more triangles
+    # than their visible contribution. Keep leaves and the interior unchanged.
+    if name == 'Stillwater':
+        if source == 'potted_plant_02' and 'dirt' in obj.name: ratio = .005
+        elif source == 'potted_plant_02' and '_pot.' in obj.name: ratio = .2
+        elif source == 'jacaranda_tree' and 'trunk' in obj.name: ratio = .2
     if ratio < 1:
         obj.data = obj.data.copy()
         bpy.ops.object.select_all(action='DESELECT'); obj.select_set(True); bpy.context.view_layer.objects.active = obj
@@ -59,6 +65,7 @@ for obj in bpy.context.scene.objects:
 report = {'file':target.name,'bytes':target.stat().st_size,'scene_triangles':triangles,
     'export_seconds':time.perf_counter()-start,'texture_max_dimension':1024,
     'source_scene':name+'.blend','quality':'balanced derivative; visual approval pending',
-    'tree_decimation_ratio':.018,'plant_soil_decimation_ratio':.12}
+    'tree_decimation_ratio':.018,'plant_soil_decimation_ratio':.005 if name == 'Stillwater' else .12,
+    'exterior_pot_and_trunk_ratio':.2 if name == 'Stillwater' else None}
 (OUT / (name + '.stats.json')).write_text(json.dumps(report, indent=2))
 print('EXPORT_REPORT', json.dumps(report), flush=True)

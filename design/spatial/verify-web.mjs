@@ -13,7 +13,12 @@ const io = new NodeIO()
   .registerExtensions(ALL_EXTENSIONS)
   .registerDependencies({ "meshopt.decoder": MeshoptDecoder });
 const results = [];
-for (const name of ["Stillwater", "A0302"]) {
+for (const name of [
+  "Stillwater",
+  "A0302",
+  "Stillwater-balanced",
+  "A0302-balanced",
+]) {
   const file = new URL(`${name}.glb`, output);
   const bytes = await readFile(file);
   const document = await io.read(fileURLToPath(file));

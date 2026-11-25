@@ -125,6 +125,28 @@ for (const name of process.argv.includes("--images-only")
       await readFile(resolve(source, `web-raw/${name}.stats.json`), "utf8"),
     ),
   });
+  const balanced = resolve(output, `${name}-balanced.glb`);
+  const balancedRaw = resolve(source, `web-raw/${name}-balanced.glb`);
+  execFileSync(
+    process.execPath,
+    [
+      cli,
+      "resize",
+      resolve(source, `web-raw/${name}-tangent-repaired.glb`),
+      balancedRaw,
+      "--width",
+      "512",
+      "--height",
+      "512",
+    ],
+    { stdio: "inherit" },
+  );
+  execFileSync(
+    process.execPath,
+    [cli, "meshopt", balancedRaw, balanced, "--level", "medium"],
+    { stdio: "inherit" },
+  );
+  report.models.at(-1).balancedBytes = (await stat(balanced)).size;
 }
 for (const name of process.argv.includes("--models-only")
   ? []
@@ -154,11 +176,11 @@ await copyFile(
   resolve(output, "stillwater-interaction.json"),
 );
 await copyFile(
-  resolve(
-    root,
-    ".agent-work/photoreal/library/kloofendal_48d_partly_cloudy_puresky/environment.hdr",
-  ),
+  resolve(source, "daylight-web.hdr"),
   resolve(output, "daylight.hdr"),
+);
+report.environment = JSON.parse(
+  await readFile(resolve(source, "daylight-web.json"), "utf8"),
 );
 await writeFile(
   resolve(output, "production-report.json"),
