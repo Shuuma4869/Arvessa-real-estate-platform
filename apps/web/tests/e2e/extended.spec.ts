@@ -245,6 +245,7 @@ test("actual 3D pointer raycast selects a different unit and supports drag", asy
     { steps: 12 },
   );
   await page.mouse.up();
+  await expect(canvas).toHaveAttribute("data-render-scale", "1");
   await page.getByRole("button", { name: "Ban đêm" }).click();
   await expect(page.locator("canvas")).toBeVisible();
 });

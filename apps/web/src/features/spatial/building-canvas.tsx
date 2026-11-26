@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { interactionResolution } from "./interaction-resolution";
 import { createArchitecturalModel } from "./architectural-model";
 import {
   CSS2DRenderer,
@@ -242,6 +243,10 @@ export default function BuildingCanvas({
       transitioning = false;
     };
     controls.addEventListener("start", cancelTransition);
+    let resolutionDirty = false;
+    const releaseResolution = interactionResolution(renderer, controls, () => {
+      resolutionDirty = true;
+    });
     let lastTime = 0,
       previousState = "",
       firstFrame = true,
@@ -252,10 +257,13 @@ export default function BuildingCanvas({
       // Cap to 30 FPS and suspend drawing in background tabs.
       const time = performance.now();
       if (document.hidden || time - lastTime < 32) return;
-      const elapsed = Math.min((time - lastTime) / 1000, 0.1);
+      const deltaSeconds = Math.min((time - lastTime) / 1000, 0.5);
+      const elapsed = Math.min(deltaSeconds, 0.1);
       lastTime = time;
       const reduce = reducedQuery.matches || motionRef.current;
       controls.enableDamping = !reduce;
+      // A fixed fraction per frame leaves long inertia tails on slow renderers.
+      controls.dampingFactor = 1 - Math.exp(-deltaSeconds * 12);
       if (lastView !== viewRef.current) {
         lastView = viewRef.current;
         const h = project.floors * 1.4;
@@ -312,9 +320,16 @@ export default function BuildingCanvas({
         container.clientWidth,
         container.clientHeight,
       ].join("|");
-      if (!firstFrame && !changed && !transitioning && previousState === state)
+      if (
+        !firstFrame &&
+        !resolutionDirty &&
+        !changed &&
+        !transitioning &&
+        previousState === state
+      )
         return;
       firstFrame = false;
+      resolutionDirty = false;
       previousState = state;
       renderer.render(scene, camera);
       renderer.domElement.dataset.renderCount = String(++renderCount);
@@ -333,6 +348,7 @@ export default function BuildingCanvas({
       disposed = true;
       cancelAnimationFrame(frame);
       resize.disconnect();
+      releaseResolution();
       controls.dispose();
       controls.removeEventListener("start", cancelTransition);
       environment.dispose();

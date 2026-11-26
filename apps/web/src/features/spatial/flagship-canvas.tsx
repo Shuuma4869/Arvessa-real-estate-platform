@@ -5,6 +5,7 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
 import { HDRLoader } from "three/addons/loaders/HDRLoader.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { interactionResolution } from "./interaction-resolution";
 import { residenceLayout } from "./residence-layout";
 
 type Props = {
@@ -101,6 +102,11 @@ export default function FlagshipCanvas({
       dirty = true;
     };
     controls.addEventListener("change", invalidate);
+    const releaseResolution = interactionResolution(
+      renderer,
+      controls,
+      invalidate,
+    );
     scene.add(new THREE.HemisphereLight(0xfaf5e8, 0x555b48, 0.8));
     const sun = new THREE.DirectionalLight(0xffeed6, 2.3);
     sun.position.set(-30, 60, 30);
@@ -422,6 +428,7 @@ export default function FlagshipCanvas({
       disposed = true;
       cancelAnimationFrame(frame);
       resize.disconnect();
+      releaseResolution();
       controls.dispose();
       renderer.domElement.removeEventListener("pointerdown", press);
       renderer.domElement.removeEventListener("pointerup", release);

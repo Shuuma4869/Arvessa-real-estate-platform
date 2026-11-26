@@ -70,6 +70,12 @@ Raycast đổi lựa chọn Stillwater từ A0302 sang A0401 và A0302 từ phò
 
 Typecheck, lint và production build đạt; 64/64 unit/component và 42/42 E2E đạt trong 230 giây, không skipped/flaky. Sau khi nâng góc camera GLB A0302 ngày 26.11, build và lint file thay đổi đạt; ba bài flagship chạy lại đều đạt trong 42,6 giây. Bộ E2E gồm 39 luồng đã có và 3 bài flagship; giữ expect 12 giây/test 45 giây. Bao phủ orbit, lựa chọn căn/phòng, context recovery, panorama keyboard/mobile cùng Buyer, CRM, Management, booking/payment và phân quyền. [checks.json](evidence/photoreal/checks.json) ghi kết quả; ảnh ứng dụng và phép đo browser là lớp kiểm chứng riêng.
 
+## Sửa độ trễ trên WebGL phần mềm
+
+CI đầu tại `3d0aaab` có 40/42 bài đạt; hai bài kéo xoay tòa nhà quá 45 giây. Trace ghi thao tác mouse move mất 35,2 giây ở Explorer và 28,4 giây ở flagship; GLB Stillwater tải 2,4 giây. Đã thêm giảm độ phân giải canvas **chỉ trong lúc kéo trên renderer phần mềm**, trả về DPR đầy đủ khi dừng. Mô hình/vật liệu giữ nguyên, renderer phần cứng giữ DPR cũ. Hai bài còn kiểm tra việc khôi phục DPR, giữ nguyên timeout và assertions nghiệp vụ.
+
+Lượt local ép SwiftShader đạt cả hai bài (11,1 giây và 25,3 giây; tổng 37,8 giây). Đây là kiểm tra phản hồi trên phần mềm, không phải số đo FPS trên AMD Radeon ở bảng phía trên. Đánh đổi độ nét tạm thời trong lúc xoay được công khai trong pipeline README. Một lượt full tiếp theo có 41/42 bài đạt và phát hiện quán tính Explorer kéo dài ở tốc độ khung hình thấp. Đã chuyển damping sang thời gian thực giữa các frame; hai bài mặc định chạy lại đạt 14,1 s và 26,6 s (tổng 41,9 s), gồm assertion trở về DPR 1. [Kiểm tra renderer](evidence/photoreal/interaction-resolution.json) ghi SwiftShader 1 → 0,65 → 1 và AMD Radeon giữ 1 → 1 → 1. Kết quả full CI của commit cuối nằm tại PR #1.
+
 ## Giới hạn và tài nguyên cần bổ sung
 
 1. Cần scene kiến trúc do nghệ sĩ archviz hoàn thiện: chi tiết giao tiếp vật liệu, mái/cảnh quan, bối cảnh đô thị và quy hoạch tương ứng Stillwater. Model phải được cấp phép sửa và phân phối trong ứng dụng web; ảnh render có quyền sử dụng thương mại là chưa đủ để phân phối GLB.

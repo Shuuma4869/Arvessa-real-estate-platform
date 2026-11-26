@@ -77,3 +77,11 @@ Models/textures/HDRI Poly Haven: [CC0](https://polyhaven.com/license). Tác gi�
 Asset gỗ/đá/vải có albedo, roughness và normal. Vải cream dùng normal/roughness nguồn với albedo nhuộm trơn; kim loại, kính, nước và sơn dùng shader vật lý riêng. Không khẳng định mọi vật liệu đều là photoscan. HDRI ban ngày và hoàng hôn được ghi trong source; Cycles 128 samples, denoise, AgX Medium High Contrast, 10 bounces, transmission 8. Các thời gian render được ghi ngay sau mỗi lần render.
 
 Tham khảo kỹ thuật: [Blender 4.5 texture coordinates](https://docs.blender.org/manual/en/4.5/render/shader_nodes/input/texture_coordinate.html), [glTF Transform CLI](https://gltf-transform.dev/cli), [Khronos Validator](https://github.com/KhronosGroup/glTF-Validator). Các kết quả validator, E2E hoặc FPS không thay thế nghiệm thu thị giác.
+
+## Tương tác trên trình dựng phần mềm
+
+Canvas Building Explorer và flagship nhận diện renderer WebGL thực qua `WEBGL_debug_renderer_info`. Chỉ với SwiftShader/llvmpipe/softpipe, độ phân giải canvas giảm tạm về tối đa DPR 0,65 khi kéo/xoay, rồi về DPR đầy đủ sau khi OrbitControls dừng thay đổi 240 ms. Geometry, texture, ánh sáng và ảnh Cycles giữ nguyên. Máy có GPU phần cứng không áp dụng chế độ này. Đây là đánh đổi độ nét trong lúc chuyển động để giữ phản hồi, không phải cải thiện photorealism.
+
+Hai bài raycast/exterior kiểm tra canvas trở về DPR 1 sau khi kéo trong viewport test. Có thể tái lập WebGL phần mềm bằng Chromium `--use-gl=angle --use-angle=swiftshader`, theo [tài liệu Chromium](https://chromium.googlesource.com/chromium/src/+/main/docs/gpu/swiftshader.md). Không tăng timeout hoặc bỏ assertion để che độ trễ.
+
+Explorer dùng damping theo thời gian giữa các frame để quán tính không kéo dài trên trình dựng chậm. Khôi phục độ phân giải vẫn phải vượt qua assertion; không giữ canvas ở mức thấp để làm bài kiểm thử đạt.

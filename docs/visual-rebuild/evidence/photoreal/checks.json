@@ -37,11 +37,29 @@
         "unexpected": 0,
         "flaky": 0
       }
+    },
+    "softwareInteractionFix": {
+      "build": "PASS",
+      "lint": "PASS",
+      "defaultBrowserTargetedE2E": {
+        "startTime": "2026-11-26T00:48:16.348Z",
+        "duration": 41916.418000000005,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "intermediateFullRun": {
+        "passed": 41,
+        "failed": 1,
+        "cause": "frame-based damping kept software preview downscaled too long; replaced by time-based damping"
+      },
+      "rendererAndRestoreProbe": "interaction-resolution.json"
     }
   },
   "scope": "42 E2E include original 39 workflows plus 3 flagship tests; assertions and 12s expect/45s test deadlines retained",
   "visualApproval": "PENDING",
-  "ci": "See PR #1 checks for exact published commit",
+  "ci": "First run 45689169080: 40/42, two drag timeouts. Fix awaiting full CI on new commit; see PR #1.",
   "updated": "2026-11-26",
   "browserReview": {
     "date": "2026-11-26",

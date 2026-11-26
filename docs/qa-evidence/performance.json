@@ -7,19 +7,17 @@
     {
       "profile": "desktop-local",
       "run": 1,
-      "lcp": 192,
+      "lcp": 184,
       "cls": 0.05238935391649788,
       "events": [
-        224,
-        224,
-        224,
-        248,
-        248,
-        248
+        216,
+        216,
+        216,
+        232,
+        232,
+        232
       ],
-      "longTasks": [
-        108
-      ],
+      "longTasks": [],
       "supported": [
         "element",
         "event",
@@ -37,25 +35,23 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 958045,
+      "transferBytes": 958029,
       "resources": 52
     },
     {
       "profile": "desktop-local",
       "run": 2,
-      "lcp": 192,
+      "lcp": 180,
       "cls": 0.05238935391649788,
       "events": [
-        240,
-        240,
-        240,
-        328,
-        328,
-        328
+        232,
+        224,
+        224,
+        232,
+        232,
+        232
       ],
-      "longTasks": [
-        108
-      ],
+      "longTasks": [],
       "supported": [
         "element",
         "event",
@@ -73,24 +69,24 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 958041,
+      "transferBytes": 958028,
       "resources": 52
     },
     {
       "profile": "desktop-local",
       "run": 3,
-      "lcp": 196,
+      "lcp": 188,
       "cls": 0.05238935391649788,
       "events": [
-        328,
-        328,
-        328,
-        320,
-        320,
-        320
+        232,
+        232,
+        232,
+        240,
+        240,
+        240
       ],
       "longTasks": [
-        108
+        109
       ],
       "supported": [
         "element",
@@ -109,25 +105,69 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 958044,
+      "transferBytes": 958032,
       "resources": 52
     },
     {
       "profile": "mobile-lab-4x-cpu",
       "run": 1,
-      "lcp": 1796,
+      "lcp": 1832,
       "cls": 0.00004597346995281398,
       "events": [
-        64,
-        64,
-        64,
-        88,
-        88,
-        88
+        152,
+        152,
+        152,
+        128,
+        128,
+        128
       ],
       "longTasks": [
-        173,
-        106,
+        183,
+        131,
+        55,
+        73,
+        64
+      ],
+      "supported": [
+        "element",
+        "event",
+        "first-input",
+        "interaction-contentful-paint",
+        "largest-contentful-paint",
+        "layout-shift",
+        "long-animation-frame",
+        "longtask",
+        "mark",
+        "measure",
+        "navigation",
+        "paint",
+        "resource",
+        "soft-navigation",
+        "visibility-state"
+      ],
+      "transferBytes": 608572,
+      "resources": 47
+    },
+    {
+      "profile": "mobile-lab-4x-cpu",
+      "run": 2,
+      "lcp": 1816,
+      "cls": 0.00010693419527172139,
+      "events": [
+        168,
+        168,
+        168,
+        168,
+        168,
+        168
+      ],
+      "longTasks": [
+        224,
+        89,
+        98,
+        57,
+        71,
+        63,
         50
       ],
       "supported": [
@@ -147,62 +187,30 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 498905,
-      "resources": 42
-    },
-    {
-      "profile": "mobile-lab-4x-cpu",
-      "run": 2,
-      "lcp": 1780,
-      "cls": 0.00004597346995281398,
-      "events": [
-        64,
-        64,
-        64,
-        72,
-        72,
-        72
-      ],
-      "longTasks": [
-        165,
-        104
-      ],
-      "supported": [
-        "element",
-        "event",
-        "first-input",
-        "interaction-contentful-paint",
-        "largest-contentful-paint",
-        "layout-shift",
-        "long-animation-frame",
-        "longtask",
-        "mark",
-        "measure",
-        "navigation",
-        "paint",
-        "resource",
-        "soft-navigation",
-        "visibility-state"
-      ],
-      "transferBytes": 518236,
-      "resources": 43
+      "transferBytes": 608575,
+      "resources": 47
     },
     {
       "profile": "mobile-lab-4x-cpu",
       "run": 3,
-      "lcp": 1804,
-      "cls": 0.00004597346995281398,
+      "lcp": 1776,
+      "cls": 0.00004615232353617048,
       "events": [
-        64,
-        64,
-        64,
-        88,
-        88,
-        88
+        152,
+        152,
+        152,
+        160,
+        160,
+        160
       ],
       "longTasks": [
-        164,
-        105
+        204,
+        151,
+        55,
+        104,
+        69,
+        56,
+        54
       ],
       "supported": [
         "element",
@@ -221,8 +229,8 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 518235,
-      "resources": 43
+      "transferBytes": 608573,
+      "resources": 47
     }
   ]
 }

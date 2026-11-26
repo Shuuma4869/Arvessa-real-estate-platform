@@ -9,6 +9,12 @@ test("flagship exterior loads a real GLB, rotates, and keeps inventory links", a
   await page.getByRole("button", { name: "Mô hình 3D", exact: true }).click();
   const model = page.getByTestId("flagship-model");
   await expect(model).toHaveAttribute("data-loaded", "true");
+  await testInfo.attach("WebGL renderer", {
+    body:
+      (await model.locator("canvas").getAttribute("data-renderer")) ||
+      "unavailable",
+    contentType: "text/plain",
+  });
   await testInfo.attach("GLB load time (traced test browser)", {
     body: (await model.getAttribute("data-load-ms")) || "unavailable",
     contentType: "text/plain",
@@ -28,6 +34,10 @@ test("flagship exterior loads a real GLB, rotates, and keeps inventory links", a
   );
   await page.mouse.up();
   await expect(model).not.toHaveAttribute("data-camera", before || "");
+  await expect(model.locator("canvas")).toHaveAttribute(
+    "data-render-scale",
+    "1",
+  );
   await page.getByLabel("Tháp", { exact: true }).selectOption("B");
   await page.getByLabel("Tầng", { exact: true }).selectOption("4");
   await page.getByRole("button", { name: /B0403/ }).click();
