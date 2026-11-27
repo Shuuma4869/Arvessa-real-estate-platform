@@ -502,7 +502,7 @@
   box-shadow:
     0 28px 65px #10251c50,
     inset 0 1px #fff;
-  backdrop-filter: blur(18px);
+  will-change: transform;
   transform: translateX(calc(-50% + var(--offset) * 265px))
     translateZ(calc(var(--distance) * -185px))
     rotateY(calc(var(--offset) * -23deg));

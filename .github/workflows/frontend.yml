@@ -12,7 +12,7 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     defaults:
       run:
         working-directory: apps/web
@@ -36,13 +36,22 @@ jobs:
       - run: npm run build
       - run: npx playwright install --with-deps chromium --only-shell
       - run: npm run test:e2e
+      - run: npx playwright install --with-deps firefox webkit
+      - name: Firefox buyer and workspace workflows
+        env:
+          ARVESSA_E2E_ENGINE: firefox
+        run: npm run test:e2e -- --grep 'buyer favorites persist|all nine demo roles|deposit → legal version|discovery filters'
+      - name: WebKit buyer and workspace workflows
+        env:
+          ARVESSA_E2E_ENGINE: webkit
+        run: npm run test:e2e -- --grep 'buyer favorites persist|all nine demo roles|deposit → legal version|discovery filters'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: frontend-browser-evidence
           path: |
-            .agent-work/e2e-results.json
-            .agent-work/playwright-report
-            .agent-work/test-results
+            .agent-work/e2e-results*.json
+            .agent-work/playwright-report*
+            .agent-work/test-results*
           include-hidden-files: true
           retention-days: 7

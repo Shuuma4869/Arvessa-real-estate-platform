@@ -87,8 +87,8 @@ test("masterplan selects the same unit across geometry tiers", async ({
   await site
     .getByRole("button", { name: "Khám phá tháp B", exact: true })
     .click();
-  await site.getByLabel("Tầng", { exact: true }).selectOption("4");
-  await site.getByLabel("căn phù hợp", { exact: false }).selectOption("B0402");
+  await site.getByRole("combobox", { name: "Tầng", exact: true }).selectOption("4");
+  await site.getByRole("combobox", { name: /căn phù hợp/ }).selectOption("B0402");
   await expect(site.getByRole("link", { name: "Xem căn B0402" })).toBeVisible();
   await site.getByRole("button", { name: "Khám phá tổng thể 3D" }).click();
   const canvas = site.locator("canvas");

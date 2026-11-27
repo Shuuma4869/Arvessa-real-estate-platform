@@ -6,12 +6,36 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-size: cover;
-  background-position: center;
-  filter: blur(32px) saturate(0.72);
+  --sky: #7886a9;
+  --horizon: #59544f;
+  --ground: #5e635b;
+  background:
+    radial-gradient(ellipse at 10% 18%, var(--sky), transparent 62%),
+    radial-gradient(ellipse at 92% 20%, var(--horizon), transparent 64%),
+    var(--ground);
   opacity: 0.48;
   pointer-events: none;
   mask-image: linear-gradient(transparent, #000 21%, #000 76%, transparent);
+}
+.collection-atmosphere[data-project="cedar"] {
+  --sky: #676144;
+  --horizon: #7c6e52;
+  --ground: #726950;
+}
+.collection-atmosphere[data-project="horizon"] {
+  --sky: #98abd4;
+  --horizon: #71737c;
+  --ground: #74716d;
+}
+.collection-atmosphere[data-project="A0301"] {
+  --sky: #624c37;
+  --horizon: #89755d;
+  --ground: #91775f;
+}
+.collection-atmosphere[data-project="A0302"] {
+  --sky: #98927b;
+  --horizon: #87715c;
+  --ground: #81705f;
 }
 .coverflow-actions,
 .explorer-unit-actions {

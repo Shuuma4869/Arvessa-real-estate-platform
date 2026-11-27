@@ -90,9 +90,7 @@ export function ImmersivePropertyCarousel() {
       <div
         aria-hidden="true"
         className="collection-atmosphere"
-        style={{
-          backgroundImage: `url("${cards[current].image.replace("-1600.webp", "-480.webp")}")`,
-        }}
+        data-project={cards[current].id}
       />
       <div
         className="coverflow-stage"

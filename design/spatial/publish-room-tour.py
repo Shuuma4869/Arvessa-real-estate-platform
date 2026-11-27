@@ -70,3 +70,18 @@ for room in stations:
     report.append(record)
 evidence = root / 'docs/frontend-definitive/evidence'
 (evidence / 'room-tour.json').write_text(json.dumps(report,indent=2)+'\n')
+
+# Publish the cutaway from the same saved assembly as the room cameras.
+source_dir = input_dir.parent
+cutaway = Image.open(source_dir / 'A0302-dollhouse.png').convert('RGB')
+web_file = public.parent / 'A0302-dollhouse.webp'
+cutaway.save(web_file, quality=92, method=6)
+capture = json.loads((source_dir / 'A0302-dollhouse.render.json').read_text())
+capture.update(webFile=web_file.name, webBytes=web_file.stat().st_size)
+manifest = public.parent / 'production-report.json'
+production = json.loads(manifest.read_text())
+photos = production['photographs']
+index = next((i for i, photo in enumerate(photos) if photo['file'] == capture['file']), len(photos))
+if index == len(photos) or photos[index] != capture:
+    photos[index:index + 1] = [capture]
+    manifest.write_text(json.dumps(production, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
