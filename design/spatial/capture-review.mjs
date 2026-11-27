@@ -8,7 +8,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 process.env.PLAYWRIGHT_BROWSERS_PATH ||= resolve(root, ".agent-work/browsers");
 const require = createRequire(resolve(root, "apps/web/package.json"));
 const { chromium } = require("@playwright/test");
-const out = resolve(root, "docs/visual-rebuild/evidence/photoreal");
+const out = resolve(root, "docs/frontend-definitive/evidence/realtime");
 await mkdir(out, { recursive: true });
 const browser = await chromium.launch({
   headless: true,
@@ -72,14 +72,15 @@ try {
     ["A0302", "Residence A0302"],
   ]) {
     await page.getByRole("button", { name: new RegExp(label) }).click();
+    await page.getByRole("button", { name: "Ảnh Cycles", exact: true }).click();
     const photoNames =
       scene === "Stillwater"
         ? ["Ánh sáng ban ngày", "Giờ vàng", "Toàn cảnh dự án"]
-        : ["Dollhouse", "Phòng khách", "Bếp & phòng ăn"];
+        : ["Dollhouse", "Phòng khách", "Bếp"];
     for (let i = 0; i < photoNames.length; i++) {
       await page
         .locator(".flagship-view-controls")
-        .getByRole("button", { name: photoNames[i], exact: true })
+        .getByRole("button", { name: `Xem ảnh ${photoNames[i]}`, exact: true })
         .click();
       await page
         .locator(".flagship-photograph img")
@@ -87,6 +88,7 @@ try {
       await shot(`${scene}-photo-${i}-1440`);
     }
     await page.getByRole("button", { name: "Mô hình 3D", exact: true }).click();
+    await page.getByLabel("Chất lượng vật liệu").selectOption("balanced");
     const model = page.getByTestId("flagship-model");
     await model.waitFor();
     await page.waitForFunction(
@@ -132,7 +134,7 @@ try {
     );
     results.measurements.push({
       scene,
-      quality: await page.getByLabel("Chất lượng vật liệu").inputValue(),
+      quality: await model.getAttribute("data-quality"),
       device: "desktop viewport",
       ...JSON.parse(await model.getAttribute("data-benchmark")),
     });
@@ -162,10 +164,10 @@ try {
     await shot(`${scene}-glb-high-1440`);
     results.qualitySwitches.push({
       scene,
-      quality: await page.getByLabel("Chất lượng vật liệu").inputValue(),
+      quality: await model.getAttribute("data-quality"),
       loaded: await model.getAttribute("data-loaded"),
     });
-    await page.getByLabel("Chất lượng vật liệu").selectOption("balanced");
+    await page.getByLabel("Chất lượng vật liệu").selectOption("light");
     await page.setViewportSize({ width: 390, height: 844 });
     // Remount so mobile DPR and shadow policy reflect a cold mobile viewport.
     await page.getByRole("button", { name: "Ảnh Cycles", exact: true }).click();
@@ -193,7 +195,7 @@ try {
     );
     results.measurements.push({
       scene,
-      quality: await page.getByLabel("Chất lượng vật liệu").inputValue(),
+      quality: await model.getAttribute("data-quality"),
       device: "mobile viewport emulation, same desktop hardware",
       ...JSON.parse(await model.getAttribute("data-benchmark")),
     });
@@ -202,7 +204,7 @@ try {
     );
     if (scene === "A0302") {
       await page
-        .getByRole("button", { name: "Phòng khách 360°", exact: true })
+        .getByRole("button", { name: "Tour căn hộ 360°", exact: true })
         .click();
       await page
         .locator(".flagship-tour canvas")

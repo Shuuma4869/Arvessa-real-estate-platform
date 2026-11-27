@@ -1,0 +1,294 @@
+[
+  {
+    "room": "living",
+    "source": "A0302.blend",
+    "camera": [
+      3.799999952316284,
+      -6.800000190734863,
+      1.5499999523162842
+    ],
+    "rotation": [
+      1.5707964897155762,
+      -0.0,
+      0.0
+    ],
+    "width": 2048,
+    "height": 1024,
+    "samples": 64,
+    "seconds": 127.63,
+    "engine": "CYCLES",
+    "blender": "4.5.9 LTS",
+    "device": [
+      "AMD Radeon(TM) Graphics"
+    ],
+    "transform": "AgX",
+    "panorama": "A0302-living-360.webp",
+    "bytes": 121078,
+    "sha256": "7f2ed5def4b29342e880afa334ac2ad01e8536a45f64fa8d3f3ac2b25fc4699f",
+    "views": [
+      {
+        "file": "A0302-living.webp",
+        "yaw": -1.03,
+        "pitch": -0.14,
+        "horizontalFov": 83
+      }
+    ]
+  },
+  {
+    "room": "kitchen",
+    "source": "A0302.blend",
+    "camera": [
+      7.119999885559082,
+      -6.239999771118164,
+      1.5499999523162842
+    ],
+    "rotation": [
+      1.5707964897155762,
+      -0.0,
+      0.0
+    ],
+    "width": 2048,
+    "height": 1024,
+    "samples": 64,
+    "seconds": 114.93,
+    "engine": "CYCLES",
+    "blender": "4.5.9 LTS",
+    "device": [
+      "AMD Radeon(TM) Graphics"
+    ],
+    "transform": "AgX",
+    "panorama": "A0302-kitchen-360.webp",
+    "bytes": 168086,
+    "sha256": "a390a648d5f62c6f75ee501ae6009892aecb981eaab5c42aa2b14976973ccc48",
+    "views": [
+      {
+        "file": "A0302-kitchen.webp",
+        "yaw": 0.61,
+        "pitch": -0.12,
+        "horizontalFov": 86
+      },
+      {
+        "file": "A0302-dining.webp",
+        "yaw": 2.49,
+        "pitch": -0.23,
+        "horizontalFov": 100
+      },
+      {
+        "file": "A0302-joinery.webp",
+        "yaw": 0.73,
+        "pitch": -0.33,
+        "horizontalFov": 51
+      }
+    ]
+  },
+  {
+    "room": "hall",
+    "source": "A0302.blend",
+    "camera": [
+      4.800000190734863,
+      -4.190000057220459,
+      1.5499999523162842
+    ],
+    "rotation": [
+      1.5707964897155762,
+      -0.0,
+      0.0
+    ],
+    "width": 2048,
+    "height": 1024,
+    "samples": 64,
+    "seconds": 128.17,
+    "engine": "CYCLES",
+    "blender": "4.5.9 LTS",
+    "device": [
+      "AMD Radeon(TM) Graphics"
+    ],
+    "transform": "AgX",
+    "panorama": "A0302-hall-360.webp",
+    "bytes": 161340,
+    "sha256": "4014a0bf94130b41e21661bb7b86e4e3e6298630d60d00e972e59f2906b1cc94",
+    "views": [
+      {
+        "file": "A0302-hall.webp",
+        "yaw": -1.51,
+        "pitch": -0.04,
+        "horizontalFov": 86
+      }
+    ]
+  },
+  {
+    "room": "bedroom-1",
+    "source": "A0302.blend",
+    "camera": [
+      3.369999885559082,
+      -3.049999952316284,
+      1.5499999523162842
+    ],
+    "rotation": [
+      1.5707964897155762,
+      -0.0,
+      0.0
+    ],
+    "width": 2048,
+    "height": 1024,
+    "samples": 64,
+    "seconds": 125.3,
+    "engine": "CYCLES",
+    "blender": "4.5.9 LTS",
+    "device": [
+      "AMD Radeon(TM) Graphics"
+    ],
+    "transform": "AgX",
+    "panorama": "A0302-bedroom-1-360.webp",
+    "bytes": 85742,
+    "sha256": "34a40f5fd4719d817d67ded76d04dc173899dfc0e3fd6cf05d19ce0fa505c23c",
+    "views": [
+      {
+        "file": "A0302-bedroom-1.webp",
+        "yaw": -0.74,
+        "pitch": -0.14,
+        "horizontalFov": 83
+      }
+    ]
+  },
+  {
+    "room": "bedroom-2",
+    "source": "A0302.blend",
+    "camera": [
+      7.449999809265137,
+      -3.059999942779541,
+      1.5499999523162842
+    ],
+    "rotation": [
+      1.5707964897155762,
+      -0.0,
+      0.0
+    ],
+    "width": 2048,
+    "height": 1024,
+    "samples": 64,
+    "seconds": 127.25,
+    "engine": "CYCLES",
+    "blender": "4.5.9 LTS",
+    "device": [
+      "AMD Radeon(TM) Graphics"
+    ],
+    "transform": "AgX",
+    "panorama": "A0302-bedroom-2-360.webp",
+    "bytes": 87558,
+    "sha256": "02888d99a4ce9a7262ec697da931259c9e7248eda2956cd463f13ac9572d845f",
+    "views": [
+      {
+        "file": "A0302-bedroom-2.webp",
+        "yaw": -0.76,
+        "pitch": -0.15,
+        "horizontalFov": 83
+      }
+    ]
+  },
+  {
+    "room": "bath-1",
+    "source": "A0302.blend",
+    "camera": [
+      9.170000076293945,
+      -1.2000000476837158,
+      1.4800000190734863
+    ],
+    "rotation": [
+      1.5707964897155762,
+      -0.0,
+      0.0
+    ],
+    "width": 2048,
+    "height": 1024,
+    "samples": 64,
+    "seconds": 136.62,
+    "engine": "CYCLES",
+    "blender": "4.5.9 LTS",
+    "device": [
+      "AMD Radeon(TM) Graphics"
+    ],
+    "transform": "AgX",
+    "panorama": "A0302-bath-1-360.webp",
+    "bytes": 68004,
+    "sha256": "5e83709dbd33a0c4745e2c3200bb012770fcd47c563e77de7c6592da2db60493",
+    "views": [
+      {
+        "file": "A0302-bath-1.webp",
+        "yaw": -0.54,
+        "pitch": -0.19,
+        "horizontalFov": 89
+      }
+    ]
+  },
+  {
+    "room": "bath-2",
+    "source": "A0302.blend",
+    "camera": [
+      9.180000305175781,
+      -3.1600000858306885,
+      1.4800000190734863
+    ],
+    "rotation": [
+      1.5707964897155762,
+      -0.0,
+      0.0
+    ],
+    "width": 2048,
+    "height": 1024,
+    "samples": 64,
+    "seconds": 127.32,
+    "engine": "CYCLES",
+    "blender": "4.5.9 LTS",
+    "device": [
+      "AMD Radeon(TM) Graphics"
+    ],
+    "transform": "AgX",
+    "panorama": "A0302-bath-2-360.webp",
+    "bytes": 96158,
+    "sha256": "7d56c41b1f3b17d25d34fecfa707f5b95e6cebe12ed45b481615551edf9568be",
+    "views": [
+      {
+        "file": "A0302-bath-2.webp",
+        "yaw": -0.63,
+        "pitch": -0.19,
+        "horizontalFov": 89
+      }
+    ]
+  },
+  {
+    "room": "balcony",
+    "source": "A0302.blend",
+    "camera": [
+      5.300000190734863,
+      -9.510000228881836,
+      1.5499999523162842
+    ],
+    "rotation": [
+      1.5707964897155762,
+      -0.0,
+      0.0
+    ],
+    "width": 2048,
+    "height": 1024,
+    "samples": 64,
+    "seconds": 74.99,
+    "engine": "CYCLES",
+    "blender": "4.5.9 LTS",
+    "device": [
+      "AMD Radeon(TM) Graphics"
+    ],
+    "transform": "AgX",
+    "panorama": "A0302-balcony-360.webp",
+    "bytes": 220080,
+    "sha256": "ff1b6386c860bf1f75c4ceeef3e93f1947514077fa57eef5ee9cf518d07991c8",
+    "views": [
+      {
+        "file": "A0302-balcony.webp",
+        "yaw": -1.83,
+        "pitch": -0.12,
+        "horizontalFov": 83
+      }
+    ]
+  }
+]

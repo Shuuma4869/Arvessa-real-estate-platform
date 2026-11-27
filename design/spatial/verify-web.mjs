@@ -18,6 +18,8 @@ for (const name of [
   "A0302",
   "Stillwater-balanced",
   "A0302-balanced",
+  "A0302-light",
+  "Stillwater-light",
 ]) {
   const file = new URL(`${name}.glb`, output);
   const bytes = await readFile(file);

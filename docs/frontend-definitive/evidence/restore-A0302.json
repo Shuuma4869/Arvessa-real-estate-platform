@@ -1,0 +1,12 @@
+{
+  "scene": "A0302",
+  "sourceSha256": "4914bf510d15cb8934f4ff1baf12ba1e6a10bd0930b87dd1ddf133fe4de0bdfa",
+  "archiveSha256": "51b7b40cbaf1e28dfc5028aac91c5bb322edd01c235683ab3b93baa9caddd9c6",
+  "archive": ".agent-work/definitive/portable-sources/A0302-4914bf510d15.blend",
+  "bytes": 281457833,
+  "blender": "4.5.9 LTS",
+  "reopened": true,
+  "embeddedImages": 48,
+  "externalLibraries": 0,
+  "objects": 748
+}

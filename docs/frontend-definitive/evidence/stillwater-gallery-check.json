@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-27T04:13:22.658Z",
+  "browser": "159.0.8154.6",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 960,
+      "decoded": [
+        "day",
+        "golden",
+        "aerial",
+        "night",
+        "entrance",
+        "landscape",
+        "facade",
+        "showroom"
+      ],
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "decoded": [
+        "day",
+        "golden",
+        "aerial",
+        "night",
+        "entrance",
+        "landscape",
+        "facade",
+        "showroom"
+      ],
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

@@ -46,6 +46,9 @@ await page.route("http://arvessa-render.local/**", async (route) => {
       }).outputText,
     });
   }
+  if (/^\/spatial-flagships\/library\/[a-zA-Z0-9_.-]+$/.test(pathname)) {
+    return route.fulfill({path: path.join(app,"public",pathname), contentType:pathname.endsWith(".glb")?"model/gltf-binary":"image/webp"});
+  }
   const root = path.join(app, "node_modules/three");
   const file = path.resolve(root, pathname.replace(/^\/three\//, ""));
   if (pathname.startsWith("/three/") && file.startsWith(root + path.sep))
@@ -58,7 +61,7 @@ await page.route("http://arvessa-render.local/**", async (route) => {
 const renderSource = `import * as THREE from 'three';import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';import {Sky} from 'three/addons/objects/Sky.js';import{createInterior}from'/interior-model.js';import{residenceLayout}from'/residence-layout.js';
 const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setSize(512,256);renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFShadowMap;document.body.append(renderer.domElement);
 const pmrem=new THREE.PMREMGenerator(renderer),envRoom=new RoomEnvironment(),env=pmrem.fromScene(envRoom,.04);envRoom.dispose();pmrem.dispose();
-window.renderRoom=async(beds,id)=>{const layout=residenceLayout(beds,100),model=createInterior(layout,true),scene=new THREE.Scene();scene.background=new THREE.Color(0xc0d6d2);const sky=new Sky();sky.scale.setScalar(100);sky.material.uniforms.turbidity.value=4;sky.material.uniforms.rayleigh.value=1.2;sky.material.uniforms.sunPosition.value.set(-.4,.35,.8);scene.add(sky);scene.environment=env.texture;scene.environmentIntensity=.5;scene.add(model.root);scene.add(new THREE.HemisphereLight(0xffefcf,0x66705a,1.3));const sun=new THREE.DirectionalLight(0xffdeb1,1.8);sun.position.set(-8,16,14);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-18,right:18,top:18,bottom:-18,near:1,far:60});sun.shadow.normalBias=.06;scene.add(sun);
+window.renderRoom=async(beds,id)=>{const layout=residenceLayout(beds,100),model=createInterior(layout,true),scene=new THREE.Scene();await model.ready;scene.background=new THREE.Color(0xc0d6d2);const sky=new Sky();sky.scale.setScalar(100);sky.material.uniforms.turbidity.value=4;sky.material.uniforms.rayleigh.value=1.2;sky.material.uniforms.sunPosition.value.set(-.4,.35,.8);scene.add(sky);scene.environment=env.texture;scene.environmentIntensity=.5;scene.add(model.root);scene.add(new THREE.HemisphereLight(0xffefcf,0x66705a,1.3));const sun=new THREE.DirectionalLight(0xffdeb1,1.8);sun.position.set(-8,16,14);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-18,right:18,top:18,bottom:-18,near:1,far:60});sun.shadow.normalBias=.06;scene.add(sun);
 // Warm fill sources are physical lights, shared geometry remains unchanged.
 for(const r of layout.rooms.filter(r=>r.kind!=='balcony')){const l=new THREE.PointLight(0xffe8c3,4,12,2);l.position.set(r.x+r.w/2-layout.width/2,2.45,r.z+r.d/2-layout.depth/2);scene.add(l)}
 const room=layout.rooms.find(r=>r.id===id);const cube=new THREE.WebGLCubeRenderTarget(2048,{type:THREE.HalfFloatType});const camera=new THREE.CubeCamera(.05,150,cube);camera.position.set(room.x+room.w/2-layout.width/2,1.55,room.z+room.d/2-layout.depth/2);scene.add(camera);camera.update(renderer,scene);

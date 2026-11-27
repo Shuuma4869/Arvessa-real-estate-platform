@@ -1,9 +1,9 @@
 [
   {
     "name": "Stillwater",
-    "bytes": 24597272,
-    "sceneTriangles": 1755067,
-    "drawPrimitives": 19,
+    "bytes": 26664104,
+    "sceneTriangles": 1991352,
+    "drawPrimitives": 28,
     "textures": [
       {
         "name": "nor_gl",
@@ -243,7 +243,7 @@
     "compressedValidation": {
       "numErrors": 0,
       "numWarnings": 0,
-      "numInfos": 26,
+      "numInfos": 32,
       "numHints": 0,
       "messages": [
         {
@@ -334,49 +334,31 @@
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/71"
+          "pointer": "/accessors/12"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/72"
+          "pointer": "/accessors/13"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/73"
+          "pointer": "/accessors/14"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/81"
+          "pointer": "/accessors/92"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/82"
-        },
-        {
-          "code": "UNUSED_OBJECT",
-          "message": "This object may be unused.",
-          "severity": 2,
-          "pointer": "/accessors/83"
-        },
-        {
-          "code": "UNUSED_OBJECT",
-          "message": "This object may be unused.",
-          "severity": 2,
-          "pointer": "/accessors/88"
-        },
-        {
-          "code": "UNUSED_OBJECT",
-          "message": "This object may be unused.",
-          "severity": 2,
-          "pointer": "/accessors/89"
+          "pointer": "/accessors/93"
         },
         {
           "code": "UNUSED_OBJECT",
@@ -388,19 +370,73 @@
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/95"
+          "pointer": "/accessors/102"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/100"
+          "pointer": "/accessors/103"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/101"
+          "pointer": "/accessors/104"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/109"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/110"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/111"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/116"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/117"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/118"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/123"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/124"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/125"
         }
       ],
       "truncated": false
@@ -408,7 +444,7 @@
     "decodedValidation": {
       "numErrors": 0,
       "numWarnings": 0,
-      "numInfos": 25,
+      "numInfos": 31,
       "numHints": 0,
       "messages": [
         {
@@ -493,73 +529,109 @@
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/82"
+          "pointer": "/accessors/12"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/83"
+          "pointer": "/accessors/13"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/84"
+          "pointer": "/accessors/14"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/85"
+          "pointer": "/accessors/103"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/86"
+          "pointer": "/accessors/104"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/87"
+          "pointer": "/accessors/105"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/88"
+          "pointer": "/accessors/106"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/89"
+          "pointer": "/accessors/107"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/94"
+          "pointer": "/accessors/108"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/95"
+          "pointer": "/accessors/109"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/100"
+          "pointer": "/accessors/110"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/101"
+          "pointer": "/accessors/111"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/116"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/117"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/118"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/123"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/124"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/125"
         }
       ],
       "truncated": false
@@ -567,9 +639,9 @@
   },
   {
     "name": "A0302",
-    "bytes": 11802980,
-    "sceneTriangles": 373390,
-    "drawPrimitives": 29,
+    "bytes": 12820696,
+    "sceneTriangles": 425726,
+    "drawPrimitives": 30,
     "textures": [
       {
         "name": "nor_gl",
@@ -877,9 +949,9 @@
   },
   {
     "name": "Stillwater-balanced",
-    "bytes": 18742536,
-    "sceneTriangles": 1755067,
-    "drawPrimitives": 19,
+    "bytes": 20809368,
+    "sceneTriangles": 1991352,
+    "drawPrimitives": 28,
     "textures": [
       {
         "name": "nor_gl",
@@ -1119,7 +1191,7 @@
     "compressedValidation": {
       "numErrors": 0,
       "numWarnings": 0,
-      "numInfos": 26,
+      "numInfos": 32,
       "numHints": 0,
       "messages": [
         {
@@ -1210,49 +1282,31 @@
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/71"
+          "pointer": "/accessors/12"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/72"
+          "pointer": "/accessors/13"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/73"
+          "pointer": "/accessors/14"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/81"
+          "pointer": "/accessors/92"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/82"
-        },
-        {
-          "code": "UNUSED_OBJECT",
-          "message": "This object may be unused.",
-          "severity": 2,
-          "pointer": "/accessors/83"
-        },
-        {
-          "code": "UNUSED_OBJECT",
-          "message": "This object may be unused.",
-          "severity": 2,
-          "pointer": "/accessors/88"
-        },
-        {
-          "code": "UNUSED_OBJECT",
-          "message": "This object may be unused.",
-          "severity": 2,
-          "pointer": "/accessors/89"
+          "pointer": "/accessors/93"
         },
         {
           "code": "UNUSED_OBJECT",
@@ -1264,19 +1318,73 @@
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/95"
+          "pointer": "/accessors/102"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/100"
+          "pointer": "/accessors/103"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/101"
+          "pointer": "/accessors/104"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/109"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/110"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/111"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/116"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/117"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/118"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/123"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/124"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/125"
         }
       ],
       "truncated": false
@@ -1284,7 +1392,7 @@
     "decodedValidation": {
       "numErrors": 0,
       "numWarnings": 0,
-      "numInfos": 25,
+      "numInfos": 31,
       "numHints": 0,
       "messages": [
         {
@@ -1369,73 +1477,109 @@
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/82"
+          "pointer": "/accessors/12"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/83"
+          "pointer": "/accessors/13"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/84"
+          "pointer": "/accessors/14"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/85"
+          "pointer": "/accessors/103"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/86"
+          "pointer": "/accessors/104"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/87"
+          "pointer": "/accessors/105"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/88"
+          "pointer": "/accessors/106"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/89"
+          "pointer": "/accessors/107"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/94"
+          "pointer": "/accessors/108"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/95"
+          "pointer": "/accessors/109"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/100"
+          "pointer": "/accessors/110"
         },
         {
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/accessors/101"
+          "pointer": "/accessors/111"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/116"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/117"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/118"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/123"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/124"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/125"
         }
       ],
       "truncated": false
@@ -1443,9 +1587,9 @@
   },
   {
     "name": "A0302-balanced",
-    "bytes": 5997968,
-    "sceneTriangles": 373390,
-    "drawPrimitives": 29,
+    "bytes": 7015668,
+    "sceneTriangles": 425726,
+    "drawPrimitives": 30,
     "textures": [
       {
         "name": "nor_gl",
@@ -1748,6 +1892,954 @@
       "numInfos": 0,
       "numHints": 0,
       "messages": [],
+      "truncated": false
+    }
+  },
+  {
+    "name": "A0302-light",
+    "bytes": 4745956,
+    "sceneTriangles": 207686,
+    "drawPrimitives": 30,
+    "textures": [
+      {
+        "name": "nor_gl",
+        "bytes": 426,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Diffuse",
+        "bytes": 2264,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Rough",
+        "bytes": 1372,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "nor_gl",
+        "bytes": 276,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Diffuse",
+        "bytes": 5566,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Rough",
+        "bytes": 11694,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "nor_gl",
+        "bytes": 5010,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Rough",
+        "bytes": 1612,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "nor_gl",
+        "bytes": 200,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Diffuse",
+        "bytes": 6524,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Rough",
+        "bytes": 3096,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Image_1",
+        "bytes": 11370,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Image_0",
+        "bytes": 5416,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "modern_arm_chair_01_legs_nor_gl_2k",
+        "bytes": 5328,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "modern_arm_chair_01_legs_diff_2k",
+        "bytes": 6212,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "modern_arm_chair_01_legs_metal-modern_arm_chair_01_legs_rough",
+        "bytes": 2912,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "modern_arm_chair_01_pillow_nor_gl_2k",
+        "bytes": 4054,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "modern_arm_chair_01_pillow_diff_2k",
+        "bytes": 912,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "modern_arm_chair_01_pillow_metal-modern_arm_chair_01_pillow_rough",
+        "bytes": 1112,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "modern_coffee_table_01_nor_gl",
+        "bytes": 774,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "modern_coffee_table_01_diff_2k",
+        "bytes": 2902,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "modern_coffee_table_01_rough",
+        "bytes": 4592,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "dining_chair_02_nor_gl.png",
+        "bytes": 5782,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "dining_chair_02_diff_2k",
+        "bytes": 3758,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "dining_chair_02_metal-dining_chair_02_rough.png",
+        "bytes": 6368,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "potted_plant_02_pot_nor_gl_2k",
+        "bytes": 3538,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "potted_plant_02_pot_diff_2k",
+        "bytes": 5322,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "potted_plant_02_pot_rough_2k",
+        "bytes": 3444,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "potted_plant_02_leaves_nor_gl_2k",
+        "bytes": 8770,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "potted_plant_02_leaves_diff_2k",
+        "bytes": 18790,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "potted_plant_02_leaves_rough_2k",
+        "bytes": 1822,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      }
+    ],
+    "compressedValidation": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 1,
+      "numHints": 0,
+      "messages": [
+        {
+          "code": "UNSUPPORTED_EXTENSION",
+          "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+          "severity": 2,
+          "pointer": "/extensionsUsed/0"
+        }
+      ],
+      "truncated": false
+    },
+    "decodedValidation": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 0,
+      "numHints": 0,
+      "messages": [],
+      "truncated": false
+    }
+  },
+  {
+    "name": "Stillwater-light",
+    "bytes": 18707860,
+    "sceneTriangles": 1439691,
+    "drawPrimitives": 28,
+    "textures": [
+      {
+        "name": "nor_gl",
+        "bytes": 426,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Diffuse",
+        "bytes": 2264,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Rough",
+        "bytes": 1372,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "nor_gl",
+        "bytes": 276,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Diffuse",
+        "bytes": 5566,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Rough",
+        "bytes": 11694,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "nor_gl",
+        "bytes": 8152,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Diffuse",
+        "bytes": 6476,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Rough",
+        "bytes": 326,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Image_1",
+        "bytes": 11370,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "Image_0",
+        "bytes": 5416,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "jacaranda_tree_branches_nor_gl_1k",
+        "bytes": 20608,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "jacaranda_tree_branches_diff_1k",
+        "bytes": 15086,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "jacaranda_tree_branches_rough_1k",
+        "bytes": 4612,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "jacaranda_tree_leaves_nor_gl_1k",
+        "bytes": 14960,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "jacaranda_tree_leaves_diff-jacaranda_tree_leaves_alpha",
+        "bytes": 9014,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "jacaranda_tree_leaves_rough_1k",
+        "bytes": 548,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "jacaranda_tree_trunk_nor_gl_1k",
+        "bytes": 17556,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "jacaranda_tree_trunk_diff_1k",
+        "bytes": 12758,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "jacaranda_tree_trunk_rough_1k",
+        "bytes": 4368,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "potted_plant_02_pot_nor_gl_2k",
+        "bytes": 3538,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "potted_plant_02_pot_diff_2k",
+        "bytes": 5322,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "potted_plant_02_pot_rough_2k",
+        "bytes": 3444,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "potted_plant_02_leaves_nor_gl_2k",
+        "bytes": 8770,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "potted_plant_02_leaves_diff_2k",
+        "bytes": 18790,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      },
+      {
+        "name": "potted_plant_02_leaves_rough_2k",
+        "bytes": 1822,
+        "dimensions": [
+          256,
+          256
+        ],
+        "format": "image/webp"
+      }
+    ],
+    "compressedValidation": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 32,
+      "numHints": 0,
+      "messages": [
+        {
+          "code": "UNSUPPORTED_EXTENSION",
+          "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_mesh_gpu_instancing'.",
+          "severity": 2,
+          "pointer": "/extensionsUsed/0"
+        },
+        {
+          "code": "UNSUPPORTED_EXTENSION",
+          "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+          "severity": 2,
+          "pointer": "/extensionsUsed/1"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/0"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/1"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/2"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/3"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/4"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/5"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/6"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/7"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/8"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/9"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/10"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/11"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/12"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/13"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/14"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/92"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/93"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/94"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/102"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/103"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/104"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/109"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/110"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/111"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/116"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/117"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/118"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/123"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/124"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/125"
+        }
+      ],
+      "truncated": false
+    },
+    "decodedValidation": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 31,
+      "numHints": 0,
+      "messages": [
+        {
+          "code": "UNSUPPORTED_EXTENSION",
+          "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_mesh_gpu_instancing'.",
+          "severity": 2,
+          "pointer": "/extensionsUsed/0"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/0"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/1"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/2"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/3"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/4"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/5"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/6"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/7"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/8"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/9"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/10"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/11"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/12"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/13"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/14"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/103"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/104"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/105"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/106"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/107"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/108"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/109"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/110"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/111"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/116"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/117"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/118"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/123"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/124"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/125"
+        }
+      ],
       "truncated": false
     }
   }

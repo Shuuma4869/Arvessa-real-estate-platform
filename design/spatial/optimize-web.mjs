@@ -8,7 +8,11 @@ import { NodeIO } from "@gltf-transform/core";
 import { ALL_EXTENSIONS } from "@gltf-transform/extensions";
 const here = dirname(fileURLToPath(import.meta.url)),
   root = resolve(here, "../..");
-const source = resolve(root, ".agent-work/photoreal/flagships");
+const option = (name) => process.argv.find((arg) => arg.startsWith(name + "="))?.slice(name.length + 1);
+const source = resolve(root, option("--source-dir") || ".agent-work/photoreal/flagships");
+const selected = option("--scene");
+if (selected && !["A0302", "Stillwater"].includes(selected)) throw Error("Unknown source scene");
+const scenes = selected ? [selected] : ["A0302", "Stillwater"];
 const output = resolve(root, "apps/web/public/spatial-flagships");
 await mkdir(output, { recursive: true });
 const lock = JSON.parse(
@@ -40,14 +44,13 @@ const report = {
   models: [],
   photographs: [],
 };
-if (process.argv.includes("--images-only")) {
-  report.models = JSON.parse(
-    await readFile(resolve(output, "production-report.json"), "utf8"),
-  ).models;
+const partial = selected || process.argv.includes("--images-only") || process.argv.includes("--models-only");
+if (partial) {
+  const previous = JSON.parse(await readFile(resolve(output, "production-report.json"), "utf8"));
+  Object.assign(report, previous);
 }
-for (const name of process.argv.includes("--images-only")
-  ? []
-  : ["A0302", "Stillwater"]) {
+for (const name of process.argv.includes("--images-only") ? [] : scenes) {
+  report.models = report.models.filter((entry) => entry.name !== name);
   const raw = resolve(source, `web-raw/${name}.glb`);
   const validation = await validator.validateBytes(
     new Uint8Array(await readFile(raw)),
@@ -159,6 +162,8 @@ for (const name of process.argv.includes("--models-only")
       "A0302-dollhouse",
       "A0302-living-360",
     ]) {
+  if (selected && !name.startsWith(selected + "-")) continue;
+  report.photographs = report.photographs.filter((entry) => entry.webFile !== name + ".webp");
   const target = resolve(output, name + ".webp");
   await sharp(resolve(source, name + ".png"))
     .webp({ quality: 92, effort: 6 })
@@ -171,6 +176,7 @@ for (const name of process.argv.includes("--models-only")
     webBytes: (await stat(target)).size,
   });
 }
+if (!selected) {
 await copyFile(
   resolve(source, "stillwater-interaction.json"),
   resolve(output, "stillwater-interaction.json"),
@@ -182,6 +188,7 @@ await copyFile(
 report.environment = JSON.parse(
   await readFile(resolve(source, "daylight-web.json"), "utf8"),
 );
+}
 await writeFile(
   resolve(output, "production-report.json"),
   JSON.stringify(report, null, 2),

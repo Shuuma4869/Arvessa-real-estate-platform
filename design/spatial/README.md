@@ -2,7 +2,11 @@
 
 **Chờ nghiệm thu mỹ thuật.** Pipeline này chỉ sản xuất The Stillwater và A0302. Không mở rộng sang các căn khác hoặc thay asset trên Landing/Coverflow trước khi chủ dự án chấp thuận.
 
-## Tái tạo
+## Cảnh hiện hành
+
+Quy trình dưới đây khôi phục nguồn v1. Để tái tạo Stillwater đang trình diễn, dùng [tài liệu sản xuất ngoại thất](../../docs/frontend-definitive/spatial-production.md) sau khi có nguồn v1. Tài liệu ghi tám góc máy, phiên bản mô hình, bộ thử và bản giao.
+
+## Tái tạo nguồn v1
 
 Chạy từ root repository. Ứng dụng web chỉ cần các file đã xuất trong `apps/web/public/spatial-flagships`; không cần Blender hoặc Python để xem bản demo.
 

@@ -2,11 +2,13 @@
 import bpy, pathlib, sys, json, time
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 CACHE = ROOT / '.agent-work/photoreal/flagships'
-OUT = CACHE / 'web-raw'
-OUT.mkdir(parents=True, exist_ok=True)
-name = sys.argv[sys.argv.index('--') + 1]
+args = sys.argv[sys.argv.index('--') + 1:]
+name = args[0]
 assert name in ['A0302', 'Stillwater']
-bpy.ops.wm.open_mainfile(filepath=str(CACHE / (name + '.blend')))
+source = pathlib.Path(args[1]).resolve() if len(args) > 1 else CACHE / (name + '.blend')
+OUT = source.parent / 'web-raw'
+OUT.mkdir(parents=True, exist_ok=True)
+bpy.ops.wm.open_mainfile(filepath=str(source))
 start = time.perf_counter()
 # Cutaway is only a review/export view of the same interior source.
 for obj in list(bpy.context.scene.objects):

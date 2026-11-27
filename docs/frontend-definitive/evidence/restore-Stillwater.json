@@ -1,0 +1,12 @@
+{
+  "scene": "Stillwater",
+  "sourceSha256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+  "archiveSha256": "9d01fb50def27eb3d0c9a72a32b939c428aa6550787939d87b5d63c343e48bd4",
+  "archive": ".agent-work/definitive/portable-sources/Stillwater-2a9c95f36d3a.blend",
+  "bytes": 391512889,
+  "blender": "4.5.9 LTS",
+  "reopened": true,
+  "embeddedImages": 44,
+  "externalLibraries": 0,
+  "objects": 4289
+}

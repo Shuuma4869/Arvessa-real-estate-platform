@@ -4,12 +4,12 @@
   "models": [
     {
       "name": "A0302",
-      "rawBytes": 67956640,
-      "webBytes": 11802980,
+      "rawBytes": 70483256,
+      "webBytes": 12820696,
       "validation": {
         "numErrors": 0,
         "numWarnings": 13,
-        "numInfos": 37,
+        "numInfos": 39,
         "numHints": 0,
         "messages": [
           {
@@ -25,10 +25,10 @@
             "pointer": "/meshes/0/primitives/0/attributes/TEXCOORD_1"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/0/primitives/1/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/0/primitives/1/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -37,10 +37,10 @@
             "pointer": "/meshes/0/primitives/1/attributes/TEXCOORD_1"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/0/primitives/2/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/0/primitives/2/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -61,10 +61,10 @@
             "pointer": "/meshes/0/primitives/3/attributes/TEXCOORD_1"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/0/primitives/4/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/0/primitives/4/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -97,10 +97,10 @@
             "pointer": "/meshes/0/primitives/6/attributes/TEXCOORD_1"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/0/primitives/7/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/0/primitives/7/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -241,6 +241,18 @@
             "pointer": "/meshes/0/primitives/19/attributes/TEXCOORD_1"
           },
           {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/0/primitives/20/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/0/primitives/20/attributes/TEXCOORD_1"
+          },
+          {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
@@ -316,25 +328,25 @@
         "truncated": false
       },
       "file": "A0302.glb",
-      "bytes": 67956640,
-      "scene_triangles": 373390,
-      "export_seconds": 12.414340500006801,
+      "bytes": 70483256,
+      "scene_triangles": 425726,
+      "export_seconds": 17.166650799999843,
       "texture_max_dimension": 1024,
       "source_scene": "A0302.blend",
       "quality": "balanced derivative; visual approval pending",
       "tree_decimation_ratio": 0.018,
       "plant_soil_decimation_ratio": 0.12,
       "exterior_pot_and_trunk_ratio": null,
-      "balancedBytes": 5997968
+      "balancedBytes": 7015668
     },
     {
       "name": "Stillwater",
-      "rawBytes": 113512488,
-      "webBytes": 24597272,
+      "rawBytes": 121296032,
+      "webBytes": 26664104,
       "validation": {
         "numErrors": 0,
-        "numWarnings": 10,
-        "numInfos": 55,
+        "numWarnings": 13,
+        "numInfos": 64,
         "numHints": 0,
         "messages": [
           {
@@ -404,6 +416,36 @@
             "pointer": "/meshes/0/primitives/12/attributes/TEXCOORD_0"
           },
           {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/0/primitives/13/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/0/primitives/14/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/0/primitives/15/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/0/primitives/16/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/0/primitives/17/attributes/TEXCOORD_0"
+          },
+          {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
@@ -438,6 +480,48 @@
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
             "pointer": "/meshes/5/primitives/0/material"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/10/primitives/0/material"
+          },
+          {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/11/primitives/0/material"
+          },
+          {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/12/primitives/0/material"
           },
           {
             "code": "NODE_EMPTY",
@@ -731,114 +815,314 @@
         "truncated": false
       },
       "file": "Stillwater.glb",
-      "bytes": 113512488,
-      "scene_triangles": 3086098,
-      "export_seconds": 60.8748501999944,
+      "bytes": 121296032,
+      "scene_triangles": 3376769,
+      "export_seconds": 127.84576209999796,
       "texture_max_dimension": 1024,
       "source_scene": "Stillwater.blend",
       "quality": "balanced derivative; visual approval pending",
       "tree_decimation_ratio": 0.018,
       "plant_soil_decimation_ratio": 0.005,
       "exterior_pot_and_trunk_ratio": 0.2,
-      "balancedBytes": 18742536
+      "balancedBytes": 20809368
     }
   ],
   "photographs": [
     {
       "file": "Stillwater-day.png",
+      "sourceSHA256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+      "source": "Stillwater.blend",
       "renderer": "Cycles",
       "blender": "4.5.9 LTS",
       "backend": "GPU",
-      "compute_device": "HIP / AMD Radeon(TM) Graphics",
-      "samples": 128,
-      "width": 1600,
-      "height": 1100,
-      "seconds": 154.67844750000222,
+      "devices": [
+        "AMD Radeon(TM) Graphics"
+      ],
+      "samples": 80,
       "denoise": true,
-      "view_transform": "AgX",
+      "adaptiveThreshold": 0.03500000014901161,
+      "width": 1600,
+      "height": 1068,
+      "maxBounces": 10,
+      "view": "AgX",
       "look": "AgX - Medium High Contrast",
-      "max_bounces": 10,
       "camera": {
         "position": [
-          62,
-          -80,
-          31
+          50,
+          -89,
+          25
         ],
-        "rotation": [
-          1.3473466634750366,
-          -1.9499488246310648e-8,
-          0.659309983253479
+        "target": [
+          0,
+          -2.5,
+          8.2
         ],
-        "lens": 49,
-        "type": "PERSP"
+        "lens": 46
       },
-      "visual_approval": "PENDING",
+      "seconds": 140.73,
+      "visualApproval": "PENDING",
       "webFile": "Stillwater-day.webp",
-      "webBytes": 247502
+      "webBytes": 246988,
+      "sha256": "2e2db22a3b574f0a25192cf679670cb8dff43328e991c97a277fb77f4e064ea7"
     },
     {
       "file": "Stillwater-golden.png",
+      "sourceSHA256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+      "source": "Stillwater.blend",
       "renderer": "Cycles",
       "blender": "4.5.9 LTS",
       "backend": "GPU",
-      "compute_device": "HIP / AMD Radeon(TM) Graphics",
-      "samples": 128,
-      "width": 1600,
-      "height": 1100,
-      "seconds": 177.22076910000033,
+      "devices": [
+        "AMD Radeon(TM) Graphics"
+      ],
+      "samples": 80,
       "denoise": true,
-      "view_transform": "AgX",
+      "adaptiveThreshold": 0.03500000014901161,
+      "width": 1600,
+      "height": 1068,
+      "maxBounces": 10,
+      "view": "AgX",
       "look": "AgX - Medium High Contrast",
-      "max_bounces": 10,
       "camera": {
         "position": [
-          62,
-          -80,
-          31
+          -46,
+          -81,
+          18
         ],
-        "rotation": [
-          1.3473466634750366,
-          -1.9499488246310648e-8,
-          0.659309983253479
+        "target": [
+          -2,
+          -3,
+          7.5
         ],
-        "lens": 49,
-        "type": "PERSP"
+        "lens": 41
       },
-      "visual_approval": "PENDING",
+      "seconds": 235.11,
+      "visualApproval": "PENDING",
       "webFile": "Stillwater-golden.webp",
-      "webBytes": 210054
+      "webBytes": 244396,
+      "sha256": "5238afb15561eb2086cf779aff645e50068756a3dabfd7c7263bb261af31546c"
+    },
+    {
+      "file": "Stillwater-night.png",
+      "sourceSHA256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+      "source": "Stillwater.blend",
+      "renderer": "Cycles",
+      "blender": "4.5.9 LTS",
+      "backend": "GPU",
+      "devices": [
+        "AMD Radeon(TM) Graphics"
+      ],
+      "samples": 112,
+      "denoise": true,
+      "adaptiveThreshold": 0.03500000014901161,
+      "width": 1600,
+      "height": 1068,
+      "maxBounces": 10,
+      "view": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "camera": {
+        "position": [
+          33,
+          -67,
+          9
+        ],
+        "target": [
+          0,
+          -2,
+          8.4
+        ],
+        "lens": 34
+      },
+      "seconds": 131.59,
+      "visualApproval": "PENDING",
+      "webFile": "Stillwater-night.webp",
+      "webBytes": 140614,
+      "sha256": "b966f7db758de42e73732f8131e6166fd5faa8a84070c34e5bff4b7d677a380a"
     },
     {
       "file": "Stillwater-aerial.png",
+      "sourceSHA256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+      "source": "Stillwater.blend",
       "renderer": "Cycles",
       "blender": "4.5.9 LTS",
       "backend": "GPU",
-      "compute_device": "HIP / AMD Radeon(TM) Graphics",
-      "samples": 128,
-      "width": 1600,
-      "height": 1100,
-      "seconds": 149.42990290000307,
+      "devices": [
+        "AMD Radeon(TM) Graphics"
+      ],
+      "samples": 80,
       "denoise": true,
-      "view_transform": "AgX",
+      "adaptiveThreshold": 0.03500000014901161,
+      "width": 1600,
+      "height": 1068,
+      "maxBounces": 10,
+      "view": "AgX",
       "look": "AgX - Medium High Contrast",
-      "max_bounces": 10,
       "camera": {
         "position": [
-          60,
-          -67,
-          76
+          70,
+          -78,
+          92
         ],
-        "rotation": [
-          0.8692016005516052,
-          -5.834460381493045e-8,
-          0.7303359508514404
+        "target": [
+          0,
+          0,
+          0
         ],
-        "lens": 50,
-        "type": "PERSP"
+        "lens": 46
       },
-      "visual_approval": "PENDING",
+      "seconds": 156.57,
+      "visualApproval": "PENDING",
       "webFile": "Stillwater-aerial.webp",
-      "webBytes": 354802
+      "webBytes": 352336,
+      "sha256": "4d2137d67ba6c88cc10cec64f4964bd6502a4ce42dd99ee427f1572d2104a5ec"
+    },
+    {
+      "file": "Stillwater-entrance.png",
+      "sourceSHA256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+      "source": "Stillwater.blend",
+      "renderer": "Cycles",
+      "blender": "4.5.9 LTS",
+      "backend": "GPU",
+      "devices": [
+        "AMD Radeon(TM) Graphics"
+      ],
+      "samples": 112,
+      "denoise": true,
+      "adaptiveThreshold": 0.03500000014901161,
+      "width": 1600,
+      "height": 1068,
+      "maxBounces": 10,
+      "view": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "camera": {
+        "position": [
+          -9.8,
+          -24.8,
+          2.2
+        ],
+        "target": [
+          -16.4,
+          -11.5,
+          2
+        ],
+        "lens": 35
+      },
+      "seconds": 239.28,
+      "visualApproval": "PENDING",
+      "webFile": "Stillwater-entrance.webp",
+      "webBytes": 181008,
+      "sha256": "8ed3d84b8eea4ada66469ff8814be560a4579851102ca31f0bc74e9531a4f5b3"
+    },
+    {
+      "file": "Stillwater-landscape.png",
+      "sourceSHA256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+      "source": "Stillwater.blend",
+      "renderer": "Cycles",
+      "blender": "4.5.9 LTS",
+      "backend": "GPU",
+      "devices": [
+        "AMD Radeon(TM) Graphics"
+      ],
+      "samples": 80,
+      "denoise": true,
+      "adaptiveThreshold": 0.03500000014901161,
+      "width": 1600,
+      "height": 1068,
+      "maxBounces": 10,
+      "view": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "camera": {
+        "position": [
+          -31,
+          -26.1,
+          1.8
+        ],
+        "target": [
+          3,
+          -16.9,
+          1.85
+        ],
+        "lens": 35
+      },
+      "seconds": 147.69,
+      "visualApproval": "PENDING",
+      "webFile": "Stillwater-landscape.webp",
+      "webBytes": 195492,
+      "sha256": "49bdf51cdd41e27194a84d38df972fe109cd85a53f38802b6b0a662a8c0e706e"
+    },
+    {
+      "file": "Stillwater-facade.png",
+      "sourceSHA256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+      "source": "Stillwater.blend",
+      "renderer": "Cycles",
+      "blender": "4.5.9 LTS",
+      "backend": "GPU",
+      "devices": [
+        "AMD Radeon(TM) Graphics"
+      ],
+      "samples": 80,
+      "denoise": true,
+      "adaptiveThreshold": 0.03500000014901161,
+      "width": 1600,
+      "height": 1068,
+      "maxBounces": 10,
+      "view": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "camera": {
+        "position": [
+          32,
+          -34,
+          9.5
+        ],
+        "target": [
+          20,
+          -6,
+          12
+        ],
+        "lens": 47
+      },
+      "seconds": 159.97,
+      "visualApproval": "PENDING",
+      "webFile": "Stillwater-facade.webp",
+      "webBytes": 151522,
+      "sha256": "573f346304c46cd41dfaf2f1c95db0f92371ada64037cedef8536417f1a64549"
+    },
+    {
+      "file": "Stillwater-showroom.png",
+      "sourceSHA256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+      "source": "Stillwater.blend",
+      "renderer": "Cycles",
+      "blender": "4.5.9 LTS",
+      "backend": "GPU",
+      "devices": [
+        "AMD Radeon(TM) Graphics"
+      ],
+      "samples": 80,
+      "denoise": true,
+      "adaptiveThreshold": 0.03500000014901161,
+      "width": 1600,
+      "height": 1068,
+      "maxBounces": 10,
+      "view": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "camera": {
+        "position": [
+          62,
+          -98,
+          53
+        ],
+        "target": [
+          0,
+          0,
+          6
+        ],
+        "lens": 44
+      },
+      "seconds": 78.98,
+      "visualApproval": "PENDING",
+      "webFile": "Stillwater-showroom.webp",
+      "webBytes": 194236,
+      "sha256": "adb5e8e42b5c608f4087cd5b6c60858bd31f7f5747b7935a8ed189387f21760f"
     },
     {
       "file": "A0302-living.png",
@@ -908,12 +1192,12 @@
       "file": "A0302-dollhouse.png",
       "renderer": "Cycles",
       "blender": "4.5.9 LTS",
-      "backend": "GPU",
-      "compute_device": "HIP / AMD Radeon(TM) Graphics",
+      "backend": "CPU",
+      "compute_device": "CPU",
       "samples": 128,
       "width": 1600,
       "height": 1200,
-      "seconds": 62.86251560000528,
+      "seconds": 217.42965130000084,
       "denoise": true,
       "view_transform": "AgX",
       "look": "AgX - Medium High Contrast",
@@ -934,7 +1218,7 @@
       },
       "visual_approval": "PENDING",
       "webFile": "A0302-dollhouse.webp",
-      "webBytes": 130598
+      "webBytes": 141192
     },
     {
       "file": "A0302-living-360.png",
