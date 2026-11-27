@@ -9,6 +9,9 @@ import { stopSound } from "@/lib/sound";
 export function MyProperties() {
   const { data } = useDemo();
   const [tab, setTab] = useState("favorites");
+  const searches = data.savedSearches.filter(
+    (s) => !s.query.startsWith("crm-"),
+  );
   const ids =
     tab === "favorites"
       ? data.favorites
@@ -34,20 +37,15 @@ export function MyProperties() {
         ))}
       </div>
       {tab === "search" ? (
-        data.savedSearches.length ? (
+        searches.length ? (
           <div className="panel">
-            {data.savedSearches
-              .filter((s) => !s.query.startsWith("crm-"))
-              .map((s, i) => (
-                <p key={i}>
-                  <Link
-                    className="underlined-link"
-                    href={`/discover?${s.query}`}
-                  >
-                    {s.name}
-                  </Link>
-                </p>
-              ))}
+            {searches.map((s, i) => (
+              <p key={i}>
+                <Link className="underlined-link" href={`/discover?${s.query}`}>
+                  {s.name}
+                </Link>
+              </p>
+            ))}
           </div>
         ) : (
           <Empty title="Chưa lưu tìm kiếm" />

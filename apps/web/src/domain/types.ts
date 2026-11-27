@@ -239,6 +239,7 @@ export interface Audit {
   id: string;
   at: number;
   actor: Role;
+  actorId?: string;
   action: string;
   recordId: string;
 }

@@ -2,6 +2,7 @@
 import { ProjectGovernance } from "./management/project-governance";
 import { WaitlistPanel } from "./reservation/waitlist";
 import { Scope } from "@/domain/types";
+import { EmployeeAgenda } from "./crm/employee-agenda";
 import Dashboard from "./crm/dashboard";
 import { Leads, Customers } from "./crm/leads-customers";
 import { Pipeline, Inventory } from "./crm/pipeline-inventory";
@@ -60,6 +61,12 @@ export default function WorkspacePage({
     case "reports":
       return <Reports />;
     case "personal":
+      return (
+        <>
+          <EmployeeAgenda />
+          <Personal />
+        </>
+      );
     case "profile":
       return <Personal />;
     case "properties":

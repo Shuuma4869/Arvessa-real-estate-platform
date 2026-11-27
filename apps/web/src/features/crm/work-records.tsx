@@ -352,6 +352,10 @@ export function Marketing() {
   const [edit, setEdit] = useState<Campaign | null | undefined>(),
     [selected, setSelected] = useState("");
   const c = data.campaigns.find((c) => c.id === selected);
+  const pending = data.approvals.some(
+    (a) =>
+      a.kind === "campaign" && a.recordId === c?.id && a.status === "PENDING",
+  );
   return (
     <>
       <div className="form-actions" style={{ marginTop: 0, marginBottom: 24 }}>
@@ -401,6 +405,7 @@ export function Marketing() {
             {session && canWrite(session.role, "campaigns") && (
               <>
                 <Button
+                  disabled={pending}
                   className="secondary"
                   onClick={() => {
                     setEdit(c);
@@ -411,6 +416,9 @@ export function Marketing() {
                 </Button>
                 <Action
                   label="Gửi duyệt nội dung"
+                  disabled={
+                    pending || !["Bản nháp", "Cần chỉnh sửa"].includes(c.status)
+                  }
                   action={() =>
                     run({
                       type: "request",
@@ -424,6 +432,7 @@ export function Marketing() {
                 />
                 <Action
                   label="Xóa bản nháp"
+                  disabled={pending || c.status !== "Bản nháp"}
                   confirm
                   action={async () => {
                     await run({

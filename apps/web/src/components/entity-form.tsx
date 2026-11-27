@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { appointmentStatuses } from "@/domain/appointments";
 import { Entity, EntityRecord } from "@/domain/types";
 import { useDemo } from "@/services/store";
 import { Field, Button, Modal } from "./ui";
@@ -211,7 +212,7 @@ export function EntityForm({
     (f) =>
       !(
         session?.role === "buyer" &&
-        ["customerId", "assignee", "staff", "notes", "consent"].includes(f.key)
+        ["customerId", "assignee", "staff", "notes"].includes(f.key)
       ),
   );
   return (
@@ -222,6 +223,13 @@ export function EntityForm({
       <form onSubmit={submit}>
         <div className="form-grid">
           {displayed.map((f) => {
+            const choices =
+              entity === "appointments" && f.key === "status" && session
+                ? appointmentStatuses(
+                    session.role,
+                    record && "status" in record ? record.status : undefined,
+                  )
+                : f.options;
             const options =
               f.type === "staff"
                 ? data.employees
@@ -234,7 +242,7 @@ export function EntityForm({
                         value: e.id,
                         label: `${e.id} · ${e.area} m²`,
                       }))
-                    : f.options?.map((x) => ({ value: x, label: x }));
+                    : choices?.map((x) => ({ value: x, label: x }));
             return (
               <Field
                 key={f.key}

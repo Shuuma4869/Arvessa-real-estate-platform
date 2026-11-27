@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
@@ -36,6 +36,7 @@ import {
   moduleNames,
 } from "@/domain/permissions";
 import { brand } from "@/lib/brand";
+import { workspaceActivity } from "@/domain/workspace-activity";
 import { Modal, Loading, LinkButton, Timeline } from "./ui";
 const icons: Record<string, typeof Users> = {
   dashboard: LayoutDashboard,
@@ -87,10 +88,32 @@ export function WorkspaceShell({
     [search, setSearch] = useState(false),
     [notifications, setNotifications] = useState(false),
     [q, setQ] = useState("");
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const closeButton = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (!mobile) return;
+    const trigger = menuButton.current;
+    const media = window.matchMedia("(max-width: 800px)");
+    const fold = () => {
+      if (!media.matches) setMobile(false);
+    };
+    const dismiss = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobile(false);
+    };
+    closeButton.current?.focus();
+    media.addEventListener("change", fold);
+    window.addEventListener("keydown", dismiss);
+    return () => {
+      media.removeEventListener("change", fold);
+      window.removeEventListener("keydown", dismiss);
+      trigger?.focus();
+    };
+  }, [mobile]);
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key === "k") {
         e.preventDefault();
+        setMobile(false);
         setSearch((s) => !s);
       }
     };
@@ -153,14 +176,60 @@ export function WorkspaceShell({
       : scope === "crm"
         ? "SALES WORKSPACE"
         : "MANAGEMENT CONSOLE";
+  const activity = notifications
+    ? workspaceActivity(data, session).slice(0, 8)
+    : [];
+  const normalize = (value: string) =>
+    value
+      .trim()
+      .toLocaleLowerCase("vi")
+      .normalize("NFD")
+      .replace(/\p{M}/gu, "")
+      .replaceAll("đ", "d");
+  const query = normalize(q);
   const searchResults = modules.filter((m) =>
-    moduleNames[m].toLocaleLowerCase("vi").includes(q.toLocaleLowerCase("vi")),
+    normalize(moduleNames[m]).includes(query),
   );
+  const properties = query
+    ? data.properties.filter((p) => normalize(p.id).includes(query)).slice(0, 5)
+    : [];
   return (
     <div
       className={`workspace ${collapsed ? "collapsed" : ""} ${mobile ? "mobile-open" : ""}`}
     >
-      <aside className="workspace-sidebar">
+      {mobile && (
+        <button
+          className="workspace-scrim"
+          aria-label="Đóng điều hướng"
+          tabIndex={-1}
+          onClick={() => setMobile(false)}
+        />
+      )}
+      <aside
+        id="workspace-navigation"
+        className="workspace-sidebar"
+        role={mobile ? "dialog" : undefined}
+        aria-modal={mobile || undefined}
+        aria-label={mobile ? "Điều hướng workspace" : undefined}
+        onKeyDown={(event) => {
+          if (!mobile || event.key !== "Tab") return;
+          const items = Array.from(
+            event.currentTarget.querySelectorAll<HTMLElement>(
+              "a[href], button",
+            ),
+          ).filter((el) => el.getClientRects().length);
+          const first = items[0],
+            last = items[items.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last?.focus();
+          }
+          if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first?.focus();
+          }
+        }}
+      >
         <Link href="/" aria-label="ARVESSA — Trang chủ">
           <img
             src={
@@ -182,6 +251,7 @@ export function WorkspaceShell({
           <span className="workspace-label">{title}</span>
           <button
             className="icon-button mobile-workspace-toggle"
+            ref={closeButton}
             aria-label="Đóng menu"
             onClick={() => setMobile(false)}
           >
@@ -195,6 +265,7 @@ export function WorkspaceShell({
               <Link
                 key={m}
                 className={moduleKey === m ? "active" : ""}
+                aria-current={moduleKey === m ? "page" : undefined}
                 href={`/${scope}/${m}`}
                 onClick={() => setMobile(false)}
                 title={moduleNames[m]}
@@ -233,11 +304,13 @@ export function WorkspaceShell({
           </p>
         </div>
       </aside>
-      <div className="workspace-content">
+      <div className="workspace-content" inert={mobile || undefined}>
         <header className="workspace-topbar">
           <div className="actions">
             <button
               className="icon-button"
+              ref={menuButton}
+              aria-controls="workspace-navigation"
               aria-label="Thu gọn hoặc mở menu"
               onClick={() => {
                 if (window.innerWidth < 801) setMobile(!mobile);
@@ -314,11 +387,6 @@ export function WorkspaceShell({
           <div className="workspace-heading">
             <div>
               <h1>{moduleNames[moduleKey]}</h1>
-              <p>
-                {scope === "buyer"
-                  ? "Hành trình của bạn, trong cùng một không gian."
-                  : "Thông tin rõ ràng. Công việc tiếp nối."}
-              </p>
             </div>
             <span className="demo-label">
               CHẾ ĐỘ TRÌNH DIỄN · FRONTEND ONLY
@@ -333,10 +401,10 @@ export function WorkspaceShell({
             <Search size={20} />
             <input
               autoFocus
-              aria-label="Tìm moduleKey hoặc mã căn"
+              aria-label="Tìm chức năng hoặc mã căn"
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              placeholder="Module hoặc mã căn…"
+              placeholder="Tên chức năng hoặc mã căn…"
             />
           </label>
           <div className="command-results">
@@ -349,41 +417,32 @@ export function WorkspaceShell({
                 {moduleNames[m]}
               </Link>
             ))}
-            {q &&
-              data.properties
-                .filter((p) => p.id.toLowerCase().includes(q.toLowerCase()))
-                .slice(0, 5)
-                .map((p) => (
-                  <Link
-                    key={p.id}
-                    href={`/properties/${p.id}`}
-                    onClick={() => setSearch(false)}
-                  >
-                    {p.name} · {p.area} m²
-                  </Link>
-                ))}
+            {properties.map((p) => (
+              <Link
+                key={p.id}
+                href={`/properties/${p.id}`}
+                onClick={() => setSearch(false)}
+              >
+                {p.name} · {p.area} m²
+              </Link>
+            ))}
+            {!properties.length && !searchResults.length && (
+              <p role="status">Chưa tìm thấy kết quả cho “{q.trim()}”.</p>
+            )}
           </div>
         </Modal>
       )}
       {notifications && (
         <Modal title="Thông báo demo" onClose={() => setNotifications(false)}>
           {data.preferences.notifications ? (
-            <Timeline
-              events={data.audit
-                .filter((a) =>
-                  session.role === "buyer" ? a.actor === "buyer" : true,
-                )
-                .slice(0, 8)
-                .map((a) => ({
-                  at: a.at,
-                  actor: a.actor,
-                  text: `${a.action} · ${a.recordId || "Thiết lập demo"}`,
-                }))}
-            />
+            activity.length ? (
+              <Timeline events={activity} />
+            ) : (
+              <p>Chưa có hoạt động mới trong phiên demo.</p>
+            )
           ) : (
             <p>Bạn đã tắt thông báo trong tùy chọn.</p>
           )}
-          {!data.audit.length && <p>Chưa có hoạt động mới trong phiên demo.</p>}
         </Modal>
       )}
     </div>

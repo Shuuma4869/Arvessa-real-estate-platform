@@ -15,6 +15,7 @@ import {
 import { canApprove, canWrite, isPrivileged } from "@/domain/permissions";
 import { createSeed } from "./seed";
 import { z } from "zod";
+import { appointmentStatus } from "@/domain/appointments";
 
 const email = z.email("Email không hợp lệ.");
 const required = (s: string | undefined, label: string) => {
@@ -64,6 +65,11 @@ export function executeCommand(
     owned(r!);
     return r!;
   };
+  const campaignPending = (id: string) =>
+    state.approvals.some(
+      (a) =>
+        a.kind === "campaign" && a.recordId === id && a.status === "PENDING",
+    );
   const approval = (
     kind: Approval["kind"],
     recordId: string,
@@ -525,6 +531,18 @@ export function executeCommand(
           ? ["legal", "manager", "admin", "platform"]
           : ["sales", "leader", "manager", "admin", "platform"];
       assert(allowed.includes(actor.role), "Không có quyền gửi yêu cầu này.");
+      if (c.kind === "campaign") {
+        const campaign = state.campaigns.find((row) => row.id === c.id);
+        assert(
+          canWrite(actor.role, "campaigns"),
+          "Không có quyền gửi chiến dịch.",
+        );
+        assert(
+          campaign && ["Bản nháp", "Cần chỉnh sửa"].includes(campaign.status),
+          "Chỉ gửi duyệt chiến dịch còn ở bản nháp hoặc cần chỉnh sửa.",
+        );
+        campaign!.status = "Chờ duyệt";
+      }
       if (c.kind === "price")
         assert(Number(c.value) > 0, "Giá đề nghị phải lớn hơn 0.");
       id = approval(c.kind, c.id, c.reason, c.value);
@@ -684,6 +702,9 @@ export function executeCommand(
         }
         case "customers": {
           email.parse(v.email);
+          const previous = old && "consent" in old ? old : undefined;
+          if (actor.role === "buyer")
+            assert(previous, "Hồ sơ khách hàng không tồn tại.");
           record = {
             id,
             name: required(v.name, "họ tên"),
@@ -691,9 +712,17 @@ export function executeCommand(
             phone: v.phone || "",
             budget: Number(v.budget) || 0,
             preferences: v.preferences || "",
-            assignee: v.assignee || "staff-sales",
-            notes: v.notes || "",
-            consent: v.consent !== "false",
+            assignee:
+              actor.role === "buyer"
+                ? previous!.assignee
+                : actor.role === "sales"
+                  ? actor.id
+                  : v.assignee || "staff-sales",
+            notes: actor.role === "buyer" ? previous!.notes : v.notes || "",
+            consent:
+              v.consent === undefined
+                ? (previous?.consent ?? true)
+                : v.consent !== "false",
           };
           break;
         }
@@ -709,15 +738,50 @@ export function executeCommand(
             state.properties.some((p) => p.id === v.propertyId),
             "Căn không hợp lệ.",
           );
-          const staff = v.staff || "staff-sales";
+          const previous = old && "date" in old ? old : undefined;
+          if (actor.role === "sales" && previous)
+            assert(
+              previous.staff === actor.id,
+              "Lịch hẹn thuộc người phụ trách khác.",
+            );
+          const staff =
+            actor.role === "sales"
+              ? actor.id
+              : actor.role === "buyer"
+                ? previous?.staff || "staff-sales"
+                : v.staff || "staff-sales";
+          const status = appointmentStatus(
+            actor.role,
+            previous,
+            v.status,
+            v.date,
+            v.propertyId,
+            customerId,
+            staff,
+          );
+          const slot = Date.parse(v.date);
           assert(
-            !state.appointments.some(
-              (a) =>
-                a.id !== id &&
-                a.status !== "Đã hủy" &&
-                a.date === v.date &&
-                (a.staff === staff || a.customerId === customerId),
+            state.customers.some((customer) => customer.id === customerId),
+            "Khách hàng không tồn tại.",
+          );
+          assert(
+            state.employees.some(
+              (employee) =>
+                employee.id === staff &&
+                (employee.active ||
+                  (status === "Đã hủy" && previous?.staff === staff)),
             ),
+            "Nhân viên phụ trách không hoạt động.",
+          );
+          assert(
+            status === "Đã hủy" ||
+              !state.appointments.some(
+                (a) =>
+                  a.id !== id &&
+                  a.status !== "Đã hủy" &&
+                  Date.parse(a.date) === slot &&
+                  (a.staff === staff || a.customerId === customerId),
+              ),
             "Trùng lịch hẹn của khách hàng hoặc nhân viên. Chọn giờ khác.",
           );
           record = {
@@ -726,7 +790,7 @@ export function executeCommand(
             propertyId: v.propertyId,
             date: v.date,
             staff,
-            status: v.status || "Chờ xác nhận",
+            status,
             feedback: v.feedback || "",
           };
           break;
@@ -737,12 +801,12 @@ export function executeCommand(
             name: required(v.name, "tên cơ hội"),
             customerId,
             propertyId: v.propertyId || "A0302",
-            stage: "Mới",
+            stage: old && "stage" in old ? old.stage : "Mới",
             amount: Number(v.amount) || 0,
-            assignee: actor.id,
+            assignee: old && "assignee" in old ? old.assignee : actor.id,
             expectedDate: v.expectedDate || "",
             nextAction: v.nextAction || "",
-            lostReason: "",
+            lostReason: old && "lostReason" in old ? old.lostReason : "",
           };
           break;
         case "tasks":
@@ -776,6 +840,10 @@ export function executeCommand(
           };
           break;
         case "campaigns":
+          assert(
+            !campaignPending(id),
+            "Nội dung đang chờ duyệt. Hãy xử lý đề nghị trước khi sửa.",
+          );
           record = {
             id,
             title: required(v.title, "tên chiến dịch"),
@@ -865,6 +933,13 @@ export function executeCommand(
       assert(i >= 0, "Hồ sơ không tồn tại.");
       if (actor.role === "sales" && "assignee" in list[i])
         assert(list[i].assignee === actor.id, "Hồ sơ ngoài phạm vi.");
+      if (c.entity === "campaigns") {
+        const campaign = state.campaigns.find((row) => row.id === c.id);
+        assert(
+          campaign?.status === "Bản nháp" && !campaignPending(c.id),
+          "Chỉ được xóa bản nháp chưa gửi duyệt.",
+        );
+      }
       list.splice(i, 1);
       id = c.id;
       break;
@@ -1082,15 +1157,34 @@ export function executeCommand(
           : state.cms.features,
       };
       break;
-    case "transfer":
+    case "transfer": {
       assert(
         isPrivileged(actor.role) || actor.role === "leader",
         "Không có quyền chuyển giao.",
       );
       assert(
         c.from !== c.to &&
+          state.employees.some((e) => e.id === c.from) &&
           state.employees.some((e) => e.id === c.to && e.active),
         "Người nhận không hợp lệ.",
+      );
+      const upcoming = state.appointments.filter(
+        (visit) =>
+          ["Chờ xác nhận", "Đã xác nhận"].includes(visit.status) &&
+          Date.parse(visit.date) >= now,
+      );
+      const occupied = new Set(
+        upcoming
+          .filter((visit) => visit.staff === c.to)
+          .map((visit) => Date.parse(visit.date)),
+      );
+      const conflict = upcoming.find(
+        (visit) =>
+          visit.staff === c.from && occupied.has(Date.parse(visit.date)),
+      );
+      assert(
+        !conflict,
+        `Nhân sự nhận đã có lịch tại ${conflict?.date}. Hãy đổi lịch trước khi chuyển giao.`,
       );
       for (const entity of [
         "leads",
@@ -1100,9 +1194,10 @@ export function executeCommand(
       ] as Entity[])
         for (const r of state[entity])
           if ("assignee" in r && r.assignee === c.from) r.assignee = c.to;
-      for (const a of state.appointments)
-        if (a.staff === c.from) a.staff = c.to;
+      for (const a of upcoming) if (a.staff === c.from) a.staff = c.to;
+      id = c.to;
       break;
+    }
     case "reset":
       state = createSeed(now);
       message = "Đã khôi phục dữ liệu demo ban đầu.";
@@ -1113,6 +1208,7 @@ export function executeCommand(
     id: newId("audit"),
     at: now,
     actor: actor.role,
+    actorId: actor.id,
     action: c.type,
     recordId: id,
   });

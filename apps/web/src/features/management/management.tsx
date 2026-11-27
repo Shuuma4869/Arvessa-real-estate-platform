@@ -8,6 +8,7 @@ import {
   canWrite,
   canModule,
   crmModules,
+  managementModules,
   moduleNames,
 } from "@/domain/permissions";
 import { dateTime } from "@/domain/format";
@@ -181,8 +182,8 @@ export function Teams() {
       <section className="panel" style={{ marginTop: 25 }}>
         <h3>Chuyển giao trách nhiệm</h3>
         <p className="fine-print">
-          Chuyển leads, khách hàng, cơ hội, công việc và lịch hẹn sang nhân sự
-          nhận.
+          Hồ sơ khách hàng, cơ hội, công việc và lịch tham quan sắp tới sẽ được
+          giao cho nhân sự nhận.
         </p>
         <div className="form-grid">
           <Field label="Từ nhân sự">
@@ -227,11 +228,20 @@ export function Teams() {
 }
 export function Security() {
   const { data, session, expireSession } = useDemo();
+  const [scope, setScope] = useState<"crm" | "management">("crm");
   return (
     <>
       <section className="panel">
         <div className="panel-header">
-          <h2>Ma trận quyền trình bày</h2>
+          <h2>Phân quyền theo vai trò</h2>
+          <select
+            aria-label="Không gian phân quyền"
+            value={scope}
+            onChange={(e) => setScope(e.target.value as typeof scope)}
+          >
+            <option value="crm">CRM</option>
+            <option value="management">Quản lý</option>
+          </select>
         </div>
         <div className="table-scroll">
           <table className="permission-table">
@@ -246,14 +256,14 @@ export function Security() {
               </tr>
             </thead>
             <tbody>
-              {crmModules.map((m) => (
+              {(scope === "crm" ? crmModules : managementModules).map((m) => (
                 <tr key={m}>
                   <th>{moduleNames[m]}</th>
                   {roles
                     .filter((r) => r !== "buyer")
                     .map((r) => (
                       <td key={r}>
-                        {canModule(r, "crm", m) ? "✓ Có" : "— Không"}
+                        {canModule(r, scope, m) ? "✓ Có" : "— Không"}
                       </td>
                     ))}
                 </tr>
