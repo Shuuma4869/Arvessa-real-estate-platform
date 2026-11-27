@@ -58,6 +58,18 @@ export default function ResidenceCanvas({
         120,
       ),
       model = createInterior(layout);
+    let active = true,
+      libraryReady = false;
+    void model.ready
+      .then(() => {
+        if (active) {
+          libraryReady = true;
+          renderer.shadowMap.needsUpdate = true;
+        }
+      })
+      .catch(() => {
+        if (active) onFallback();
+      });
     scene.add(model.root);
     const pmrem = new THREE.PMREMGenerator(renderer),
       envRoom = new RoomEnvironment(),
@@ -168,6 +180,7 @@ export default function ResidenceCanvas({
       }
       const changed = controls.update();
       const state = [
+        libraryReady,
         room.current,
         resetRef.current,
         el.clientWidth,
@@ -185,6 +198,7 @@ export default function ResidenceCanvas({
     };
     animate();
     return () => {
+      active = false;
       cancelAnimationFrame(frame);
       observer.disconnect();
       controls.dispose();

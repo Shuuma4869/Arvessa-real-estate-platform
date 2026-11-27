@@ -19,11 +19,24 @@ const photographs = {
     ["Stillwater-day", "Ánh sáng ban ngày"],
     ["Stillwater-golden", "Giờ vàng"],
     ["Stillwater-aerial", "Toàn cảnh dự án"],
+    ["Stillwater-night", "Ban đêm"],
+    ["Stillwater-entrance", "Sảnh đón tháp A"],
+    ["Stillwater-landscape", "Vườn nước"],
+    ["Stillwater-facade", "Chi tiết mặt đứng"],
+    ["Stillwater-showroom", "Sa bàn"],
   ],
   A0302: [
     ["A0302-dollhouse", "Dollhouse"],
-    ["A0302-living", "Phòng khách"],
-    ["A0302-kitchen", "Bếp & phòng ăn"],
+    ["tour/A0302-living", "Phòng khách"],
+    ["tour/A0302-kitchen", "Bếp"],
+    ["tour/A0302-dining", "Bàn ăn"],
+    ["tour/A0302-bedroom-1", "Phòng ngủ 1"],
+    ["tour/A0302-bedroom-2", "Phòng ngủ 2"],
+    ["tour/A0302-bath-1", "Phòng tắm 1"],
+    ["tour/A0302-bath-2", "Phòng tắm 2"],
+    ["tour/A0302-hall", "Sảnh"],
+    ["tour/A0302-balcony", "Loggia"],
+    ["tour/A0302-joinery", "Chi tiết vật liệu"],
   ],
 };
 export default function FlagshipReview() {
@@ -36,7 +49,9 @@ export default function FlagshipReview() {
   const [tower, setTower] = useState("A"),
     [floor, setFloor] = useState(3);
   const [view, setView] = useState<"perspective" | "aerial">("perspective");
-  const [quality, setQuality] = useState<"balanced" | "high">("balanced");
+  const [quality, setQuality] = useState<
+    "auto" | "light" | "balanced" | "high"
+  >("auto");
   const [error, setError] = useState("");
   const panel = useRef<HTMLDivElement>(null);
   const data = useDemo((s) => s.data);
@@ -100,7 +115,7 @@ export default function FlagshipReview() {
               ...(scene === "A0302"
                 ? [
                     ["plan", "Mặt bằng"],
-                    ["tour", "Phòng khách 360°"],
+                    ["tour", "Tour căn hộ 360°"],
                   ]
                 : []),
             ].map(([id, title]) => (
@@ -109,7 +124,6 @@ export default function FlagshipReview() {
                 aria-pressed={mode === id}
                 onClick={() => {
                   setMode(id);
-                  if (id === "tour") setRoom("living");
                   setError("");
                 }}
               >
@@ -155,7 +169,7 @@ export default function FlagshipReview() {
               onSelect={scene === "Stillwater" ? chooseUnit : setRoom}
               reset={reset}
               view={view}
-              quality={quality}
+              quality={quality === "auto" ? undefined : quality}
             />
           )}
           {mode === "plan" && (
@@ -171,14 +185,14 @@ export default function FlagshipReview() {
             <div className="flagship-tour">
               <Panorama
                 layout={layout}
-                room="living"
+                key={room}
+                room={room}
                 onRoom={setRoom}
                 onFallback={fallback}
                 reset={reset}
-                panoramaUrl="/spatial-flagships/A0302-living-360.webp"
-                initialYaw={0}
+                apartmentTour
               />
-              <span>360° / CYCLES · PHÒNG KHÁCH A0302</span>
+              <span>360° / CYCLES · {selectedRoom.name} · A0302</span>
             </div>
           )}
           {error && <p role="alert">{error}</p>}
@@ -190,9 +204,11 @@ export default function FlagshipReview() {
                   aria-label="Chất lượng vật liệu"
                   value={quality}
                   onChange={(event) =>
-                    setQuality(event.target.value as "balanced" | "high")
+                    setQuality(event.target.value as typeof quality)
                   }
                 >
+                  <option value="auto">Tự động theo thiết bị</option>
+                  <option value="light">Nhẹ · 256 px</option>
                   <option value="balanced">Cân bằng · 512 px</option>
                   <option value="high">Chi tiết · 1024 px</option>
                 </select>
@@ -202,6 +218,7 @@ export default function FlagshipReview() {
               shots.map(([id, title], index) => (
                 <button
                   key={id}
+                  aria-label={`Xem ảnh ${title}`}
                   aria-pressed={photo === index}
                   onClick={() => setPhoto(index)}
                 >
@@ -333,20 +350,17 @@ export default function FlagshipReview() {
           ) : (
             <>
               <div className="flagship-room-list" aria-label="Chọn phòng A0302">
-                {layout.rooms
-                  .filter((r) => mode !== "tour" || r.id === "living")
-                  .map((r) => (
-                    <button
-                      key={r.id}
-                      aria-pressed={room === r.id}
-                      onClick={() => {
-                        setRoom(r.id);
-                        if (mode === "tour") setMode("model");
-                      }}
-                    >
-                      {r.name}
-                    </button>
-                  ))}
+                {layout.rooms.map((r) => (
+                  <button
+                    key={r.id}
+                    aria-pressed={room === r.id}
+                    onClick={() => {
+                      setRoom(r.id);
+                    }}
+                  >
+                    {r.name}
+                  </button>
+                ))}
               </div>
               <p className="flagship-selected" data-testid="flagship-selection">
                 {selectedRoom.name}
@@ -362,6 +376,8 @@ export default function FlagshipReview() {
             Ảnh Cycles và mô hình web dùng cùng nguồn cảnh. Bản GLB được giảm
             chi tiết để tương tác; ánh sáng thời gian thực khác ảnh offline. Mặt
             bằng và diện tích là dữ liệu demo.
+            {scene === "Stillwater" &&
+              " Đường và công trình ngoài ranh dự án là bối cảnh giả định."}
           </p>
         </aside>
       </div>

@@ -8,13 +8,15 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { interactionResolution } from "./interaction-resolution";
 import { residenceLayout } from "./residence-layout";
 
+export type ModelQuality = "light" | "balanced" | "high";
 type Props = {
   sceneName: "Stillwater" | "A0302";
   selected: string;
   onSelect: (id: string) => void;
   reset: number;
   view: "perspective" | "aerial";
-  quality?: "balanced" | "high";
+  quality?: ModelQuality;
+  onFallback?: () => void;
 };
 type UnitPosition = { id: string; blender: number[]; size: number[] };
 
@@ -25,7 +27,8 @@ export default function FlagshipCanvas({
   onSelect,
   reset,
   view,
-  quality = "balanced",
+  quality,
+  onFallback,
 }: Props) {
   const host = useRef<HTMLDivElement>(null);
   const selection = useRef(selected),
@@ -45,11 +48,19 @@ export default function FlagshipCanvas({
     delete el.dataset.firstFrameMs;
     delete el.dataset.benchmark;
     el.dataset.frames = "0";
+    const connection = (
+      navigator as Navigator & { connection?: { saveData?: boolean } }
+    ).connection;
+    const tier =
+      quality ??
+      (connection?.saveData || window.innerWidth < 650 ? "light" : "balanced");
+    el.dataset.quality = tier;
     let renderer: THREE.WebGLRenderer;
     try {
       renderer = new THREE.WebGLRenderer({ antialias: true });
     } catch {
       setFailure(true);
+      onFallback?.();
       setStatus(
         "Thiết bị chưa mở được WebGL. Có thể xem các ảnh render bên cạnh.",
       );
@@ -61,7 +72,7 @@ export default function FlagshipCanvas({
       dirty = true;
     const start = performance.now();
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xe4e3db);
+    scene.background = new THREE.Color(interior ? 0x343d38 : 0xdde2db);
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 600);
     renderer.setPixelRatio(
       Math.min(devicePixelRatio, el.clientWidth < 650 ? 1 : 1.5),
@@ -111,7 +122,8 @@ export default function FlagshipCanvas({
     const sun = new THREE.DirectionalLight(0xffeed6, 2.3);
     sun.position.set(-30, 60, 30);
     sun.castShadow = true;
-    sun.shadow.mapSize.set(1024, 1024);
+    const shadowSize = tier === "light" ? 512 : 1024;
+    sun.shadow.mapSize.set(shadowSize, shadowSize);
     const radius = interior ? 13 : 52;
     Object.assign(sun.shadow.camera, {
       left: -radius,
@@ -181,6 +193,23 @@ export default function FlagshipCanvas({
       scene.add(mesh);
     };
     if (interior) {
+      const stage = new THREE.PlaneGeometry(200, 200);
+      const surface = new THREE.MeshStandardMaterial({
+        color: 0x424c44,
+        roughness: 1,
+      });
+      const ground = new THREE.Mesh(stage, surface);
+      ground.rotation.x = -Math.PI / 2;
+      ground.position.y = -0.31;
+      ground.receiveShadow = true;
+      scene.add(ground);
+      geometries.add(stage);
+      materials.add(surface);
+      renderer.domElement.dataset.rooms = String(
+        residenceLayout(2, 107).rooms.length,
+      );
+    }
+    if (interior) {
       const layout = residenceLayout(2, 107),
         scale = Math.sqrt(107 / (layout.width * layout.depth));
       layout.rooms.forEach((room) =>
@@ -220,7 +249,7 @@ export default function FlagshipCanvas({
     geometries.add(marker.geometry);
     materials.add(marker.material as THREE.Material);
     new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).load(
-      `/spatial-flagships/${sceneName}${quality === "balanced" ? "-balanced" : ""}.glb`,
+      `/spatial-flagships/${sceneName}${tier === "high" ? "" : `-${tier}`}.glb`,
       (gltf) => {
         disposeTree(gltf.scene);
         if (disposed) {
@@ -249,7 +278,7 @@ export default function FlagshipCanvas({
               // The balanced preview uses environment-reflective alpha glass.
               // Full screen-space refraction remains available in high quality.
               if (
-                quality === "balanced" &&
+                tier !== "high" &&
                 m instanceof THREE.MeshPhysicalMaterial &&
                 m.transmission > 0
               ) {
@@ -289,6 +318,7 @@ export default function FlagshipCanvas({
       undefined,
       () => {
         if (!disposed) {
+          onFallback?.();
           setFailure(true);
           setStatus("Chưa tải được mô hình. Thử lại hoặc xem ảnh render.");
         }
@@ -314,6 +344,7 @@ export default function FlagshipCanvas({
     };
     const lost = (event: Event) => {
       event.preventDefault();
+      onFallback?.();
       setFailure(true);
       setStatus("WebGL đã tạm dừng. Bấm thử lại để khôi phục mô hình.");
     };
@@ -442,7 +473,7 @@ export default function FlagshipCanvas({
       renderer.dispose();
       renderer.domElement.remove();
     };
-  }, [sceneName, reset, view, attempt, quality]);
+  }, [sceneName, reset, view, attempt, quality, onFallback]);
   return (
     <div className="flagship-model-shell">
       <div ref={host} className="flagship-model" data-testid="flagship-model" />

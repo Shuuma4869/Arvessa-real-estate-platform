@@ -15,6 +15,7 @@ import { useDemo } from "@/services/store";
 import { ImmersivePropertyCarousel } from "./carousel";
 import { SpatialPreview } from "../spatial/spatial-preview";
 import { brand } from "@/lib/brand";
+import "./public-spatial.css";
 const scenes = [
   {
     label: "Kiến trúc",
@@ -46,6 +47,16 @@ const scenes = [
     x: 62,
     y: 68,
   },
+  {
+    label: "Mô hình",
+    image: "/spatial-flagships/Stillwater-golden.webp",
+    title: "Bóng hiên trên mặt đứng.",
+    copy: "Góc nắng thấp làm rõ chiều sâu ban công và các lớp vật liệu của mô hình The Stillwater.",
+    href: "/spatial-review",
+    point: "Mở phòng trưng bày",
+    x: 57,
+    y: 48,
+  },
 ];
 export default function Landing() {
   const data = useDemo((s) => s.data);
@@ -65,7 +76,8 @@ export default function Landing() {
       >
         <div className="atelier-hero-copy">
           <p className="eyebrow">
-            <span className="status-dot" /> ARCHITECTURE, WITH A POINT OF VIEW
+            <span className="status-dot" /> THE STILLWATER · BỘ SƯU TẬP KIẾN
+            TRÚC
           </p>
           <h1>
             {data.cms.headline.split("\n").map((line, i) => (
@@ -83,13 +95,26 @@ export default function Landing() {
           </div>
           <div className="hero-footnote">
             <img src="/brand/arvessa-mark.svg" alt="" width={36} height={36} />
-            <span>
-              {brand.line}
-              <small>Kiến trúc số. Trải nghiệm có chiều sâu.</small>
-            </span>
+            <span>{brand.line}</span>
           </div>
+          <Link href="/properties/A0302" className="hero-residence-study">
+            <ArtImage
+              src="/images/library/stillwater-two-bedroom-1600.webp"
+              alt=""
+              width={180}
+              height={108}
+              sizes="100px"
+              loading="lazy"
+            />
+            <span>
+              <small>HỒ SƠ CĂN HỘ</small>
+              <strong>Lake Residence · A0302</strong>
+              <span>Mặt bằng và tour từng phòng</span>
+            </span>
+            <ArrowUpRight size={17} />
+          </Link>
           <a className="atelier-scroll" href="#collection">
-            01 / BỘ SƯU TẬP <ArrowDown size={16} />
+            Xem bộ sưu tập <ArrowDown size={16} />
           </a>
         </div>
         <div className="atelier-hero-visual">
@@ -103,7 +128,11 @@ export default function Landing() {
               )}
               <ArtImage
                 src={active.image}
-                alt={`Phối cảnh concept The Stillwater — ${active.label.toLowerCase()}`}
+                alt={
+                  scene === 3
+                    ? "The Stillwater trong ánh chiều, dựng từ mô hình kiến trúc"
+                    : `Phối cảnh concept The Stillwater — ${active.label.toLowerCase()}`
+                }
                 width={1600}
                 height={1067}
                 sizes="(max-width:700px) 100vw, 58vw"
@@ -144,7 +173,10 @@ export default function Landing() {
           )}
           <div className="hero-scene-caption">
             <div>
-              <small>THE STILLWATER / CONCEPT STUDY</small>
+              <small>
+                THE STILLWATER /{" "}
+                {scene === 3 ? "RENDER TỪ MÔ HÌNH" : "CONCEPT STUDY"}
+              </small>
               <h2>{active.title}</h2>
             </div>
             <div className="scene-arrows">
@@ -156,7 +188,7 @@ export default function Landing() {
               </button>
               <span>
                 0{scene + 1}
-                <small> / 03</small>
+                <small> / 0{scenes.length}</small>
               </span>
               <button
                 aria-label="Cảnh hero sau"
@@ -256,6 +288,9 @@ export default function Landing() {
           <LinkButton href="/explorer?project=stillwater">
             Bước vào showroom 3D <ArrowUpRight size={17} />
           </LinkButton>
+          <Link className="source-study-link" href="/spatial-review">
+            Xem mô hình và bản dựng The Stillwater <ArrowUpRight size={15} />
+          </Link>
           <div className="spatial-facts">
             <span>
               <b>02</b> tháp

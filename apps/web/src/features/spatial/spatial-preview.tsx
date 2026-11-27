@@ -47,7 +47,10 @@ export function SpatialPreview() {
             Khám phá từng không gian.
           </h3>
           {fallback ? (
-            <Link className="button" href="/explorer?project=stillwater">
+            <Link
+              className="button"
+              href="/explorer?project=stillwater&mode=2d"
+            >
               Mở bảng lựa chọn 2D
             </Link>
           ) : (

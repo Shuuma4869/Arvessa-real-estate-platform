@@ -7,6 +7,8 @@ import { useDemo } from "@/services/store";
 import { Button, Field, Badge, LinkButton } from "@/components/ui";
 import { compactMoney } from "@/domain/format";
 import { sound } from "@/lib/sound";
+import { Columns2, Heart } from "lucide-react";
+import "../marketing/public-spatial.css";
 const BuildingCanvas = dynamic(() => import("./building-canvas"), {
   ssr: false,
   loading: () => <div className="loading">Đang chuẩn bị mô hình 3D…</div>,
@@ -23,9 +25,10 @@ export default function Explorer() {
     [floor, setFloor] = useState(Number(params.get("floor")) || 0),
     [tower, setTower] = useState(params.get("tower") || ""),
     [cameraView, setCameraView] = useState("perspective"),
-    [mode, setMode] = useState("3d"),
+    [mode, setMode] = useState(params.get("mode") === "2d" ? "2d" : "3d"),
     [night, setNight] = useState(false),
-    [available, setAvailable] = useState(false),
+    [available, setAvailable] = useState(params.get("available") === "1"),
+    [detail, setDetail] = useState("auto"),
     [progress, setProgress] = useState(0),
     [fallback, setFallback] = useState(false);
   const project =
@@ -40,11 +43,15 @@ export default function Explorer() {
     nextTower = tower,
     nextFloor = floor,
     nextProject = project.id,
+    onlyAvailable = available,
+    nextMode = mode,
   ) => {
     const query = new URLSearchParams({ project: nextProject });
     if (nextTower) query.set("tower", nextTower);
     if (nextFloor) query.set("floor", String(nextFloor));
     if (unit) query.set("unit", unit);
+    if (onlyAvailable) query.set("available", "1");
+    if (nextMode === "2d") query.set("mode", "2d");
     window.history.replaceState(null, "", `/explorer?${query}`);
   };
   const selectUnit = (id: string) => {
@@ -92,6 +99,7 @@ export default function Explorer() {
               floor={floor}
               tower={tower}
               availableOnly={available}
+              compact={detail === "auto" ? undefined : detail === "compact"}
               night={night}
               cameraView={cameraView}
               reducedMotion={data.preferences.reducedMotion}
@@ -129,15 +137,29 @@ export default function Explorer() {
           <div className="canvas-toolbar">
             <Button
               className="secondary"
-              onClick={() => setMode(mode === "3d" ? "2d" : "3d")}
+              onClick={() => {
+                const next = mode === "3d" ? "2d" : "3d";
+                setMode(next);
+                setFallback(false);
+                updateLocation(
+                  selected,
+                  tower,
+                  floor,
+                  project.id,
+                  available,
+                  next,
+                );
+              }}
             >
               {mode === "3d" ? <Grid2X2 size={15} /> : <Rotate3D size={15} />}
               Chế độ {mode === "3d" ? "2D" : "3D"}
             </Button>
-            <Button className="secondary" onClick={() => setNight(!night)}>
-              {night ? <Sun size={15} /> : <Moon size={15} />}{" "}
-              {night ? "Ban ngày" : "Ban đêm"}
-            </Button>
+            {mode === "3d" && (
+              <Button className="secondary" onClick={() => setNight(!night)}>
+                {night ? <Sun size={15} /> : <Moon size={15} />}{" "}
+                {night ? "Ban ngày" : "Ban đêm"}
+              </Button>
+            )}
             {mode === "3d" && progress < 100 && (
               <span role="status" style={{ padding: 10 }}>
                 Tải mô hình {progress}%
@@ -171,6 +193,12 @@ export default function Explorer() {
           </div>
         </div>
         <aside className="explorer-panel">
+          <div className="explorer-inventory-heading">
+            <h2>{project.name}</h2>
+            <p>
+              {properties.length} căn · {project.towers.length} tháp
+            </p>
+          </div>
           <Field label="Dự án">
             <select
               aria-label="Dự án"
@@ -226,7 +254,14 @@ export default function Explorer() {
             <input
               type="checkbox"
               checked={available}
-              onChange={(e) => setAvailable(e.target.checked)}
+              onChange={(e) => {
+                const enabled = e.target.checked;
+                const unit =
+                  enabled && p?.availability !== "AVAILABLE" ? "" : selected;
+                setSelected(unit);
+                setAvailable(enabled);
+                updateLocation(unit, tower, floor, project.id, enabled);
+              }}
             />
             Chỉ căn còn trống
           </label>
@@ -244,6 +279,18 @@ export default function Explorer() {
               ))}
             </select>
           </Field>
+          {mode === "3d" && (
+            <Field label="Chi tiết mô hình">
+              <select
+                value={detail}
+                onChange={(e) => setDetail(e.target.value)}
+              >
+                <option value="auto">Tự động theo thiết bị</option>
+                <option value="compact">Nhẹ · giảm chi tiết cảnh quan</option>
+                <option value="standard">Đầy đủ</option>
+              </select>
+            </Field>
+          )}
           {p ? (
             <>
               <hr />
@@ -261,6 +308,29 @@ export default function Explorer() {
               <LinkButton href={`/properties/${p.id}`}>
                 Khám phá căn {p.id}
               </LinkButton>
+              <div className="explorer-unit-actions">
+                <button
+                  aria-pressed={data.favorites.includes(p.id)}
+                  onClick={() =>
+                    void useDemo.getState().run({ type: "favorite", id: p.id })
+                  }
+                >
+                  <Heart size={15} /> Yêu thích
+                </button>
+                <button
+                  aria-pressed={data.comparisons.includes(p.id)}
+                  onClick={() =>
+                    void useDemo
+                      .getState()
+                      .run({ type: "compare", id: p.id })
+                      .catch((error) =>
+                        useDemo.getState().notify(error.message),
+                      )
+                  }
+                >
+                  <Columns2 size={15} /> So sánh
+                </button>
+              </div>
             </>
           ) : (
             <p>Chọn một căn để xem thông tin.</p>

@@ -90,26 +90,23 @@ test("flagship panorama changes with keyboard and review remains usable on mobil
   await page.getByRole("button", { name: /Residence A0302/ }).click();
   await page.getByRole("button", { name: "Phòng ngủ 2", exact: true }).click();
   await page
-    .getByRole("button", { name: "Phòng khách 360°", exact: true })
+    .getByRole("button", { name: "Tour căn hộ 360°", exact: true })
     .click();
   await expect(page.getByTestId("flagship-selection")).toContainText(
-    "Phòng khách",
+    "Phòng ngủ 2",
   );
-  await expect(
-    page.getByRole("button", { name: "Phòng ngủ 2", exact: true }),
-  ).toHaveCount(0);
-  await expect(
-    page.getByText("Đang mở không gian…", { exact: true }),
-  ).toHaveCount(0);
   const canvas = page.locator(".flagship-tour canvas");
-  await expect(canvas).toBeVisible();
+  await expect(canvas).toHaveAttribute("data-room", "bedroom-2");
+  await expect(page.locator(".flagship-tour .tour-hotspot")).toHaveCount(2);
+  await page.getByRole("button", { name: "Phòng khách", exact: true }).click();
+  await expect(canvas).toHaveAttribute("data-room", "living");
   const before = await canvas.screenshot();
   await canvas.focus();
   await page.keyboard.press("ArrowRight");
   await expect
     .poll(async () => Buffer.compare(before, await canvas.screenshot()))
     .not.toBe(0);
-  await expect(page.locator(".flagship-tour .tour-hotspot")).toHaveCount(0);
+  await expect(page.locator(".flagship-tour .tour-hotspot")).toHaveCount(3);
   await page.getByRole("button", { name: "Ảnh Cycles", exact: true }).click();
   for (const width of [360, 390, 768]) {
     await page.setViewportSize({ width, height: 900 });

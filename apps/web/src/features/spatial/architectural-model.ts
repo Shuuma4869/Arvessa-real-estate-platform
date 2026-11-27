@@ -8,9 +8,10 @@ export function createArchitecturalModel(
   project: Project,
   properties: Property[],
   night: boolean,
+  options: { compact?: boolean; district?: boolean } = {},
 ) {
   const root = new THREE.Group();
-  root.name = "ARVESSA / Stillwater architectural study";
+  root.name = `ARVESSA / ${project.name}`;
   const buckets = new Map<THREE.Material, THREE.BufferGeometry[]>();
   const resources = new Set<THREE.BufferGeometry>();
   const materials = new Set<THREE.Material>();
@@ -93,7 +94,14 @@ export function createArchitecturalModel(
     y: number,
     z: number,
     r = 0.1,
-  ) => add(new RoundedBoxGeometry(w, h, d, 2, r), m, x, y, z);
+  ) =>
+    add(
+      new RoundedBoxGeometry(w, h, d, options.compact ? 1 : 2, r),
+      m,
+      x,
+      y,
+      z,
+    );
   const cylinder = (
     r1: number,
     r2: number,
@@ -102,14 +110,21 @@ export function createArchitecturalModel(
     x: number,
     y: number,
     z: number,
-  ) => add(new THREE.CylinderGeometry(r1, r2, h, 12), m, x, y, z);
+  ) =>
+    add(
+      new THREE.CylinderGeometry(r1, r2, h, options.compact ? 8 : 12),
+      m,
+      x,
+      y,
+      z,
+    );
   const tree = (x: number, z: number, scale = 1, seed = 0) => {
     cylinder(0.09 * scale, 0.18 * scale, 3.3 * scale, oak, x, 1.5 * scale, z);
-    for (let i = 0; i < 13; i++) {
+    for (let i = 0; i < (options.compact ? 7 : 13); i++) {
       const angle = i * 2.399 + seed;
       const radius = (0.4 + (i % 4) * 0.22) * scale;
       add(
-        new THREE.IcosahedronGeometry(1, 1),
+        new THREE.IcosahedronGeometry(1, options.compact ? 0 : 1),
         leaf[(i + seed) % 4],
         x + Math.cos(angle) * radius,
         (3.1 + (i % 3) * 0.45) * scale,
@@ -139,6 +154,27 @@ export function createArchitecturalModel(
   round(siteWidth, 1, 44, stone, 0, -0.65, 0, 0.35);
   round(siteWidth + 0.4, 0.2, 44.4, bronze, 0, -1.22, 0, 0.08);
   box(240, 0.15, 240, material(night ? 0x1b302d : 0xcfd4c6, 0.95), 0, -1.45, 0);
+  if (options.district) {
+    // The surrounding massing is illustrative. Only inventory glazing is selectable.
+    const street = material(night ? 0x353e3e : 0x858b85);
+    const walk = material(0xd8d4c5);
+    const block = material(night ? 0x727c79 : 0xd9dbd2);
+    const rail = material(0x9b9d93);
+    box(190, 0.12, 7, street, 0, -1.3, -28);
+    box(5, 0.12, 110, street, siteWidth / 2 + 7, -1.3, 0);
+    box(190, 0.18, 1.8, walk, 0, -1.21, -23.5);
+    box(180, 0.12, 53, water, 0, -1.32, 54);
+    box(170, 0.2, 4, walk, 0, -1.17, 24.5);
+    for (let x = -76; x < 78; x += 7) box(3, 0.03, 0.13, edge, x, -1.21, -28);
+    for (let i = 0; i < 9; i++) {
+      const x = -68 + i * 16;
+      const height = 4 + (i % 3) * 2.4;
+      box(11, height, 10, block, x, -1.3 + height / 2, -40);
+      box(11.5, 0.25, 10.5, rail, x, -1.2 + height, -40);
+      tree(x, -33, 0.8, i);
+    }
+  }
+  const ripple = material(0x82b5aa, 0.3, 0.3);
   // Paving joints and a continuous waterfront promenade establish scale.
   for (let x = -siteWidth / 2 + 2; x < siteWidth / 2 - 1; x += 2)
     box(0.024, 0.015, 41, plaster, x, -0.12, 0);
@@ -147,15 +183,7 @@ export function createArchitecturalModel(
   round(siteWidth - 6, 0.25, 8, edge, 0, -0.1, 15, 0.15);
   round(siteWidth - 7, 0.15, 6.8, water, 0, 0.045, 15, 0.12);
   for (let i = 0; i < 8; i++)
-    box(
-      siteWidth - 8,
-      0.015,
-      0.035,
-      material(0x82b5aa, 0.3, 0.3),
-      0,
-      0.13,
-      12.1 + i * 0.85,
-    );
+    box(siteWidth - 8, 0.015, 0.035, ripple, 0, 0.13, 12.1 + i * 0.85);
   // Boardwalk and pergola, deliberately not additional inventory towers.
   for (let i = 0; i < 28; i++)
     box(0.28, 0.12, 4.3, oak, -4.9 + i * 0.36, 0.03, -16.8);

@@ -2,7 +2,13 @@
 import { ArtImage } from "@/components/art-image";
 import { useRef, useState, type CSSProperties } from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Heart,
+  Columns2,
+} from "lucide-react";
 import { useDemo } from "@/services/store";
 import { compactMoney } from "@/domain/format";
 import { propertyVisual, resolveVisual } from "@/lib/visual-assets";
@@ -19,6 +25,7 @@ export function ImmersivePropertyCarousel() {
   const cards = [
     ...projects.map((p, i) => ({
       id: p.id,
+      unit: false,
       name: p.name,
       kicker: p.location,
       image: resolveVisual(p.image, p.id),
@@ -29,9 +36,14 @@ export function ImmersivePropertyCarousel() {
       cta: `Khám phá ${p.name}`,
     })),
     ...data.properties
-      .filter((p) => ["A0301", "A0302"].includes(p.id))
+      .filter(
+        (p) =>
+          ["A0301", "A0302"].includes(p.id) &&
+          projects.some((project) => project.id === p.projectId),
+      )
       .map((p) => ({
         id: p.id,
+        unit: true,
         name: p.beds === 1 ? "The Garden Suite" : "The Lake Residence",
         kicker: `THE STILLWATER / ${p.id}`,
         image: propertyVisual(p),
@@ -69,8 +81,19 @@ export function ImmersivePropertyCarousel() {
           e.preventDefault();
           move(e.key === "ArrowRight" ? 1 : -1);
         }
+        if (e.key === "Home" || e.key === "End") {
+          e.preventDefault();
+          setIndex(e.key === "Home" ? 0 : cards.length - 1);
+        }
       }}
     >
+      <div
+        aria-hidden="true"
+        className="collection-atmosphere"
+        style={{
+          backgroundImage: `url("${cards[current].image.replace("-1600.webp", "-480.webp")}")`,
+        }}
+      />
       <div
         className="coverflow-stage"
         onClickCapture={(e) => {
@@ -153,7 +176,35 @@ export function ImmersivePropertyCarousel() {
                   loading="lazy"
                   draggable={false}
                 />
-                <span>ARVESSA / COLLECTION</span>
+                {card.unit && offset === 0 && (
+                  <div className="coverflow-actions">
+                    <button
+                      aria-label={`Yêu thích ${card.id}`}
+                      aria-pressed={data.favorites.includes(card.id)}
+                      onClick={() =>
+                        void useDemo
+                          .getState()
+                          .run({ type: "favorite", id: card.id })
+                      }
+                    >
+                      <Heart size={17} />
+                    </button>
+                    <button
+                      aria-label={`So sánh ${card.id}`}
+                      aria-pressed={data.comparisons.includes(card.id)}
+                      onClick={() =>
+                        void useDemo
+                          .getState()
+                          .run({ type: "compare", id: card.id })
+                          .catch((error) =>
+                            useDemo.getState().notify(error.message),
+                          )
+                      }
+                    >
+                      <Columns2 size={17} />
+                    </button>
+                  </div>
+                )}
               </div>
               <div className="coverflow-content">
                 <p className="eyebrow">{card.kicker}</p>
@@ -204,7 +255,7 @@ export function ImmersivePropertyCarousel() {
         </div>
       </div>
       <p className="coverflow-hint">
-        Kéo để khám phá · Phím ← → để chuyển · Không tự phát
+        Kéo hoặc dùng phím ← → để xem địa chỉ kế tiếp.
       </p>
     </section>
   );

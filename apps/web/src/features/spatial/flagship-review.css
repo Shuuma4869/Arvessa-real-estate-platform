@@ -412,3 +412,18 @@
     margin: 5px 0;
   }
 }
+
+.residence-view > .flagship-model-shell {
+  position: absolute;
+  inset: 0;
+  min-height: 0;
+  aspect-ratio: auto;
+}
+.residence-view .flagship-model-caption {
+  display: none;
+}
+.residence-view .flagship-benchmark {
+  top: auto;
+  bottom: 16px;
+  right: auto;
+}

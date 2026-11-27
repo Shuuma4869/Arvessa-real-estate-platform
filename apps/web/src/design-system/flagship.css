@@ -1837,3 +1837,54 @@
 .workspace .table-wrap {
   border-radius: 12px;
 }
+
+.workspace-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 44;
+  border: 0;
+  background: rgb(13 31 25 / 45%);
+}
+.workspace.mobile-open .workspace-sidebar {
+  box-shadow: 12px 0 40px rgb(13 31 25 / 12%);
+}
+.workspace [aria-current="page"] {
+  font-weight: 700;
+}
+@media (max-width: 800px) {
+  .workspace-sidebar nav a,
+  .workspace .icon-button {
+    min-height: 44px;
+  }
+  .workspace .icon-button {
+    min-width: 44px;
+  }
+  .workspace.mobile-open .workspace-sidebar {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .workspace-sidebar {
+    transition-duration: 0s;
+  }
+}
+
+.residence-plan .plan-dimensions path {
+  fill: none;
+  stroke: #71674e;
+  stroke-width: 0.025;
+}
+.residence-plan .plan-dimensions text {
+  font:
+    0.27px "Manrope Variable",
+    sans-serif;
+  fill: #514934;
+}
+.plan-tools {
+  flex-wrap: wrap;
+}
+.plan-tools button[aria-pressed="true"] {
+  background: #254438;
+  color: #fffdf2;
+}

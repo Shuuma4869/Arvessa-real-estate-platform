@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 import type { ResidenceLayout } from "./residence-layout";
@@ -28,6 +29,75 @@ export function createInterior(layout: ResidenceLayout, enclosed = false) {
     black = mat(0x242724, 0.3, 0.3),
     rug = mat(0xbab09b),
     blue = mat(0x628b89, 0.15, 0.25);
+  const library = "/spatial-flagships/library/";
+  const textures = new Set<THREE.Texture>();
+  let disposed = false;
+  const loader = new THREE.TextureLoader();
+  const finishes = [
+    [oak, "oak_veneer_01"],
+    [stone, "marble_01"],
+    [rug, "fabric_pattern_05"],
+  ] as const;
+  const requests = finishes.flatMap(([surface, name]) => {
+    surface.color.setHex(0xffffff);
+    surface.normalScale.setScalar(0.55);
+    return (
+      [
+        ["map", "Diffuse"],
+        ["roughnessMap", "Rough"],
+        ["normalMap", "nor_gl"],
+      ] as const
+    ).map(async ([slot, channel]) => {
+      const texture = await loader.loadAsync(
+        library + name + "-" + channel + ".webp",
+      );
+      if (disposed) {
+        texture.dispose();
+        return;
+      }
+      texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+      if (slot === "map") texture.colorSpace = THREE.SRGBColorSpace;
+      textures.add(texture);
+      surface[slot] = texture;
+      surface.needsUpdate = true;
+    });
+  });
+  requests.push(
+    new GLTFLoader()
+      .loadAsync(library + "velvet-sofa.glb")
+      .then(({ scene: sofa }) => {
+        sofa.traverse((node) => {
+          if (!(node instanceof THREE.Mesh)) return;
+          node.castShadow = node.receiveShadow = true;
+          if (disposed) node.geometry.dispose();
+          else geometries.add(node.geometry);
+          for (const surface of Array.isArray(node.material)
+            ? node.material
+            : [node.material]) {
+            for (const value of Object.values(surface))
+              if (value instanceof THREE.Texture) {
+                if (disposed) value.dispose();
+                else textures.add(value);
+              }
+            if (disposed) surface.dispose();
+            else materials.add(surface);
+          }
+        });
+        if (disposed) return;
+        const box = new THREE.Box3().setFromObject(sofa);
+        const width = box.max.x - box.min.x;
+        const scale = 3.03 / width;
+        const center = box.getCenter(new THREE.Vector3());
+        sofa.scale.setScalar(scale);
+        sofa.position.set(
+          2.05 - center.x * scale,
+          0.065 - box.min.y * scale,
+          6.24 - center.z * scale,
+        );
+        root.add(sofa);
+      }),
+  );
+  const ready = Promise.all(requests);
   const glass = new THREE.MeshPhysicalMaterial({
     color: 0xb8d7d3,
     roughness: 0.08,
@@ -61,6 +131,21 @@ export function createInterior(layout: ResidenceLayout, enclosed = false) {
     const geo = (g.index ? g.toNonIndexed() : g.clone()).applyMatrix4(
       temp.matrix,
     );
+    // Apply material scale in floor-plan units after orienting each furniture part.
+    if (m === oak || m === stone || m === rug) {
+      const pos = geo.getAttribute("position"),
+        norm = geo.getAttribute("normal"),
+        uv = geo.getAttribute("uv");
+      const repeat = m === rug ? 0.75 : 1.8;
+      for (let i = 0; i < pos.count; i++) {
+        const nx = Math.abs(norm.getX(i)),
+          ny = Math.abs(norm.getY(i)),
+          nz = Math.abs(norm.getZ(i));
+        const u = nx > ny && nx > nz ? pos.getZ(i) : pos.getX(i);
+        const v = ny >= nx && ny >= nz ? pos.getZ(i) : pos.getY(i);
+        uv.setXY(i, u / repeat, v / repeat);
+      }
+    }
     g.dispose();
     const list = buckets.get(m) || [];
     list.push(geo);
@@ -231,23 +316,6 @@ export function createInterior(layout: ResidenceLayout, enclosed = false) {
     }
     if (r.kind === "living") {
       round(r.w - 1, 0.03, 3.25, rug, cx, 0.05, 7.35, 0.14);
-      round(2.9, 0.35, 1.05, cream, 2.05, 0.36, 6.25, 0.16);
-      round(2.95, 0.55, 0.22, cream, 2.05, 0.68, 5.8, 0.1);
-      for (let i = 0; i < 3; i++) {
-        round(0.88, 0.14, 0.8, white, 1.1 + i * 0.95, 0.6, 6.3);
-        round(
-          0.55,
-          0.4,
-          0.16,
-          i % 2 ? terracotta : ink,
-          1.15 + i * 0.9,
-          0.82,
-          6,
-          0.08,
-        );
-      }
-      round(0.4, 0.45, 1.08, cream, 0.43, 0.54, 6.25);
-      round(0.4, 0.45, 1.08, cream, 3.65, 0.54, 6.25);
       cyl(0.82, 0.12, stone, 2.3, 0.48, 7.8);
       cyl(0.45, 0.42, wood, 2.3, 0.23, 7.8);
       cyl(0.18, 0.04, bronze, 2.4, 0.57, 7.8);
@@ -365,7 +433,10 @@ export function createInterior(layout: ResidenceLayout, enclosed = false) {
   return {
     root,
     pickers,
+    ready,
     dispose() {
+      disposed = true;
+      textures.forEach((texture) => texture.dispose());
       geometries.forEach((g) => g.dispose());
       materials.forEach((m) => m.dispose());
     },

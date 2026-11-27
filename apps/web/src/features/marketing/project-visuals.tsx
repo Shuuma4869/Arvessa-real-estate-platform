@@ -7,6 +7,8 @@ import { Project } from "@/domain/types";
 import { ArtImage } from "@/components/art-image";
 import { Modal, SectionTitle } from "@/components/ui";
 import { projectGallery } from "@/lib/visual-assets";
+import { compactMoney } from "@/domain/format";
+import "./public-spatial.css";
 const BuildingCanvas = dynamic(() => import("../spatial/building-canvas"), {
   ssr: false,
 });
@@ -22,11 +24,31 @@ export function ProjectVisuals({ project }: { project: Project }) {
   const progress = useCallback(() => {}, []);
   const [spot, setSpot] = useState(project.towers[0]);
   const [photo, setPhoto] = useState<number | null>(null);
+  const [floor, setFloor] = useState(0);
+  const [available, setAvailable] = useState(false);
+  const [camera, setCamera] = useState("aerial");
+  const [labels, setLabels] = useState(true);
+  const [failed, setFailed] = useState(false);
   const active =
     spot === "garden" || project.towers.includes(spot)
       ? spot
       : project.towers[0];
   const images = projectGallery(project.id, project.image);
+  const candidates = properties.filter(
+    (unit) =>
+      (active === "garden" || unit.tower === active) &&
+      (!floor || unit.floor === floor) &&
+      (!available || unit.availability === "AVAILABLE"),
+  );
+  const picked = candidates.find((unit) => unit.id === selected);
+  const chooseSpot = (spot: string) => {
+    setSpot(spot);
+    setSelected("");
+  };
+  const handleFallback = useCallback(() => {
+    fall();
+    setFailed(true);
+  }, [fall]);
   return (
     <section className="project-visuals" id="masterplan">
       <SectionTitle
@@ -34,28 +56,36 @@ export function ProjectVisuals({ project }: { project: Project }) {
         title="Mỗi vị trí, một góc nhìn."
       />
       <div className="masterplan-layout">
-        <div className="masterplan" aria-label="Sơ đồ tổng mặt bằng concept">
+        <div
+          className={`masterplan district-stage ${!started && project.id === "stillwater" ? "district-still" : ""}`}
+          aria-label="Sơ đồ tổng mặt bằng concept"
+        >
           {started && (
             <BuildingCanvas
               project={project}
               properties={properties}
-              selected={selected}
-              floor={0}
+              selected={picked?.id || ""}
+              floor={floor}
               tower={active === "garden" ? "" : active}
-              availableOnly={false}
+              availableOnly={available}
               night={false}
-              cameraView="aerial"
+              district
+              showLabels={labels}
+              cameraView={camera}
               reducedMotion={data.preferences.reducedMotion}
               onPick={setSelected}
-              onTowerPick={setSpot}
-              onFallback={fall}
+              onTowerPick={chooseSpot}
+              onFallback={handleFallback}
               onProgress={progress}
             />
           )}
           {!started && (
             <button
               className="masterplan-start button"
-              onClick={() => setStarted(true)}
+              onClick={() => {
+                setFailed(false);
+                setStarted(true);
+              }}
             >
               Khám phá tổng thể 3D
             </button>
@@ -69,7 +99,7 @@ export function ProjectVisuals({ project }: { project: Project }) {
               <button
                 key={tower}
                 className={`masterplan-tower ${active === tower ? "selected" : ""}`}
-                onClick={() => setSpot(tower)}
+                onClick={() => chooseSpot(tower)}
                 aria-pressed={active === tower}
                 aria-label={`${started ? "Chọn" : "Khám phá"} tháp ${tower}`}
               >
@@ -80,20 +110,32 @@ export function ProjectVisuals({ project }: { project: Project }) {
           </div>
           <button
             className="garden-hotspot"
-            onClick={() => setSpot("garden")}
+            onClick={() => chooseSpot("garden")}
             aria-pressed={active === "garden"}
           >
             ＋ Sân vườn
           </button>
           <span className="site-entry">LỐI TIẾP CẬN ↑</span>
-        </div>
-        <div className="masterplan-copy" aria-live="polite">
-          <p className="eyebrow">{project.name}</p>
-          {selected && (
-            <Link className="underlined-link" href={`/properties/${selected}`}>
-              Xem căn {selected} ↗
-            </Link>
+          {started && (
+            <div className="district-camera">
+              <select
+                aria-label="Góc nhìn khu đất"
+                value={camera}
+                onChange={(event) => setCamera(event.target.value)}
+              >
+                <option value="aerial">Phối cảnh tổng thể</option>
+                <option value="north">Hướng Bắc · nhìn từ trên</option>
+                <option value="waterfront">Dọc bờ nước</option>
+              </select>
+              <button aria-pressed={labels} onClick={() => setLabels(!labels)}>
+                Nhãn tháp
+              </button>
+              <button onClick={() => setStarted(false)}>Đóng 3D</button>
+            </div>
           )}
+        </div>
+        <div className="masterplan-copy">
+          <p className="eyebrow">{project.name}</p>
           <h3>
             {active === "garden"
               ? "Khoảng xanh kết nối."
@@ -104,9 +146,71 @@ export function ProjectVisuals({ project }: { project: Project }) {
               ? "Khoảng sân chung kết nối các lối tiếp cận và mặt nước. Sơ đồ này là nghiên cứu tổ chức không gian."
               : `${project.floors} tầng · ${project.unitsPerFloor} căn mỗi tầng. Mở mô hình 3D để chọn tầng, xem vị trí và trạng thái từng căn.`}
           </p>
+          <div className="district-filter">
+            <label>
+              Tầng
+              <select
+                value={floor}
+                onChange={(e) => {
+                  setFloor(Number(e.target.value));
+                  setSelected("");
+                }}
+              >
+                <option value={0}>Mọi tầng</option>
+                {Array.from({ length: project.floors }, (_, n) => (
+                  <option value={n + 1} key={n}>
+                    Tầng {n + 1}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={available}
+                onChange={(e) => {
+                  setAvailable(e.target.checked);
+                  setSelected("");
+                }}
+              />{" "}
+              Chỉ căn còn trống
+            </label>
+          </div>
+          <label className="district-unit">
+            {candidates.length} căn phù hợp
+            <select
+              value={picked?.id || ""}
+              onChange={(e) => setSelected(e.target.value)}
+            >
+              <option value="">Xem một căn trên khu đất</option>
+              {candidates.map((unit) => (
+                <option key={unit.id} value={unit.id}>
+                  {unit.id} · {unit.area} m²
+                </option>
+              ))}
+            </select>
+          </label>
+          {picked && (
+            <div className="district-selected" aria-live="polite">
+              <strong>{picked.id}</strong>
+              <span>
+                {picked.area} m² · {picked.beds} phòng ngủ ·{" "}
+                {compactMoney(picked.price)}
+              </span>
+              <Link href={`/properties/${picked.id}`}>
+                Xem căn {picked.id} ↗
+              </Link>
+            </div>
+          )}
+          {failed && (
+            <p role="status">
+              Thiết bị chưa mở được cảnh 3D. Bạn vẫn có thể chọn tháp, tầng và
+              căn tại đây.
+            </p>
+          )}
           <Link
             className="underlined-link"
-            href={`/explorer?project=${project.id}${active !== "garden" ? `&tower=${active}` : ""}`}
+            href={`/explorer?project=${project.id}${active !== "garden" ? `&tower=${active}` : ""}${floor ? `&floor=${floor}` : ""}${picked ? `&unit=${picked.id}` : ""}${available ? "&available=1" : ""}`}
           >
             Mở mô hình tương tác ↗
           </Link>

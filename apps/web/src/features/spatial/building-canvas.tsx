@@ -19,6 +19,9 @@ export default function BuildingCanvas({
   availableOnly,
   night,
   cameraView,
+  district = false,
+  showLabels = true,
+  compact,
   reducedMotion,
   onPick,
   onTowerPick,
@@ -33,6 +36,9 @@ export default function BuildingCanvas({
   availableOnly: boolean;
   night: boolean;
   cameraView: string;
+  district?: boolean;
+  showLabels?: boolean;
+  compact?: boolean;
   reducedMotion: boolean;
   onPick: (id: string) => void;
   onTowerPick?: (tower: string) => void;
@@ -46,6 +52,8 @@ export default function BuildingCanvas({
     filter = useRef(availableOnly),
     picker = useRef(onPick);
   const towerPicker = useRef(onTowerPick);
+  const labelsVisible = useRef(showLabels);
+  labelsVisible.current = showLabels;
   towerPicker.current = onTowerPick;
   const viewRef = useRef(cameraView),
     motionRef = useRef(reducedMotion);
@@ -59,6 +67,8 @@ export default function BuildingCanvas({
   useEffect(() => {
     const container = host.current;
     if (!container) return;
+    const lowDetail =
+      compact ?? window.matchMedia("(max-width: 700px)").matches;
     let renderer: THREE.WebGLRenderer;
     try {
       renderer = new THREE.WebGLRenderer({
@@ -129,7 +139,13 @@ export default function BuildingCanvas({
     });
     sun.shadow.normalBias = 0.08;
     scene.add(sun);
-    const model = createArchitecturalModel(project, properties, night);
+    const model = createArchitecturalModel(project, properties, night, {
+      compact: lowDetail,
+      district,
+    });
+    renderer.domElement.dataset.geometryTier = lowDetail
+      ? "compact"
+      : "standard";
     scene.add(model.root);
     const unitMeshes = model.units;
     const labels = new CSS2DRenderer();
@@ -147,6 +163,10 @@ export default function BuildingCanvas({
       button.setAttribute("aria-label", `Khám phá tháp ${tower}`);
       button.style.pointerEvents = "auto";
       button.onclick = () => towerPicker.current?.(tower);
+      if (!towerPicker.current) {
+        button.disabled = true;
+        button.style.pointerEvents = "none";
+      }
       const label = new CSS2DObject(button);
       label.position.copy(position);
       scene.add(label);
@@ -270,9 +290,13 @@ export default function BuildingCanvas({
         destination.set(
           ...((lastView === "front"
             ? [0, h + 9, 80]
-            : lastView === "aerial"
-              ? [25, 72, 44]
-              : [45, 34, 57]) as [number, number, number]),
+            : lastView === "waterfront"
+              ? [-30, 19, 61]
+              : lastView === "north"
+                ? [0, 92, 0.2]
+                : lastView === "aerial"
+                  ? [25, 72, 44]
+                  : [45, 34, 57]) as [number, number, number]),
         );
         target.set(0, h, 0);
         destination
@@ -316,6 +340,7 @@ export default function BuildingCanvas({
         towerRef.current,
         filter.current,
         hover,
+        labelsVisible.current,
         camera.aspect,
         container.clientWidth,
         container.clientHeight,
@@ -333,7 +358,8 @@ export default function BuildingCanvas({
       previousState = state;
       renderer.render(scene, camera);
       renderer.domElement.dataset.renderCount = String(++renderCount);
-      labels.render(scene, camera);
+      labels.domElement.hidden = !labelsVisible.current;
+      if (labelsVisible.current) labels.render(scene, camera);
       renderer.domElement.dataset.drawCalls = String(
         renderer.info.render.calls,
       );
@@ -363,7 +389,7 @@ export default function BuildingCanvas({
       renderer.dispose();
       renderer.domElement.remove();
     };
-  }, [project, properties, night, onFallback, onProgress]);
+  }, [project, properties, night, district, compact, onFallback, onProgress]);
   return (
     <div
       ref={host}

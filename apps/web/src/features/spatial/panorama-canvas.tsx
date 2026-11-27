@@ -1,25 +1,29 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import stationData from "./a0302-tour.json";
 import type { ResidenceLayout } from "./residence-layout";
 export const tourRooms = ["living", "kitchen", "bedroom-1", "balcony"] as const;
+type Station = {
+  blender: number[];
+  portals: Record<string, number[]>;
+  yaw: number;
+};
+const stations: Record<string, Station> = stationData;
 export default function PanoramaCanvas({
   layout,
   room,
   onRoom,
   onFallback,
   reset,
-  panoramaUrl,
-  initialYaw,
+  apartmentTour = false,
 }: {
   layout: ResidenceLayout;
   room: string;
   onRoom: (id: string) => void;
   onFallback: () => void;
   reset: number;
-  /** An isolated review panorama; no links to unrelated room images. */
-  panoramaUrl?: string;
-  initialYaw?: number;
+  apartmentTour?: boolean;
 }) {
   const host = useRef<HTMLDivElement>(null),
     select = useRef(onRoom);
@@ -38,6 +42,9 @@ export default function PanoramaCanvas({
     let disposed = false,
       frame = 0,
       texture: THREE.Texture | undefined;
+    const invalidate = () => {
+      if (!disposed && !frame) frame = requestAnimationFrame(animate);
+    };
     renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
     renderer.setSize(el.clientWidth, el.clientHeight);
     el.append(renderer.domElement);
@@ -61,7 +68,9 @@ export default function PanoramaCanvas({
     });
     scene.add(new THREE.Mesh(geo, mat));
     new THREE.TextureLoader().load(
-      panoramaUrl || `/images/tours/${layout.beds}br-${room}.webp`,
+      apartmentTour
+        ? `/spatial-flagships/tour/A0302-${room}-360.webp`
+        : `/images/tours/${layout.beds}br-${room}.webp`,
       (t) => {
         if (disposed) {
           t.dispose();
@@ -70,7 +79,9 @@ export default function PanoramaCanvas({
         texture = t;
         t.colorSpace = THREE.SRGBColorSpace;
         mat.uniforms.panorama.value = t;
+        renderer.domElement.dataset.room = room;
         setLoading(false);
+        invalidate();
       },
       undefined,
       () => {
@@ -83,14 +94,20 @@ export default function PanoramaCanvas({
       1.55,
       current.z + current.d / 2,
     );
-    const dots = (panoramaUrl ? [] : tourRooms)
+    const station = apartmentTour ? stations[room] : undefined;
+    const destinations = station ? Object.keys(station.portals) : tourRooms;
+    const dots = destinations
       .filter((id) => id !== room)
       .map((id) => {
         const r = layout.rooms.find((r) => r.id === id)!;
-        const direction = new THREE.Vector3(r.x + r.w / 2, 1.1, r.z + r.d / 2)
-          .sub(origin)
-          .normalize()
-          .multiplyScalar(10);
+        const direction = station
+          ? new THREE.Vector3(
+              station.portals[id][0] - station.blender[0],
+              -0.28,
+              station.blender[1] - station.portals[id][1],
+            )
+          : new THREE.Vector3(r.x + r.w / 2, 1.1, r.z + r.d / 2).sub(origin);
+        direction.normalize().multiplyScalar(10);
         const button = document.createElement("button");
         button.className = "tour-hotspot";
         button.textContent = `↗ ${r.name}`;
@@ -100,7 +117,7 @@ export default function PanoramaCanvas({
         return { button, direction };
       });
     let yaw =
-        initialYaw ?? (room === "living" || room === "kitchen" ? Math.PI : 0),
+        station?.yaw ?? (room === "living" || room === "kitchen" ? Math.PI : 0),
       pitch = 0,
       down: { x: number; y: number; pointer: number } | null = null;
     const pointers = new Map<number, { x: number; y: number }>();
@@ -118,6 +135,7 @@ export default function PanoramaCanvas({
     };
     const move = (e: PointerEvent) => {
       if (!pointers.has(e.pointerId)) return;
+      invalidate();
       pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
       if (pointers.size === 2) {
         const [a, b] = [...pointers.values()];
@@ -147,6 +165,7 @@ export default function PanoramaCanvas({
       e.preventDefault();
       camera.fov = THREE.MathUtils.clamp(camera.fov + e.deltaY * 0.04, 35, 95);
       camera.updateProjectionMatrix();
+      invalidate();
     };
     const key = (e: KeyboardEvent) => {
       if (
@@ -163,6 +182,7 @@ export default function PanoramaCanvas({
       if (e.key === "+") camera.fov = Math.max(35, camera.fov - 5);
       if (e.key === "-") camera.fov = Math.min(95, camera.fov + 5);
       camera.updateProjectionMatrix();
+      invalidate();
     };
     const lost = (e: Event) => {
       e.preventDefault();
@@ -186,25 +206,13 @@ export default function PanoramaCanvas({
       renderer.setSize(el.clientWidth, el.clientHeight);
       camera.aspect = el.clientWidth / el.clientHeight;
       camera.updateProjectionMatrix();
+      invalidate();
     });
     resize.observe(el);
-    let last = 0,
-      previousState = "",
-      renderCount = 0;
-    const animate = () => {
-      frame = requestAnimationFrame(animate);
-      if (document.hidden || performance.now() - last < 32) return;
-      last = performance.now();
-      const state = [
-        yaw,
-        pitch,
-        camera.fov,
-        el.clientWidth,
-        el.clientHeight,
-        texture?.uuid,
-      ].join("|");
-      if (state === previousState) return;
-      previousState = state;
+    let renderCount = 0;
+    function animate() {
+      frame = 0;
+      if (!el || disposed) return;
       camera.lookAt(
         Math.sin(yaw) * Math.cos(pitch),
         Math.sin(pitch),
@@ -224,8 +232,8 @@ export default function PanoramaCanvas({
         dot.button.style.left = `${(p.x + 1) * 50}%`;
         dot.button.style.top = `${(1 - p.y) * 50}%`;
       }
-    };
-    animate();
+    }
+    invalidate();
     return () => {
       disposed = true;
       cancelAnimationFrame(frame);
@@ -237,7 +245,7 @@ export default function PanoramaCanvas({
       canvas.remove();
       dots.forEach((d) => d.button.remove());
     };
-  }, [layout, room, onFallback, reset, panoramaUrl, initialYaw]);
+  }, [layout, room, onFallback, reset, apartmentTour]);
   return (
     <div className="panorama-canvas" ref={host}>
       {loading && (

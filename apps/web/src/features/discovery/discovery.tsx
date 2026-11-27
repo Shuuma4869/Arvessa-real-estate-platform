@@ -15,6 +15,7 @@ import { Property } from "@/domain/types";
 import { filterProperties } from "@/domain/discovery";
 import { money } from "@/domain/format";
 import { PropertyCard } from "./property-card";
+import "../marketing/public-spatial.css";
 import {
   Button,
   Empty,
@@ -68,18 +69,53 @@ export default function Discovery() {
     </Field>
   );
   return (
-    <main id="main" className="public-page container">
-      <div className="page-heading">
-        <p className="eyebrow">CURATED RESIDENCES / BỘ SƯU TẬP</p>
-        <h1>
-          Không gian phù hợp.
-          <br />
-          Lựa chọn có cơ sở.
-        </h1>
-        <p>
-          Tìm theo cách bạn muốn sống. Mọi giá và tình trạng bên dưới là dữ liệu
-          trình diễn.
-        </p>
+    <main id="main" className="public-page container curated-discovery">
+      <div className="discovery-intro">
+        <div className="page-heading">
+          <p className="eyebrow">CURATED RESIDENCES / BỘ SƯU TẬP</p>
+          <h1>
+            Không gian phù hợp.
+            <br />
+            Lựa chọn có cơ sở.
+          </h1>
+          <p>
+            Tìm theo cách bạn muốn sống. Mọi giá và tình trạng bên dưới là dữ
+            liệu trình diễn.
+          </p>
+        </div>
+        <nav className="discovery-addresses" aria-label="Lọc nhanh theo dự án">
+          {data.projects
+            .filter((project) => project.published)
+            .map((project) => {
+              const units = data.properties.filter(
+                (unit) => unit.projectId === project.id,
+              );
+              const active = params.get("projectId") === project.id;
+              return (
+                <button
+                  key={project.id}
+                  aria-pressed={active}
+                  onClick={() => change("projectId", active ? "" : project.id)}
+                >
+                  <ArtImage
+                    src={project.image}
+                    projectId={project.id}
+                    alt=""
+                    width={148}
+                    height={105}
+                    sizes="96px"
+                  />
+                  <span>
+                    <strong>{project.name}</strong>
+                    <small>
+                      {units.length} căn · {project.towers.length} tháp
+                    </small>
+                  </span>
+                  <ArrowRight size={15} />
+                </button>
+              );
+            })}
+        </nav>
       </div>
       <div className="discovery-layout">
         <aside
@@ -164,7 +200,7 @@ export default function Discovery() {
         </aside>
         <section className="discovery-results">
           <div className="results-toolbar">
-            <p>
+            <p aria-live="polite" aria-atomic="true">
               <strong>{filtered.length}</strong> không gian được tìm thấy
             </p>
             <Button
@@ -213,25 +249,60 @@ export default function Discovery() {
               Mở rộng ngân sách hoặc bỏ bớt bộ lọc để xem thêm lựa chọn.
             </Empty>
           ) : view === "map" ? (
-            <div className="panel">
-              <p className="eyebrow">
-                SƠ ĐỒ VỊ TRÍ MINH HỌA · KHÔNG PHẢI BẢN ĐỒ ĐỊA LÝ
-              </p>
-              <div className="inventory-grid">
-                {filtered.map((p) => (
-                  <button
-                    key={p.id}
-                    className="unit-tile"
-                    data-status={p.availability}
-                    onClick={() => setQuick(p)}
-                  >
-                    {p.id}
-                    <span>
-                      {p.area} m² · Tầng {p.floor}
-                    </span>
-                  </button>
-                ))}
-              </div>
+            <div className="panel discovery-map">
+              {data.projects.map((project) => {
+                const units = filtered.filter(
+                  (unit) => unit.projectId === project.id,
+                );
+                if (!units.length) return null;
+                return (
+                  <section key={project.id}>
+                    <header>
+                      <h2>{project.name}</h2>
+                      <Link href={`/projects/${project.id}#masterplan`}>
+                        Tổng mặt bằng ↗
+                      </Link>
+                    </header>
+                    {project.towers.map((tower) => {
+                      const towerUnits = units.filter(
+                        (unit) => unit.tower === tower,
+                      );
+                      if (!towerUnits.length) return null;
+                      return (
+                        <div key={tower}>
+                          <h3>Tháp {tower}</h3>
+                          {Array.from(
+                            new Set(towerUnits.map((unit) => unit.floor)),
+                          )
+                            .sort((a, b) => b - a)
+                            .map((floor) => (
+                              <div className="discovery-level" key={floor}>
+                                <strong>Tầng {floor}</strong>
+                                <div>
+                                  {towerUnits
+                                    .filter((unit) => unit.floor === floor)
+                                    .sort((a, b) => a.number - b.number)
+                                    .map((unit) => (
+                                      <button
+                                        type="button"
+                                        key={unit.id}
+                                        className="unit-tile"
+                                        data-status={unit.availability}
+                                        onClick={() => setQuick(unit)}
+                                      >
+                                        {unit.id}
+                                        <span>{unit.area} m²</span>
+                                      </button>
+                                    ))}
+                                </div>
+                              </div>
+                            ))}
+                        </div>
+                      );
+                    })}
+                  </section>
+                );
+              })}
             </div>
           ) : (
             <>

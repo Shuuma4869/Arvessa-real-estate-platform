@@ -71,6 +71,11 @@ export function ResidencePlan({
   onSelect: (id: string) => void;
   mini?: boolean;
 }) {
+  const [furnished, setFurnished] = useState(true);
+  const [dimensions, setDimensions] = useState(false);
+  const scale = Math.sqrt(layout.area / (layout.width * layout.depth));
+  const metric = (length: number) =>
+    (length * scale).toLocaleString("vi", { maximumFractionDigits: 2 }) + " m";
   const [zoom, setZoom] = useState(1),
     [pan, setPan] = useState({ x: 0, y: 0 });
   const drag = useRef<{ x: number; y: number; px: number; py: number } | null>(
@@ -100,7 +105,19 @@ export function ResidencePlan({
           >
             Đặt lại
           </button>
-          <span>{layout.beds} PN · N ↑</span>
+          <button
+            aria-pressed={furnished}
+            onClick={() => setFurnished(!furnished)}
+          >
+            Nội thất
+          </button>
+          <button
+            aria-pressed={dimensions}
+            onClick={() => setDimensions(!dimensions)}
+          >
+            Kích thước
+          </button>
+          <span aria-label="Hướng Bắc">N ↑</span>
         </div>
       )}
       <svg
@@ -112,10 +129,11 @@ export function ResidencePlan({
           e.currentTarget.setPointerCapture(e.pointerId);
         }}
         onPointerMove={(e) => {
-          if (drag.current)
+          const ctm = e.currentTarget.getScreenCTM();
+          if (drag.current && ctm)
             setPan({
-              x: drag.current.px + (e.clientX - drag.current.x) / 35,
-              y: drag.current.py + (e.clientY - drag.current.y) / 35,
+              x: drag.current.px + (e.clientX - drag.current.x) / ctm.a,
+              y: drag.current.py + (e.clientY - drag.current.y) / ctm.d,
             });
         }}
         onPointerUp={() => (drag.current = null)}
@@ -147,9 +165,11 @@ export function ResidencePlan({
                 width={r.w}
                 height={r.d}
               />
-              <g className="plan-furniture">
-                <Furniture r={r} />
-              </g>
+              {furnished && (
+                <g className="plan-furniture">
+                  <Furniture r={r} />
+                </g>
+              )}
               {!mini && (
                 <text x={r.x + r.w / 2} y={r.z + r.d - 0.3} textAnchor="middle">
                   {r.name} · {r.area} m²
@@ -178,6 +198,26 @@ export function ResidencePlan({
                 />
               </g>
             ))}
+          {dimensions && !mini && (
+            <g
+              className="plan-dimensions"
+              pointerEvents="none"
+              aria-hidden="true"
+            >
+              <path
+                d={`M0 -.38H${layout.width} M0 -.52v.28 M${layout.width} -.52v.28 M-.38 0V${layout.depth} M-.52 0h.28 M-.52 ${layout.depth}h.28`}
+              />
+              <text x={layout.width / 2} y={-0.5} textAnchor="middle">
+                {metric(layout.width)}
+              </text>
+              <text
+                transform={`translate(-.5 ${layout.depth / 2}) rotate(-90)`}
+                textAnchor="middle"
+              >
+                {metric(layout.depth)}
+              </text>
+            </g>
+          )}
           <path
             className="plan-outline"
             d={`M0 0H${layout.width}V${layout.depth}H0Z`}
@@ -187,7 +227,7 @@ export function ResidencePlan({
       {!mini && (
         <p className="fine-print">
           Chọn phòng để khám phá · Kéo khoảng trống để dịch chuyển · Diện tích
-          phân bổ minh họa.
+          và kích thước theo mô hình minh họa.
         </p>
       )}
     </div>
