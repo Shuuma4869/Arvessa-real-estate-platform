@@ -1,5 +1,6 @@
 "use client";
 import { ArtImage } from "@/components/art-image";
+import { PropertyPreview } from "@/components/property-preview";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -326,6 +327,7 @@ export function ReservationCard({
     );
   const key = useRef("");
   const allowed = ["TEMPORARILY_HELD", "PAYMENT_FAILED"].includes(r.status);
+  const property = data.properties.find((p) => p.id === r.propertyId);
   const canCancel =
     ["TEMPORARILY_HELD", "EXTENSION_REQUESTED", "PAYMENT_FAILED"].includes(
       r.status,
@@ -342,6 +344,7 @@ export function ReservationCard({
         </div>
         <Badge>{r.status}</Badge>
       </header>
+      {property && <PropertyPreview property={property} />}
       <dl className="stat-list">
         <div>
           <dt>Giá tại thời điểm yêu cầu</dt>

@@ -1,0 +1,79 @@
+{
+  "engine": "159.0.8154.6",
+  "reflow": [
+    {
+      "route": "/",
+      "width": 390,
+      "pageWidth": 390,
+      "view": 390
+    },
+    {
+      "route": "/properties/A0302",
+      "width": 390,
+      "pageWidth": 390,
+      "view": 390
+    },
+    {
+      "route": "/crm/leads",
+      "width": 390,
+      "pageWidth": 390,
+      "view": 390
+    },
+    {
+      "route": "/management/approvals",
+      "width": 390,
+      "pageWidth": 390,
+      "view": 390
+    },
+    {
+      "route": "/",
+      "width": 640,
+      "pageWidth": 640,
+      "view": 640
+    },
+    {
+      "route": "/properties/A0302",
+      "width": 640,
+      "pageWidth": 640,
+      "view": 640
+    },
+    {
+      "route": "/crm/leads",
+      "width": 640,
+      "pageWidth": 640,
+      "view": 640
+    },
+    {
+      "route": "/management/approvals",
+      "width": 640,
+      "pageWidth": 640,
+      "view": 640
+    }
+  ],
+  "focusCycle": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "reducedMotion": true,
+  "focusRestored": true
+}

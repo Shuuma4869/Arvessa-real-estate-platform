@@ -1,0 +1,63 @@
+{
+  "before": {
+    "desktop-local": {
+      "lcpMs": [
+        220,
+        260,
+        236
+      ],
+      "cls": [
+        0.0538,
+        0.0538,
+        0.0538
+      ],
+      "samples": 15,
+      "eventDurationP75Ms": 464
+    },
+    "mobile-lab-4x-cpu": {
+      "lcpMs": [
+        1860,
+        1860,
+        1820
+      ],
+      "cls": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "samples": 18,
+      "eventDurationP75Ms": 120
+    }
+  },
+  "after": {
+    "desktop-local": {
+      "lcpMs": [
+        264,
+        264,
+        248
+      ],
+      "cls": [
+        0.0538,
+        0.0538,
+        0.0538
+      ],
+      "samples": 18,
+      "eventDurationP75Ms": 224
+    },
+    "mobile-lab-4x-cpu": {
+      "lcpMs": [
+        1844,
+        1848,
+        1860
+      ],
+      "cls": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "samples": 18,
+      "eventDurationP75Ms": 96
+    }
+  },
+  "method": "Three cold contexts per profile, two project selections per run. P75 is across recorded Event Timing entries (durationThreshold 16ms), not field INP. Before and after runs on the same machine; scheduling and cache can vary."
+}

@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-25T20:09:15.306Z",
+  "records": [
+    {
+      "mode": "software",
+      "before": {
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "scale": 1,
+        "width": 1036,
+        "cssWidth": 1036
+      },
+      "moving": {
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "scale": 0.65,
+        "width": 673,
+        "cssWidth": 1036
+      },
+      "restored": {
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "scale": 1,
+        "width": 1036,
+        "cssWidth": 1036
+      }
+    },
+    {
+      "mode": "hardware",
+      "before": {
+        "renderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "scale": 1,
+        "width": 1036,
+        "cssWidth": 1036
+      },
+      "moving": {
+        "renderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "scale": 1,
+        "width": 1036,
+        "cssWidth": 1036
+      },
+      "restored": {
+        "renderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "scale": 1,
+        "width": 1036,
+        "cssWidth": 1036
+      }
+    }
+  ]
+}

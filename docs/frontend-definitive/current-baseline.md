@@ -1,0 +1,4 @@
+# Mốc bắt đầu
+Nhánh `design/arvessa-flagship-visual-v2` tại `f43b9dfca34bf552c6a4b1850d89113fd0d03e25` có working tree sạch trước khi triển khai. Ứng dụng Next.js duy nhất có 30 mẫu route. Ba dự án chứa 84 căn. The Stillwater có 48 căn, gồm hai tháp, mỗi tháp sáu tầng và bốn căn mỗi tầng. A0302 có 107 m², hai phòng ngủ và hai phòng tắm.
+Hai bản Blender gốc đã được sao lưu trong `.agent-work/definitive/source-baseline`. Đối chiếu SHA-256 và dung lượng từng mô hình, ảnh, HDRI tại [manifest](evidence/baseline.json). Khi phục hồi, chép file về vị trí ban đầu cạnh thư viện nguồn. Các recipe và checksum thư viện nằm trong [design/spatial](../../design/spatial/README.md).
+Xem [ảnh tại các viewport](../visual-rebuild/evidence/final) và [bản review Blender/WebGL](../visual-rebuild/evidence/photoreal/comparison.html). Kết quả CI lịch sử áp dụng cho SHA ghi trong manifest.

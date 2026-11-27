@@ -1,0 +1,357 @@
+.flagship-coverflow {
+  position: relative;
+  isolation: isolate;
+}
+.collection-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  --sky: #7886a9;
+  --horizon: #59544f;
+  --ground: #5e635b;
+  background:
+    radial-gradient(ellipse at 10% 18%, var(--sky), transparent 62%),
+    radial-gradient(ellipse at 92% 20%, var(--horizon), transparent 64%),
+    var(--ground);
+  opacity: 0.48;
+  pointer-events: none;
+  mask-image: linear-gradient(transparent, #000 21%, #000 76%, transparent);
+}
+.collection-atmosphere[data-project="cedar"] {
+  --sky: #676144;
+  --horizon: #7c6e52;
+  --ground: #726950;
+}
+.collection-atmosphere[data-project="horizon"] {
+  --sky: #98abd4;
+  --horizon: #71737c;
+  --ground: #74716d;
+}
+.collection-atmosphere[data-project="A0301"] {
+  --sky: #624c37;
+  --horizon: #89755d;
+  --ground: #91775f;
+}
+.collection-atmosphere[data-project="A0302"] {
+  --sky: #98927b;
+  --horizon: #87715c;
+  --ground: #81705f;
+}
+.coverflow-actions,
+.explorer-unit-actions {
+  display: flex;
+  gap: 0.45rem;
+}
+.coverflow-actions {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+}
+.coverflow-actions button,
+.explorer-unit-actions button,
+.district-camera button,
+.district-camera select {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 40px;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid #c9cbbf;
+  border-radius: 2rem;
+  background: #faf8ef;
+  color: #203b34;
+}
+.coverflow-actions button {
+  min-width: 40px;
+  padding: 0.4rem;
+}
+.coverflow-actions button[aria-pressed="true"],
+.explorer-unit-actions button[aria-pressed="true"],
+.district-camera button[aria-pressed="true"] {
+  background: #244338;
+  color: #fff;
+}
+.explorer-unit-actions {
+  margin-block: 0.8rem;
+  flex-wrap: wrap;
+}
+.explorer-inventory-heading p {
+  font-size: 0.83rem;
+  margin: 0.4rem 0 0.9rem;
+}
+.source-study-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.8rem 0 0.4rem;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+.atelier-spatial .spatial-start {
+  background:
+    linear-gradient(0deg, #13261ff5 0%, #13261f9c 42%, transparent 75%),
+    url("/spatial-flagships/Stillwater-day.webp") center / cover;
+  align-items: flex-start;
+  justify-content: flex-end;
+  color: #fff;
+  text-align: left;
+}
+.atelier-spatial .spatial-start .eyebrow,
+.atelier-spatial .spatial-start h3 {
+  color: #fff;
+}
+.atelier-spatial .spatial-start > svg {
+  display: none;
+}
+.discovery-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 7rem);
+  margin-bottom: 2rem;
+}
+.discovery-addresses {
+  display: grid;
+}
+.discovery-addresses button {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.65rem 0.5rem;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  text-align: left;
+  color: inherit;
+}
+.discovery-addresses button[aria-pressed="true"] {
+  background: var(--surface, #eff1e6);
+  box-shadow: inset 3px 0 #63715a;
+}
+.discovery-addresses img {
+  width: 64px;
+  height: 47px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.discovery-addresses strong {
+  font:
+    500 1.3rem/1.1 "Cormorant Garamond Variable",
+    Georgia,
+    serif;
+}
+.discovery-addresses small {
+  display: block;
+  font-size: 0.75rem;
+  margin-top: 0.2rem;
+}
+.discovery-map section + section {
+  border-top: 1px solid var(--line);
+  padding-top: 1.4rem;
+  margin-top: 1.5rem;
+}
+.discovery-map header,
+.discovery-level {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.discovery-map header {
+  flex-wrap: wrap;
+}
+.discovery-map header a {
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+.discovery-map h3 {
+  margin: 1rem 0 0.35rem;
+}
+.discovery-level {
+  justify-content: start;
+  border-top: 1px solid var(--line);
+  padding-block: 0.35rem;
+}
+.discovery-level > strong {
+  font-size: 0.73rem;
+  min-width: 3rem;
+}
+.discovery-level > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+.discovery-level .unit-tile {
+  min-width: 3.3rem;
+  padding: 0.45rem;
+}
+.district-stage.district-still {
+  background:
+    linear-gradient(
+      0deg,
+      #18271ecf,
+      transparent 35%,
+      transparent 68%,
+      #17261f96
+    ),
+    url("/spatial-flagships/Stillwater-aerial.webp") center / cover;
+}
+.district-still .masterplan-water,
+.district-still .site-entry,
+.district-still .north-marker {
+  display: none;
+}
+.district-still .masterplan-towers {
+  position: absolute;
+  inset: 48% 10% auto;
+  gap: 19%;
+}
+.district-still .masterplan-tower,
+.district-still .masterplan-tower.selected {
+  min-width: 68px;
+  padding: 0.45rem 0.7rem;
+  box-shadow: 0 4px 18px #07171155;
+  border-radius: 9px;
+  transform: none;
+}
+.district-still .masterplan-tower span {
+  font-size: 1.3rem;
+}
+.district-still .garden-hotspot {
+  position: absolute;
+  right: 1rem;
+  bottom: 2.3rem;
+}
+.district-camera {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.65rem;
+  right: 0.65rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.district-camera select,
+.district-camera button {
+  width: auto;
+  min-width: 0;
+  font: inherit;
+  font-size: 0.77rem;
+}
+.district-filter {
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.district-filter label,
+.district-unit {
+  font-size: 0.78rem;
+}
+.district-filter label:has(select),
+.district-unit {
+  display: grid;
+  gap: 0.35rem;
+}
+.district-unit {
+  margin: 0.8rem 0;
+}
+.district-filter select,
+.district-unit select {
+  padding: 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  color: inherit;
+  background: var(--surface, white);
+}
+.district-selected {
+  display: grid;
+  padding: 0.85rem;
+  margin: 0.6rem 0 1rem;
+  background: #eaece2;
+  color: #203b34;
+  gap: 0.35rem;
+}
+.district-selected a {
+  text-decoration: underline;
+}
+@media (max-width: 750px) {
+  .discovery-intro {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .discovery-intro .page-heading {
+    margin-bottom: 0.2rem;
+  }
+  .discovery-addresses {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+  .discovery-addresses button {
+    display: block;
+    padding: 0.4rem;
+  }
+  .discovery-addresses img {
+    width: 100%;
+    height: 52px;
+    margin-bottom: 0.25rem;
+  }
+  .discovery-addresses strong {
+    font-size: 1rem;
+  }
+  .discovery-addresses button > svg {
+    display: none;
+  }
+  .district-still .garden-hotspot {
+    top: 0.8rem;
+    bottom: auto;
+    margin: 0;
+  }
+}
+.hero-residence-study {
+  display: grid;
+  grid-template-columns: 85px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.4rem;
+  padding: 0.6rem 0.8rem 0.6rem 0.5rem;
+  border: 1px solid #cfcbbd;
+  border-radius: 10px;
+  color: #213c34;
+  background: #faf8f1;
+}
+.hero-residence-study img {
+  width: 85px;
+  height: 72px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.hero-residence-study small,
+.hero-residence-study strong,
+.hero-residence-study span span {
+  display: block;
+}
+.hero-residence-study small {
+  font-size: 0.59rem;
+  letter-spacing: 0.12em;
+}
+.hero-residence-study strong {
+  font:
+    500 1.25rem/1.2 "Cormorant Garamond Variable",
+    Georgia,
+    serif;
+  margin: 0.15rem 0;
+}
+.hero-residence-study span span {
+  font-size: 0.73rem;
+}
+@media (max-width: 700px) {
+  .atelier-hero-copy .hero-residence-study {
+    display: none;
+  }
+  .atelier-hero-visual .hero-scene-tabs {
+    justify-content: center;
+  }
+}

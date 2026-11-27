@@ -7,6 +7,8 @@ import { useDemo } from "@/services/store";
 import { Button, Field, Badge, LinkButton } from "@/components/ui";
 import { compactMoney } from "@/domain/format";
 import { sound } from "@/lib/sound";
+import { Columns2, Heart } from "lucide-react";
+import "../marketing/public-spatial.css";
 const BuildingCanvas = dynamic(() => import("./building-canvas"), {
   ssr: false,
   loading: () => <div className="loading">Đang chuẩn bị mô hình 3D…</div>,
@@ -20,12 +22,13 @@ export default function Explorer() {
     [selected, setSelected] = useState(
       params.get("unit") || (params.get("tower") ? "" : "A0302"),
     ),
-    [floor, setFloor] = useState(0),
+    [floor, setFloor] = useState(Number(params.get("floor")) || 0),
     [tower, setTower] = useState(params.get("tower") || ""),
     [cameraView, setCameraView] = useState("perspective"),
-    [mode, setMode] = useState("3d"),
+    [mode, setMode] = useState(params.get("mode") === "2d" ? "2d" : "3d"),
     [night, setNight] = useState(false),
-    [available, setAvailable] = useState(false),
+    [available, setAvailable] = useState(params.get("available") === "1"),
+    [detail, setDetail] = useState("auto"),
     [progress, setProgress] = useState(0),
     [fallback, setFallback] = useState(false);
   const project =
@@ -35,6 +38,33 @@ export default function Explorer() {
     [data.properties, project.id],
   );
   const p = properties.find((p) => p.id === selected);
+  const updateLocation = (
+    unit: string,
+    nextTower = tower,
+    nextFloor = floor,
+    nextProject = project.id,
+    onlyAvailable = available,
+    nextMode = mode,
+  ) => {
+    const query = new URLSearchParams({ project: nextProject });
+    if (nextTower) query.set("tower", nextTower);
+    if (nextFloor) query.set("floor", String(nextFloor));
+    if (unit) query.set("unit", unit);
+    if (onlyAvailable) query.set("available", "1");
+    if (nextMode === "2d") query.set("mode", "2d");
+    window.history.replaceState(null, "", `/explorer?${query}`);
+  };
+  const selectUnit = (id: string) => {
+    setSelected(id);
+    updateLocation(id);
+    sound("selection");
+  };
+  const selectTower = (value: string) => {
+    setTower(value);
+    const unit = p && (!value || p.tower === value) ? selected : "";
+    setSelected(unit);
+    updateLocation(unit, value);
+  };
   const fall = useCallback(() => {
     setFallback(true);
     setMode("2d");
@@ -49,14 +79,8 @@ export default function Explorer() {
   return (
     <main id="main" className="explorer-page">
       <div className="container page-heading">
-        <p className="eyebrow">
-          SPATIAL EXPLORER / ORIGINAL PROCEDURAL ARCHITECTURE
-        </p>
-        <h1>
-          Thay đổi góc nhìn.
-          <br />
-          Hiểu rõ không gian.
-        </h1>
+        <p className="eyebrow">ARVESSA / ARCHITECTURAL ATELIER</p>
+        <h1>Kiến trúc, ở mọi góc nhìn.</h1>
         <p>
           Chọn một căn trực tiếp trên mô hình hoặc dùng bảng lựa chọn 2D. Hình
           học khớp số tháp, tầng và căn trong dữ liệu demo.
@@ -75,13 +99,12 @@ export default function Explorer() {
               floor={floor}
               tower={tower}
               availableOnly={available}
+              compact={detail === "auto" ? undefined : detail === "compact"}
               night={night}
               cameraView={cameraView}
               reducedMotion={data.preferences.reducedMotion}
-              onPick={(id) => {
-                setSelected(id);
-                sound("selection");
-              }}
+              onTowerPick={selectTower}
+              onPick={selectUnit}
               onFallback={fall}
               onProgress={onProgress}
             />
@@ -100,7 +123,7 @@ export default function Explorer() {
                     key={u.id}
                     className={`unit-tile ${selected === u.id ? "selected" : ""}`}
                     data-status={u.availability}
-                    onClick={() => setSelected(u.id)}
+                    onClick={() => selectUnit(u.id)}
                   >
                     {u.id}
                     <span>
@@ -114,15 +137,29 @@ export default function Explorer() {
           <div className="canvas-toolbar">
             <Button
               className="secondary"
-              onClick={() => setMode(mode === "3d" ? "2d" : "3d")}
+              onClick={() => {
+                const next = mode === "3d" ? "2d" : "3d";
+                setMode(next);
+                setFallback(false);
+                updateLocation(
+                  selected,
+                  tower,
+                  floor,
+                  project.id,
+                  available,
+                  next,
+                );
+              }}
             >
               {mode === "3d" ? <Grid2X2 size={15} /> : <Rotate3D size={15} />}
               Chế độ {mode === "3d" ? "2D" : "3D"}
             </Button>
-            <Button className="secondary" onClick={() => setNight(!night)}>
-              {night ? <Sun size={15} /> : <Moon size={15} />}{" "}
-              {night ? "Ban ngày" : "Ban đêm"}
-            </Button>
+            {mode === "3d" && (
+              <Button className="secondary" onClick={() => setNight(!night)}>
+                {night ? <Sun size={15} /> : <Moon size={15} />}{" "}
+                {night ? "Ban ngày" : "Ban đêm"}
+              </Button>
+            )}
             {mode === "3d" && progress < 100 && (
               <span role="status" style={{ padding: 10 }}>
                 Tải mô hình {progress}%
@@ -156,14 +193,22 @@ export default function Explorer() {
           </div>
         </div>
         <aside className="explorer-panel">
+          <div className="explorer-inventory-heading">
+            <h2>{project.name}</h2>
+            <p>
+              {properties.length} căn · {project.towers.length} tháp
+            </p>
+          </div>
           <Field label="Dự án">
             <select
+              aria-label="Dự án"
               value={project.id}
               onChange={(e) => {
                 setProject(e.target.value);
                 setFloor(0);
                 setTower("");
                 setSelected("");
+                updateLocation("", "", 0, e.target.value);
               }}
             >
               {data.projects.map((p) => (
@@ -174,7 +219,11 @@ export default function Explorer() {
             </select>
           </Field>
           <Field label="Tháp">
-            <select value={tower} onChange={(e) => setTower(e.target.value)}>
+            <select
+              aria-label="Tháp"
+              value={tower}
+              onChange={(e) => selectTower(e.target.value)}
+            >
               <option value="">Tất cả tháp</option>
               {project.towers.map((t) => (
                 <option key={t}>{t}</option>
@@ -183,8 +232,15 @@ export default function Explorer() {
           </Field>
           <Field label="Tầng">
             <select
+              aria-label="Tầng"
               value={floor}
-              onChange={(e) => setFloor(Number(e.target.value))}
+              onChange={(e) => {
+                const value = Number(e.target.value);
+                setFloor(value);
+                const unit = p && (!value || p.floor === value) ? selected : "";
+                setSelected(unit);
+                updateLocation(unit, tower, value);
+              }}
             >
               <option value="0">Tất cả tầng</option>
               {Array.from({ length: project.floors }, (_, i) => (
@@ -198,14 +254,22 @@ export default function Explorer() {
             <input
               type="checkbox"
               checked={available}
-              onChange={(e) => setAvailable(e.target.checked)}
+              onChange={(e) => {
+                const enabled = e.target.checked;
+                const unit =
+                  enabled && p?.availability !== "AVAILABLE" ? "" : selected;
+                setSelected(unit);
+                setAvailable(enabled);
+                updateLocation(unit, tower, floor, project.id, enabled);
+              }}
             />
             Chỉ căn còn trống
           </label>
           <Field label="Chọn căn bằng bàn phím">
             <select
+              aria-label="Chọn căn bằng bàn phím"
               value={selected}
-              onChange={(e) => setSelected(e.target.value)}
+              onChange={(e) => selectUnit(e.target.value)}
             >
               <option value="">Chọn căn…</option>
               {shown.map((p) => (
@@ -215,10 +279,22 @@ export default function Explorer() {
               ))}
             </select>
           </Field>
+          {mode === "3d" && (
+            <Field label="Chi tiết mô hình">
+              <select
+                value={detail}
+                onChange={(e) => setDetail(e.target.value)}
+              >
+                <option value="auto">Tự động theo thiết bị</option>
+                <option value="compact">Nhẹ · giảm chi tiết cảnh quan</option>
+                <option value="standard">Đầy đủ</option>
+              </select>
+            </Field>
+          )}
           {p ? (
             <>
               <hr />
-              <p className="eyebrow">YOUR PERSPECTIVE</p>
+              <p className="eyebrow">KHÔNG GIAN CỦA BẠN</p>
               <h2>{p.id}</h2>
               <Badge>{p.availability}</Badge>
               <p>
@@ -232,6 +308,29 @@ export default function Explorer() {
               <LinkButton href={`/properties/${p.id}`}>
                 Khám phá căn {p.id}
               </LinkButton>
+              <div className="explorer-unit-actions">
+                <button
+                  aria-pressed={data.favorites.includes(p.id)}
+                  onClick={() =>
+                    void useDemo.getState().run({ type: "favorite", id: p.id })
+                  }
+                >
+                  <Heart size={15} /> Yêu thích
+                </button>
+                <button
+                  aria-pressed={data.comparisons.includes(p.id)}
+                  onClick={() =>
+                    void useDemo
+                      .getState()
+                      .run({ type: "compare", id: p.id })
+                      .catch((error) =>
+                        useDemo.getState().notify(error.message),
+                      )
+                  }
+                >
+                  <Columns2 size={15} /> So sánh
+                </button>
+              </div>
             </>
           ) : (
             <p>Chọn một căn để xem thông tin.</p>

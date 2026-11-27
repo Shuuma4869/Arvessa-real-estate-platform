@@ -1,0 +1,114 @@
+[
+  {
+    "name": "landing",
+    "width": 1440,
+    "route": "/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "project",
+    "width": 1440,
+    "route": "/projects/stillwater",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "explorer",
+    "width": 1440,
+    "route": "/explorer?project=stillwater&unit=A0302",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "property",
+    "width": 1440,
+    "route": "/properties/A0302",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "landing",
+    "width": 1920,
+    "route": "/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "project",
+    "width": 1920,
+    "route": "/projects/stillwater",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "explorer",
+    "width": 1920,
+    "route": "/explorer?project=stillwater&unit=A0302",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "property",
+    "width": 1920,
+    "route": "/properties/A0302",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "landing",
+    "width": 390,
+    "route": "/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "project",
+    "width": 390,
+    "route": "/projects/stillwater",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "explorer",
+    "width": 390,
+    "route": "/explorer?project=stillwater&unit=A0302",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "property",
+    "width": 390,
+    "route": "/properties/A0302",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "landing",
+    "width": 360,
+    "route": "/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "project",
+    "width": 360,
+    "route": "/projects/stillwater",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "explorer",
+    "width": 360,
+    "route": "/explorer?project=stillwater&unit=A0302",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "name": "property",
+    "width": 360,
+    "route": "/properties/A0302",
+    "overflow": false,
+    "errors": []
+  }
+]

@@ -1,0 +1,194 @@
+[
+  {
+    "name": "1br-living",
+    "beds": 1,
+    "room": "living",
+    "width": 4096,
+    "height": 2048,
+    "projection": "equirectangular",
+    "camera": [
+      -1.6799999999999997,
+      1.55,
+      1.7000000000000002
+    ],
+    "source": "Original ARVESSA shared interior-model.ts + residence-layout.ts",
+    "sha256": "c7f2ba3e4a9a837d7b298f8c47064d4acfa3cad97080eb214c8427185265f3e5",
+    "bytes": 492700
+  },
+  {
+    "name": "1br-kitchen",
+    "beds": 1,
+    "room": "kitchen",
+    "width": 4096,
+    "height": 2048,
+    "projection": "equirectangular",
+    "camera": [
+      2.5199999999999996,
+      1.55,
+      1.7000000000000002
+    ],
+    "source": "Original ARVESSA shared interior-model.ts + residence-layout.ts",
+    "sha256": "b5f2490a273b2016c4141d093c41bcdce9bef9e539e165dfdef2fa53e0561967",
+    "bytes": 304156
+  },
+  {
+    "name": "1br-bedroom-1",
+    "beds": 1,
+    "room": "bedroom-1",
+    "width": 4096,
+    "height": 2048,
+    "projection": "equirectangular",
+    "camera": [
+      -1.2000000000000002,
+      1.55,
+      -3.7
+    ],
+    "source": "Original ARVESSA shared interior-model.ts + residence-layout.ts",
+    "sha256": "4375aa03458d009687b6c5a6aab3b60f58ce18658dd25da9ee98bee5f8fbda36",
+    "bytes": 216608
+  },
+  {
+    "name": "1br-balcony",
+    "beds": 1,
+    "room": "balcony",
+    "width": 4096,
+    "height": 2048,
+    "projection": "equirectangular",
+    "camera": [
+      0,
+      1.55,
+      4.8
+    ],
+    "source": "Original ARVESSA shared interior-model.ts + residence-layout.ts",
+    "sha256": "d49ac7f818d96836f13c7b8f12e190138e014db94f58a2e300d6c4109e82e09d",
+    "bytes": 501818
+  },
+  {
+    "name": "2br-living",
+    "beds": 2,
+    "room": "living",
+    "width": 4096,
+    "height": 2048,
+    "projection": "equirectangular",
+    "camera": [
+      -2.2399999999999998,
+      1.55,
+      1.7000000000000002
+    ],
+    "source": "Original ARVESSA shared interior-model.ts + residence-layout.ts",
+    "sha256": "a20ba7db43dd27e41acceae924419080e116664be2db40820f4150a068eac8c5",
+    "bytes": 853632
+  },
+  {
+    "name": "2br-kitchen",
+    "beds": 2,
+    "room": "kitchen",
+    "width": 4096,
+    "height": 2048,
+    "projection": "equirectangular",
+    "camera": [
+      3.3599999999999994,
+      1.55,
+      1.7000000000000002
+    ],
+    "source": "Original ARVESSA shared interior-model.ts + residence-layout.ts",
+    "sha256": "3fc5e3943f4999cbec8ed2593afecb29cf3b2a534a572b3527d1383a72d50845",
+    "bytes": 326368
+  },
+  {
+    "name": "2br-bedroom-1",
+    "beds": 2,
+    "room": "bedroom-1",
+    "width": 4096,
+    "height": 2048,
+    "projection": "equirectangular",
+    "camera": [
+      -3.4,
+      1.55,
+      -3.7
+    ],
+    "source": "Original ARVESSA shared interior-model.ts + residence-layout.ts",
+    "sha256": "0ef02afd2c23d2a9dd0a2f1b63ca5e3482e2843099332248c90e67a85ba6d56c",
+    "bytes": 191878
+  },
+  {
+    "name": "2br-balcony",
+    "beds": 2,
+    "room": "balcony",
+    "width": 4096,
+    "height": 2048,
+    "projection": "equirectangular",
+    "camera": [
+      0,
+      1.55,
+      4.8
+    ],
+    "source": "Original ARVESSA shared interior-model.ts + residence-layout.ts",
+    "sha256": "f78ed55ee2f9f796b39d90da846cee57749f07fc7a5c5e07fdebcb357640b7cb",
+    "bytes": 534776
+  },
+  {
+    "name": "3br-living",
+    "beds": 3,
+    "room": "living",
+    "width": 4096,
+    "height": 2048,
+    "projection": "equirectangular",
+    "camera": [
+      -2.8,
+      1.55,
+      1.7000000000000002
+    ],
+    "source": "Original ARVESSA shared interior-model.ts + residence-layout.ts",
+    "sha256": "951bb9b40e04f718ebb5f56f01b87d54277c2477b134872b844e3016a7591bc7",
+    "bytes": 1002792
+  },
+  {
+    "name": "3br-kitchen",
+    "beds": 3,
+    "room": "kitchen",
+    "width": 4096,
+    "height": 2048,
+    "projection": "equirectangular",
+    "camera": [
+      4.2,
+      1.55,
+      1.7000000000000002
+    ],
+    "source": "Original ARVESSA shared interior-model.ts + residence-layout.ts",
+    "sha256": "fa0777b8181c4d05b4fd70040bb74dcb42b7b598afb7a1617f554642855a6290",
+    "bytes": 330774
+  },
+  {
+    "name": "3br-bedroom-1",
+    "beds": 3,
+    "room": "bedroom-1",
+    "width": 4096,
+    "height": 2048,
+    "projection": "equirectangular",
+    "camera": [
+      -5.066666666666666,
+      1.55,
+      -3.7
+    ],
+    "source": "Original ARVESSA shared interior-model.ts + residence-layout.ts",
+    "sha256": "579cc7177af37410efcf3d2ab8886b5928de2caf9805c7d8a98fe007110997bb",
+    "bytes": 183282
+  },
+  {
+    "name": "3br-balcony",
+    "beds": 3,
+    "room": "balcony",
+    "width": 4096,
+    "height": 2048,
+    "projection": "equirectangular",
+    "camera": [
+      0,
+      1.55,
+      4.8
+    ],
+    "source": "Original ARVESSA shared interior-model.ts + residence-layout.ts",
+    "sha256": "73af0acf829b6a01402c6f61b86b92b612f8c225466aaabc2f50d27a7311cffe",
+    "bytes": 545554
+  }
+]

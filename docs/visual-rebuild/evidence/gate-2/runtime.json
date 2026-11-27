@@ -1,0 +1,38 @@
+[
+  {
+    "width": 1440,
+    "errors": [],
+    "overflow": false,
+    "heroScenes": true,
+    "hotspot": true,
+    "keyboard": true,
+    "drag": true
+  },
+  {
+    "width": 1920,
+    "errors": [],
+    "overflow": false,
+    "heroScenes": true,
+    "hotspot": true,
+    "keyboard": true,
+    "drag": true
+  },
+  {
+    "width": 390,
+    "errors": [],
+    "overflow": false,
+    "heroScenes": true,
+    "hotspot": true,
+    "keyboard": true,
+    "drag": true
+  },
+  {
+    "width": 360,
+    "errors": [],
+    "overflow": false,
+    "heroScenes": true,
+    "hotspot": true,
+    "keyboard": true,
+    "drag": true
+  }
+]

@@ -16,7 +16,7 @@ export function PublicShell({ children }: { children: React.ReactNode }) {
         <Link href="/" aria-label="ARVESSA — Trang chủ">
           <img
             className="logo"
-            src={path === "/" ? brand.inverse : brand.primary}
+            src={brand.primary}
             alt="ARVESSA"
             width="240"
             height="48"

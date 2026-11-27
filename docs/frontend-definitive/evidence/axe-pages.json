@@ -1,0 +1,34 @@
+[
+  {
+    "path": "/sign-up",
+    "violations": []
+  },
+  {
+    "path": "/discover",
+    "violations": []
+  },
+  {
+    "path": "/properties/A0302",
+    "violations": []
+  },
+  {
+    "path": "/explorer",
+    "violations": []
+  },
+  {
+    "path": "/contact",
+    "violations": []
+  },
+  {
+    "path": "/crm/leads",
+    "violations": []
+  },
+  {
+    "path": "/crm/pipeline",
+    "violations": []
+  },
+  {
+    "path": "/management/approvals",
+    "violations": []
+  }
+]

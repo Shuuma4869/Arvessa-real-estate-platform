@@ -19,41 +19,62 @@ interface Store {
   notify: (message: string) => void;
   expireSession: () => void;
 }
+const defaults = createSeed(1794700800000);
+let memoryOnly = false;
+let storageMessage = "";
 const read = (): DemoState | null => {
+  if (memoryOnly) return null;
   try {
     const value = localStorage.getItem(DATA_KEY);
     if (!value) return null;
-    const d = JSON.parse(value) as DemoState;
-    d.waitlist ??= [];
-    return d.version === 1 &&
-      [
-        "properties",
-        "projects",
-        "reservations",
-        "payments",
-        "audit",
-        "approvals",
-        "customers",
-      ].every((k) => Array.isArray(d[k as keyof DemoState])) &&
-      d.preferences &&
-      d.cms
-      ? d
-      : null;
+    const data = JSON.parse(value);
+    if (
+      data?.version !== 1 ||
+      !Array.isArray(data.properties) ||
+      !Array.isArray(data.projects)
+    ) {
+      throw new Error("unknown-schema");
+    }
+    // Add fields introduced after the initial demo without reseeding a buyer's records.
+    for (const [key, fallback] of Object.entries(defaults)) {
+      if (Array.isArray(fallback)) {
+        data[key] ??= [];
+        if (!Array.isArray(data[key])) throw new Error("invalid-collection");
+      }
+    }
+    for (const key of ["preferences", "cms", "processed"] as const) {
+      const existing = data[key];
+      if (
+        existing != null &&
+        (Array.isArray(existing) || typeof existing !== "object")
+      ) {
+        throw new Error("invalid-settings");
+      }
+      data[key] = { ...defaults[key], ...existing };
+    }
+    return data as DemoState;
   } catch {
+    memoryOnly = true;
+    storageMessage =
+      "Chưa đọc được bản lưu trên thiết bị. Bản lưu được giữ nguyên. Thay đổi trong phiên này chỉ lưu trong bộ nhớ.";
     return null;
   }
 };
 const persist = (data: DemoState) => {
+  if (memoryOnly) return storageMessage;
   try {
     localStorage.setItem(DATA_KEY, JSON.stringify(data));
     return "";
   } catch {
-    return "Trình duyệt không cho lưu dữ liệu. Phiên demo hiện chỉ được giữ trong bộ nhớ.";
+    memoryOnly = true;
+    storageMessage =
+      "Trình duyệt không cho lưu dữ liệu. Phiên demo hiện chỉ được giữ trong bộ nhớ.";
+    return storageMessage;
   }
 };
 let queue: Promise<unknown> = Promise.resolve();
 export const useDemo = create<Store>((set, get) => ({
-  data: createSeed(1794700800000),
+  data: structuredClone(defaults),
   session: null,
   ready: false,
   notice: "",
@@ -162,7 +183,7 @@ export const useDemo = create<Store>((set, get) => ({
         );
         set({
           data: state,
-          notice: result.message,
+          notice: command.type === "view" ? get().notice : result.message,
           storageWarning: persist(state),
         });
         return result;

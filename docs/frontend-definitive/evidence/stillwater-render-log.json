@@ -1,0 +1,309 @@
+{
+  "originalSceneSHA256": "87692f0fcfe2b061335913859991a21c68ab6343310fab13243f64181ecd7ac4",
+  "restoredSourceSHA256": "87692f0fcfe2b061335913859991a21c68ab6343310fab13243f64181ecd7ac4",
+  "productionSceneSHA256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+  "productionSourceBytes": 149239093,
+  "unitCount": 48,
+  "mappedTowers": [
+    "A",
+    "B"
+  ],
+  "photographs": [
+    {
+      "file": "Stillwater-day.png",
+      "sourceSHA256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+      "source": "Stillwater.blend",
+      "renderer": "Cycles",
+      "blender": "4.5.9 LTS",
+      "backend": "GPU",
+      "devices": [
+        "AMD Radeon(TM) Graphics"
+      ],
+      "samples": 80,
+      "denoise": true,
+      "adaptiveThreshold": 0.03500000014901161,
+      "width": 1600,
+      "height": 1068,
+      "maxBounces": 10,
+      "view": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "camera": {
+        "position": [
+          50,
+          -89,
+          25
+        ],
+        "target": [
+          0,
+          -2.5,
+          8.2
+        ],
+        "lens": 46
+      },
+      "seconds": 140.73,
+      "visualApproval": "PENDING",
+      "webFile": "Stillwater-day.webp",
+      "webBytes": 246988,
+      "sha256": "2e2db22a3b574f0a25192cf679670cb8dff43328e991c97a277fb77f4e064ea7"
+    },
+    {
+      "file": "Stillwater-golden.png",
+      "sourceSHA256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+      "source": "Stillwater.blend",
+      "renderer": "Cycles",
+      "blender": "4.5.9 LTS",
+      "backend": "GPU",
+      "devices": [
+        "AMD Radeon(TM) Graphics"
+      ],
+      "samples": 80,
+      "denoise": true,
+      "adaptiveThreshold": 0.03500000014901161,
+      "width": 1600,
+      "height": 1068,
+      "maxBounces": 10,
+      "view": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "camera": {
+        "position": [
+          -46,
+          -81,
+          18
+        ],
+        "target": [
+          -2,
+          -3,
+          7.5
+        ],
+        "lens": 41
+      },
+      "seconds": 235.11,
+      "visualApproval": "PENDING",
+      "webFile": "Stillwater-golden.webp",
+      "webBytes": 244396,
+      "sha256": "5238afb15561eb2086cf779aff645e50068756a3dabfd7c7263bb261af31546c"
+    },
+    {
+      "file": "Stillwater-night.png",
+      "sourceSHA256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+      "source": "Stillwater.blend",
+      "renderer": "Cycles",
+      "blender": "4.5.9 LTS",
+      "backend": "GPU",
+      "devices": [
+        "AMD Radeon(TM) Graphics"
+      ],
+      "samples": 112,
+      "denoise": true,
+      "adaptiveThreshold": 0.03500000014901161,
+      "width": 1600,
+      "height": 1068,
+      "maxBounces": 10,
+      "view": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "camera": {
+        "position": [
+          33,
+          -67,
+          9
+        ],
+        "target": [
+          0,
+          -2,
+          8.4
+        ],
+        "lens": 34
+      },
+      "seconds": 131.59,
+      "visualApproval": "PENDING",
+      "webFile": "Stillwater-night.webp",
+      "webBytes": 140614,
+      "sha256": "b966f7db758de42e73732f8131e6166fd5faa8a84070c34e5bff4b7d677a380a"
+    },
+    {
+      "file": "Stillwater-aerial.png",
+      "sourceSHA256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+      "source": "Stillwater.blend",
+      "renderer": "Cycles",
+      "blender": "4.5.9 LTS",
+      "backend": "GPU",
+      "devices": [
+        "AMD Radeon(TM) Graphics"
+      ],
+      "samples": 80,
+      "denoise": true,
+      "adaptiveThreshold": 0.03500000014901161,
+      "width": 1600,
+      "height": 1068,
+      "maxBounces": 10,
+      "view": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "camera": {
+        "position": [
+          70,
+          -78,
+          92
+        ],
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "lens": 46
+      },
+      "seconds": 156.57,
+      "visualApproval": "PENDING",
+      "webFile": "Stillwater-aerial.webp",
+      "webBytes": 352336,
+      "sha256": "4d2137d67ba6c88cc10cec64f4964bd6502a4ce42dd99ee427f1572d2104a5ec"
+    },
+    {
+      "file": "Stillwater-entrance.png",
+      "sourceSHA256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+      "source": "Stillwater.blend",
+      "renderer": "Cycles",
+      "blender": "4.5.9 LTS",
+      "backend": "GPU",
+      "devices": [
+        "AMD Radeon(TM) Graphics"
+      ],
+      "samples": 112,
+      "denoise": true,
+      "adaptiveThreshold": 0.03500000014901161,
+      "width": 1600,
+      "height": 1068,
+      "maxBounces": 10,
+      "view": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "camera": {
+        "position": [
+          -9.8,
+          -24.8,
+          2.2
+        ],
+        "target": [
+          -16.4,
+          -11.5,
+          2
+        ],
+        "lens": 35
+      },
+      "seconds": 239.28,
+      "visualApproval": "PENDING",
+      "webFile": "Stillwater-entrance.webp",
+      "webBytes": 181008,
+      "sha256": "8ed3d84b8eea4ada66469ff8814be560a4579851102ca31f0bc74e9531a4f5b3"
+    },
+    {
+      "file": "Stillwater-landscape.png",
+      "sourceSHA256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+      "source": "Stillwater.blend",
+      "renderer": "Cycles",
+      "blender": "4.5.9 LTS",
+      "backend": "GPU",
+      "devices": [
+        "AMD Radeon(TM) Graphics"
+      ],
+      "samples": 80,
+      "denoise": true,
+      "adaptiveThreshold": 0.03500000014901161,
+      "width": 1600,
+      "height": 1068,
+      "maxBounces": 10,
+      "view": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "camera": {
+        "position": [
+          -31,
+          -26.1,
+          1.8
+        ],
+        "target": [
+          3,
+          -16.9,
+          1.85
+        ],
+        "lens": 35
+      },
+      "seconds": 147.69,
+      "visualApproval": "PENDING",
+      "webFile": "Stillwater-landscape.webp",
+      "webBytes": 195492,
+      "sha256": "49bdf51cdd41e27194a84d38df972fe109cd85a53f38802b6b0a662a8c0e706e"
+    },
+    {
+      "file": "Stillwater-facade.png",
+      "sourceSHA256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+      "source": "Stillwater.blend",
+      "renderer": "Cycles",
+      "blender": "4.5.9 LTS",
+      "backend": "GPU",
+      "devices": [
+        "AMD Radeon(TM) Graphics"
+      ],
+      "samples": 80,
+      "denoise": true,
+      "adaptiveThreshold": 0.03500000014901161,
+      "width": 1600,
+      "height": 1068,
+      "maxBounces": 10,
+      "view": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "camera": {
+        "position": [
+          32,
+          -34,
+          9.5
+        ],
+        "target": [
+          20,
+          -6,
+          12
+        ],
+        "lens": 47
+      },
+      "seconds": 159.97,
+      "visualApproval": "PENDING",
+      "webFile": "Stillwater-facade.webp",
+      "webBytes": 151522,
+      "sha256": "573f346304c46cd41dfaf2f1c95db0f92371ada64037cedef8536417f1a64549"
+    },
+    {
+      "file": "Stillwater-showroom.png",
+      "sourceSHA256": "2a9c95f36d3a2e5b2f185b4205564becaa3f8358bf8efedd60f1b3c507d04a5f",
+      "source": "Stillwater.blend",
+      "renderer": "Cycles",
+      "blender": "4.5.9 LTS",
+      "backend": "GPU",
+      "devices": [
+        "AMD Radeon(TM) Graphics"
+      ],
+      "samples": 80,
+      "denoise": true,
+      "adaptiveThreshold": 0.03500000014901161,
+      "width": 1600,
+      "height": 1068,
+      "maxBounces": 10,
+      "view": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "camera": {
+        "position": [
+          62,
+          -98,
+          53
+        ],
+        "target": [
+          0,
+          0,
+          6
+        ],
+        "lens": 44
+      },
+      "seconds": 78.98,
+      "visualApproval": "PENDING",
+      "webFile": "Stillwater-showroom.webp",
+      "webBytes": 194236,
+      "sha256": "adb5e8e42b5c608f4087cd5b6c60858bd31f7f5747b7935a8ed189387f21760f"
+    }
+  ]
+}

@@ -102,7 +102,7 @@ test("production lab performance: LCP, CLS and interaction timing", async ({
     "../../docs/qa-evidence/performance.json",
     JSON.stringify(
       {
-        date: "2026-11-16",
+        date: new Date().toISOString().slice(0, 10),
         browser: browser.version(),
         kind: "Local lab only; event durations are not field INP",
         conditions:

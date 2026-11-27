@@ -214,9 +214,18 @@ test("actual 3D pointer raycast selects a different unit and supports drag", asy
   let picked = false;
   for (const fx of [0.4, 0.5, 0.6, 0.3, 0.7]) {
     for (const fy of [0.4, 0.5, 0.6, 0.3]) {
-      await canvas.click({
-        position: { x: rect.width * fx, y: rect.height * fy },
-      });
+      // Labels are now real buttons over the model. Probe visible glazing using
+      // actual pointer coordinates, without waiting for a label to stop covering canvas.
+      const x = rect.x + rect.width * fx,
+        y = rect.y + rect.height * fy;
+      if (
+        await page.evaluate(
+          ({ x, y }) => document.elementFromPoint(x, y)?.tagName !== "CANVAS",
+          { x, y },
+        )
+      )
+        continue;
+      await page.mouse.click(x, y);
       const selection = await page
         .getByLabel("Chọn căn bằng bàn phím")
         .inputValue();
@@ -236,6 +245,7 @@ test("actual 3D pointer raycast selects a different unit and supports drag", asy
     { steps: 12 },
   );
   await page.mouse.up();
+  await expect(canvas).toHaveAttribute("data-render-scale", "1");
   await page.getByRole("button", { name: "Ban đêm" }).click();
   await expect(page.locator("canvas")).toBeVisible();
 });

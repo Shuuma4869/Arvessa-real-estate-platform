@@ -1,6 +1,7 @@
 "use client";
 import { ArtImage } from "@/components/art-image";
-import { projectGallery } from "@/lib/visual-assets";
+import { ResidenceExperience } from "../spatial/residence-experience";
+import { propertyVisual, projectGallery } from "@/lib/visual-assets";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useDemo } from "@/services/store";
@@ -30,7 +31,9 @@ export default function PropertyDetail({ id }: { id: string }) {
       </main>
     );
   const project = data.projects.find((x) => x.id === p.projectId)!;
-  const images = projectGallery(project.id, p.image);
+  const images = [
+    ...new Set([propertyVisual(p), ...projectGallery(project.id, p.image)]),
+  ];
   return (
     <main id="main" className="public-page container">
       <div className="page-heading">
@@ -93,17 +96,6 @@ export default function PropertyDetail({ id }: { id: string }) {
               Hình ảnh là nghiên cứu không gian của cùng concept dự án; không mô
               tả hoàn thiện bàn giao của căn cụ thể.
             </p>
-            <ArtImage
-              className="plan"
-              src="/images/residence-plan.svg"
-              alt="Mặt bằng minh họa loại căn hai phòng ngủ"
-              width="1200"
-              height="900"
-            />
-            <p className="fine-print">
-              Mặt bằng tham khảo loại căn 2 phòng ngủ; căn {p.id} có {p.beds}{" "}
-              phòng ngủ. Dùng mô hình 3D để kiểm tra vị trí căn trong tòa.
-            </p>
             <LinkButton href={`/explorer?project=${project.id}&unit=${p.id}`}>
               Xem vị trí căn trong 3D
             </LinkButton>
@@ -157,6 +149,7 @@ export default function PropertyDetail({ id }: { id: string }) {
           </Link>
         </aside>
       </div>
+      <ResidenceExperience key={p.id} property={p} />
       <section className="detail-section">
         <SectionTitle title="Những lựa chọn gần với bạn." />
         <div className="property-grid">
@@ -188,13 +181,15 @@ export default function PropertyDetail({ id }: { id: string }) {
           <div className="form-actions">
             <button
               className="button secondary"
-              onClick={() => setPicture((picture + 2) % 3)}
+              onClick={() =>
+                setPicture((picture + images.length - 1) % images.length)
+              }
             >
               Ảnh trước
             </button>
             <button
               className="button secondary"
-              onClick={() => setPicture((picture + 1) % 3)}
+              onClick={() => setPicture((picture + 1) % images.length)}
             >
               Ảnh sau
             </button>

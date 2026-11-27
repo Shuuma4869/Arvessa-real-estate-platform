@@ -1,0 +1,144 @@
+{
+  "date": "2026-11-25T19:47:41.950Z",
+  "browser": "159.0.8154.6",
+  "headless": true,
+  "hardware": {
+    "os": "win32",
+    "release": "10.0.26200",
+    "cpu": "AMD Ryzen 7 6800H with Radeon Graphics         ",
+    "logicalProcessors": 16,
+    "systemMemoryBytes": 16312639488,
+    "hardwareRequested": true
+  },
+  "measurements": [
+    {
+      "scene": "Stillwater",
+      "quality": "balanced",
+      "device": "desktop viewport",
+      "durationMs": 4999.20000000298,
+      "frames": 300,
+      "fps": 60.00960153621002,
+      "p95FrameMs": 18,
+      "renderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "width": 1036,
+      "height": 714,
+      "dpr": 1,
+      "loadMs": 768,
+      "firstFrameMs": 1600,
+      "drawCalls": 68,
+      "triangles": 1755643,
+      "textureBytesEstimate": 36350635,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+      "idleRenderDelta": 0
+    },
+    {
+      "scene": "Stillwater",
+      "quality": "balanced",
+      "device": "mobile viewport emulation, same desktop hardware",
+      "durationMs": 4983.0999999940395,
+      "frames": 299,
+      "fps": 60.002809496168574,
+      "p95FrameMs": 17.900000005960464,
+      "renderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "width": 350,
+      "height": 350,
+      "dpr": 1,
+      "loadMs": 444,
+      "firstFrameMs": 596,
+      "drawCalls": 68,
+      "triangles": 1755643,
+      "textureBytesEstimate": 36350635,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+      "horizontalOverflow": false
+    },
+    {
+      "scene": "A0302",
+      "quality": "balanced",
+      "device": "desktop viewport",
+      "durationMs": 4983.300000011921,
+      "frames": 299,
+      "fps": 60.00040134033366,
+      "p95FrameMs": 18,
+      "renderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "width": 1036,
+      "height": 714,
+      "dpr": 1,
+      "loadMs": 222,
+      "firstFrameMs": 677,
+      "drawCalls": 38,
+      "triangles": 373486,
+      "textureBytesEstimate": 43341141,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+      "idleRenderDelta": 0
+    },
+    {
+      "scene": "A0302",
+      "quality": "balanced",
+      "device": "mobile viewport emulation, same desktop hardware",
+      "durationMs": 4982.699999988079,
+      "frames": 299,
+      "fps": 60.00762638744363,
+      "p95FrameMs": 18.100000008940697,
+      "renderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "width": 350,
+      "height": 350,
+      "dpr": 1,
+      "loadMs": 99,
+      "firstFrameMs": 257,
+      "drawCalls": 38,
+      "triangles": 373486,
+      "textureBytesEstimate": 43341141,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+      "horizontalOverflow": false
+    }
+  ],
+  "picking": [
+    {
+      "scene": "Stillwater",
+      "fx": 0.3,
+      "fy": 0.4,
+      "before": "A0302\n8,24 tỷ",
+      "after": "A0401\n7,32 tỷ"
+    },
+    {
+      "scene": "A0302",
+      "fx": 0.5,
+      "fy": 0.4,
+      "before": "Phòng khách\n24.8 m²",
+      "after": "Phòng ngủ 1\n14.7 m²"
+    }
+  ],
+  "qualitySwitches": [
+    {
+      "scene": "Stillwater",
+      "quality": "high",
+      "loaded": "true"
+    },
+    {
+      "scene": "A0302",
+      "quality": "high",
+      "loaded": "true"
+    }
+  ],
+  "screenshots": [
+    "Stillwater-photo-0-1440.png",
+    "Stillwater-photo-1-1440.png",
+    "Stillwater-photo-2-1440.png",
+    "Stillwater-glb-1440.png",
+    "Stillwater-glb-high-1440.png",
+    "Stillwater-glb-390.png",
+    "A0302-photo-0-1440.png",
+    "A0302-photo-1-1440.png",
+    "A0302-photo-2-1440.png",
+    "A0302-glb-1440.png",
+    "A0302-glb-high-1440.png",
+    "A0302-glb-390.png",
+    "A0302-tour-390.png",
+    "A0302-tour-1440.png"
+  ],
+  "errors": [],
+  "initialVitals": {
+    "lcp": 332,
+    "cls": 0
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "date": "2026-11-25",
+  "local": {
+    "build": "PASS",
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "unitComponentTests": {
+      "passed": 64,
+      "failed": 0
+    },
+    "e2e": {
+      "startTime": "2026-11-25T14:22:16.245Z",
+      "duration": 230088.262,
+      "expected": 42,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "solidGeometry": {
+      "cases": 3,
+      "outward": true,
+      "manifold": true
+    },
+    "webGLB": {
+      "files": 4,
+      "decodedErrors": 0,
+      "decodedWarnings": 0
+    },
+    "afterCameraAdjustment": {
+      "build": "PASS",
+      "changedFileLint": "PASS",
+      "e2e": {
+        "startTime": "2026-11-25T19:46:43.015Z",
+        "duration": 42576.466,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "softwareInteractionFix": {
+      "build": "PASS",
+      "lint": "PASS",
+      "defaultBrowserTargetedE2E": {
+        "startTime": "2026-11-26T00:48:16.348Z",
+        "duration": 41916.418000000005,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "intermediateFullRun": {
+        "passed": 41,
+        "failed": 1,
+        "cause": "frame-based damping kept software preview downscaled too long; replaced by time-based damping"
+      },
+      "rendererAndRestoreProbe": "interaction-resolution.json"
+    }
+  },
+  "scope": "42 E2E include original 39 workflows plus 3 flagship tests; assertions and 12s expect/45s test deadlines retained",
+  "visualApproval": "PENDING",
+  "ci": "First run 45689169080: 40/42, two drag timeouts. Fix awaiting full CI on new commit; see PR #1.",
+  "updated": "2026-11-26",
+  "browserReview": {
+    "date": "2026-11-26",
+    "screenshots": 14,
+    "runtimeErrors": 0,
+    "horizontalOverflow": false,
+    "raycastScenes": 2,
+    "qualitySwitches": 2,
+    "visualApproval": "PENDING"
+  }
+}
