@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-25",
+  "date": "2026-11-27",
   "browser": "159.0.8154.6",
   "kind": "Local lab only; event durations are not field INP",
   "conditions": "Production loopback; 3 cold browser contexts each. Mobile: 390x844, CPU x4, RTT 100ms, download 200000 B/s. Desktop: 1440x1000, unthrottled. DPR 1. No field samples.",
@@ -7,17 +7,19 @@
     {
       "profile": "desktop-local",
       "run": 1,
-      "lcp": 184,
-      "cls": 0.05238935391649788,
+      "lcp": 264,
+      "cls": 0.053801125232084294,
       "events": [
-        216,
-        216,
-        216,
-        232,
-        232,
-        232
+        200,
+        200,
+        200,
+        152,
+        152,
+        152
       ],
-      "longTasks": [],
+      "longTasks": [
+        72
+      ],
       "supported": [
         "element",
         "event",
@@ -35,182 +37,25 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 958029,
-      "resources": 52
+      "transferBytes": 1209252,
+      "resources": 53
     },
     {
       "profile": "desktop-local",
       "run": 2,
-      "lcp": 180,
-      "cls": 0.05238935391649788,
+      "lcp": 264,
+      "cls": 0.053801125232084294,
       "events": [
-        232,
-        224,
-        224,
-        232,
-        232,
-        232
-      ],
-      "longTasks": [],
-      "supported": [
-        "element",
-        "event",
-        "first-input",
-        "interaction-contentful-paint",
-        "largest-contentful-paint",
-        "layout-shift",
-        "long-animation-frame",
-        "longtask",
-        "mark",
-        "measure",
-        "navigation",
-        "paint",
-        "resource",
-        "soft-navigation",
-        "visibility-state"
-      ],
-      "transferBytes": 958028,
-      "resources": 52
-    },
-    {
-      "profile": "desktop-local",
-      "run": 3,
-      "lcp": 188,
-      "cls": 0.05238935391649788,
-      "events": [
-        232,
-        232,
-        232,
-        240,
-        240,
-        240
-      ],
-      "longTasks": [
-        109
-      ],
-      "supported": [
-        "element",
-        "event",
-        "first-input",
-        "interaction-contentful-paint",
-        "largest-contentful-paint",
-        "layout-shift",
-        "long-animation-frame",
-        "longtask",
-        "mark",
-        "measure",
-        "navigation",
-        "paint",
-        "resource",
-        "soft-navigation",
-        "visibility-state"
-      ],
-      "transferBytes": 958032,
-      "resources": 52
-    },
-    {
-      "profile": "mobile-lab-4x-cpu",
-      "run": 1,
-      "lcp": 1832,
-      "cls": 0.00004597346995281398,
-      "events": [
-        152,
-        152,
-        152,
-        128,
-        128,
-        128
-      ],
-      "longTasks": [
-        183,
-        131,
-        55,
-        73,
-        64
-      ],
-      "supported": [
-        "element",
-        "event",
-        "first-input",
-        "interaction-contentful-paint",
-        "largest-contentful-paint",
-        "layout-shift",
-        "long-animation-frame",
-        "longtask",
-        "mark",
-        "measure",
-        "navigation",
-        "paint",
-        "resource",
-        "soft-navigation",
-        "visibility-state"
-      ],
-      "transferBytes": 608572,
-      "resources": 47
-    },
-    {
-      "profile": "mobile-lab-4x-cpu",
-      "run": 2,
-      "lcp": 1816,
-      "cls": 0.00010693419527172139,
-      "events": [
-        168,
-        168,
-        168,
-        168,
-        168,
-        168
-      ],
-      "longTasks": [
-        224,
-        89,
-        98,
-        57,
-        71,
-        63,
-        50
-      ],
-      "supported": [
-        "element",
-        "event",
-        "first-input",
-        "interaction-contentful-paint",
-        "largest-contentful-paint",
-        "layout-shift",
-        "long-animation-frame",
-        "longtask",
-        "mark",
-        "measure",
-        "navigation",
-        "paint",
-        "resource",
-        "soft-navigation",
-        "visibility-state"
-      ],
-      "transferBytes": 608575,
-      "resources": 47
-    },
-    {
-      "profile": "mobile-lab-4x-cpu",
-      "run": 3,
-      "lcp": 1776,
-      "cls": 0.00004615232353617048,
-      "events": [
-        152,
-        152,
-        152,
+        160,
+        160,
+        160,
         160,
         160,
         160
       ],
       "longTasks": [
-        204,
         151,
-        55,
-        104,
-        69,
-        56,
-        54
+        61
       ],
       "supported": [
         "element",
@@ -229,8 +74,161 @@
         "soft-navigation",
         "visibility-state"
       ],
-      "transferBytes": 608573,
-      "resources": 47
+      "transferBytes": 1209251,
+      "resources": 53
+    },
+    {
+      "profile": "desktop-local",
+      "run": 3,
+      "lcp": 248,
+      "cls": 0.053801125232084294,
+      "events": [
+        224,
+        224,
+        224,
+        232,
+        232,
+        232
+      ],
+      "longTasks": [
+        136,
+        59
+      ],
+      "supported": [
+        "element",
+        "event",
+        "first-input",
+        "interaction-contentful-paint",
+        "largest-contentful-paint",
+        "layout-shift",
+        "long-animation-frame",
+        "longtask",
+        "mark",
+        "measure",
+        "navigation",
+        "paint",
+        "resource",
+        "soft-navigation",
+        "visibility-state"
+      ],
+      "transferBytes": 1209249,
+      "resources": 53
+    },
+    {
+      "profile": "mobile-lab-4x-cpu",
+      "run": 1,
+      "lcp": 1844,
+      "cls": 0.00004615232353617048,
+      "events": [
+        72,
+        72,
+        72,
+        144,
+        144,
+        144
+      ],
+      "longTasks": [
+        303,
+        79,
+        66,
+        68
+      ],
+      "supported": [
+        "element",
+        "event",
+        "first-input",
+        "interaction-contentful-paint",
+        "largest-contentful-paint",
+        "layout-shift",
+        "long-animation-frame",
+        "longtask",
+        "mark",
+        "measure",
+        "navigation",
+        "paint",
+        "resource",
+        "soft-navigation",
+        "visibility-state"
+      ],
+      "transferBytes": 860314,
+      "resources": 49
+    },
+    {
+      "profile": "mobile-lab-4x-cpu",
+      "run": 2,
+      "lcp": 1848,
+      "cls": 0.00004615232353617048,
+      "events": [
+        64,
+        64,
+        64,
+        64,
+        64,
+        64
+      ],
+      "longTasks": [
+        284,
+        85,
+        66,
+        51
+      ],
+      "supported": [
+        "element",
+        "event",
+        "first-input",
+        "interaction-contentful-paint",
+        "largest-contentful-paint",
+        "layout-shift",
+        "long-animation-frame",
+        "longtask",
+        "mark",
+        "measure",
+        "navigation",
+        "paint",
+        "resource",
+        "soft-navigation",
+        "visibility-state"
+      ],
+      "transferBytes": 861368,
+      "resources": 51
+    },
+    {
+      "profile": "mobile-lab-4x-cpu",
+      "run": 3,
+      "lcp": 1860,
+      "cls": 0.00004597346995281398,
+      "events": [
+        56,
+        56,
+        56,
+        96,
+        96,
+        96
+      ],
+      "longTasks": [
+        180,
+        56,
+        58
+      ],
+      "supported": [
+        "element",
+        "event",
+        "first-input",
+        "interaction-contentful-paint",
+        "largest-contentful-paint",
+        "layout-shift",
+        "long-animation-frame",
+        "longtask",
+        "mark",
+        "measure",
+        "navigation",
+        "paint",
+        "resource",
+        "soft-navigation",
+        "visibility-state"
+      ],
+      "transferBytes": 861372,
+      "resources": 51
     }
   ]
 }

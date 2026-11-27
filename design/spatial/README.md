@@ -1,6 +1,6 @@
 # ARVESSA — nguồn hai cảnh flagship
 
-**Chờ nghiệm thu mỹ thuật.** Pipeline này chỉ sản xuất The Stillwater và A0302. Không mở rộng sang các căn khác hoặc thay asset trên Landing/Coverflow trước khi chủ dự án chấp thuận.
+**Chờ nghiệm thu mỹ thuật.** Hai nguồn Blender riêng thuộc The Stillwater và A0302. Những căn còn lại dùng nội thất mẫu theo số phòng ngủ. [Bản giao Definitive Edition](../../docs/frontend-definitive/final-review.md).
 
 ## Cảnh hiện hành
 
@@ -45,7 +45,7 @@ $env:ARVESSA_BENCHMARK_HARDWARE = '1'
 node design/spatial/capture-review.mjs
 ```
 
-Trên Windows, lựa chọn hardware dùng ANGLE/D3D11 và `--ignore-gpu-blocklist`; renderer thực được ghi trong JSON. Bỏ biến này để dùng cấu hình mặc định của trình duyệt. Script ghi đè có chủ đích bộ screenshot/report tại `docs/visual-rebuild/evidence/photoreal`, kiểm tra raycast, hai mức vật liệu và overflow. Không chạy đồng thời với Cycles hoặc benchmark khác. FPS là khoảng cách thời gian giữa các frame trong lượt xoay 5 giây sau 1 giây làm nóng; không phải GPU timer query. Viewport mobile vẫn dùng cùng máy desktop.
+Trên Windows, lựa chọn hardware dùng ANGLE/D3D11 và `--ignore-gpu-blocklist`; renderer thực được ghi trong JSON. Bỏ biến này để dùng cấu hình mặc định của trình duyệt. Script ghi đè có chủ đích bộ screenshot/report tại `docs/frontend-definitive/evidence/realtime`, kiểm tra raycast, hai mức vật liệu và overflow. Không chạy đồng thời với Cycles hoặc benchmark khác. FPS là khoảng cách thời gian giữa các frame trong lượt xoay 5 giây sau 1 giây làm nóng; không phải GPU timer query. Viewport mobile vẫn dùng cùng máy desktop.
 
 `loadMs` kết thúc khi GLB đã giải mã và đưa vào scene. `firstFrameMs` kết thúc khi lần gọi render đầu chứa model trả về; không phải thời gian tải mạng công cộng hoặc phép đo trình bày pixel của màn hình. LCP/CLS là một lượt local, không phải field data. Công cụ không chấm đạt/chưa đạt mỹ thuật.
 

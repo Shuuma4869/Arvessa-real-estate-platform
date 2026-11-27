@@ -1,0 +1,71 @@
+{
+  "capturedAt": "2026-11-27T04:13:46.875Z",
+  "pages": [
+    {
+      "role": "buyer",
+      "route": "/buyer/dashboard",
+      "display": "desktop",
+      "width": 1440,
+      "height": 960,
+      "contentWidth": 1440,
+      "viewport": 1440,
+      "heading": "Tổng quan",
+      "filename": "buyer-dashboard-desktop.jpg"
+    },
+    {
+      "role": "sales",
+      "route": "/crm/personal",
+      "display": "desktop",
+      "width": 1440,
+      "height": 960,
+      "contentWidth": 1440,
+      "viewport": 1440,
+      "heading": "Không gian cá nhân",
+      "filename": "crm-personal-desktop.jpg"
+    },
+    {
+      "role": "admin",
+      "route": "/management/security",
+      "display": "desktop",
+      "width": 1440,
+      "height": 960,
+      "contentWidth": 1440,
+      "viewport": 1440,
+      "heading": "Bảo mật & phân quyền",
+      "filename": "management-security-desktop.jpg"
+    },
+    {
+      "role": "buyer",
+      "route": "/buyer/dashboard",
+      "display": "mobile",
+      "width": 390,
+      "height": 844,
+      "contentWidth": 390,
+      "viewport": 390,
+      "heading": "Tổng quan",
+      "filename": "buyer-dashboard-mobile.jpg"
+    },
+    {
+      "role": "sales",
+      "route": "/crm/personal",
+      "display": "mobile",
+      "width": 390,
+      "height": 844,
+      "contentWidth": 390,
+      "viewport": 390,
+      "heading": "Không gian cá nhân",
+      "filename": "crm-personal-mobile.jpg"
+    },
+    {
+      "role": "admin",
+      "route": "/management/security",
+      "display": "mobile",
+      "width": 390,
+      "height": 844,
+      "contentWidth": 390,
+      "viewport": 390,
+      "heading": "Bảo mật & phân quyền",
+      "filename": "management-security-mobile.jpg"
+    }
+  ]
+}

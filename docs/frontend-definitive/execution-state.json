@@ -1,49 +1,75 @@
 {
-  "programStatus": "in_progress",
-  "currentPhase": 2,
-  "currentWorkstream": 5,
-  "currentTask": "A0302 room photography and connected 360 tour",
+  "programStatus": "release_candidate_with_outstanding_owner_and_device_gates",
+  "currentPhase": 8,
+  "currentWorkstream": 16,
+  "currentTask": "Bàn giao bản review và đối chiếu CI của PR #1",
   "completedTasks": [
-    "Reference inspection",
-    "Source backup",
-    "Route inventory"
+    "Đối chiếu 6 ảnh gốc và giao diện trước/sau",
+    "Khôi phục hai nguồn Blender v2",
+    "Xuất bản 2 cảnh tương tác, 8 render ngoại thất, cutaway và 8 điểm nhìn A0302",
+    "Kết nối masterplan, showroom, coverflow và 84 trang căn",
+    "Rà soát Buyer, commerce, CRM và Management",
+    "Đóng gói phòng duyệt offline, video và hướng dẫn"
   ],
   "verifiedTasks": [
-    "SHA256 of both original blend backups"
+    "270 tổ hợp quyền theo vai trò và route",
+    "16 lượt chọn ảnh Stillwater desktop/mobile",
+    "84 hồ sơ căn và 8 chuyển phòng qua hotspot",
+    "6 GLB giải nén hợp lệ",
+    "14 cặp giao diện trước/sau, 6 reference đọc tại máy, video chạy được",
+    "Hai bản Blender đóng gói được mở lại",
+    "Dữ liệu phiên bản cũ và dữ liệu chưa hỗ trợ"
   ],
   "pendingTasks": [
-    "Review 8 room panoramas",
-    "Inspect exterior and interior close-ups",
-    "Implement and verify phases 1–8 against directive"
+    "Nghiệm thu mỹ thuật của chủ dự án",
+    "Đo trên điện thoại vật lý và rà trình đọc màn hình cảm ứng"
   ],
   "failedTasks": [],
-  "blockedTasks": [],
-  "remainingDependencies": [
-    "Measured browser evidence for new assets",
-    "Final owner review"
+  "blockedTasks": [
+    "Đo trên Android/iPhone vật lý"
   ],
-  "latestCommitSHA": "f43b9dfca34bf552c6a4b1850d89113fd0d03e25",
+  "remainingDependencies": [
+    "Thiết bị thật",
+    "Quyết định nghiệm thu của chủ dự án"
+  ],
+  "latestCommitSHA": "40ec22c6f10766fad0bddc007a266f7c7e5e410b",
+  "commitScope": "Commit triển khai gần nhất. Commit tài liệu đóng gói và trạng thái CI theo headRefOid của PR #1.",
   "latestTestResults": {
-    "baselineOnly": true,
-    "ci": "https://github.com/Shuuma4869/Arvessa-real-estate-platform/actions/runs/45731525816"
+    "typecheck": "passed",
+    "lint": "passed",
+    "productionBuild": "passed",
+    "unitComponent": 72,
+    "chromiumReleaseSuite": 50,
+    "firefoxSmoke": 4,
+    "webkitSmoke": 4,
+    "ci": "https://github.com/Shuuma4869/Arvessa-real-estate-platform/pull/1/checks"
   },
   "evidencePaths": [
-    "evidence/baseline.json",
-    "../visual-rebuild/evidence/final",
-    "../visual-rebuild/evidence/photoreal"
+    "review.html",
+    "evidence/realtime/runtime.json",
+    "evidence/residences/checks.json",
+    "evidence/module-permissions.json",
+    "../qa-evidence/performance.json",
+    "evidence/restore-A0302.json",
+    "evidence/restore-Stillwater.json"
   ],
   "qualityGates": {
-    "backup": "verified",
-    "interior": "in progress",
-    "exterior": "pending",
-    "releaseCandidate": "pending"
+    "baseline": "verified",
+    "designMotion": "verified for demo",
+    "production": "sources and outputs verified; owner art review open",
+    "spatial": "Windows hardware and software rendering verified",
+    "public": "covered by browser flows",
+    "buyer": "frontend simulation verified",
+    "enterprise": "role and module checks verified",
+    "expansion": "84 property-specific data records; 83 share spatial archetypes",
+    "releaseCandidate": "internal tests and review package; external acceptance open"
   },
   "remainingVisualDeficiencies": [
-    "Bedroom daylight",
-    "Secondary room detailing",
-    "Exterior entrance and contextual landscape"
+    "Cây, mặt đứng và một số phòng phụ lặp hình",
+    "Ánh sáng WebGL và ảnh marketing khác với render Cycles",
+    "Chi tiết bản vẽ ở mức demo"
   ],
-  "nextAction": "Compare room Cycles output with reference and verify linked room navigation in browser",
+  "nextAction": "Mở review.html và đối chiếu các cảnh với ảnh chủ dự án; đo lại trên thiết bị vật lý",
   "backendAuthorization": false,
   "mergeAuthorization": false,
   "ownerAcceptance": "pending"

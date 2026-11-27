@@ -1,0 +1,662 @@
+{
+  "browser": "159.0.8154.6",
+  "viewport": [
+    1440,
+    960
+  ],
+  "properties": [
+    {
+      "unit": "A0101",
+      "project": "stillwater",
+      "area": 85,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0102",
+      "project": "stillwater",
+      "area": 103,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0103",
+      "project": "stillwater",
+      "area": 121,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0104",
+      "project": "stillwater",
+      "area": 139,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0201",
+      "project": "stillwater",
+      "area": 87,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0202",
+      "project": "stillwater",
+      "area": 105,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0203",
+      "project": "stillwater",
+      "area": 123,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0204",
+      "project": "stillwater",
+      "area": 141,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0301",
+      "project": "stillwater",
+      "area": 89,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0302",
+      "project": "stillwater",
+      "area": 107,
+      "beds": 2,
+      "coverage": "registered Blender scene"
+    },
+    {
+      "unit": "A0303",
+      "project": "stillwater",
+      "area": 125,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0304",
+      "project": "stillwater",
+      "area": 143,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0401",
+      "project": "stillwater",
+      "area": 91,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0402",
+      "project": "stillwater",
+      "area": 109,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0403",
+      "project": "stillwater",
+      "area": 127,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0404",
+      "project": "stillwater",
+      "area": 145,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0501",
+      "project": "stillwater",
+      "area": 93,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0502",
+      "project": "stillwater",
+      "area": 111,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0503",
+      "project": "stillwater",
+      "area": 129,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0504",
+      "project": "stillwater",
+      "area": 147,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0601",
+      "project": "stillwater",
+      "area": 95,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0602",
+      "project": "stillwater",
+      "area": 113,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0603",
+      "project": "stillwater",
+      "area": 131,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "A0604",
+      "project": "stillwater",
+      "area": 149,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0101",
+      "project": "stillwater",
+      "area": 85,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0102",
+      "project": "stillwater",
+      "area": 103,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0103",
+      "project": "stillwater",
+      "area": 121,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0104",
+      "project": "stillwater",
+      "area": 139,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0201",
+      "project": "stillwater",
+      "area": 87,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0202",
+      "project": "stillwater",
+      "area": 105,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0203",
+      "project": "stillwater",
+      "area": 123,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0204",
+      "project": "stillwater",
+      "area": 141,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0301",
+      "project": "stillwater",
+      "area": 89,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0302",
+      "project": "stillwater",
+      "area": 107,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0303",
+      "project": "stillwater",
+      "area": 125,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0304",
+      "project": "stillwater",
+      "area": 143,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0401",
+      "project": "stillwater",
+      "area": 91,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0402",
+      "project": "stillwater",
+      "area": 109,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0403",
+      "project": "stillwater",
+      "area": 127,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0404",
+      "project": "stillwater",
+      "area": 145,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0501",
+      "project": "stillwater",
+      "area": 93,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0502",
+      "project": "stillwater",
+      "area": 111,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0503",
+      "project": "stillwater",
+      "area": 129,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0504",
+      "project": "stillwater",
+      "area": 147,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0601",
+      "project": "stillwater",
+      "area": 95,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0602",
+      "project": "stillwater",
+      "area": 113,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0603",
+      "project": "stillwater",
+      "area": 131,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "B0604",
+      "project": "stillwater",
+      "area": 149,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "C0101",
+      "project": "cedar",
+      "area": 85,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "C0102",
+      "project": "cedar",
+      "area": 103,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "C0103",
+      "project": "cedar",
+      "area": 121,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "C0104",
+      "project": "cedar",
+      "area": 139,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "C0201",
+      "project": "cedar",
+      "area": 87,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "C0202",
+      "project": "cedar",
+      "area": 105,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "C0203",
+      "project": "cedar",
+      "area": 123,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "C0204",
+      "project": "cedar",
+      "area": 141,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "C0301",
+      "project": "cedar",
+      "area": 89,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "C0302",
+      "project": "cedar",
+      "area": 107,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "C0303",
+      "project": "cedar",
+      "area": 125,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "C0304",
+      "project": "cedar",
+      "area": 143,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "C0401",
+      "project": "cedar",
+      "area": 91,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "C0402",
+      "project": "cedar",
+      "area": 109,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "C0403",
+      "project": "cedar",
+      "area": 127,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "C0404",
+      "project": "cedar",
+      "area": 145,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0101",
+      "project": "horizon",
+      "area": 85,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0102",
+      "project": "horizon",
+      "area": 103,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0103",
+      "project": "horizon",
+      "area": 121,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0104",
+      "project": "horizon",
+      "area": 139,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0201",
+      "project": "horizon",
+      "area": 87,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0202",
+      "project": "horizon",
+      "area": 105,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0203",
+      "project": "horizon",
+      "area": 123,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0204",
+      "project": "horizon",
+      "area": 141,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0301",
+      "project": "horizon",
+      "area": 89,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0302",
+      "project": "horizon",
+      "area": 107,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0303",
+      "project": "horizon",
+      "area": 125,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0304",
+      "project": "horizon",
+      "area": 143,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0401",
+      "project": "horizon",
+      "area": 91,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0402",
+      "project": "horizon",
+      "area": 109,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0403",
+      "project": "horizon",
+      "area": 127,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0404",
+      "project": "horizon",
+      "area": 145,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0501",
+      "project": "horizon",
+      "area": 93,
+      "beds": 1,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0502",
+      "project": "horizon",
+      "area": 111,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0503",
+      "project": "horizon",
+      "area": 129,
+      "beds": 2,
+      "coverage": "furnished bedroom-count archetype"
+    },
+    {
+      "unit": "D0504",
+      "project": "horizon",
+      "area": 147,
+      "beds": 3,
+      "coverage": "furnished bedroom-count archetype"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "living",
+      "adjacent": [
+        "kitchen",
+        "hall",
+        "balcony"
+      ],
+      "navigatedTo": "kitchen"
+    },
+    {
+      "id": "kitchen",
+      "adjacent": [
+        "living"
+      ],
+      "navigatedTo": "living"
+    },
+    {
+      "id": "hall",
+      "adjacent": [
+        "bedroom-1",
+        "bedroom-2",
+        "bath-2",
+        "living"
+      ],
+      "navigatedTo": "bedroom-1"
+    },
+    {
+      "id": "bedroom-1",
+      "adjacent": [
+        "hall"
+      ],
+      "navigatedTo": "hall"
+    },
+    {
+      "id": "bedroom-2",
+      "adjacent": [
+        "hall",
+        "bath-1"
+      ],
+      "navigatedTo": "hall"
+    },
+    {
+      "id": "bath-1",
+      "adjacent": [
+        "bedroom-2"
+      ],
+      "navigatedTo": "bedroom-2"
+    },
+    {
+      "id": "bath-2",
+      "adjacent": [
+        "hall"
+      ],
+      "navigatedTo": "hall"
+    },
+    {
+      "id": "balcony",
+      "adjacent": [
+        "living"
+      ],
+      "navigatedTo": "living"
+    }
+  ],
+  "errors": []
+}

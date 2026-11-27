@@ -1,0 +1,1358 @@
+{
+  "capturedAt": "2026-11-27T04:17:18.861Z",
+  "tested": 270,
+  "allowed": 118,
+  "denied": 152,
+  "rows": [
+    {
+      "role": "sales",
+      "route": "/buyer/dashboard",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/buyer/dashboard",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/buyer/dashboard",
+      "allowed": true
+    },
+    {
+      "role": "sales",
+      "route": "/buyer/properties",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/buyer/properties",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/buyer/properties",
+      "allowed": true
+    },
+    {
+      "role": "sales",
+      "route": "/buyer/appointments",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/buyer/appointments",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/buyer/appointments",
+      "allowed": true
+    },
+    {
+      "role": "sales",
+      "route": "/buyer/reservations",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/buyer/reservations",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/buyer/payments",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/buyer/payments",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/buyer/reservations",
+      "allowed": true
+    },
+    {
+      "role": "leader",
+      "route": "/buyer/contracts",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/buyer/contracts",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/buyer/payments",
+      "allowed": true
+    },
+    {
+      "role": "leader",
+      "route": "/buyer/profile",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/buyer/profile",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/buyer/contracts",
+      "allowed": true
+    },
+    {
+      "role": "leader",
+      "route": "/buyer/support",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/buyer/support",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/buyer/profile",
+      "allowed": true
+    },
+    {
+      "role": "sales",
+      "route": "/crm/dashboard",
+      "allowed": true
+    },
+    {
+      "role": "leader",
+      "route": "/crm/dashboard",
+      "allowed": true
+    },
+    {
+      "role": "buyer",
+      "route": "/buyer/support",
+      "allowed": true
+    },
+    {
+      "role": "sales",
+      "route": "/crm/leads",
+      "allowed": true
+    },
+    {
+      "role": "leader",
+      "route": "/crm/leads",
+      "allowed": true
+    },
+    {
+      "role": "buyer",
+      "route": "/crm/dashboard",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/crm/customers",
+      "allowed": true
+    },
+    {
+      "role": "buyer",
+      "route": "/crm/leads",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/crm/customers",
+      "allowed": true
+    },
+    {
+      "role": "buyer",
+      "route": "/crm/customers",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/crm/pipeline",
+      "allowed": true
+    },
+    {
+      "role": "leader",
+      "route": "/crm/pipeline",
+      "allowed": true
+    },
+    {
+      "role": "buyer",
+      "route": "/crm/pipeline",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/crm/inventory",
+      "allowed": true
+    },
+    {
+      "role": "leader",
+      "route": "/crm/inventory",
+      "allowed": true
+    },
+    {
+      "role": "buyer",
+      "route": "/crm/inventory",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/crm/appointments",
+      "allowed": true
+    },
+    {
+      "role": "leader",
+      "route": "/crm/appointments",
+      "allowed": true
+    },
+    {
+      "role": "buyer",
+      "route": "/crm/appointments",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/crm/reservations",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/crm/reservations",
+      "allowed": true
+    },
+    {
+      "role": "leader",
+      "route": "/crm/reservations",
+      "allowed": true
+    },
+    {
+      "role": "buyer",
+      "route": "/crm/payments",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/crm/payments",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/crm/payments",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/crm/contracts",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/crm/contracts",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/crm/contracts",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/crm/tasks",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/crm/tasks",
+      "allowed": true
+    },
+    {
+      "role": "sales",
+      "route": "/crm/tasks",
+      "allowed": true
+    },
+    {
+      "role": "buyer",
+      "route": "/crm/support",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/crm/support",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/crm/support",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/crm/marketing",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/crm/marketing",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/crm/marketing",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/crm/reports",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/crm/reports",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/crm/reports",
+      "allowed": true
+    },
+    {
+      "role": "buyer",
+      "route": "/crm/personal",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/management/dashboard",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/crm/personal",
+      "allowed": true
+    },
+    {
+      "role": "leader",
+      "route": "/crm/personal",
+      "allowed": true
+    },
+    {
+      "role": "buyer",
+      "route": "/management/teams",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/management/dashboard",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/management/dashboard",
+      "allowed": true
+    },
+    {
+      "role": "buyer",
+      "route": "/management/approvals",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/management/teams",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/management/inventory",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/management/teams",
+      "allowed": true
+    },
+    {
+      "role": "sales",
+      "route": "/management/approvals",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/management/inventory",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/management/finance",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/management/approvals",
+      "allowed": true
+    },
+    {
+      "role": "sales",
+      "route": "/management/finance",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/management/inventory",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/management/security",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/management/security",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/management/finance",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/management/cms",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/management/security",
+      "allowed": false
+    },
+    {
+      "role": "buyer",
+      "route": "/management/settings",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/management/cms",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/management/cms",
+      "allowed": false
+    },
+    {
+      "role": "sales",
+      "route": "/management/settings",
+      "allowed": false
+    },
+    {
+      "role": "leader",
+      "route": "/management/settings",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/buyer/dashboard",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/buyer/dashboard",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/buyer/dashboard",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/buyer/properties",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/buyer/properties",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/buyer/properties",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/buyer/appointments",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/buyer/appointments",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/buyer/appointments",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/buyer/reservations",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/buyer/reservations",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/buyer/reservations",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/buyer/payments",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/buyer/payments",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/buyer/payments",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/buyer/contracts",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/buyer/contracts",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/buyer/contracts",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/buyer/profile",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/buyer/profile",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/buyer/profile",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/buyer/support",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/buyer/support",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/buyer/support",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/crm/dashboard",
+      "allowed": true
+    },
+    {
+      "role": "support",
+      "route": "/crm/leads",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/crm/dashboard",
+      "allowed": true
+    },
+    {
+      "role": "finance",
+      "route": "/crm/dashboard",
+      "allowed": true
+    },
+    {
+      "role": "legal",
+      "route": "/crm/leads",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/crm/leads",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/crm/customers",
+      "allowed": true
+    },
+    {
+      "role": "support",
+      "route": "/crm/pipeline",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/crm/customers",
+      "allowed": true
+    },
+    {
+      "role": "legal",
+      "route": "/crm/customers",
+      "allowed": true
+    },
+    {
+      "role": "support",
+      "route": "/crm/inventory",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/crm/pipeline",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/crm/pipeline",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/crm/inventory",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/crm/inventory",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/crm/appointments",
+      "allowed": true
+    },
+    {
+      "role": "legal",
+      "route": "/crm/appointments",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/crm/appointments",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/crm/reservations",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/crm/payments",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/crm/reservations",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/crm/reservations",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/crm/payments",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/crm/contracts",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/crm/payments",
+      "allowed": true
+    },
+    {
+      "role": "finance",
+      "route": "/crm/contracts",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/crm/contracts",
+      "allowed": true
+    },
+    {
+      "role": "support",
+      "route": "/crm/tasks",
+      "allowed": true
+    },
+    {
+      "role": "finance",
+      "route": "/crm/tasks",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/crm/tasks",
+      "allowed": true
+    },
+    {
+      "role": "support",
+      "route": "/crm/support",
+      "allowed": true
+    },
+    {
+      "role": "finance",
+      "route": "/crm/support",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/crm/support",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/crm/marketing",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/crm/marketing",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/crm/marketing",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/crm/reports",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/crm/reports",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/crm/reports",
+      "allowed": true
+    },
+    {
+      "role": "support",
+      "route": "/crm/personal",
+      "allowed": true
+    },
+    {
+      "role": "support",
+      "route": "/management/dashboard",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/crm/personal",
+      "allowed": true
+    },
+    {
+      "role": "finance",
+      "route": "/crm/personal",
+      "allowed": true
+    },
+    {
+      "role": "support",
+      "route": "/management/teams",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/management/dashboard",
+      "allowed": true
+    },
+    {
+      "role": "finance",
+      "route": "/management/dashboard",
+      "allowed": true
+    },
+    {
+      "role": "support",
+      "route": "/management/approvals",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/management/teams",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/management/teams",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/management/inventory",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/management/approvals",
+      "allowed": true
+    },
+    {
+      "role": "support",
+      "route": "/management/finance",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/management/approvals",
+      "allowed": true
+    },
+    {
+      "role": "legal",
+      "route": "/management/inventory",
+      "allowed": false
+    },
+    {
+      "role": "support",
+      "route": "/management/security",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/management/inventory",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/management/finance",
+      "allowed": true
+    },
+    {
+      "role": "support",
+      "route": "/management/cms",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/management/security",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/management/finance",
+      "allowed": true
+    },
+    {
+      "role": "support",
+      "route": "/management/settings",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/management/cms",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/management/security",
+      "allowed": false
+    },
+    {
+      "role": "legal",
+      "route": "/management/settings",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/management/cms",
+      "allowed": false
+    },
+    {
+      "role": "finance",
+      "route": "/management/settings",
+      "allowed": false
+    },
+    {
+      "role": "admin",
+      "route": "/buyer/dashboard",
+      "allowed": false
+    },
+    {
+      "role": "manager",
+      "route": "/buyer/dashboard",
+      "allowed": false
+    },
+    {
+      "role": "admin",
+      "route": "/buyer/properties",
+      "allowed": false
+    },
+    {
+      "role": "platform",
+      "route": "/buyer/dashboard",
+      "allowed": false
+    },
+    {
+      "role": "manager",
+      "route": "/buyer/properties",
+      "allowed": false
+    },
+    {
+      "role": "admin",
+      "route": "/buyer/appointments",
+      "allowed": false
+    },
+    {
+      "role": "platform",
+      "route": "/buyer/properties",
+      "allowed": false
+    },
+    {
+      "role": "manager",
+      "route": "/buyer/appointments",
+      "allowed": false
+    },
+    {
+      "role": "admin",
+      "route": "/buyer/reservations",
+      "allowed": false
+    },
+    {
+      "role": "platform",
+      "route": "/buyer/appointments",
+      "allowed": false
+    },
+    {
+      "role": "manager",
+      "route": "/buyer/reservations",
+      "allowed": false
+    },
+    {
+      "role": "admin",
+      "route": "/buyer/payments",
+      "allowed": false
+    },
+    {
+      "role": "platform",
+      "route": "/buyer/reservations",
+      "allowed": false
+    },
+    {
+      "role": "manager",
+      "route": "/buyer/payments",
+      "allowed": false
+    },
+    {
+      "role": "admin",
+      "route": "/buyer/contracts",
+      "allowed": false
+    },
+    {
+      "role": "platform",
+      "route": "/buyer/payments",
+      "allowed": false
+    },
+    {
+      "role": "manager",
+      "route": "/buyer/contracts",
+      "allowed": false
+    },
+    {
+      "role": "admin",
+      "route": "/buyer/profile",
+      "allowed": false
+    },
+    {
+      "role": "platform",
+      "route": "/buyer/contracts",
+      "allowed": false
+    },
+    {
+      "role": "admin",
+      "route": "/buyer/support",
+      "allowed": false
+    },
+    {
+      "role": "manager",
+      "route": "/buyer/profile",
+      "allowed": false
+    },
+    {
+      "role": "platform",
+      "route": "/buyer/profile",
+      "allowed": false
+    },
+    {
+      "role": "manager",
+      "route": "/buyer/support",
+      "allowed": false
+    },
+    {
+      "role": "platform",
+      "route": "/buyer/support",
+      "allowed": false
+    },
+    {
+      "role": "admin",
+      "route": "/crm/dashboard",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/crm/dashboard",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/crm/dashboard",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/crm/leads",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/crm/leads",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/crm/leads",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/crm/customers",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/crm/customers",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/crm/customers",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/crm/pipeline",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/crm/pipeline",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/crm/pipeline",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/crm/inventory",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/crm/inventory",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/crm/appointments",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/crm/inventory",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/crm/appointments",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/crm/appointments",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/crm/reservations",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/crm/payments",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/crm/reservations",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/crm/reservations",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/crm/payments",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/crm/payments",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/crm/contracts",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/crm/contracts",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/crm/tasks",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/crm/contracts",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/crm/tasks",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/crm/tasks",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/crm/support",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/crm/marketing",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/crm/support",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/crm/support",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/crm/marketing",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/crm/marketing",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/crm/reports",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/crm/reports",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/crm/reports",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/crm/personal",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/crm/personal",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/crm/personal",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/management/dashboard",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/management/dashboard",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/management/teams",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/management/dashboard",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/management/approvals",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/management/teams",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/management/teams",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/management/approvals",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/management/approvals",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/management/inventory",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/management/inventory",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/management/finance",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/management/inventory",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/management/finance",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/management/finance",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/management/security",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/management/cms",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/management/security",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/management/security",
+      "allowed": true
+    },
+    {
+      "role": "admin",
+      "route": "/management/settings",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/management/cms",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/management/cms",
+      "allowed": true
+    },
+    {
+      "role": "platform",
+      "route": "/management/settings",
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "route": "/management/settings",
+      "allowed": true
+    }
+  ]
+}

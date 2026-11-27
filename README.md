@@ -12,12 +12,16 @@ Nền tảng bất động sản cao cấp kết hợp khám phá không gian, h
 Repository chính thức: [Shuuma4869/Arvessa-real-estate-platform](https://github.com/Shuuma4869/Arvessa-real-estate-platform), nhánh công bố `main`. Bắt đầu kiểm toán từ [bản bàn giao frontend](docs/frontend-handover.md) và [kiểm tra trước công bố](docs/publish-verification.md).
 
 - [Visual Flagship Rebuild: audit, gates và bằng chứng](docs/visual-rebuild/gates.md).
-- [Hai cảnh flagship đang chờ duyệt mỹ thuật](docs/visual-rebuild/photoreal-review.md): mở `/spatial-review` để xem Stillwater và A0302; [source pipeline và giấy phép](design/spatial/README.md). Chưa đạt nghiệm thu photorealism; chưa mở rộng chất lượng mới sang các căn/dự án khác.
+- [Hai cảnh flagship và quy trình khôi phục nguồn Blender](docs/frontend-definitive/source-recovery.md). Mở `/spatial-review` để xem Stillwater và A0302. Các căn còn lại dùng mô hình nội thất theo loại căn.
 - [12 panorama 4K nguyên bản](assets/residence-tours/catalog.json), dựng từ cùng mô hình nội thất của ba loại căn.
 - [Ba visual directions](design/visual-concepts.html) và [lý do chọn Blue Hour](design/visual-direction.md).
 - [Visual Asset Library](assets/visual-library/catalog.html): 10 ảnh gốc, prompt và 31 bản WebP, gồm crop hero riêng cho mobile.
 - [Nguồn và phạm vi sử dụng ảnh](docs/visual-asset-library.md).
 - [Nghiệm thu nền tảng](docs/qa-report.md) và [nghiệm thu nâng cấp thị giác](docs/visual-qa-report.md).
+
+## Duyệt bản Frontend Definitive Edition
+
+[Ảnh trước/sau và video tương tác](docs/frontend-definitive/review.html) · [Bản bàn giao, số đo và điều kiện nghiệm thu](docs/frontend-definitive/final-review.md)
 
 ## Chạy dự án
 

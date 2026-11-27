@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ARVESSA · Phòng duyệt thiết kế</title>
+<style>
+[hidden]{display:none!important}*{box-sizing:border-box}body{margin:0;background:#f4f0e7;color:#203a30;font:16px/1.5 system-ui,sans-serif}main{margin:auto;max-width:1680px;padding:clamp(16px,4vw,64px)}header{border-bottom:1px solid #aaa991;padding-bottom:20px}h1,h2{font:normal clamp(30px,5vw,68px)/1.05 Georgia,serif;margin:12px 0}h2{font-size:32px}label{display:block;margin:12px 0}input,select{font:inherit;max-width:100%;padding:6px;color:inherit}#pair,.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;align-items:start}figure{margin:0}figcaption{padding:.5rem 0}img,video{width:100%;height:auto;display:block;border:1px solid #c9c3b5}a{color:#234c3a}section{margin:32px 0}.gallery img{height:200px;object-fit:contain;background:#e7e4dc}#reference{max-height:55vh;object-fit:contain}p{max-width:78ch}details{padding:.6em 0}
+</style><main><header><strong>ARVESSA</strong><h1>Phòng duyệt thiết kế</h1><p>Architecture · Vision · Experience</p></header>
+<section><h2>Đối chiếu giao diện</h2><label>Màn hình <select id="scene"></select></label><label>Khung nhìn <select id="width"><option value="1440">Desktop · 1440 px</option><option value="390">Mobile · 390 px</option></select></label>
+<div id="pair"><figure><a id="oldLink"><img id="old" alt="Giao diện ARVESSA trước đợt nâng cấp"></a><figcaption>Bản trước</figcaption></figure><figure><a id="newLink"><img id="updated" alt="Giao diện sau nâng cấp trong trình duyệt"></a><figcaption>Bản review</figcaption></figure></div>
+<details><summary>Đối chiếu thêm với ảnh tham khảo của chủ dự án</summary><label>Chọn ảnh REF-01 đến REF-06 từ máy <input type="file" id="files" accept="image/*" multiple></label><p id="notice"></p><img id="reference" hidden alt="Ảnh tham khảo đã chọn trên máy"></details></section>
+<section><h2>The Stillwater và A0302</h2><div class="gallery" id="plates"></div><p><a href="spatial-production.md">Nguồn mô hình và thông số render</a> · <a href="evidence/realtime/runtime.json">Số đo WebGL</a></p><details><summary>Xem thao tác trên masterplan, mặt bằng và tour</summary><video controls preload="none" src="evidence/residences/walkthrough.webm"></video></details></section>
+<section><h2>Không gian làm việc</h2><div class="gallery" id="enterprise"></div><p><a href="enterprise.md">Chức năng và phân quyền</a> · <a href="final-review.md">Biên bản bàn giao</a></p></section></main>
+<script>
+const scenes=[
+ ['01','Showroom','showroom','realtime/Stillwater-glb-','.png'],
+ ['02','Tổng mặt bằng','masterplan','public/masterplan-','.jpg'],
+ ['03','Mặt bằng căn','floorplan','public/floorplan-','.jpg'],
+ ['04','Bộ sưu tập','coverflow','public/coverflow-','.jpg'],
+ ['05','Dollhouse','dollhouse','realtime/A0302-glb-','.png'],
+ ['05','Tour 360°','tour','residences/tour-','.jpg'],
+ ['06','Trang chủ','landing','public/landing-','.jpg']
+];
+const el=id=>document.getElementById(id),refs=new Map();
+scenes.forEach(([number,title],i)=>el('scene').add(new Option('REF-'+number+' · '+title,i)));
+function show(){
+ const [id,,old,updated,ext]=scenes[+el('scene').value],width=el('width').value;
+ el('oldLink').href=el('old').src='../visual-rebuild/evidence/final/'+old+'-'+width+'.webp';
+ el('newLink').href=el('updated').src='evidence/'+updated+width+ext;
+ const url=refs.get(id); el('reference').hidden=!url;
+ if(url)el('reference').src=url;else el('reference').removeAttribute('src');
+ el('notice').textContent=url?'Ảnh gốc trên máy của bạn.':'Chọn tệp có tên bắt đầu bằng '+id+' để xem cạnh bản review.';
+}
+el('scene').onchange=el('width').onchange=show;
+el('files').onchange=e=>{for(const f of e.target.files){const id=f.name.match(/^(?:ref[-_ ]?)?(0[1-6])/i)?.[1];if(id){if(refs.has(id))URL.revokeObjectURL(refs.get(id));refs.set(id,URL.createObjectURL(f));}}show()};show();
+function tile(group,title,path){const fig=document.createElement('figure'),a=document.createElement('a'),im=document.createElement('img'),cap=document.createElement('figcaption');a.href=im.src=path;im.alt=cap.textContent=title;a.append(im);fig.append(a,cap);el(group).append(fig)}
+tile('plates','Stillwater · tám góc máy','evidence/stillwater-editorial-plates.webp');
+tile('plates','Stillwater · trước và sau','evidence/stillwater-before-after.webp');
+tile('plates','A0302 · nội thất từ các điểm nhìn trong căn','evidence/interior-views.jpg');
+tile('plates','A0302 · mặt cắt Cycles','../../apps/web/public/spatial-flagships/A0302-dollhouse.webp');
+for(const [name,label] of [['buyer-dashboard','Buyer · tổng quan'],['crm-personal','CRM · lịch cá nhân'],['management-security','Management · phân quyền']])for(const size of ['desktop','mobile'])tile('enterprise',label+' · '+size,'evidence/'+name+'-'+size+'.jpg');
+</script></html>
